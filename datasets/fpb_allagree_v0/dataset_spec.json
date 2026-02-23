@@ -1,0 +1,66 @@
+{
+  "dataset_id": "fpb_allagree_v0",
+  "dataset_family": "fpb",
+  "dataset_name": "Financial PhraseBank (allagree)",
+  "dataset_version": "v0",
+  "status": "draft",
+  "owners": ["Mateusz", "Marco"],
+  "schema_version": "1.0.0",
+
+  "upstream": {
+    "source_type": "huggingface_dataset",
+    "hf_dataset_id": "takala/financial_phrasebank",
+    "source_url": "https://huggingface.co/datasets/takala/financial_phrasebank",
+    "config": "allagree"
+  },
+
+  "build_config": {
+    "split": {
+      "method": "stratified_by_label",
+      "label_field": "label.sentiment",
+      "seed": 42,
+      "test_frac": 0.2
+    },
+    "id_generation": {
+      "method": "sha256(config + '\\n' + sentence)",
+      "example_id_length": 16
+    }
+  },
+
+  "processed_row_schema": {
+    "top_level_keys": ["example_id", "dataset_id", "config", "data", "label", "meta"],
+    "data_keys": ["text"],
+    "label_keys": ["sentiment"],
+    "allowed_labels": ["negative", "neutral", "positive"]
+  },
+
+  "local_artifacts": {
+    "raw_zip": "data/fpb/raw/FinancialPhraseBank-v1.0.zip",
+    "raw_jsonl": "data/fpb/raw/fpb_allagree_raw.jsonl",
+    "clean_jsonl": "data/fpb/processed/fpb_allagree_clean.jsonl",
+    "train_jsonl": "data/fpb/processed/fpb_allagree_train.jsonl",
+    "test_jsonl": "data/fpb/processed/fpb_allagree_test.jsonl",
+    "split_meta_json": "data/fpb/processed/fpb_allagree_split_meta.json"
+  },
+
+  "hf_publish": {
+    "repo_id": "<TO_FILL_PRIVATE_HF_REPO>",
+    "private": true,
+    "path_prefix": "datasets/fpb/allagree/v0",
+    "canonical_files": [
+      "train.jsonl",
+      "test.jsonl",
+      "split_meta.json"
+    ],
+    "optional_files": [
+      "requests_train.jsonl",
+      "requests_test.jsonl"
+    ]
+  },
+
+  "licensing": {
+    "upstream_license": "<CHECK_AND_FILL>",
+    "redistribution_status": "unknown",
+    "notes": "Confirm redistribution terms before publishing processed data to Hugging Face."
+  }
+}
