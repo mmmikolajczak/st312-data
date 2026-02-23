@@ -108,13 +108,13 @@ These are also generated locally (not committed).
 ---
 
 ### D) Core scripts
-- Ingest raw FPB ZIP: `scripts/ingest_fpb.py`
-- Clean + add stable IDs: `scripts/clean_fpb.py`
-- Stratified split: `scripts/split_fpb.py`
-- Reward parser / rewards: `scripts/reward_fpb.py`
-- Prompt preview renderer: `scripts/render_fpb_prompt.py`
-- Cached completions evaluator: `scripts/eval_fpb_cached.py`
-- Request builder (messages JSONL): `scripts/build_fpb_requests.py`
+- Ingest raw FPB ZIP: `scripts/datasets/fpb/ingest_fpb.py`
+- Clean + add stable IDs: `scripts/datasets/fpb/clean_fpb.py`
+- Stratified split: `scripts/datasets/fpb/split_fpb.py`
+- Reward parser / rewards: `scripts/tasks/fpb_sentiment_v0/reward_fpb.py`
+- Prompt preview renderer: `scripts/tasks/fpb_sentiment_v0/render_fpb_prompt.py`
+- Cached completions evaluator: `scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py`
+- Request builder (messages JSONL): `scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py`
 
 ---
 
@@ -243,7 +243,7 @@ The evaluator expects these exact field names:
 
 If the model pipeline uses different names, either:
 - rename them before evaluation, or
-- update `scripts/eval_fpb_cached.py`
+- update `scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py`
 
 ---
 
@@ -272,7 +272,7 @@ The desired output JSON schema is:
 
 Reward logic is implemented in:
 
-- `scripts/reward_fpb.py`
+- `scripts/tasks/fpb_sentiment_v0/reward_fpb.py`
 
 ### Core parsing behavior (Risko-1-style robust parsing)
 The parser:
@@ -307,7 +307,7 @@ Implemented functions:
 
 Evaluation is done with:
 
-- `scripts/eval_fpb_cached.py`
+- `scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py`
 
 ### What it computes
 - completion coverage
@@ -320,14 +320,14 @@ Evaluation is done with:
 
 ### Basic evaluation command (test split)
 ```bash
-python scripts/eval_fpb_cached.py \
+python scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py \
   --split test \
   --completions <PATH_TO_COMPLETIONS_JSONL>
 ```
 
 ### Save JSON report (optional)
 ```bash
-python scripts/eval_fpb_cached.py \
+python scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py \
   --split test \
   --completions <PATH_TO_COMPLETIONS_JSONL> \
   --report-out reports/fpb_eval_test.json
@@ -341,12 +341,12 @@ Before model runs, preview exactly what prompts look like:
 
 ### Train preview
 ```bash
-python scripts/render_fpb_prompt.py --split train --num 2
+python scripts/tasks/fpb_sentiment_v0/render_fpb_prompt.py --split train --num 2
 ```
 
 ### Test preview
 ```bash
-python scripts/render_fpb_prompt.py --split test --num 2
+python scripts/tasks/fpb_sentiment_v0/render_fpb_prompt.py --split test --num 2
 ```
 
 This prints:
@@ -368,17 +368,17 @@ Use the request builder to create JSONL files for Marco’s pipeline.
 
 ### Build full train requests
 ```bash
-python scripts/build_fpb_requests.py --split train
+python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py --split train
 ```
 
 ### Build full test requests
 ```bash
-python scripts/build_fpb_requests.py --split test
+python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py --split test
 ```
 
 ### Build a small preview file
 ```bash
-python scripts/build_fpb_requests.py \
+python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py \
   --split test \
   --limit 2 \
   --include-gold \
@@ -428,7 +428,7 @@ A completions JSONL file with rows:
 ### How to evaluate Marco’s outputs
 Run:
 ```bash
-python scripts/eval_fpb_cached.py \
+python scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py \
   --split test \
   --completions <marco_outputs.jsonl>
 ```
@@ -455,8 +455,8 @@ python scripts/eval_fpb_cached.py \
 5. **Prompt changes without updating requests**
    - If you change `task_spec.json`, rebuild requests:
    ```bash
-   python scripts/build_fpb_requests.py --split train
-   python scripts/build_fpb_requests.py --split test
+   python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py --split train
+   python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py --split test
    ```
 
 ---
@@ -465,38 +465,38 @@ python scripts/eval_fpb_cached.py \
 
 ### A) Reward smoke test
 ```bash
-python scripts/reward_fpb.py --smoke-test
+python scripts/tasks/fpb_sentiment_v0/reward_fpb.py --smoke-test
 ```
 
 ### B) Single reward check
 ```bash
-python scripts/reward_fpb.py \
+python scripts/tasks/fpb_sentiment_v0/reward_fpb.py \
   --pred-text '{"sentiment":"neutral"}' \
   --gold-label neutral
 ```
 
 ### C) Prompt previews
 ```bash
-python scripts/render_fpb_prompt.py --split train --num 2
-python scripts/render_fpb_prompt.py --split test --num 2
+python scripts/tasks/fpb_sentiment_v0/render_fpb_prompt.py --split train --num 2
+python scripts/tasks/fpb_sentiment_v0/render_fpb_prompt.py --split test --num 2
 ```
 
 ### D) Build request files
 ```bash
-python scripts/build_fpb_requests.py --split train
-python scripts/build_fpb_requests.py --split test
+python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py --split train
+python scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py --split test
 ```
 
 ### E) Evaluate cached completions
 ```bash
-python scripts/eval_fpb_cached.py \
+python scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py \
   --split test \
   --completions <PATH_TO_COMPLETIONS_JSONL>
 ```
 
 ### F) Evaluate and save JSON report
 ```bash
-python scripts/eval_fpb_cached.py \
+python scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py \
   --split test \
   --completions <PATH_TO_COMPLETIONS_JSONL> \
   --report-out reports/fpb_eval_test.json
