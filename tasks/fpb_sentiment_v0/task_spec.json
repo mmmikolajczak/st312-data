@@ -1,0 +1,59 @@
+{
+  "task_id": "TA_SENT_FPB_v0",
+  "task_name": "Financial PhraseBank Sentiment Classification",
+  "version": "0.1.0",
+
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "Sentiment Analysis",
+    "output_type": "label_classification",
+    "scoring_type": "exact_match"
+  },
+
+  "dataset": {
+    "dataset_id": "fpb",
+    "config": "allagree",
+    "train_file": "data/fpb/processed/fpb_allagree_train.jsonl",
+    "test_file": "data/fpb/processed/fpb_allagree_test.jsonl",
+    "split_meta_file": "data/fpb/processed/fpb_allagree_split_meta.json"
+  },
+
+  "input_schema": {
+    "required_fields": ["data.text"]
+  },
+
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": ["sentiment"],
+    "no_extra_keys": true,
+    "allowed_values": {
+      "sentiment": ["negative", "neutral", "positive"]
+    }
+  },
+
+  "prompt_template": {
+    "system": "You are a financial sentiment classifier. Return ONLY a JSON object with exactly one key: \"sentiment\". The value must be one of: \"negative\", \"neutral\", \"positive\". Do not include any extra text.",
+    "user": "Classify the sentiment of the following financial sentence.\\n\\nSentence: {{data.text}}"
+  },
+
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON, exactly one key 'sentiment', and allowed value."
+      },
+      {
+        "name": "correctness_reward",
+        "weight": 1.0,
+        "description": "Predicted sentiment matches ground-truth label exactly."
+      }
+    ]
+  },
+
+  "evaluation_metrics": [
+    "accuracy",
+    "macro_f1",
+    "format_valid_rate"
+  ]
+}
