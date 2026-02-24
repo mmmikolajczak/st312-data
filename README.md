@@ -110,3 +110,42 @@ Evaluation outputs (JSON reports etc.)
 ## Notes
 
 This repo is designed so new datasets/tasks can be added with the same pattern and minimal ambiguity.
+
+<!-- ST312_PUBLISHED_MODULES_START -->
+## Published dataset/task modules (HF-ready)
+
+This repository tracks dataset and task modules for the ST312/Risko-1 pipeline.  
+Canonical HF dataset repo: `mmmikolajczak/st312-data`
+
+### Published modules
+
+#### 1) Financial PhraseBank (all-agree) v0
+- **Dataset ID:** `fpb_allagree_v0`
+- **Task ID:** `TA_SENT_FPB_v0`
+- **HF dataset path:** `datasets/fpb/allagree/v0/`
+- **HF task path:** `tasks/fpb_sentiment_v0/`
+- **Publish record:** `manifests/publish/fpb_allagree_v0_publish_record.json`
+
+#### 2) FiQA-SA (HF default split) v0
+- **Dataset ID:** `fiqasa_hf_default_v0`
+- **Task ID:** `TA_SENT_FIQASA_v0`
+- **HF dataset path:** `datasets/fiqasa/default/v0/`
+- **HF task path:** `tasks/fiqasa_sentiment_v0/`
+- **Publish record:** `manifests/publish/fiqasa_hf_default_v0_publish_record.json`
+
+#### 3) FinBen FOMC v0
+- **Dataset ID:** `finben_fomc_v0`
+- **Task ID:** `TA_STANCE_FOMC_FINBEN_v0`
+- **HF dataset path:** `datasets/fomc/finben/v0/`
+- **HF task path:** `tasks/finben_fomc_stance_v0/`
+- **Publish record:** `manifests/publish/finben_fomc_v0_publish_record.json`
+
+### Validation
+Use:
+`python scripts/utils/check_publish_records.py`
+
+Current status target convention:
+- registry status: `published`
+- dataset spec status: `"published_to_hf": true`
+<!-- ST312_PUBLISHED_MODULES_END -->
+
