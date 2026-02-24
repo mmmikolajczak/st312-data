@@ -1,0 +1,63 @@
+{
+  "task_id": "TA_STANCE_FOMC_FINBEN_v0",
+  "task_name": "FinBen FOMC Monetary Policy Stance Classification",
+  "version": "0.1.0",
+
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "FOMC Tone / Stance",
+    "output_type": "label_classification",
+    "scoring_type": "exact_match"
+  },
+
+  "dataset": {
+    "dataset_id": "finben_fomc_v0",
+    "config": "stratified_80_20_v0",
+    "train_file": "data/fomc/processed/finben_fomc_train.jsonl",
+    "test_file": "data/fomc/processed/finben_fomc_test.jsonl",
+    "meta_files": {
+      "clean_meta": "data/fomc/processed/finben_fomc_clean_meta.json",
+      "split_meta": "data/fomc/processed/finben_fomc_split_meta.json"
+    }
+  },
+
+  "input_schema": {
+    "required_fields": ["data.text"],
+    "optional_fields": []
+  },
+
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": ["stance"],
+    "no_extra_keys": true,
+    "allowed_values": {
+      "stance": ["dovish", "hawkish", "neutral"]
+    }
+  },
+
+  "prompt_template": {
+    "system": "You are a financial policy-stance classifier. Return ONLY a JSON object with exactly one key: \"stance\". The value must be one of: \"dovish\", \"hawkish\", \"neutral\". Do not include any extra text.",
+    "user": "Classify the monetary policy stance expressed in the following central-bank-related text.\n\nText: {{data.text}}"
+  },
+
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON, exactly one key 'stance', and allowed value."
+      },
+      {
+        "name": "correctness_reward",
+        "weight": 1.0,
+        "description": "Predicted stance matches ground-truth label exactly."
+      }
+    ]
+  },
+
+  "evaluation_metrics": [
+    "accuracy",
+    "macro_f1",
+    "format_valid_rate"
+  ]
+}

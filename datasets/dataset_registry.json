@@ -28,6 +28,17 @@
       "upstream_license": "mit",
       "task_family": "sentiment_classification_3way",
       "status": "published_hf"
+    },
+    {
+      "dataset_id": "finben_fomc_v0",
+      "dataset_name": "FinBen FOMC",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/finben_fomc_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/finben-fomc",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "monetary_policy_stance_3way",
+      "status": "local_ready"
     }
   ]
 }

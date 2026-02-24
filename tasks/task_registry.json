@@ -25,6 +25,15 @@
       "task_readme_path": "tasks/fiqasa_sentiment_v0/README.md",
       "dataset_id": "fiqasa_hf_default_v0",
       "status": "published_hf"
+    },
+    {
+      "task_id": "TA_STANCE_FOMC_FINBEN_v0",
+      "task_name": "FinBen FOMC Monetary Policy Stance Classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/finben_fomc_stance_v0/task_spec.json",
+      "task_readme_path": "tasks/finben_fomc_stance_v0/README.md",
+      "dataset_id": "finben_fomc_v0",
+      "status": "local_ready"
     }
   ]
 }

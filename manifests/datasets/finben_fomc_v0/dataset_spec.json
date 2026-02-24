@@ -1,0 +1,65 @@
+{
+  "dataset_id": "finben_fomc_v0",
+  "dataset_name": "FinBen FOMC",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/finben_fomc_v0",
+  "source": {
+    "type": "huggingface_dataset",
+    "hf_dataset_id": "TheFinAI/finben-fomc",
+    "upstream_split_policy": "single_test_split_only"
+  },
+  "processing": {
+    "ingest_script": "scripts/datasets/finben_fomc/ingest_finben_fomc.py",
+    "clean_script": "scripts/datasets/finben_fomc/clean_finben_fomc.py",
+    "split_script": "scripts/datasets/finben_fomc/split_finben_fomc.py",
+    "raw_files": {
+      "test": "data/fomc/raw/finben_fomc_test_raw.jsonl"
+    },
+    "processed_files": {
+      "all_clean": "data/fomc/processed/finben_fomc_all_clean.jsonl",
+      "train": "data/fomc/processed/finben_fomc_train.jsonl",
+      "test": "data/fomc/processed/finben_fomc_test.jsonl"
+    },
+    "meta_files": {
+      "clean_meta": "data/fomc/processed/finben_fomc_clean_meta.json",
+      "split_meta": "data/fomc/processed/finben_fomc_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "categorical_3way",
+    "task": "monetary_policy_stance",
+    "classes": [
+      "dovish",
+      "hawkish",
+      "neutral"
+    ],
+    "source_fields": [
+      "answer",
+      "gold",
+      "choices"
+    ]
+  },
+  "split_policy": {
+    "type": "local_stratified_train_test",
+    "train_fraction": 0.8,
+    "test_fraction": 0.2,
+    "stratify_on": "label.stance",
+    "seed": 42
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/fomc/finben/v0",
+    "upstream_license": "cc-by-nc-4.0",
+    "upstream_license_name": "Creative Commons Attribution-NonCommercial 4.0 International",
+    "upstream_license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "upstream_license_note": "License listed on the Hugging Face dataset card for TheFinAI/finben-fomc."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}
