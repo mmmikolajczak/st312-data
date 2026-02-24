@@ -4,7 +4,9 @@
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
   "hf_commits": {
-    "fomc_bootstrap_upload": "425895df48a8d06e0d2a96dfd5f5a766516128c8"
+    "fomc_bootstrap_upload": "425895df48a8d06e0d2a96dfd5f5a766516128c8",
+    "fomc_publish_record_upload": "ed198b478ea8656014a7a2e3433bb59f5105bf53",
+    "fomc_manifest_published_update": "c6cea3aff6d61a85ea6bf721794b41efa5c9a58e"
   },
   "artifacts_published": [
     "datasets/fomc/finben/v0/all_clean.jsonl",
