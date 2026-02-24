@@ -1,3 +1,15 @@
+---
+license: other
+pretty_name: ST312 Data Pipeline Artifacts
+task_categories:
+- text-classification
+tags:
+- finance
+- sentiment-analysis
+- benchmark
+- llm
+---
+
 # ST312 Data
 
 Repository for the ST312 Applied Statistics project data/task pipeline (FinLLM benchmark preparation).
