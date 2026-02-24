@@ -1,0 +1,23 @@
+{
+  "dataset_id": "fiqasa_hf_default_v0",
+  "task_id": "TA_SENT_FIQASA_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "fiqasa_bootstrap_upload": "e6e47a7677498082e78b07de14210741c29d66ad"
+  },
+  "artifacts_published": [
+    "datasets/fiqasa/default/v0/train.jsonl",
+    "datasets/fiqasa/default/v0/valid.jsonl",
+    "datasets/fiqasa/default/v0/test.jsonl",
+    "datasets/fiqasa/default/v0/clean_meta.json",
+    "tasks/fiqasa_sentiment_v0/requests/train_requests.jsonl",
+    "tasks/fiqasa_sentiment_v0/requests/valid_requests.jsonl",
+    "tasks/fiqasa_sentiment_v0/requests/test_requests.jsonl",
+    "tasks/fiqasa_sentiment_v0/README.md",
+    "manifests/datasets/fiqasa_hf_default_v0/dataset_spec.json",
+    "manifests/datasets/fiqasa_hf_default_v0/checksums.sha256",
+    "manifests/tasks/fiqasa_sentiment_v0/task_spec.json"
+  ],
+  "notes": "FiQA-SA v0 pipeline completed with upstream split preserved and 3-way discretised labels."
+}
