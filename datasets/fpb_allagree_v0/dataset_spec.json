@@ -68,7 +68,11 @@
     "optional_files": [
       "requests_train.jsonl",
       "requests_test.jsonl"
-    ]
+    ],
+    "upstream_license": "cc-by-nc-sa-3.0",
+    "upstream_license_name": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+    "upstream_license_url": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+    "upstream_license_note": "Financial PhraseBank dataset content is licensed CC BY-NC-SA 3.0 Unported. Commercial use requires separate permission from the dataset authors (per upstream dataset card)."
   },
   "licensing": {
     "upstream_license": "<CHECK_AND_FILL>",
