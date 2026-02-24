@@ -38,7 +38,7 @@
       "upstream_source": "TheFinAI/finben-fomc",
       "upstream_license": "cc-by-nc-4.0",
       "task_family": "monetary_policy_stance_3way",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

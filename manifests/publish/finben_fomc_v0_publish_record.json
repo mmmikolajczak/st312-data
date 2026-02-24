@@ -1,0 +1,23 @@
+{
+  "dataset_id": "finben_fomc_v0",
+  "task_id": "TA_STANCE_FOMC_FINBEN_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "fomc_bootstrap_upload": "425895df48a8d06e0d2a96dfd5f5a766516128c8"
+  },
+  "artifacts_published": [
+    "datasets/fomc/finben/v0/all_clean.jsonl",
+    "datasets/fomc/finben/v0/train.jsonl",
+    "datasets/fomc/finben/v0/test.jsonl",
+    "datasets/fomc/finben/v0/clean_meta.json",
+    "datasets/fomc/finben/v0/split_meta.json",
+    "tasks/finben_fomc_stance_v0/requests/train_requests.jsonl",
+    "tasks/finben_fomc_stance_v0/requests/test_requests.jsonl",
+    "tasks/finben_fomc_stance_v0/README.md",
+    "manifests/datasets/finben_fomc_v0/dataset_spec.json",
+    "manifests/datasets/finben_fomc_v0/checksums.sha256",
+    "manifests/tasks/finben_fomc_stance_v0/task_spec.json"
+  ],
+  "notes": "FinBen FOMC v0 pipeline completed with local stratified 80/20 train/test split (seed=42)."
+}
