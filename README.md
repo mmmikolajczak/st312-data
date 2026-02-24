@@ -1,70 +1,112 @@
-# ST312 FinLLM Data Pipeline
+# ST312 Data
 
-This repository contains the **data/task pipeline** for the ST312 Applied Statistics project (Mateusz + Marco), designed as a scalable extension of the Risko-1 workflow.
+Repository for the ST312 Applied Statistics project data/task pipeline (FinLLM benchmark preparation).
 
-## Architecture principle
-- **GitHub = control plane**
-  - code, scripts, task specs, dataset specs, manifests, docs
-- **Hugging Face = data plane**
-  - processed train/test datasets and related artifacts
+This repo is the code + metadata control plane:
+- dataset ingestion / cleaning / normalisation scripts
+- task specs, prompts, reward parsers, evaluators
+- registries and manifests for reproducibility
+- publish records and checksums
 
-This keeps GitHub lightweight and inspectable while allowing dataset versioning and sharing through HF.
+Large data artifacts are not tracked in GitHub. They are published to the private Hugging Face dataset repo:
+- `mmmikolajczak/st312-data`
 
----
-
-## Repository structure
-
-### `tasks/`
-Task definitions (prompt/output/reward/eval contracts), one folder per task.
+## Repository architecture
 
 ### `datasets/`
-Dataset definitions (upstream source, parsing/split rules, schema expectations), one folder per dataset.
+Dataset modules (metadata only):
+- dataset README
+- dataset spec
+- checksums for canonical processed artifacts
+- dataset registry (`datasets/dataset_registry.json`)
 
-### `scripts/`
-Runnable CLI scripts, grouped by:
-- `scripts/datasets/...`
-- `scripts/tasks/...`
+### `tasks/`
+Task modules (metadata only):
+- task README
+- task spec
+- task registry (`tasks/task_registry.json`)
+
+### `scripts/datasets/<dataset>/`
+Dataset-level pipeline scripts:
+- ingestion
+- cleaning
+- splitting / normalisation
+
+### `scripts/tasks/<task_id>/`
+Task-level scripts:
+- reward parser
+- prompt renderer
+- request builder
+- cached evaluator
 
 ### `manifests/`
-Immutable metadata snapshots for dataset/task releases and runs.
+Immutable-ish snapshots and bookkeeping:
+- `manifests/datasets/...` dataset spec snapshots + checksums
+- `manifests/tasks/...` task spec snapshots
+- `manifests/publish/...` publish records (GitHub/HF commit history)
+- `manifests/hf_repo/README.md` source-of-truth for HF dataset repo README
 
 ### `data/`
-Local working cache (gitignored). No data files are stored in GitHub.
+Local-only working artifacts (ignored by Git):
+- raw downloads
+- processed JSONL files
+- generated request files
+- temporary previews / dummy completions
 
----
+### `reports/`
+Evaluation outputs (JSON reports etc.)
 
-## Current implemented task
-- `TA_SENT_FPB_v0` — Financial PhraseBank sentiment classification
+## Current dataset modules
 
-Task docs:
-- `tasks/fpb_sentiment_v0/README.md`
+### 1) FPB all-agree v0
+- Dataset ID: `fpb_allagree_v0`
+- Task ID: `TA_SENT_FPB_v0`
+- Status: published to HF
+- Label space: `negative`, `neutral`, `positive`
 
-Dataset definition:
-- `datasets/fpb_allagree_v0/dataset_spec.json`
+### 2) FiQA-SA HF default v0
+- Dataset ID: `fiqasa_hf_default_v0`
+- Task ID: `TA_SENT_FIQASA_v0`
+- Status: published to HF
+- Labeling: 3-way discretisation from continuous sentiment score
+  - `score <= -0.1` -> `negative`
+  - `score >=  0.1` -> `positive`
+  - otherwise -> `neutral`
 
----
+## Current task modules
 
-## Data policy
-Actual datasets are NOT stored in this GitHub repo.
+### FPB sentiment
+- `tasks/fpb_sentiment_v0/`
+- `scripts/tasks/fpb_sentiment_v0/`
 
-They are:
-- built locally into `data/...` (gitignored)
-- published to a private Hugging Face dataset repo (canonical source of artifacts)
+### FiQA-SA sentiment
+- `tasks/fiqasa_sentiment_v0/`
+- `scripts/tasks/fiqasa_sentiment_v0/`
 
----
+## Reproducibility conventions
 
-## Adding a new dataset (pattern)
-1. Create `datasets/<dataset_id>_v0/`
-2. Add `dataset_spec.json` (+ README)
-3. Add build scripts under `scripts/datasets/<family>/`
-4. Build locally into `data/...`
-5. Publish to HF
-6. Add dataset manifest under `manifests/datasets/`
+- Canonical processed artifacts live in local `data/...` and are published to HF.
+- GitHub tracks metadata/manifests/checksums, not the full datasets.
+- Every published dataset/task should have:
+  - dataset/task module README
+  - dataset/task spec
+  - manifest snapshots
+  - checksums
+  - publish record with HF commit hashes
 
-## Adding a new task (pattern)
-1. Create `tasks/<task_name>_v0/`
-2. Add `task_spec.json` (+ README)
-3. Add task scripts under `scripts/tasks/<task_name>_v0/`
-4. Build requests / evaluate outputs
-5. Add task manifest under `manifests/tasks/`
+## Quick workflow for a new dataset
 
+1. Add dataset ingestion + cleaning scripts under `scripts/datasets/<dataset>/`
+2. Produce local processed JSONL artifacts in `data/<dataset>/processed/`
+3. Add dataset module under `datasets/<dataset_module>/`
+4. Add task module under `tasks/<task_module>/`
+5. Add task scripts under `scripts/tasks/<task_module>/`
+6. Build request files
+7. Snapshot manifests + checksums
+8. Upload artifacts to HF
+9. Add publish record
+10. Push GitHub metadata/manifests
+
+## Notes
+
+This repo is designed so new datasets/tasks can be added with the same pattern and minimal ambiguity.
