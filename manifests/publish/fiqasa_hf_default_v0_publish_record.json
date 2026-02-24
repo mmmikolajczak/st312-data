@@ -4,7 +4,9 @@
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
   "hf_commits": {
-    "fiqasa_bootstrap_upload": "e6e47a7677498082e78b07de14210741c29d66ad"
+    "fiqasa_bootstrap_upload": "e6e47a7677498082e78b07de14210741c29d66ad",
+    "fiqasa_publish_record_upload": "6879e6c14f39679a1cd290f07edf6fb9d33a8283",
+    "fiqasa_manifest_published_update": "ea9492c4fca7103f3c1b348ff1e45f085fd2aa23"
   },
   "artifacts_published": [
     "datasets/fiqasa/default/v0/train.jsonl",
