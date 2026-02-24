@@ -13,6 +13,17 @@
       "canonical_hf_repo": "mmmikolajczak/st312-data",
       "canonical_hf_path_prefix": "datasets/fpb/allagree/v0",
       "upstream_license": "cc-by-nc-sa-3.0"
+    },
+    {
+      "dataset_id": "fiqasa_hf_default_v0",
+      "dataset_name": "FiQA-SA (HF default split) v0",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/fiqasa_hf_default_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/fiqa-sentiment-classification",
+      "upstream_license": "<CHECK_AND_FILL>",
+      "task_family": "sentiment_classification_3way",
+      "status": "cleaned_local"
     }
   ]
 }

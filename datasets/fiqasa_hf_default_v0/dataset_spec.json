@@ -1,0 +1,57 @@
+{
+  "dataset_id": "fiqasa_hf_default_v0",
+  "dataset_name": "FiQA-SA (HF default split) v0",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/fiqasa_hf_default_v0",
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "Sentiment Analysis",
+    "task_type": "label_classification"
+  },
+  "source": {
+    "provider": "huggingface",
+    "hf_dataset_id": "TheFinAI/fiqa-sentiment-classification",
+    "original_format": "train/valid/test",
+    "label_type": "continuous_sentiment_score"
+  },
+  "artifacts": {
+    "raw_files": {
+      "train": "data/fiqasa/raw/fiqasa_train_raw.jsonl",
+      "valid": "data/fiqasa/raw/fiqasa_valid_raw.jsonl",
+      "test": "data/fiqasa/raw/fiqasa_test_raw.jsonl"
+    },
+    "processed_files": {
+      "train": "data/fiqasa/processed/fiqasa_train_clean.jsonl",
+      "valid": "data/fiqasa/processed/fiqasa_valid_clean.jsonl",
+      "test": "data/fiqasa/processed/fiqasa_test_clean.jsonl"
+    },
+    "meta_file": "data/fiqasa/processed/fiqasa_clean_meta.json"
+  },
+  "label_scheme": {
+    "type": "3way_from_continuous",
+    "source_field": "score",
+    "neg_thr": -0.1,
+    "pos_thr": 0.1,
+    "rule": "score <= neg_thr => negative; score >= pos_thr => positive; else neutral",
+    "classes": [
+      "negative",
+      "neutral",
+      "positive"
+    ]
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/fiqasa/default/v0",
+    "upstream_license": "<CHECK_AND_FILL>",
+    "upstream_license_name": null,
+    "upstream_license_url": null,
+    "upstream_license_note": null
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "requests_built": false,
+    "published_to_hf": false
+  }
+}
