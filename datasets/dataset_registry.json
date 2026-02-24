@@ -12,7 +12,11 @@
       "readme_path": "datasets/fpb_allagree_v0/README.md",
       "canonical_hf_repo": "mmmikolajczak/st312-data",
       "canonical_hf_path_prefix": "datasets/fpb/allagree/v0",
-      "upstream_license": "cc-by-nc-sa-3.0"
+      "upstream_license": "cc-by-nc-sa-3.0",
+      "dataset_name": "Financial PhraseBank (all-agree) v0",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/fpb_allagree_v0/dataset_spec.json",
+      "task_family": "sentiment_classification_3way"
     },
     {
       "dataset_id": "fiqasa_hf_default_v0",

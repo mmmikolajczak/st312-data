@@ -12,7 +12,10 @@
       ],
       "dataset_id": "fpb_allagree_v0",
       "evaluator": "scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py",
-      "request_builder": "scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py"
+      "request_builder": "scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py",
+      "task_name": "FPB Sentiment Classification",
+      "version": "0.1.0",
+      "task_readme_path": "tasks/fpb_sentiment_v0/README.md"
     },
     {
       "task_id": "TA_SENT_FIQASA_v0",
