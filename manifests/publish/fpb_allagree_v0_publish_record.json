@@ -1,0 +1,22 @@
+{
+  "dataset_id": "fpb_allagree_v0",
+  "task_id": "TA_SENT_FPB_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "github_commit_after_license_update": "e3648d1",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "bootstrap_upload": "56d801e68ded2876292ce5365c2a318f125aed46",
+    "license_manifest_update": "34ae60198a155f97b18ac2e7097072bed9123179"
+  },
+  "artifacts_published": [
+    "datasets/fpb/allagree/v0/train.jsonl",
+    "datasets/fpb/allagree/v0/test.jsonl",
+    "datasets/fpb/allagree/v0/split_meta.json",
+    "tasks/fpb_sentiment_v0/requests/train_requests.jsonl",
+    "tasks/fpb_sentiment_v0/requests/test_requests.jsonl",
+    "tasks/fpb_sentiment_v0/README.md",
+    "manifests/datasets/fpb_allagree_v0/dataset_spec.json",
+    "manifests/tasks/fpb_sentiment_v0/task_spec.json"
+  ],
+  "notes": "FPB all-agree v0 bootstrap completed; upstream license metadata set to CC BY-NC-SA 3.0."
+}
