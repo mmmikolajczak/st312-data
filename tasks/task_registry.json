@@ -6,10 +6,22 @@
       "task_folder": "tasks/fpb_sentiment_v0",
       "task_spec_path": "tasks/fpb_sentiment_v0/task_spec.json",
       "status": "draft",
-      "owners": ["Mateusz", "Marco"],
+      "owners": [
+        "Mateusz",
+        "Marco"
+      ],
       "dataset_id": "fpb_allagree_v0",
       "evaluator": "scripts/tasks/fpb_sentiment_v0/eval_fpb_cached.py",
       "request_builder": "scripts/tasks/fpb_sentiment_v0/build_fpb_requests.py"
+    },
+    {
+      "task_id": "TA_SENT_FIQASA_v0",
+      "task_name": "FiQA-SA Sentiment Classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/fiqasa_sentiment_v0/task_spec.json",
+      "task_readme_path": "tasks/fiqasa_sentiment_v0/README.md",
+      "dataset_id": "fiqasa_hf_default_v0",
+      "status": "local_ready"
     }
   ]
 }

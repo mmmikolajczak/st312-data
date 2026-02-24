@@ -1,0 +1,61 @@
+{
+  "task_id": "TA_SENT_FIQASA_v0",
+  "task_name": "FiQA-SA Sentiment Classification",
+  "version": "0.1.0",
+
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "Sentiment Analysis",
+    "output_type": "label_classification",
+    "scoring_type": "exact_match"
+  },
+
+  "dataset": {
+    "dataset_id": "fiqasa_hf_default_v0",
+    "config": "hf_default_v0_discrete",
+    "train_file": "data/fiqasa/processed/fiqasa_train_clean.jsonl",
+    "valid_file": "data/fiqasa/processed/fiqasa_valid_clean.jsonl",
+    "test_file": "data/fiqasa/processed/fiqasa_test_clean.jsonl",
+    "meta_file": "data/fiqasa/processed/fiqasa_clean_meta.json"
+  },
+
+  "input_schema": {
+    "required_fields": ["data.text", "data.target"],
+    "optional_fields": ["data.aspect", "data.type"]
+  },
+
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": ["sentiment"],
+    "no_extra_keys": true,
+    "allowed_values": {
+      "sentiment": ["negative", "neutral", "positive"]
+    }
+  },
+
+  "prompt_template": {
+    "system": "You are a financial sentiment classifier. Return ONLY a JSON object with exactly one key: \"sentiment\". The value must be one of: \"negative\", \"neutral\", \"positive\". Classify the sentiment toward the specified target entity. Do not include any extra text.",
+    "user": "Classify the sentiment toward the target entity in the following financial text.\n\nTarget: {{data.target}}\nAspect: {{data.aspect}}\nText: {{data.text}}"
+  },
+
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON, exactly one key 'sentiment', and allowed value."
+      },
+      {
+        "name": "correctness_reward",
+        "weight": 1.0,
+        "description": "Predicted sentiment matches ground-truth label exactly."
+      }
+    ]
+  },
+
+  "evaluation_metrics": [
+    "accuracy",
+    "macro_f1",
+    "format_valid_rate"
+  ]
+}

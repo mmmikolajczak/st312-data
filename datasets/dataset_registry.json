@@ -21,7 +21,7 @@
       "dataset_spec_path": "datasets/fiqasa_hf_default_v0/dataset_spec.json",
       "canonical_hf_repo": "mmmikolajczak/st312-data",
       "upstream_source": "TheFinAI/fiqa-sentiment-classification",
-      "upstream_license": "<CHECK_AND_FILL>",
+      "upstream_license": "mit",
       "task_family": "sentiment_classification_3way",
       "status": "cleaned_local"
     }
