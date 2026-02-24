@@ -4,16 +4,17 @@
   "dataset_name": "Financial PhraseBank (allagree)",
   "dataset_version": "v0",
   "status": "draft",
-  "owners": ["Mateusz", "Marco"],
+  "owners": [
+    "Mateusz",
+    "Marco"
+  ],
   "schema_version": "1.0.0",
-
   "upstream": {
     "source_type": "huggingface_dataset",
     "hf_dataset_id": "takala/financial_phrasebank",
     "source_url": "https://huggingface.co/datasets/takala/financial_phrasebank",
     "config": "allagree"
   },
-
   "build_config": {
     "split": {
       "method": "stratified_by_label",
@@ -26,14 +27,27 @@
       "example_id_length": 16
     }
   },
-
   "processed_row_schema": {
-    "top_level_keys": ["example_id", "dataset_id", "config", "data", "label", "meta"],
-    "data_keys": ["text"],
-    "label_keys": ["sentiment"],
-    "allowed_labels": ["negative", "neutral", "positive"]
+    "top_level_keys": [
+      "example_id",
+      "dataset_id",
+      "config",
+      "data",
+      "label",
+      "meta"
+    ],
+    "data_keys": [
+      "text"
+    ],
+    "label_keys": [
+      "sentiment"
+    ],
+    "allowed_labels": [
+      "negative",
+      "neutral",
+      "positive"
+    ]
   },
-
   "local_artifacts": {
     "raw_zip": "data/fpb/raw/FinancialPhraseBank-v1.0.zip",
     "raw_jsonl": "data/fpb/raw/fpb_allagree_raw.jsonl",
@@ -42,9 +56,8 @@
     "test_jsonl": "data/fpb/processed/fpb_allagree_test.jsonl",
     "split_meta_json": "data/fpb/processed/fpb_allagree_split_meta.json"
   },
-
   "hf_publish": {
-    "repo_id": "<TO_FILL_PRIVATE_HF_REPO>",
+    "repo_id": "mmmikolajczak/st312-data",
     "private": true,
     "path_prefix": "datasets/fpb/allagree/v0",
     "canonical_files": [
@@ -57,7 +70,6 @@
       "requests_test.jsonl"
     ]
   },
-
   "licensing": {
     "upstream_license": "<CHECK_AND_FILL>",
     "redistribution_status": "unknown",

@@ -4,10 +4,13 @@
     {
       "dataset_id": "fpb_allagree_v0",
       "status": "draft",
-      "owners": ["Mateusz", "Marco"],
+      "owners": [
+        "Mateusz",
+        "Marco"
+      ],
       "spec_path": "datasets/fpb_allagree_v0/dataset_spec.json",
       "readme_path": "datasets/fpb_allagree_v0/README.md",
-      "canonical_hf_repo": "<TO_FILL_PRIVATE_HF_REPO>",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
       "canonical_hf_path_prefix": "datasets/fpb/allagree/v0"
     }
   ]
