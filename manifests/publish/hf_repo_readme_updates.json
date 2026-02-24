@@ -1,0 +1,11 @@
+{
+  "hf_repo": "mmmikolajczak/st312-data",
+  "updates": [
+    {
+      "update_type": "root_readme",
+      "hf_commit": "de864cc02069f5d53fae91bc772db553e063c062",
+      "source_file": "manifests/hf_repo/README.md",
+      "notes": "Global HF dataset repo README updated to include FPB and FiQA inventory."
+    }
+  ]
+}
