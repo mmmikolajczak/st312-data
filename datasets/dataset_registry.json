@@ -49,7 +49,7 @@
       "upstream_source": "TheFinAI/finben-finer-ord",
       "upstream_license": "cc-by-nc-4.0",
       "task_family": "ner_token_classification_bio_7way",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

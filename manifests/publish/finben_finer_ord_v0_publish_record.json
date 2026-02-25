@@ -1,0 +1,23 @@
+{
+  "dataset_id": "finben_finer_ord_v0",
+  "task_id": "TA_NER_FINER_ORD_FINBEN_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "finer_ord_bootstrap_upload": "a51f8ff68b75facde969c236c33bdda685cd2eea"
+  },
+  "artifacts_published": [
+    "datasets/finer_ord/finben/v0/all_clean.jsonl",
+    "datasets/finer_ord/finben/v0/train.jsonl",
+    "datasets/finer_ord/finben/v0/test.jsonl",
+    "datasets/finer_ord/finben/v0/clean_meta.json",
+    "datasets/finer_ord/finben/v0/split_meta.json",
+    "tasks/finben_finer_ord_ner_v0/requests/train_requests.jsonl",
+    "tasks/finben_finer_ord_ner_v0/requests/test_requests.jsonl",
+    "tasks/finben_finer_ord_ner_v0/README.md",
+    "manifests/datasets/finben_finer_ord_v0/dataset_spec.json",
+    "manifests/datasets/finben_finer_ord_v0/checksums.sha256",
+    "manifests/tasks/finben_finer_ord_ner_v0/task_spec.json"
+  ],
+  "notes": "FINER-ORD v0 pipeline completed with local stratified 80/20 split (seed=42, stratify_on=meta.label_signature). NER reward upgraded to shaped span-F1 + token-acc + exact-match bonus."
+}
