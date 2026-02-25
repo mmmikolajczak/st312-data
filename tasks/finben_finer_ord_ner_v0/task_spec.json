@@ -1,0 +1,64 @@
+{
+  "task_id": "TA_NER_FINER_ORD_FINBEN_v0",
+  "task_name": "FinBen FINER-ORD NER (BIO token tagging)",
+  "version": "0.1.0",
+  "task_type": "token_classification",
+  "dataset": {
+    "dataset_id": "finben_finer_ord_v0",
+    "train_file": "data/finer_ord/processed/finben_finer_ord_train.jsonl",
+    "test_file": "data/finer_ord/processed/finben_finer_ord_test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.tokens"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "tags",
+    "allowed_tag_values": [
+      "O",
+      "B-PER",
+      "I-PER",
+      "B-LOC",
+      "I-LOC",
+      "B-ORG",
+      "I-ORG"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial NER tagger. Return ONLY a JSON object with exactly one key: \"tags\". The value must be a JSON array of BIO tags (same length as input tokens). Allowed tags: O, B-PER, I-PER, B-LOC, I-LOC, B-ORG, I-ORG. Do not include any extra text.",
+    "user": "Assign a BIO NER tag to each token in order. Output JSON only.\\n\\nTokens (one per line):\\n{{data.tokens_lines}}"
+  },
+  "metrics": [
+    "exact_sequence_accuracy",
+    "token_accuracy",
+    "entity_span_precision",
+    "entity_span_recall",
+    "entity_span_f1",
+    "micro_f1_non_o"
+  ],
+  "reward": {
+    "script": "scripts/tasks/finben_finer_ord_ner_v0/reward_finer_ord_ner.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "shaped_ner_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "components": {
+        "entity_span_f1": 0.5,
+        "token_accuracy": 0.4,
+        "exact_sequence_match": 0.1
+      }
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  }
+}
