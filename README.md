@@ -126,7 +126,7 @@ This repo is designed so new datasets/tasks can be added with the same pattern a
 <!-- ST312_PUBLISHED_MODULES_START -->
 ## Published dataset/task modules (HF-ready)
 
-This repository tracks dataset and task modules for the ST312/Risko-1 pipeline.  
+This repository tracks dataset and task modules for the ST312/Risko-1 pipeline.
 Canonical HF dataset repo: `mmmikolajczak/st312-data`
 
 ### Published modules
@@ -152,6 +152,13 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF task path:** `tasks/finben_fomc_stance_v0/`
 - **Publish record:** `manifests/publish/finben_fomc_v0_publish_record.json`
 
+#### 4) FinBen FINER-ORD v0
+- **Dataset ID:** `finben_finer_ord_v0`
+- **Task ID:** `TA_NER_FINER_ORD_FINBEN_v0`
+- **HF dataset path:** `datasets/finer_ord/finben/v0/`
+- **HF task path:** `tasks/finben_finer_ord_ner_v0/`
+- **Publish record:** `manifests/publish/finben_finer_ord_v0_publish_record.json`
+
 ### Validation
 Use:
 `python scripts/utils/check_publish_records.py`
@@ -160,4 +167,5 @@ Current status target convention:
 - registry status: `published`
 - dataset spec status: `"published_to_hf": true`
 <!-- ST312_PUBLISHED_MODULES_END -->
+
 
