@@ -1,0 +1,64 @@
+{
+  "dataset_id": "finben_finer_ord_v0",
+  "dataset_name": "FinBen FINER-ORD",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/finben_finer_ord_v0",
+  "provenance": {
+    "upstream_source": "TheFinAI/finben-finer-ord",
+    "source_kind": "finben_mirror",
+    "finben_reference": "TheFinAI/finben-finer-ord"
+  },
+  "processed": {
+    "config": "stratified_80_20_v0",
+    "files": {
+      "all_clean": "data/finer_ord/processed/finben_finer_ord_all_clean.jsonl",
+      "train": "data/finer_ord/processed/finben_finer_ord_train.jsonl",
+      "test": "data/finer_ord/processed/finben_finer_ord_test.jsonl"
+    },
+    "meta_files": {
+      "clean_meta": "data/finer_ord/processed/finben_finer_ord_clean_meta.json",
+      "split_meta": "data/finer_ord/processed/finben_finer_ord_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "token_classification_bio",
+    "task": "named_entity_recognition",
+    "entities": [
+      "PER",
+      "LOC",
+      "ORG"
+    ],
+    "classes": [
+      "O",
+      "B-PER",
+      "I-PER",
+      "B-LOC",
+      "I-LOC",
+      "B-ORG",
+      "I-ORG"
+    ]
+  },
+  "split_policy": {
+    "type": "local_stratified_train_test",
+    "train_fraction": 0.8,
+    "test_fraction": 0.2,
+    "stratify_on": "meta.label_signature",
+    "seed": 42
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/finer_ord/finben/v0",
+    "upstream_license": "cc-by-nc-4.0",
+    "upstream_license_name": "Creative Commons Attribution-NonCommercial 4.0 International",
+    "upstream_license_url": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "upstream_license_note": "License listed on the Hugging Face dataset card for TheFinAI/finben-finer-ord (verify when comparing with original source)."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

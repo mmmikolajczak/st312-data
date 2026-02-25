@@ -34,6 +34,15 @@
       "task_readme_path": "tasks/finben_fomc_stance_v0/README.md",
       "dataset_id": "finben_fomc_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_NER_FINER_ORD_FINBEN_v0",
+      "task_name": "FinBen FINER-ORD NER (BIO token tagging)",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/finben_finer_ord_ner_v0/task_spec.json",
+      "task_readme_path": "tasks/finben_finer_ord_ner_v0/README.md",
+      "dataset_id": "finben_finer_ord_v0",
+      "status": "local_ready"
     }
   ]
 }
