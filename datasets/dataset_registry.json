@@ -50,6 +50,17 @@
       "upstream_license": "cc-by-nc-4.0",
       "task_family": "ner_token_classification_bio_7way",
       "status": "published"
+    },
+    {
+      "dataset_id": "multifin_highlevel_v0",
+      "dataset_name": "MultiFin High-Level Topic Classification",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/multifin_highlevel_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "awinml/MultiFin",
+      "upstream_license": "cc-by-sa-4.0",
+      "task_family": "multiclass_topic_classification",
+      "status": "cleaned_local"
     }
   ]
 }

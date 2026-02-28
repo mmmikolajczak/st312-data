@@ -1,0 +1,60 @@
+{
+  "dataset_id": "multifin_highlevel_v0",
+  "dataset_name": "MultiFin High-Level Topic Classification",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/multifin_highlevel_v0",
+  "source": {
+    "type": "huggingface",
+    "hf_dataset_id": "awinml/MultiFin",
+    "hf_config": "all_languages_highlevel"
+  },
+  "files": {
+    "raw_files": {
+      "train": "data/multifin/raw/multifin_highlevel_train_raw.jsonl",
+      "validation": "data/multifin/raw/multifin_highlevel_validation_raw.jsonl",
+      "test": "data/multifin/raw/multifin_highlevel_test_raw.jsonl"
+    },
+    "raw_meta_file": "data/multifin/raw/multifin_highlevel_raw_meta.json",
+    "processed_files": {
+      "train": "data/multifin/processed/multifin_highlevel_train_clean.jsonl",
+      "validation": "data/multifin/processed/multifin_highlevel_validation_clean.jsonl",
+      "test": "data/multifin/processed/multifin_highlevel_test_clean.jsonl"
+    },
+    "processed_meta_file": "data/multifin/processed/multifin_highlevel_clean_meta.json"
+  },
+  "label_scheme": {
+    "type": "single_label_multiclass",
+    "task": "topic_classification",
+    "classes": [
+      "Technology",
+      "Industry",
+      "Tax & Accounting",
+      "Finance",
+      "Government & Controls",
+      "Business & Management"
+    ]
+  },
+  "split_policy": {
+    "type": "preserve_upstream",
+    "splits": [
+      "train",
+      "validation",
+      "test"
+    ]
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/multifin/highlevel/v0",
+    "upstream_license": "cc-by-sa-4.0",
+    "upstream_license_name": "Creative Commons Attribution Share Alike 4.0 International",
+    "upstream_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "upstream_license_note": "License listed on the Hugging Face dataset card for awinml/MultiFin."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "requests_built": false,
+    "published_to_hf": false
+  }
+}
