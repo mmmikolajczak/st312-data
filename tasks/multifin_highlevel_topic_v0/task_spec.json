@@ -1,0 +1,36 @@
+{
+  "task_id": "TA_TOPIC_MULTIFIN_HIGHLEVEL_v0",
+  "task_name": "MultiFin High-Level Topic Classification",
+  "version": "0.1.0",
+  "task_type": "single_label_multiclass",
+  "dataset": {
+    "dataset_id": "multifin_highlevel_v0",
+    "train_file": "data/multifin/processed/multifin_highlevel_train_clean.jsonl",
+    "validation_file": "data/multifin/processed/multifin_highlevel_validation_clean.jsonl",
+    "test_file": "data/multifin/processed/multifin_highlevel_test_clean.jsonl"
+  },
+  "input_schema": {
+    "required_fields": ["data.text"],
+    "optional_fields": ["data.language"]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "topic",
+    "allowed_values": [
+      "Technology",
+      "Industry",
+      "Tax & Accounting",
+      "Finance",
+      "Government & Controls",
+      "Business & Management"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial topic classifier. Return ONLY a JSON object with exactly one key: \"topic\". The value must be exactly one of the following labels: \"Technology\", \"Industry\", \"Tax & Accounting\", \"Finance\", \"Government & Controls\", \"Business & Management\". Do not include any extra text.",
+    "user": "Classify the following financial text into exactly one high-level topic category.\n\nText: {{data.text}}"
+  },
+  "metrics": [
+    "accuracy",
+    "macro_f1"
+  ]
+}

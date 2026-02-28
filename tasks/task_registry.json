@@ -43,6 +43,15 @@
       "task_readme_path": "tasks/finben_finer_ord_ner_v0/README.md",
       "dataset_id": "finben_finer_ord_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_TOPIC_MULTIFIN_HIGHLEVEL_v0",
+      "task_name": "MultiFin High-Level Topic Classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/multifin_highlevel_topic_v0/task_spec.json",
+      "task_readme_path": "tasks/multifin_highlevel_topic_v0/README.md",
+      "dataset_id": "multifin_highlevel_v0",
+      "status": "local_ready"
     }
   ]
 }
