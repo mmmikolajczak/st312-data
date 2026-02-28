@@ -1,6 +1,5 @@
 import argparse
 import json
-import re
 from typing import Optional
 
 ALLOWED = {
@@ -12,7 +11,6 @@ ALLOWED = {
     "Business & Management",
 }
 
-JSON_OBJECT_RE = re.compile(r"{.*}", re.DOTALL)
 
 def extract_json_object(text: str) -> Optional[dict]:
     text = text.strip()
@@ -20,17 +18,8 @@ def extract_json_object(text: str) -> Optional[dict]:
         obj = json.loads(text)
         return obj if isinstance(obj, dict) else None
     except Exception:
-        pass
-
-    m = JSON_OBJECT_RE.search(text)
-    if not m:
         return None
 
-    try:
-        obj = json.loads(m.group(0))
-        return obj if isinstance(obj, dict) else None
-    except Exception:
-        return None
 
 def parse_prediction(text: str) -> Optional[str]:
     obj = extract_json_object(text)
@@ -38,25 +27,32 @@ def parse_prediction(text: str) -> Optional[str]:
         return None
     if set(obj.keys()) != {"topic"}:
         return None
+
     pred = obj["topic"]
     if not isinstance(pred, str):
         return None
+
     pred = pred.strip()
     if pred not in ALLOWED:
         return None
+
     return pred
+
 
 def format_reward(text: str) -> float:
     return 1.0 if parse_prediction(text) is not None else 0.0
+
 
 def correctness_reward(text: str, gold_label: str) -> float:
     pred = parse_prediction(text)
     return 1.0 if pred == gold_label else 0.0
 
+
 def total_reward(text: str, gold_label: str) -> float:
     return format_reward(text) + correctness_reward(text, gold_label)
 
-def smoke_test():
+
+def smoke_test() -> None:
     gold = "Finance"
     cases = {
         "perfect": '{"topic":"Finance"}',
@@ -64,7 +60,7 @@ def smoke_test():
         "extra text but parsable": 'Answer: {"topic":"Finance"}',
         "bad label": '{"topic":"Banking"}',
         "extra key": '{"topic":"Finance","confidence":0.9}',
-        "not json": 'not json'
+        "not json": "not json",
     }
 
     for name, txt in cases.items():
@@ -75,7 +71,8 @@ def smoke_test():
         print(f"correctness_reward={correctness_reward(txt, gold)}")
         print(f"total_reward={total_reward(txt, gold)}")
 
-def main():
+
+def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pred-text", type=str, default=None)
     ap.add_argument("--gold-label", type=str, default=None)
@@ -97,6 +94,7 @@ def main():
     print(f"format_reward={format_reward(args.pred_text)}")
     print(f"correctness_reward={correctness_reward(args.pred_text, args.gold_label)}")
     print(f"total_reward={total_reward(args.pred_text, args.gold_label)}")
+
 
 if __name__ == "__main__":
     main()
