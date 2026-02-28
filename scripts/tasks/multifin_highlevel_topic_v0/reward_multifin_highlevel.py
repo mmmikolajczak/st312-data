@@ -44,6 +44,12 @@ def format_reward(text: str) -> float:
 
 
 def correctness_reward(text: str, gold_label: str) -> float:
+    if not isinstance(gold_label, str):
+        return 0.0
+    gold_label = gold_label.strip()
+    if gold_label not in ALLOWED:
+        return 0.0
+
     pred = parse_prediction(text)
     return 1.0 if pred == gold_label else 0.0
 
@@ -56,11 +62,11 @@ def smoke_test() -> None:
     gold = "Finance"
     cases = {
         "perfect": '{"topic":"Finance"}',
-        "valid wrong label": '{"topic":"Industry"}',
-        "extra text but parsable": 'Answer: {"topic":"Finance"}',
-        "bad label": '{"topic":"Banking"}',
-        "extra key": '{"topic":"Finance","confidence":0.9}',
-        "not json": "not json",
+        "valid_wrong_label": '{"topic":"Industry"}',
+        "extra_text_invalid": 'Answer: {"topic":"Finance"}',
+        "bad_label": '{"topic":"Banking"}',
+        "extra_key": '{"topic":"Finance","confidence":0.9}',
+        "not_json": "not json",
     }
 
     for name, txt in cases.items():

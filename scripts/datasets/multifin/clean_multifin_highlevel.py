@@ -81,9 +81,7 @@ def main():
                     "text": text,
                     "language": lang
                 },
-                "label": {
-                    "topic": label
-                },
+                "label": label,
                 "meta": {
                     "source": rec["source"],
                     "upstream_id": upstream_id,
