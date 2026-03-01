@@ -60,7 +60,7 @@
       "upstream_source": "awinml/MultiFin",
       "upstream_license": "cc-by-sa-4.0",
       "task_family": "multiclass_topic_classification",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

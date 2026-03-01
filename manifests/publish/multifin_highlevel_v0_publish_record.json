@@ -1,0 +1,23 @@
+{
+  "dataset_id": "multifin_highlevel_v0",
+  "task_id": "TA_TOPIC_MULTIFIN_HIGHLEVEL_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "multifin_bootstrap_upload": "5fc13466feeb0b714d834073df9039cd78b32e30"
+  },
+  "artifacts_published": [
+    "datasets/multifin/highlevel/v0/train.jsonl",
+    "datasets/multifin/highlevel/v0/validation.jsonl",
+    "datasets/multifin/highlevel/v0/test.jsonl",
+    "datasets/multifin/highlevel/v0/clean_meta.json",
+    "tasks/multifin_highlevel_topic_v0/requests/train_requests.jsonl",
+    "tasks/multifin_highlevel_topic_v0/requests/validation_requests.jsonl",
+    "tasks/multifin_highlevel_topic_v0/requests/test_requests.jsonl",
+    "tasks/multifin_highlevel_topic_v0/README.md",
+    "manifests/datasets/multifin_highlevel_v0/dataset_spec.json",
+    "manifests/datasets/multifin_highlevel_v0/checksums.sha256",
+    "manifests/tasks/multifin_highlevel_topic_v0/task_spec.json"
+  ],
+  "notes": "MultiFin high-level v0 pipeline completed with upstream train/validation/test split preserved."
+}

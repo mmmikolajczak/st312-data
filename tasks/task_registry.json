@@ -51,7 +51,7 @@
       "task_spec_path": "tasks/multifin_highlevel_topic_v0/task_spec.json",
       "task_readme_path": "tasks/multifin_highlevel_topic_v0/README.md",
       "dataset_id": "multifin_highlevel_v0",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
