@@ -14,13 +14,13 @@ tags:
 
 Repository for the ST312 Applied Statistics project data/task pipeline (FinLLM benchmark preparation).
 
-This repo is the code + metadata control plane:
-- dataset ingestion / cleaning / normalisation scripts
-- task specs, prompts, reward parsers, evaluators
-- registries and manifests for reproducibility
-- publish records and checksums
+This repository is the **code + metadata control plane** for the Risko-1 style dataset/task pipeline:
+- dataset ingestion, cleaning, normalisation, and split scripts
+- task specs, prompt templates, reward parsers, and cached evaluators
+- dataset/task registries and manifest snapshots for reproducibility
+- publish records and checksums for GitHub/Hugging Face bookkeeping
 
-Large data artifacts are not tracked in GitHub. They are published to the private Hugging Face dataset repo:
+Large data artifacts are **not** tracked in GitHub. Canonical processed artifacts are published to the private Hugging Face dataset repo:
 - `mmmikolajczak/st312-data`
 
 ## Repository architecture
@@ -30,21 +30,21 @@ Dataset modules (metadata only):
 - dataset README
 - dataset spec
 - checksums for canonical processed artifacts
-- dataset registry (`datasets/dataset_registry.json`)
+- dataset registry: `datasets/dataset_registry.json`
 
 ### `tasks/`
 Task modules (metadata only):
 - task README
 - task spec
-- task registry (`tasks/task_registry.json`)
+- task registry: `tasks/task_registry.json`
 
 ### `scripts/datasets/<dataset>/`
 Dataset-level pipeline scripts:
 - ingestion
-- cleaning
-- splitting / normalisation
+- cleaning / normalization
+- splitting (if needed)
 
-### `scripts/tasks/<task_id>/`
+### `scripts/tasks/<task_module>/`
 Task-level scripts:
 - reward parser
 - prompt renderer
@@ -52,128 +52,115 @@ Task-level scripts:
 - cached evaluator
 
 ### `manifests/`
-Immutable-ish snapshots and bookkeeping:
-- `manifests/datasets/...` dataset spec snapshots + checksums
-- `manifests/tasks/...` task spec snapshots
-- `manifests/publish/...` publish records (GitHub/HF commit history)
-- `manifests/hf_repo/README.md` source-of-truth for HF dataset repo README
+Snapshot + bookkeeping layer:
+- `manifests/datasets/...` — dataset spec snapshots + checksums
+- `manifests/tasks/...` — task spec snapshots
+- `manifests/publish/...` — publish records with GitHub / HF commit history
+- `manifests/hf_repo/README.md` — source-of-truth text for HF repo-facing README updates
 
 ### `data/`
 Local-only working artifacts (ignored by Git):
 - raw downloads
 - processed JSONL files
 - generated request files
-- temporary previews / dummy completions
+- previews / dummy completions
 
 ### `reports/`
-Evaluation outputs (JSON reports etc.)
-
-## Current dataset modules
-
-### 1) FPB all-agree v0
-- Dataset ID: `fpb_allagree_v0`
-- Task ID: `TA_SENT_FPB_v0`
-- Status: published to HF
-- Label space: `negative`, `neutral`, `positive`
-
-### 2) FiQA-SA HF default v0
-- Dataset ID: `fiqasa_hf_default_v0`
-- Task ID: `TA_SENT_FIQASA_v0`
-- Status: published to HF
-- Labeling: 3-way discretisation from continuous sentiment score
-  - `score <= -0.1` -> `negative`
-  - `score >=  0.1` -> `positive`
-  - otherwise -> `neutral`
-
-## Current task modules
-
-### FPB sentiment
-- `tasks/fpb_sentiment_v0/`
-- `scripts/tasks/fpb_sentiment_v0/`
-
-### FiQA-SA sentiment
-- `tasks/fiqasa_sentiment_v0/`
-- `scripts/tasks/fiqasa_sentiment_v0/`
+Evaluation outputs (JSON reports, cached eval summaries, etc.)
 
 ## Reproducibility conventions
 
-- Canonical processed artifacts live in local `data/...` and are published to HF.
-- GitHub tracks metadata/manifests/checksums, not the full datasets.
-- Every published dataset/task should have:
-  - dataset/task module README
-  - dataset/task spec
-  - manifest snapshots
-  - checksums
-  - publish record with HF commit hashes
+GitHub tracks **metadata, manifests, and checksums**.  
+Hugging Face stores the **canonical processed artifacts and request files**.
 
-## Quick workflow for a new dataset
+Every published dataset/task module should have:
+- dataset/task README
+- dataset/task spec
+- manifest snapshot(s)
+- checksums
+- publish record with HF commit hashes
+- registry entries marked consistently
+- successful validation via:
+  - `python scripts/utils/check_publish_records.py`
 
-1. Add dataset ingestion + cleaning scripts under `scripts/datasets/<dataset>/`
-2. Produce local processed JSONL artifacts in `data/<dataset>/processed/`
+## Standard workflow for a new dataset
+
+1. Add dataset ingestion/cleaning scripts under `scripts/datasets/<dataset>/`
+2. Produce local processed artifacts under `data/<dataset>/processed/`
 3. Add dataset module under `datasets/<dataset_module>/`
 4. Add task module under `tasks/<task_module>/`
 5. Add task scripts under `scripts/tasks/<task_module>/`
 6. Build request files
 7. Snapshot manifests + checksums
-8. Upload artifacts to HF
+8. Upload canonical artifacts to HF
 9. Add publish record
 10. Push GitHub metadata/manifests
+11. Validate with `python scripts/utils/check_publish_records.py`
 
-## Notes
+## Published dataset/task modules
 
-This repo is designed so new datasets/tasks can be added with the same pattern and minimal ambiguity.
+This is the **single canonical index** of published modules in the repository.  
+When a new module is published, append it here and keep the same pattern.
 
 <!-- ST312_PUBLISHED_MODULES_START -->
-## Published dataset/task modules (HF-ready)
 
-This repository tracks dataset and task modules for the ST312/Risko-1 pipeline.
 Canonical HF dataset repo: `mmmikolajczak/st312-data`
 
-### Published modules
-
-#### 1) Financial PhraseBank (all-agree) v0
+### 1) Financial PhraseBank (all-agree) v0
 - **Dataset ID:** `fpb_allagree_v0`
 - **Task ID:** `TA_SENT_FPB_v0`
+- **Task type:** 3-way sentiment classification
 - **HF dataset path:** `datasets/fpb/allagree/v0/`
 - **HF task path:** `tasks/fpb_sentiment_v0/`
 - **Publish record:** `manifests/publish/fpb_allagree_v0_publish_record.json`
 
-#### 2) FiQA-SA (HF default split) v0
+### 2) FiQA-SA (HF default split) v0
 - **Dataset ID:** `fiqasa_hf_default_v0`
 - **Task ID:** `TA_SENT_FIQASA_v0`
+- **Task type:** 3-way sentiment classification
 - **HF dataset path:** `datasets/fiqasa/default/v0/`
 - **HF task path:** `tasks/fiqasa_sentiment_v0/`
 - **Publish record:** `manifests/publish/fiqasa_hf_default_v0_publish_record.json`
+- **Labeling note:** discretised from continuous sentiment score using:
+  - `score <= -0.1` → `negative`
+  - `score >= 0.1` → `positive`
+  - otherwise → `neutral`
 
-#### 3) FinBen FOMC v0
+### 3) FinBen FOMC v0
 - **Dataset ID:** `finben_fomc_v0`
 - **Task ID:** `TA_STANCE_FOMC_FINBEN_v0`
+- **Task type:** 3-way monetary-policy stance classification
 - **HF dataset path:** `datasets/fomc/finben/v0/`
 - **HF task path:** `tasks/finben_fomc_stance_v0/`
 - **Publish record:** `manifests/publish/finben_fomc_v0_publish_record.json`
 
-#### 4) FinBen FINER-ORD v0
+### 4) FinBen FINER-ORD v0
 - **Dataset ID:** `finben_finer_ord_v0`
 - **Task ID:** `TA_NER_FINER_ORD_FINBEN_v0`
+- **Task type:** BIO-format token classification (NER)
 - **HF dataset path:** `datasets/finer_ord/finben/v0/`
 - **HF task path:** `tasks/finben_finer_ord_ner_v0/`
 - **Publish record:** `manifests/publish/finben_finer_ord_v0_publish_record.json`
 
-#### 5) MultiFin high-level v0
+### 5) MultiFin high-level v0
 - **Dataset ID:** `multifin_highlevel_v0`
 - **Task ID:** `TA_TOPIC_MULTIFIN_HIGHLEVEL_v0`
+- **Task type:** 6-class topic classification
 - **HF dataset path:** `datasets/multifin/highlevel/v0/`
 - **HF task path:** `tasks/multifin_highlevel_topic_v0/`
 - **Publish record:** `manifests/publish/multifin_highlevel_v0_publish_record.json`
 
-### Validation
+<!-- ST312_PUBLISHED_MODULES_END -->
+
+## Validation
+
 Use:
 `python scripts/utils/check_publish_records.py`
 
-Current status target convention:
+Target status convention:
 - registry status: `published`
 - dataset spec status: `"published_to_hf": true`
-<!-- ST312_PUBLISHED_MODULES_END -->
 
+## Notes
 
-
+This repository is designed so that new datasets/tasks can be added with the same structure and minimal ambiguity. The published-modules section above should remain the only top-level module index, to avoid drift and duplication.
