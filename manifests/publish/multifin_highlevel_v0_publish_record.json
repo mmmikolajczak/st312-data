@@ -4,9 +4,7 @@
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
   "hf_commits": {
-    "multifin_bootstrap_upload": "5fc13466feeb0b714d834073df9039cd78b32e30",
-    "multifin_publish_record_upload": "86ecab859916a612c67869c3b733bd3204b919ab",
-    "multifin_manifest_published_update": "cd1df165be2925f55232b2e97ec16cea74bdb4c1"
+    "multifin_bootstrap_upload": "5fc13466feeb0b714d834073df9039cd78b32e30"
   },
   "artifacts_published": [
     "datasets/multifin/highlevel/v0/train.jsonl",
