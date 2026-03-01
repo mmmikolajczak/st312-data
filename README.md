@@ -159,6 +159,13 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF task path:** `tasks/finben_finer_ord_ner_v0/`
 - **Publish record:** `manifests/publish/finben_finer_ord_v0_publish_record.json`
 
+#### 5) MultiFin high-level v0
+- **Dataset ID:** `multifin_highlevel_v0`
+- **Task ID:** `TA_TOPIC_MULTIFIN_HIGHLEVEL_v0`
+- **HF dataset path:** `datasets/multifin/highlevel/v0/`
+- **HF task path:** `tasks/multifin_highlevel_topic_v0/`
+- **Publish record:** `manifests/publish/multifin_highlevel_v0_publish_record.json`
+
 ### Validation
 Use:
 `python scripts/utils/check_publish_records.py`
@@ -167,5 +174,6 @@ Current status target convention:
 - registry status: `published`
 - dataset spec status: `"published_to_hf": true`
 <!-- ST312_PUBLISHED_MODULES_END -->
+
 
 
