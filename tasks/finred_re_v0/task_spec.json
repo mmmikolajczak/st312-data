@@ -1,0 +1,93 @@
+{
+  "task_id": "TA_RE_FINRED_v0",
+  "task_name": "FinRED joint relation / triplet extraction",
+  "version": "0.1.0",
+  "task_type": "relation_extraction",
+  "dataset": {
+    "dataset_id": "finred_official_v0",
+    "train_file": "data/finred_official/processed/finred_official_train.jsonl",
+    "dev_file": "data/finred_official/processed/finred_official_dev.jsonl",
+    "test_file": "data/finred_official/processed/finred_official_test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.text"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "triplets",
+    "triplet_keys": [
+      "head",
+      "relation",
+      "tail"
+    ],
+    "allowed_relations": [
+      "brand",
+      "business_division",
+      "chairperson",
+      "chief_executive_officer",
+      "creator",
+      "currency",
+      "developer",
+      "director_/_manager",
+      "distributed_by",
+      "distribution_format",
+      "employer",
+      "founded_by",
+      "headquarters_location",
+      "industry",
+      "legal_form",
+      "location_of_formation",
+      "manufacturer",
+      "member_of",
+      "operator",
+      "original_broadcaster",
+      "owned_by",
+      "owner_of",
+      "parent_organization",
+      "platform",
+      "position_held",
+      "product_or_material_produced",
+      "publisher",
+      "stock_exchange",
+      "subsidiary"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial relation extraction system. Extract all supported relation triplets from the sentence. Return ONLY a JSON object with exactly one key: \"triplets\". The value must be a JSON array of objects, each with exactly these keys: \"head\", \"relation\", \"tail\". Use entity surface forms exactly as they appear in the sentence. If no supported relation is present, return {\"triplets\": []}. Allowed relations: brand, business_division, chairperson, chief_executive_officer, creator, currency, developer, director_/_manager, distributed_by, distribution_format, employer, founded_by, headquarters_location, industry, legal_form, location_of_formation, manufacturer, member_of, operator, original_broadcaster, owned_by, owner_of, parent_organization, platform, position_held, product_or_material_produced, publisher, stock_exchange, subsidiary. Do not include any extra text.",
+    "user": "Extract all supported relation triplets from this sentence.\n\nSentence:\n{{data.text}}"
+  },
+  "metrics": [
+    "exact_set_accuracy",
+    "triplet_precision",
+    "triplet_recall",
+    "triplet_f1",
+    "entity_pair_precision",
+    "entity_pair_recall",
+    "entity_pair_f1"
+  ],
+  "reward": {
+    "script": "scripts/tasks/finred_re_v0/reward_finred_re.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "shaped_relation_extraction_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "components": {
+        "triplet_f1": 0.7,
+        "entity_pair_f1": 0.2,
+        "exact_set_match": 0.1
+      }
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  }
+}

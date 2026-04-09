@@ -61,6 +61,15 @@
       "task_readme_path": "tasks/salinas_sec_loan_ner_v0/README.md",
       "dataset_id": "salinas_sec_loan_ner_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_RE_FINRED_v0",
+      "task_name": "FinRED joint relation / triplet extraction",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/finred_re_v0/task_spec.json",
+      "task_readme_path": "tasks/finred_re_v0/README.md",
+      "dataset_id": "finred_official_v0",
+      "status": "local_ready"
     }
   ]
 }

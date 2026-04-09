@@ -1,0 +1,96 @@
+{
+  "dataset_id": "finred_official_v0",
+  "dataset_name": "FinRED Official Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/finred_official_v0",
+  "provenance": {
+    "canonical_paper": "Sharma et al. (2022) / arXiv 2023 release version",
+    "paper_url": "https://arxiv.org/pdf/2306.03736",
+    "official_repo_url": "https://github.com/soummyaah/FinRED",
+    "official_drive_folder_url": "https://drive.google.com/drive/folders/1-k5H79NkqzLkkF4KcndqxAPojnBbmqa4?usp=sharing",
+    "source_kind": "official_repo_google_drive_release",
+    "notes": [
+      "Official repository states that train, dev and test splits are provided, together with relations.txt.",
+      "Paper states the dataset was created via distant supervision from Wikidata triplets and that test data were manually annotated for evaluation.",
+      "Paper reports 5,699 train and 1,068 test examples, whereas the public released files are expected to include train/dev/test summing to 7,775 total; record any released-file count discrepancy during cleaning."
+    ]
+  },
+  "processed": {
+    "config": "author_split_preserved_v0",
+    "files": {
+      "all_clean": "data/finred_official/processed/finred_official_all_clean.jsonl",
+      "train": "data/finred_official/processed/finred_official_train.jsonl",
+      "dev": "data/finred_official/processed/finred_official_dev.jsonl",
+      "test": "data/finred_official/processed/finred_official_test.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/finred_official/raw/finred_ingest_meta.json",
+      "clean_meta": "data/finred_official/processed/finred_official_clean_meta.json",
+      "split_meta": "data/finred_official/processed/finred_official_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "joint_triplet_extraction",
+    "task": "relation_extraction",
+    "relation_count": 29,
+    "relations": [
+      "brand",
+      "business_division",
+      "chairperson",
+      "chief_executive_officer",
+      "creator",
+      "currency",
+      "developer",
+      "director_/_manager",
+      "distributed_by",
+      "distribution_format",
+      "employer",
+      "founded_by",
+      "headquarters_location",
+      "industry",
+      "legal_form",
+      "location_of_formation",
+      "manufacturer",
+      "member_of",
+      "operator",
+      "original_broadcaster",
+      "owned_by",
+      "owner_of",
+      "parent_organization",
+      "platform",
+      "position_held",
+      "product_or_material_produced",
+      "publisher",
+      "stock_exchange",
+      "subsidiary"
+    ],
+    "object_schema": {
+      "head": "string",
+      "relation": "enum",
+      "tail": "string"
+    },
+    "quality_note": "Train/dev are weakly supervised; test is the manual evaluation split."
+  },
+  "split_policy": {
+    "type": "author_provided_split",
+    "train": "preserve",
+    "dev": "preserve",
+    "test": "preserve"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/finred/official/v0",
+    "upstream_license": "unknown_research_use_only",
+    "upstream_license_name": "Unspecified in official repo README; treat conservatively until independently confirmed",
+    "upstream_license_url": "",
+    "upstream_license_note": "Paper and repo indicate research release; confirm exact redistribution terms before public reuse."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}
