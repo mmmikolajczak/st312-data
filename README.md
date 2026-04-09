@@ -170,6 +170,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/finred_official_v0_publish_record.json`
 - **Labeling note:** author `train/dev/test` split preserved; `train/dev` are weakly supervised via distant supervision, while `test` is the higher-trust manual evaluation split. Relation inventory contains 29 relations.
 
+### 8) FinCausal 2020 official v0
+- **Dataset ID:** `fincausal2020_official_v0`
+- **Task IDs:** `TA_CAUSAL_CLASSIFY_FINCAUSAL2020_v0`, `TA_CAUSE_EFFECT_FINCAUSAL2020_v0`
+- **Task types:** binary causal classification; cause/effect span extraction
+- **HF dataset path:** `datasets/fincausal2020/official/v0/`
+- **HF task paths:** `tasks/fincausal2020_task1_sc_v0/`, `tasks/fincausal2020_task2_ce_v0/`
+- **Publish record:** `manifests/publish/fincausal2020_official_v0_publish_record.json`
+- **Labeling note:** official `trial / practice / evaluation` structure preserved; Task 1 blank-text rows removed during ingestion; Task 2 stored row-wise as cause/effect-pair extraction; evaluation is blind for both tasks.
+
 ## Validation
 
 Use:

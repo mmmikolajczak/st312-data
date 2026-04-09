@@ -131,6 +131,35 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/finred_official_v0_publish_record.json`
 
+### 8) FinCausal 2020 official v0
+
+Dataset artifacts:
+- `datasets/fincausal2020/official/v0/fincausal2020_clean_meta.json`
+- `datasets/fincausal2020/official/v0/fincausal2020_split_meta.json`
+- `datasets/fincausal2020/official/v0/fincausal2020_task1_all_clean.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task1_trial.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task1_practice.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task1_evaluation.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task2_all_clean.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task2_trial.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task2_practice.jsonl`
+- `datasets/fincausal2020/official/v0/fincausal2020_task2_evaluation.jsonl`
+
+Task requests:
+- `tasks/fincausal2020_task1_sc_v0/fincausal2020_task1_trial_requests.jsonl`
+- `tasks/fincausal2020_task1_sc_v0/fincausal2020_task1_practice_requests.jsonl`
+- `tasks/fincausal2020_task1_sc_v0/fincausal2020_task1_evaluation_requests.jsonl`
+- `tasks/fincausal2020_task2_ce_v0/fincausal2020_task2_trial_requests.jsonl`
+- `tasks/fincausal2020_task2_ce_v0/fincausal2020_task2_practice_requests.jsonl`
+- `tasks/fincausal2020_task2_ce_v0/fincausal2020_task2_evaluation_requests.jsonl`
+
+Task README snapshots:
+- `tasks/fincausal2020_task1_sc_v0/README.md`
+- `tasks/fincausal2020_task2_ce_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/fincausal2020_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -160,6 +189,14 @@ We publish a 3-way discretised label using:
 - Train/dev are weakly supervised via distant supervision
 - Test is the higher-trust manual evaluation split
 - Relation inventory contains 29 canonical relations
+
+### FinCausal 2020 official
+
+- Original `trial / practice / evaluation` structure preserved
+- Task 1 blank-text rows removed during ingestion
+- Task 2 stored row-wise as cause/effect-pair extraction
+- Evaluation is blind for both tasks
+- Official scorer scripts define evaluation semantics
 
 ## Licensing
 
