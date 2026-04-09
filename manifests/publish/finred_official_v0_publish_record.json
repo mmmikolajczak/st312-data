@@ -1,0 +1,25 @@
+{
+  "dataset_id": "finred_official_v0",
+  "task_id": "TA_RE_FINRED_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "finred_bootstrap_upload_latest": "258256e82a62acc535d16b6182af6133fbfa89a0"
+  },
+  "artifacts_published": [
+    "datasets/finred/official/v0/finred_official_all_clean.jsonl",
+    "datasets/finred/official/v0/finred_official_clean_meta.json",
+    "datasets/finred/official/v0/finred_official_dev.jsonl",
+    "datasets/finred/official/v0/finred_official_split_meta.json",
+    "datasets/finred/official/v0/finred_official_test.jsonl",
+    "datasets/finred/official/v0/finred_official_train.jsonl",
+    "manifests/datasets/finred_official_v0/checksums.sha256",
+    "manifests/datasets/finred_official_v0/dataset_spec.json",
+    "manifests/tasks/finred_re_v0/task_spec.json",
+    "tasks/finred_re_v0/README.md",
+    "tasks/finred_re_v0/finred_official_dev_requests.jsonl",
+    "tasks/finred_re_v0/finred_official_test_requests.jsonl",
+    "tasks/finred_re_v0/finred_official_train_requests.jsonl"
+  ],
+  "notes": "FinRED official release v0 published using author-provided train/dev/test splits. Train/dev are weakly supervised via distant supervision; test is the higher-trust manual evaluation split. Bootstrap upload was performed with hf upload-large-folder after a standard hf upload timed out."
+}

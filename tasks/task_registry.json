@@ -69,7 +69,7 @@
       "task_spec_path": "tasks/finred_re_v0/task_spec.json",
       "task_readme_path": "tasks/finred_re_v0/README.md",
       "dataset_id": "finred_official_v0",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

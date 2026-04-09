@@ -82,7 +82,7 @@
       "upstream_source": "soummyaah/FinRED official release",
       "upstream_license": "unknown_research_use_only",
       "task_family": "relation_extraction_joint_triplet",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
