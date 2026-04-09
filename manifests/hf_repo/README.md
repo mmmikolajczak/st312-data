@@ -110,6 +110,27 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/salinas_sec_loan_ner_v0_publish_record.json`
 
+### 7) FinRED official v0
+
+Dataset artifacts:
+- `datasets/finred/official/v0/finred_official_all_clean.jsonl`
+- `datasets/finred/official/v0/finred_official_train.jsonl`
+- `datasets/finred/official/v0/finred_official_dev.jsonl`
+- `datasets/finred/official/v0/finred_official_test.jsonl`
+- `datasets/finred/official/v0/finred_official_clean_meta.json`
+- `datasets/finred/official/v0/finred_official_split_meta.json`
+
+Task requests:
+- `tasks/finred_re_v0/finred_official_train_requests.jsonl`
+- `tasks/finred_re_v0/finred_official_dev_requests.jsonl`
+- `tasks/finred_re_v0/finred_official_test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/finred_re_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/finred_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -132,6 +153,13 @@ We publish a 3-way discretised label using:
 - Original author split preserved: `FIN5` train, `FIN3` test
 - Original entity set retained: `PER`, `LOC`, `ORG`, `MISC`
 - The corpus-specific `lender` / `borrower` -> `PER` annotation convention is preserved and documented
+
+### FinRED official
+
+- Original author split preserved: `train/dev/test`
+- Train/dev are weakly supervised via distant supervision
+- Test is the higher-trust manual evaluation split
+- Relation inventory contains 29 canonical relations
 
 ## Licensing
 

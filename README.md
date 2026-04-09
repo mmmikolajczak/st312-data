@@ -161,6 +161,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/salinas_sec_loan_ner_v0_publish_record.json`
 - **Labeling note:** original author split preserved (`FIN5` train / `FIN3` test); entity set retains `PER`, `LOC`, `ORG`, `MISC`, and preserves the corpus-specific `lender`/`borrower` -> `PER` convention.
 
+### 7) FinRED official v0
+- **Dataset ID:** `finred_official_v0`
+- **Task ID:** `TA_RE_FINRED_v0`
+- **Task type:** joint relation / triplet extraction
+- **HF dataset path:** `datasets/finred/official/v0/`
+- **HF task path:** `tasks/finred_re_v0/`
+- **Publish record:** `manifests/publish/finred_official_v0_publish_record.json`
+- **Labeling note:** author `train/dev/test` split preserved; `train/dev` are weakly supervised via distant supervision, while `test` is the higher-trust manual evaluation split. Relation inventory contains 29 relations.
+
 ## Validation
 
 Use:
