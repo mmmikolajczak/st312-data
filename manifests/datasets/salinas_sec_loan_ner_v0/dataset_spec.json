@@ -1,0 +1,84 @@
+{
+  "dataset_id": "salinas_sec_loan_ner_v0",
+  "dataset_name": "Salinas et al. SEC Loan Agreements NER",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/salinas_sec_loan_ner_v0",
+  "provenance": {
+    "canonical_paper": "Salinas Alvarado, Verspoor, and Baldwin (2015)",
+    "paper_url": "https://aclanthology.org/U15-1010.pdf",
+    "original_release_url": "http://people.eng.unimelb.edu.au/tbaldwin/resources/finance-sec/",
+    "mirror_source": "tner/fin",
+    "mirror_files": [
+      "FIN5.txt",
+      "FIN3.txt"
+    ],
+    "source_kind": "paper_plus_preservation_mirror",
+    "notes": [
+      "HF mirror is used only as a preservation/download source for raw files.",
+      "Canonical provenance points to the ACL paper and the original Melbourne release URL."
+    ]
+  },
+  "processed": {
+    "config": "original_author_split_v0",
+    "files": {
+      "all_clean": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_all_clean.jsonl",
+      "train": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_train.jsonl",
+      "test": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_test.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/salinas_sec_loan_ner/raw/salinas_sec_loan_ner_ingest_meta.json",
+      "clean_meta": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_clean_meta.json",
+      "split_meta": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "token_classification_bio2",
+    "task": "named_entity_recognition",
+    "original_format": "CoNLL token POS chunk NER",
+    "original_tag_field": "label.original_tags",
+    "derived_tag_field": "label.tags",
+    "entities": [
+      "PER",
+      "LOC",
+      "ORG",
+      "MISC"
+    ],
+    "classes": [
+      "O",
+      "B-PER",
+      "I-PER",
+      "B-LOC",
+      "I-LOC",
+      "B-ORG",
+      "I-ORG",
+      "B-MISC",
+      "I-MISC"
+    ]
+  },
+  "split_policy": {
+    "type": "original_author_split",
+    "train_source_files": [
+      "FIN5.txt"
+    ],
+    "test_source_files": [
+      "FIN3.txt"
+    ],
+    "dev_split_note": "If an internal dev split is later needed, derive it from FIN5 only."
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/sec_loan_ner/salinas/v0",
+    "upstream_license": "unknown_research_use_only",
+    "upstream_license_name": "Unspecified; paper states dataset available for research purposes",
+    "upstream_license_url": "",
+    "upstream_license_note": "Keep conservative until the original release terms are independently confirmed."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "task_id": "TA_NER_SEC_LOAN_SALINAS_v0",
+  "task_name": "Salinas SEC Loan Agreements NER (BIO2 token tagging)",
+  "version": "0.1.0",
+  "task_type": "token_classification",
+  "dataset": {
+    "dataset_id": "salinas_sec_loan_ner_v0",
+    "train_file": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_train.jsonl",
+    "test_file": "data/salinas_sec_loan_ner/processed/salinas_sec_loan_ner_test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.tokens"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "tags",
+    "allowed_tag_values": [
+      "O",
+      "B-PER",
+      "I-PER",
+      "B-LOC",
+      "I-LOC",
+      "B-ORG",
+      "I-ORG",
+      "B-MISC",
+      "I-MISC"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial NER tagger. Return ONLY a JSON object with exactly one key: \"tags\". The value must be a JSON array of BIO2 tags with the same length as the input token list. Allowed tags: O, B-PER, I-PER, B-LOC, I-LOC, B-ORG, I-ORG, B-MISC, I-MISC. Do not include any extra text.",
+    "user": "Assign a BIO2 NER tag to each token in order. Preserve corpus conventions, including that lender and borrower may be tagged as PER in this dataset. Output JSON only.\n\nTokens (one per line):\n{{data.tokens_lines}}"
+  },
+  "metrics": [
+    "exact_sequence_accuracy",
+    "token_accuracy",
+    "entity_span_precision",
+    "entity_span_recall",
+    "entity_span_f1",
+    "micro_f1_non_o"
+  ],
+  "reward": {
+    "script": "scripts/tasks/salinas_sec_loan_ner_v0/reward_sec_loan_ner.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "shaped_ner_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "components": {
+        "entity_span_f1": 0.5,
+        "token_accuracy": 0.4,
+        "exact_sequence_match": 0.1
+      }
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  }
+}
