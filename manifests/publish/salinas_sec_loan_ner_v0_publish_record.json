@@ -1,0 +1,23 @@
+{
+  "dataset_id": "salinas_sec_loan_ner_v0",
+  "task_id": "TA_NER_SEC_LOAN_SALINAS_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "salinas_bootstrap_upload": "3bbe523fbdd16eb9ed901ed22da03d8544dbe0ed",
+    "salinas_manifest_published_update": "fcac95bf830caae9840cc67e176e030218877ba1"
+  },
+  "artifacts_published": [
+    "datasets/sec_loan_ner/salinas/v0/salinas_sec_loan_ner_all_clean.jsonl",
+    "datasets/sec_loan_ner/salinas/v0/salinas_sec_loan_ner_clean_meta.json",
+    "datasets/sec_loan_ner/salinas/v0/salinas_sec_loan_ner_split_meta.json",
+    "datasets/sec_loan_ner/salinas/v0/salinas_sec_loan_ner_test.jsonl",
+    "datasets/sec_loan_ner/salinas/v0/salinas_sec_loan_ner_train.jsonl",
+    "manifests/datasets/salinas_sec_loan_ner_v0/checksums.sha256",
+    "manifests/datasets/salinas_sec_loan_ner_v0/dataset_spec.json",
+    "manifests/tasks/salinas_sec_loan_ner_v0/task_spec.json",
+    "tasks/salinas_sec_loan_ner_v0/salinas_sec_loan_ner_test_requests.jsonl",
+    "tasks/salinas_sec_loan_ner_v0/salinas_sec_loan_ner_train_requests.jsonl"
+  ],
+  "notes": "Salinas SEC loan-agreement NER v0 published using the original author split (FIN5 train / FIN3 test). Raw files were retrieved from the preserved tner/fin mirror, with canonical provenance to Salinas Alvarado, Verspoor, and Baldwin (2015)."
+}

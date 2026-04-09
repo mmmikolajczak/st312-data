@@ -71,7 +71,7 @@
       "upstream_source": "Salinas Alvarado et al. (2015) SEC loan-agreement NER corpus",
       "upstream_license": "unknown_research_use_only",
       "task_family": "ner_token_classification_bio2_9way",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
