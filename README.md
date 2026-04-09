@@ -152,6 +152,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 
 <!-- ST312_PUBLISHED_MODULES_END -->
 
+### 6) Salinas SEC loan-agreement NER v0
+- **Dataset ID:** `salinas_sec_loan_ner_v0`
+- **Task ID:** `TA_NER_SEC_LOAN_SALINAS_v0`
+- **Task type:** BIO2 token classification (NER)
+- **HF dataset path:** `datasets/sec_loan_ner/salinas/v0/`
+- **HF task path:** `tasks/salinas_sec_loan_ner_v0/`
+- **Publish record:** `manifests/publish/salinas_sec_loan_ner_v0_publish_record.json`
+- **Labeling note:** original author split preserved (`FIN5` train / `FIN3` test); entity set retains `PER`, `LOC`, `ORG`, `MISC`, and preserves the corpus-specific `lender`/`borrower` -> `PER` convention.
+
 ## Validation
 
 Use:

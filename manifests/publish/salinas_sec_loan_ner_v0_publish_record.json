@@ -17,7 +17,9 @@
     "manifests/datasets/salinas_sec_loan_ner_v0/dataset_spec.json",
     "manifests/tasks/salinas_sec_loan_ner_v0/task_spec.json",
     "tasks/salinas_sec_loan_ner_v0/salinas_sec_loan_ner_test_requests.jsonl",
-    "tasks/salinas_sec_loan_ner_v0/salinas_sec_loan_ner_train_requests.jsonl"
+    "tasks/salinas_sec_loan_ner_v0/salinas_sec_loan_ner_train_requests.jsonl",
+    "tasks/salinas_sec_loan_ner_v0/README.md",
+    "manifests/publish/salinas_sec_loan_ner_v0_publish_record.json"
   ],
   "notes": "Salinas SEC loan-agreement NER v0 published using the original author split (FIN5 train / FIN3 test). Raw files were retrieved from the preserved tner/fin mirror, with canonical provenance to Salinas Alvarado, Verspoor, and Baldwin (2015)."
 }
