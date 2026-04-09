@@ -1,0 +1,73 @@
+{
+  "dataset_id": "fincausal2020_official_v0",
+  "dataset_name": "FinCausal 2020 Official Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/fincausal2020_official_v0",
+  "provenance": {
+    "canonical_paper": "Mariko et al. (2020)",
+    "paper_url": "https://aclanthology.org/2020.fnp-1.3.pdf",
+    "official_repo_url": "https://github.com/yseop/YseopLab/tree/develop/FNP_2020_FinCausal",
+    "source_kind": "official_yseoplab_repo_release",
+    "notes": [
+      "Official release preserves trial / practice / evaluation organization.",
+      "Task 2 is defined on causal sections and forms the second stage of the pipeline.",
+      "Official scoring scripts are included in the source tree and should define evaluation semantics."
+    ]
+  },
+  "processed": {
+    "config": "author_split_preserved_v0",
+    "files": {
+      "task1_all_clean": "data/fincausal2020_official/processed/fincausal2020_task1_all_clean.jsonl",
+      "task1_trial": "data/fincausal2020_official/processed/fincausal2020_task1_trial.jsonl",
+      "task1_practice": "data/fincausal2020_official/processed/fincausal2020_task1_practice.jsonl",
+      "task1_evaluation": "data/fincausal2020_official/processed/fincausal2020_task1_evaluation.jsonl",
+      "task2_all_clean": "data/fincausal2020_official/processed/fincausal2020_task2_all_clean.jsonl",
+      "task2_trial": "data/fincausal2020_official/processed/fincausal2020_task2_trial.jsonl",
+      "task2_practice": "data/fincausal2020_official/processed/fincausal2020_task2_practice.jsonl",
+      "task2_evaluation": "data/fincausal2020_official/processed/fincausal2020_task2_evaluation.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/fincausal2020_official/raw/fincausal2020_ingest_meta.json",
+      "clean_meta": "data/fincausal2020_official/processed/fincausal2020_clean_meta.json",
+      "split_meta": "data/fincausal2020_official/processed/fincausal2020_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "multi_task_linked",
+    "task1": {
+      "task_type": "binary_causal_classification",
+      "labels": [
+        0,
+        1
+      ],
+      "blind_evaluation_has_no_gold": true
+    },
+    "task2": {
+      "task_type": "cause_effect_span_extraction",
+      "row_level_pairs": true,
+      "blind_evaluation_has_no_gold": true
+    }
+  },
+  "split_policy": {
+    "type": "author_provided_split",
+    "trial": "preserve",
+    "practice": "preserve",
+    "evaluation": "preserve_blind"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/fincausal2020/official/v0",
+    "upstream_license": "unknown_research_use_only",
+    "upstream_license_name": "Unspecified in repo pages inspected; verify before redistribution beyond current workflow",
+    "upstream_license_url": "",
+    "upstream_license_note": "Treat conservatively until exact license terms are independently confirmed."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

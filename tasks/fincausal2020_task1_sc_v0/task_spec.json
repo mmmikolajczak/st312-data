@@ -1,0 +1,55 @@
+{
+  "task_id": "TA_CAUSAL_CLASSIFY_FINCAUSAL2020_v0",
+  "task_name": "FinCausal 2020 Task 1 binary causal classification",
+  "version": "0.1.0",
+  "task_type": "binary_classification",
+  "dataset": {
+    "dataset_id": "fincausal2020_official_v0",
+    "trial_file": "data/fincausal2020_official/processed/fincausal2020_task1_trial.jsonl",
+    "practice_file": "data/fincausal2020_official/processed/fincausal2020_task1_practice.jsonl",
+    "evaluation_file": "data/fincausal2020_official/processed/fincausal2020_task1_evaluation.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.text"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "label",
+    "allowed_values": [
+      0,
+      1
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial causality classifier. Return ONLY a JSON object with exactly one key: \"label\". The value must be integer 1 if the passage contains a causal relation, otherwise 0. Do not include any extra text.",
+    "user": "Determine whether this financial-news section contains a causal relation.\n\nText:\n{{data.text}}"
+  },
+  "metrics": [
+    "official_weighted_f1",
+    "official_weighted_recall",
+    "official_weighted_precision"
+  ],
+  "reward": {
+    "script": "scripts/tasks/fincausal2020_task1_sc_v0/reward_fincausal2020_task1.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "binary_exact_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ]
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  },
+  "official_scorer": {
+    "path": "data/fincausal2020_official/raw/scoring/task1/task1_evaluate.py"
+  }
+}

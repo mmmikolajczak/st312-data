@@ -1,0 +1,59 @@
+{
+  "task_id": "TA_CAUSE_EFFECT_FINCAUSAL2020_v0",
+  "task_name": "FinCausal 2020 Task 2 cause/effect span extraction",
+  "version": "0.1.0",
+  "task_type": "span_extraction",
+  "dataset": {
+    "dataset_id": "fincausal2020_official_v0",
+    "trial_file": "data/fincausal2020_official/processed/fincausal2020_task2_trial.jsonl",
+    "practice_file": "data/fincausal2020_official/processed/fincausal2020_task2_practice.jsonl",
+    "evaluation_file": "data/fincausal2020_official/processed/fincausal2020_task2_evaluation.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.text"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "keys": [
+      "cause",
+      "effect"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial causality extraction system. Return ONLY a JSON object with exactly two keys: \"cause\" and \"effect\". Both values must be strings copied from the passage text. Do not include any extra text.",
+    "user": "Extract the cause span and the effect span from this financial-news section.\n\nText:\n{{data.text}}"
+  },
+  "metrics": [
+    "official_weighted_f1",
+    "official_weighted_recall",
+    "official_weighted_precision",
+    "official_exact_match"
+  ],
+  "reward": {
+    "script": "scripts/tasks/fincausal2020_task2_ce_v0/reward_fincausal2020_task2.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "official_token_label_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "components": {
+        "official_weighted_f1": 0.9,
+        "official_exact_match": 0.1
+      }
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  },
+  "official_scorer": {
+    "path": "data/fincausal2020_official/raw/scoring/task2/task2_evaluate.py"
+  }
+}
