@@ -93,7 +93,7 @@
       "upstream_source": "yseop/YseopLab official FinCausal 2020 release",
       "upstream_license": "unknown_research_use_only",
       "task_family": "linked_binary_classification_and_span_extraction",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

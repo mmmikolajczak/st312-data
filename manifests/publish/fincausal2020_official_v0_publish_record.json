@@ -1,0 +1,38 @@
+{
+  "dataset_id": "fincausal2020_official_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "fincausal2020_bootstrap_upload_latest": "60d390857acc870800c421e59cf805ca2eec7039"
+  },
+  "artifacts_published": [
+    "datasets/fincausal2020/official/v0/fincausal2020_clean_meta.json",
+    "datasets/fincausal2020/official/v0/fincausal2020_split_meta.json",
+    "datasets/fincausal2020/official/v0/fincausal2020_task1_all_clean.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task1_evaluation.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task1_practice.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task1_trial.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task2_all_clean.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task2_evaluation.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task2_practice.jsonl",
+    "datasets/fincausal2020/official/v0/fincausal2020_task2_trial.jsonl",
+    "manifests/datasets/fincausal2020_official_v0/checksums.sha256",
+    "manifests/datasets/fincausal2020_official_v0/dataset_spec.json",
+    "manifests/tasks/fincausal2020_task1_sc_v0/task_spec.json",
+    "manifests/tasks/fincausal2020_task2_ce_v0/task_spec.json",
+    "tasks/fincausal2020_task1_sc_v0/README.md",
+    "tasks/fincausal2020_task1_sc_v0/fincausal2020_task1_evaluation_requests.jsonl",
+    "tasks/fincausal2020_task1_sc_v0/fincausal2020_task1_practice_requests.jsonl",
+    "tasks/fincausal2020_task1_sc_v0/fincausal2020_task1_trial_requests.jsonl",
+    "tasks/fincausal2020_task2_ce_v0/README.md",
+    "tasks/fincausal2020_task2_ce_v0/fincausal2020_task2_evaluation_requests.jsonl",
+    "tasks/fincausal2020_task2_ce_v0/fincausal2020_task2_practice_requests.jsonl",
+    "tasks/fincausal2020_task2_ce_v0/fincausal2020_task2_trial_requests.jsonl"
+  ],
+  "notes": "FinCausal 2020 official release published using preserved trial/practice/evaluation structure. Task 1 blank-text rows were removed during ingestion. Task 2 is stored row-wise as cause/effect pair extraction, and evaluation is blind for both tasks. Bootstrap upload was performed with hf upload-large-folder.",
+  "task_id": "TA_CAUSAL_CLASSIFY_FINCAUSAL2020_v0",
+  "linked_task_ids": [
+    "TA_CAUSAL_CLASSIFY_FINCAUSAL2020_v0",
+    "TA_CAUSE_EFFECT_FINCAUSAL2020_v0"
+  ]
+}
