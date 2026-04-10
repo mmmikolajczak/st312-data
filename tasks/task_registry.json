@@ -96,7 +96,7 @@
       "task_spec_path": "tasks/fnxl_numeric_labeling_v0/task_spec.json",
       "task_readme_path": "tasks/fnxl_numeric_labeling_v0/README.md",
       "dataset_id": "fnxl_sharma2023_v0",
-      "status": "scaffolded"
+      "status": "local_ready"
     },
     {
       "task_id": "TA_SENTREG_TSA_CORTIS2017_v0",

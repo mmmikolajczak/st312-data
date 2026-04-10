@@ -1,0 +1,69 @@
+{
+  "task_id": "TA_IE_NUMERIC_LABEL_FNXL_v0",
+  "task_name": "FNXL sparse numeric token labelling / extreme token classification",
+  "version": "0.1.0",
+  "task_type": "token_classification_extreme_labels",
+  "dataset": {
+    "dataset_id": "fnxl_sharma2023_v0",
+    "train_file": "data/fnxl_sharma2023/processed/fnxl_clean_company_split_train.jsonl",
+    "test_file": "data/fnxl_sharma2023/processed/fnxl_clean_company_split_test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.sentence",
+      "data.tokens"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "mentions",
+    "mention_keys": [
+      "token_index",
+      "label_id"
+    ],
+    "label_id_range": [
+      1,
+      2799
+    ],
+    "notes": [
+      "Valid label_id values are the observed used positive FNXL IDs in the cleaned dataset, currently spanning 1..2799.",
+      "Duplicate exact (token_index, label_id) pairs are forbidden.",
+      "The same token_index may appear multiple times if paired with different label_id values."
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial numeric labelling system for FNXL. Return ONLY a JSON object with exactly one key: \"mentions\". The value must be a JSON array of objects with exactly keys \"token_index\" and \"label_id\". Each object denotes one positively labeled numeric token. If no positively labeled numeric token is present, return {\"mentions\": []}. Do not include any extra text."
+  },
+  "metrics": [
+    "micro_precision",
+    "micro_recall",
+    "micro_f1",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "exact_set_accuracy"
+  ],
+  "reward": {
+    "script": "scripts/tasks/fnxl_numeric_labeling_v0/reward_fnxl_numeric_labeling.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "sparse_numeric_labeling_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "components": {
+        "micro_f1": 0.7,
+        "macro_f1": 0.2,
+        "exact_set_match": 0.1
+      }
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  }
+}
