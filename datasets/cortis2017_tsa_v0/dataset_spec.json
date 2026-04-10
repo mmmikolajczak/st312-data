@@ -71,13 +71,22 @@
     "dataset_root": "datasets/tsa/cortis2017/v0",
     "publish_allowed": false,
     "upstream_license": "unknown_research_use_only",
-    "upstream_license_note": "Official raw files validated locally. Test GS not yet present. Do not publish raw or derived artifacts until redistribution rights are verified."
+    "upstream_license_note": "A metadata-only placeholder was uploaded to the HF dataset repo. Raw/text-bearing artifacts remain withheld pending redistribution verification and test-GS acquisition.",
+    "placeholder_uploaded": true,
+    "placeholder_only": true,
+    "placeholder_commit": "4ec62602038ede1725824f4acb3ba21512e79e38",
+    "placeholder_paths": [
+      "datasets/tsa/cortis2017/v0/",
+      "tasks/cortis2017_tsa_sentreg_v0/"
+    ],
+    "full_publish_completed": false
   },
   "status": {
     "raw_ingested": true,
     "cleaned": true,
     "split": true,
     "requests_built": true,
-    "published_to_hf": false
+    "published_to_hf": false,
+    "hf_placeholder_uploaded": true
   }
 }

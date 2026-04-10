@@ -1,0 +1,36 @@
+{
+  "dataset_id": "cortis2017_tsa_v0",
+  "task_id": "TA_SENTREG_TSA_CORTIS2017_v0",
+  "repo_id": "mmmikolajczak/st312-data",
+  "repo_type": "dataset",
+  "mode": "metadata_only_placeholder",
+  "hf_commit": "4ec62602038ede1725824f4acb3ba21512e79e38",
+  "uploaded_paths": [
+    "datasets/tsa/cortis2017/v0/",
+    "tasks/cortis2017_tsa_sentreg_v0/"
+  ],
+  "included_files": [
+    "datasets/tsa/cortis2017/v0/README.md",
+    "datasets/tsa/cortis2017/v0/dataset_spec.json",
+    "datasets/tsa/cortis2017/v0/checksums.sha256",
+    "datasets/tsa/cortis2017/v0/clean_meta.json",
+    "datasets/tsa/cortis2017/v0/split_meta.json",
+    "datasets/tsa/cortis2017/v0/manifest_dataset_spec.json",
+    "datasets/tsa/cortis2017/v0/manifest_checksums.sha256",
+    "tasks/cortis2017_tsa_sentreg_v0/README.md",
+    "tasks/cortis2017_tsa_sentreg_v0/task_spec.json",
+    "tasks/cortis2017_tsa_sentreg_v0/manifest_task_spec.json"
+  ],
+  "excluded_artifacts": [
+    "raw files",
+    "processed text-bearing jsonl artifacts",
+    "request files",
+    "test gold standard labels"
+  ],
+  "reason": "Official SemEval release is access-controlled and redistribution rights are not yet verified. Placeholder reserves canonical HF path while keeping the module non-published.",
+  "status_after_upload": {
+    "dataset_registry_status": "local_ready",
+    "published_to_hf": false,
+    "hf_placeholder_uploaded": true
+  }
+}
