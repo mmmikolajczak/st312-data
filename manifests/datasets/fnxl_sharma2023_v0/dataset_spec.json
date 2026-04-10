@@ -5,19 +5,19 @@
   "dataset_folder": "datasets/fnxl_sharma2023_v0",
   "provenance": {
     "canonical_paper_title": "Financial Numeric Extreme Labelling: A Dataset and Benchmarking for XBRL Tagging",
-    "source_kind": "local_author_release_copy",
-    "local_runtime_source": "/Users/matti/Downloads/FNXL",
-    "local_aux_source": "/Users/matti/Downloads/Data",
+    "source_kind": "user_provided_local_author_release_copy",
     "notes": [
-      "Canonical raw release source is local FNXL train/dev/test CSVs.",
+      "Canonical raw release source is a user-provided local FNXL train/dev/test copy.",
       "allLabelCount.csv is authoritative for label inventory.",
-      "labels.json is auxiliary only.",
+      "labels.json is auxiliary only and is used only to resolve the sparse label-id mapping.",
       "consolidated_xbrl_* files are downstream derived artifacts and not the raw benchmark source.",
-      "Original released split will be archived for provenance but not used as canonical evaluation if leakage is confirmed."
-    ]
+      "Original released split is archived for provenance only because release-level company/file leakage was confirmed."
+    ],
+    "local_source_description": "User-provided local FNXL release copy and auxiliary local Data folder; absolute filesystem paths are intentionally omitted from published metadata.",
+    "ingest_entrypoint": "scripts/datasets/fnxl_sharma2023/ingest_fnxl_sharma2023.py"
   },
   "processed": {
-    "config": "pending_clean_group_split_v0",
+    "config": "clean_company_file_disjoint_split_v1",
     "files": {
       "release_raw_aggregate": "data/fnxl_sharma2023/processed/fnxl_release_raw_aggregate.jsonl",
       "canonical_train": "data/fnxl_sharma2023/processed/fnxl_clean_company_split_train.jsonl",
@@ -48,14 +48,21 @@
       "numerals-tags"
     ],
     "notes": [
-      "Raw ner_tags behave effectively as O plus positive label ids over mostly single-token numeric mentions.",
-      "labels.json is auxiliary and not authoritative for the canonical label vocabulary."
+      "Raw ner_tags behave as sparse positive numeric token labels over a large label-id space.",
+      "The observed used positive FNXL ID range is sparse within 1..2799.",
+      "Canonical prediction target is sparse (token_index, label_id).",
+      "labels.json is auxiliary and not authoritative for the published label vocabulary."
+    ],
+    "observed_used_positive_label_id_count": 2794,
+    "observed_used_positive_label_id_range": [
+      1,
+      2799
     ]
   },
   "split_policy": {
-    "type": "release_plus_clean_regrouped",
-    "release_split": "preserve_for_provenance_only",
-    "canonical_split": "pending_company_file_disjoint_80_20"
+    "type": "release_archived_plus_clean_regrouped",
+    "release_split": "archived_for_provenance_only_due_to_confirmed_company_file_leakage",
+    "canonical_split": "grouped_company_file_disjoint_80_20_seed_42"
   },
   "hf_publish": {
     "repo_id": "mmmikolajczak/st312-data",
