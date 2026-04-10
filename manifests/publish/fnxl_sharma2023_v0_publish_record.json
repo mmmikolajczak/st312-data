@@ -1,0 +1,29 @@
+{
+  "dataset_id": "fnxl_sharma2023_v0",
+  "task_id": "TA_IE_NUMERIC_LABEL_FNXL_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "fnxl_bootstrap_upload_latest": "8108e02473b5d8e2e939a8f71d5f078c9c1635eb"
+  },
+  "artifacts_published": [
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_manifest.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_test.jsonl",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_test_companies.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_test_files.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_train.jsonl",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_train_companies.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_train_files.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_clean_meta.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_label_id_mapping.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_label_inventory.json",
+    "datasets/fnxl/sharma2023/v0/fnxl_release_raw_aggregate.jsonl",
+    "manifests/datasets/fnxl_sharma2023_v0/checksums.sha256",
+    "manifests/datasets/fnxl_sharma2023_v0/dataset_spec.json",
+    "manifests/tasks/fnxl_numeric_labeling_v0/task_spec.json",
+    "tasks/fnxl_numeric_labeling_v0/README.md",
+    "tasks/fnxl_numeric_labeling_v0/fnxl_test_requests.jsonl",
+    "tasks/fnxl_numeric_labeling_v0/fnxl_train_requests.jsonl"
+  ],
+  "notes": "FNXL Sharma 2023 integrated with raw release preserved and original release split archived for provenance only. Canonical split is a clean grouped 80/20 company/file-disjoint split. Task uses sparse (token_index, label_id) prediction over observed used FNXL label IDs. Bootstrap upload was performed with hf upload-large-folder."
+}

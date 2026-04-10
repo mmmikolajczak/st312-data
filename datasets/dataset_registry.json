@@ -104,7 +104,7 @@
       "upstream_source": "FNXL Sharma 2023 local author release",
       "upstream_license": "unknown_research_use_only",
       "task_family": "information_extraction_numeric_labeling_extreme",
-      "status": "local_ready"
+      "status": "published"
     },
     {
       "dataset_id": "cortis2017_tsa_v0",
