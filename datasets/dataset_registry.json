@@ -94,6 +94,28 @@
       "upstream_license": "unknown_research_use_only",
       "task_family": "linked_binary_classification_and_span_extraction",
       "status": "published"
+    },
+    {
+      "dataset_id": "fnxl_sharma2023_v0",
+      "dataset_name": "FNXL Sharma 2023 Numeric Labelling",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/fnxl_sharma2023_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "FNXL Sharma 2023 local author release",
+      "upstream_license": "unknown_research_use_only",
+      "task_family": "information_extraction_numeric_labeling_extreme",
+      "status": "scaffolded"
+    },
+    {
+      "dataset_id": "cortis2017_tsa_v0",
+      "dataset_name": "Cortis et al. 2017 TSA (SemEval-2017 Task 5, Subtask 2)",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/cortis2017_tsa_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "SemEval-2017 Task 5 Subtask 2 official release (Bitbucket; GS by request)",
+      "upstream_license": "unknown_research_use_only",
+      "task_family": "target_aware_continuous_sentiment_regression",
+      "status": "local_ready"
     }
   ]
 }

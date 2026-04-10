@@ -1,0 +1,83 @@
+{
+  "dataset_id": "cortis2017_tsa_v0",
+  "dataset_name": "Cortis et al. 2017 TSA (SemEval-2017 Task 5, Subtask 2)",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/cortis2017_tsa_v0",
+  "source": {
+    "type": "manual_download_restricted",
+    "official_task_page": "https://alt.qcri.org/semeval2017/task5/index.php?id=data-and-tools",
+    "official_paper": "https://aclanthology.org/S17-2089/",
+    "official_repo": "https://bitbucket.org/ssix-project/semeval-2017-task-5-subtask-2/",
+    "upstream_split_policy": "official_train_trial_test_gs_by_request",
+    "manual_source_files": {
+      "train": "data/cortis2017_tsa/raw/Headline_Trainingdata.json",
+      "trial": "data/cortis2017_tsa/raw/Headline_Trialdata.json",
+      "test_inputs": "data/cortis2017_tsa/raw/Headlines_Testdata.json",
+      "test_gold_optional": "data/cortis2017_tsa/raw/Headlines_Test_GS.json"
+    },
+    "access_requirements": [
+      "data_release_agreement",
+      "gold_standard_requested_separately"
+    ]
+  },
+  "processing": {
+    "ingest_script": "scripts/datasets/cortis2017_tsa/ingest_cortis2017_tsa.py",
+    "clean_script": "scripts/datasets/cortis2017_tsa/clean_cortis2017_tsa.py",
+    "split_script": "scripts/datasets/cortis2017_tsa/split_cortis2017_tsa.py",
+    "raw_files": {
+      "train_raw_jsonl": "data/cortis2017_tsa/raw/cortis2017_tsa_train_raw.jsonl",
+      "trial_raw_jsonl": "data/cortis2017_tsa/raw/cortis2017_tsa_trial_raw.jsonl",
+      "test_inputs_raw_jsonl": "data/cortis2017_tsa/raw/cortis2017_tsa_test_inputs_raw.jsonl",
+      "test_gold_raw_jsonl_optional": "data/cortis2017_tsa/raw/cortis2017_tsa_test_gold_raw.jsonl"
+    },
+    "processed_files": {
+      "train": "data/cortis2017_tsa/processed/cortis2017_tsa_train.jsonl",
+      "trial": "data/cortis2017_tsa/processed/cortis2017_tsa_trial.jsonl",
+      "test_inputs": "data/cortis2017_tsa/processed/cortis2017_tsa_test_inputs.jsonl",
+      "test_scored_optional": "data/cortis2017_tsa/processed/cortis2017_tsa_test_scored.jsonl",
+      "all_labeled": "data/cortis2017_tsa/processed/cortis2017_tsa_all_labeled.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/cortis2017_tsa/raw/cortis2017_tsa_ingest_meta.json",
+      "clean_meta": "data/cortis2017_tsa/processed/cortis2017_tsa_clean_meta.json",
+      "split_meta": "data/cortis2017_tsa/processed/cortis2017_tsa_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "continuous_regression",
+    "task": "target_aware_financial_sentiment",
+    "range": [
+      -1.0,
+      1.0
+    ],
+    "target_field": "data.target_company_raw",
+    "text_field": "data.title_raw",
+    "source_fields": [
+      "title",
+      "company",
+      "sentiment_score"
+    ]
+  },
+  "split_policy": {
+    "type": "official_preserved_train_trial_test",
+    "train_split": "train",
+    "dev_split": "trial",
+    "test_split": "test_inputs",
+    "test_labels": "not_yet_present"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/tsa/cortis2017/v0",
+    "publish_allowed": false,
+    "upstream_license": "unknown_research_use_only",
+    "upstream_license_note": "Official raw files validated locally. Test GS not yet present. Do not publish raw or derived artifacts until redistribution rights are verified."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

@@ -88,6 +88,24 @@
       "task_readme_path": "tasks/fincausal2020_task2_ce_v0/README.md",
       "dataset_id": "fincausal2020_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_IE_NUMERIC_LABEL_FNXL_v0",
+      "task_name": "FNXL numeric labelling / extreme token classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/fnxl_numeric_labeling_v0/task_spec.json",
+      "task_readme_path": "tasks/fnxl_numeric_labeling_v0/README.md",
+      "dataset_id": "fnxl_sharma2023_v0",
+      "status": "scaffolded"
+    },
+    {
+      "task_id": "TA_SENTREG_TSA_CORTIS2017_v0",
+      "task_name": "Cortis 2017 TSA Target-Aware Sentiment Regression",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/cortis2017_tsa_sentreg_v0/task_spec.json",
+      "task_readme_path": "tasks/cortis2017_tsa_sentreg_v0/README.md",
+      "dataset_id": "cortis2017_tsa_v0",
+      "status": "local_ready"
     }
   ]
 }

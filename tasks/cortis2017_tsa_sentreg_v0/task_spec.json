@@ -1,0 +1,76 @@
+{
+  "task_id": "TA_SENTREG_TSA_CORTIS2017_v0",
+  "task_name": "Cortis 2017 TSA Target-Aware Sentiment Regression",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "Sentiment Analysis",
+    "output_type": "continuous_regression",
+    "scoring_type": "official_weighted_cosine_plus_distance"
+  },
+  "dataset": {
+    "dataset_id": "cortis2017_tsa_v0",
+    "config": "official_preserved_v0",
+    "train_file": "data/cortis2017_tsa/processed/cortis2017_tsa_train.jsonl",
+    "dev_file": "data/cortis2017_tsa/processed/cortis2017_tsa_trial.jsonl",
+    "test_inputs_file": "data/cortis2017_tsa/processed/cortis2017_tsa_test_inputs.jsonl",
+    "test_scored_file": "data/cortis2017_tsa/processed/cortis2017_tsa_test_scored.jsonl",
+    "meta_files": {
+      "clean_meta": "data/cortis2017_tsa/processed/cortis2017_tsa_clean_meta.json",
+      "split_meta": "data/cortis2017_tsa/processed/cortis2017_tsa_split_meta.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.title_normalized",
+      "data.target_company_normalized"
+    ],
+    "optional_fields": [
+      "data.title_raw",
+      "data.target_company_raw"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": ["sentiment_score"],
+    "no_extra_keys": true,
+    "numeric_constraints": {
+      "sentiment_score": {
+        "min": -1.0,
+        "max": 1.0
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "You are a financial sentiment regression model. Return ONLY a JSON object with exactly one key: \"sentiment_score\". The value must be a number between -1 and 1, where -1 is very negative/bearish, 0 is neutral, and 1 is very positive/bullish. Do not include any extra text.",
+    "user": "Predict the investor-viewpoint sentiment toward the target company in the following financial headline.\\n\\nHeadline: {{data.title_normalized}}\\nTarget company: {{data.target_company_normalized}}"
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with exactly one numeric key: sentiment_score."
+      },
+      {
+        "name": "range_reward",
+        "weight": 1.0,
+        "description": "Predicted score lies in the closed interval [-1, 1]."
+      },
+      {
+        "name": "proximity_reward",
+        "weight": 1.0,
+        "description": "Reward increases as the prediction gets numerically closer to the gold score."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "weighted_cosine_similarity",
+    "cosine_similarity",
+    "mae",
+    "rmse",
+    "sign_accuracy",
+    "format_valid_rate",
+    "coverage"
+  ]
+}
