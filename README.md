@@ -179,6 +179,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/fincausal2020_official_v0_publish_record.json`
 - **Labeling note:** official `trial / practice / evaluation` structure preserved; Task 1 blank-text rows removed during ingestion; Task 2 stored row-wise as cause/effect-pair extraction; evaluation is blind for both tasks.
 
+### 9) FNXL Sharma 2023 v0
+- **Dataset ID:** `fnxl_sharma2023_v0`
+- **Task ID:** `TA_IE_NUMERIC_LABEL_FNXL_v0`
+- **Task type:** numeric labelling / extreme token classification
+- **HF dataset path:** `datasets/fnxl/sharma2023/v0/`
+- **HF task path:** `tasks/fnxl_numeric_labeling_v0/`
+- **Publish record:** `manifests/publish/fnxl_sharma2023_v0_publish_record.json`
+- **Labeling note:** raw release preserved; original release split archived for provenance only because it leaks across companies and filing paths; canonical split rebuilt as clean grouped 80/20 company/file-disjoint train/test; task predicts sparse `(token_index, label_id)` pairs over the observed used FNXL ID space.
+
 ## Validation
 
 Use:

@@ -160,6 +160,31 @@ Task README snapshots:
 Publish bookkeeping:
 - `manifests/publish/fincausal2020_official_v0_publish_record.json`
 
+### 9) FNXL Sharma 2023 v0
+
+Dataset artifacts:
+- `datasets/fnxl/sharma2023/v0/fnxl_release_raw_aggregate.jsonl`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_meta.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_label_inventory.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_label_id_mapping.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_train.jsonl`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_test.jsonl`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_manifest.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_train_companies.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_test_companies.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_train_files.json`
+- `datasets/fnxl/sharma2023/v0/fnxl_clean_company_split_test_files.json`
+
+Task requests:
+- `tasks/fnxl_numeric_labeling_v0/fnxl_train_requests.jsonl`
+- `tasks/fnxl_numeric_labeling_v0/fnxl_test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/fnxl_numeric_labeling_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/fnxl_sharma2023_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -197,6 +222,14 @@ We publish a 3-way discretised label using:
 - Task 2 stored row-wise as cause/effect-pair extraction
 - Evaluation is blind for both tasks
 - Official scorer scripts define evaluation semantics
+
+### FNXL Sharma 2023
+
+- Raw release preserved in full for provenance
+- Original released train/dev/test split archived but not used as canonical evaluation because it leaks across companies and filing paths
+- Canonical split rebuilt as grouped 80/20 company/file-disjoint train/test
+- `allLabelCount.csv` treated as authoritative label inventory
+- Canonical prediction target is sparse `(token_index, label_id)` over observed used FNXL label IDs
 
 ## Licensing
 
