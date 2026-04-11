@@ -106,6 +106,15 @@
       "task_readme_path": "tasks/cortis2017_tsa_sentreg_v0/README.md",
       "dataset_id": "cortis2017_tsa_v0",
       "status": "local_ready"
+    },
+    {
+      "task_id": "TA_GRAPH_TAP_LAMM2018_v0",
+      "task_name": "Lamm 2018 Textual Analogy Parsing Graph Prediction",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/lamm2018_tap_graph_v0/task_spec.json",
+      "task_readme_path": "tasks/lamm2018_tap_graph_v0/README.md",
+      "dataset_id": "lamm2018_tap_v0",
+      "status": "local_ready"
     }
   ]
 }

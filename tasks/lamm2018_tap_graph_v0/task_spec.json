@@ -1,0 +1,117 @@
+{
+  "task_id": "TA_GRAPH_TAP_LAMM2018_v0",
+  "task_name": "Lamm 2018 Textual Analogy Parsing Graph Prediction",
+  "version": "0.1.0",
+  "dataset_module_id": "lamm2018_tap_v0",
+  "taxonomy": {
+    "finben_category": "Information Extraction",
+    "finben_task": "Structured Graph Extraction",
+    "output_type": "graph_prediction",
+    "scoring_type": "overlap_triple_f1_local_smoke"
+  },
+  "dataset": {
+    "dataset_id": "lamm2018_tap_v0",
+    "config": "author_preserved_pruned_graph_v0",
+    "train_file": "data/lamm2018_tap/processed/lamm2018_tap_train.jsonl",
+    "test_file": "data/lamm2018_tap/processed/lamm2018_tap_test.jsonl",
+    "all_file": "data/lamm2018_tap/processed/lamm2018_tap_all.jsonl",
+    "meta_files": {
+      "ingest_meta": "data/lamm2018_tap/raw/lamm2018_tap_ingest_meta.json",
+      "split_meta": "data/lamm2018_tap/processed/lamm2018_tap_split_meta.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.sentence",
+      "data.tokens"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "nodes",
+      "edges"
+    ],
+    "no_extra_keys": true,
+    "nodes_item_schema": {
+      "required_keys": [
+        "id",
+        "label",
+        "token_start",
+        "token_end"
+      ],
+      "optional_keys": [
+        "sign",
+        "manner"
+      ]
+    },
+    "edges_item_schema": {
+      "required_keys": [
+        "source_id",
+        "target_id",
+        "label"
+      ]
+    }
+  },
+  "label_space": {
+    "node_labels": [
+      "agent",
+      "cause",
+      "co_quant",
+      "location",
+      "manner",
+      "quant",
+      "source",
+      "theme",
+      "time",
+      "value",
+      "whole"
+    ],
+    "edge_labels": [
+      "analogy",
+      "equivalence",
+      "fact"
+    ],
+    "value_sign_labels": [
+      "+",
+      "-"
+    ]
+  },
+  "prompt_template": {
+    "system": "You extract a benchmark-facing TAP graph from a sentence. Return ONLY valid JSON with exactly two top-level keys: \"nodes\" and \"edges\". Use only the allowed lowercase labels. token_end is exclusive.",
+    "user": "Sentence:\n{{data.sentence}}\n\nTokens:\n{{data.tokens}}"
+  },
+  "prompting": {
+    "system_prompt": "You extract a benchmark-facing TAP graph from a sentence. Return ONLY valid JSON with exactly two top-level keys: \"nodes\" and \"edges\". Use only the allowed lowercase labels. token_end is exclusive."
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with exactly the required top-level keys and schema."
+      },
+      {
+        "name": "node_overlap_reward",
+        "weight": 1.0,
+        "description": "Reward increases with overlap-based correctness of predicted non-value nodes."
+      },
+      {
+        "name": "triple_overlap_reward",
+        "weight": 1.0,
+        "description": "Reward increases with overlap-based correctness of predicted labeled triples."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "triple_f1_overlap",
+    "node_f1_excluding_value",
+    "exact_graph_match",
+    "valid_prediction_rate",
+    "coverage_rate"
+  ],
+  "publication": {
+    "allowed": false,
+    "reason": "Internal-only task until redistribution rights are clarified."
+  }
+}

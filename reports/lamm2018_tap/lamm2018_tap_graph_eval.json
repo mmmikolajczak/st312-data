@@ -1,0 +1,22 @@
+{
+  "task_id": "TA_GRAPH_TAP_LAMM2018_v0",
+  "n_gold_examples": 97,
+  "coverage_rate": 1.0,
+  "valid_prediction_rate": 1.0,
+  "node_metrics_excluding_value": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "triple_metrics_overlap": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "exact_graph_match_rate": 1.0,
+  "notes": [
+    "Primary local metric is overlap-based triple F1.",
+    "Node-only metric excludes value nodes.",
+    "This is a local smoke evaluator, not an official-scorer wrapper."
+  ]
+}

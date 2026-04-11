@@ -116,6 +116,17 @@
       "upstream_license": "unknown_research_use_only",
       "task_family": "target_aware_continuous_sentiment_regression",
       "status": "local_ready"
+    },
+    {
+      "dataset_id": "lamm2018_tap_v0",
+      "dataset_name": "Lamm et al. 2018 Textual Analogy Parsing",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/lamm2018_tap_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "mrlamm/textual-analogy-parsing official release",
+      "upstream_license": "license_sensitive_ldc_derivative_pending_review",
+      "task_family": "textual_analogy_parsing_graph_prediction",
+      "status": "local_ready"
     }
   ]
 }

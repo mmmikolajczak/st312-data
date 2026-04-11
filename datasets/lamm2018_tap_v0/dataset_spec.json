@@ -1,0 +1,112 @@
+{
+  "dataset_id": "lamm2018_tap_v0",
+  "dataset_module_id": "lamm2018_tap_v0",
+  "dataset_name": "Lamm et al. 2018 Textual Analogy Parsing",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/lamm2018_tap_v0",
+  "source": {
+    "type": "git_clone_license_sensitive",
+    "official_paper": "https://aclanthology.org/D18-1116/",
+    "official_repo": "https://github.com/mrlamm/textual-analogy-parsing",
+    "upstream_split_policy": "official_train_test_release",
+    "raw_source_files": {
+      "train_json": "data/lamm2018_tap/raw/train.json",
+      "test_json": "data/lamm2018_tap/raw/test.json",
+      "train_xml": "data/lamm2018_tap/raw/train.xml",
+      "test_xml": "data/lamm2018_tap/raw/test.xml"
+    },
+    "acquisition_notes": [
+      "Canonical source is the author GitHub repository.",
+      "JSON release is the primary machine-ingestion source.",
+      "XML files are preserved as provenance artifacts.",
+      "Underlying text is license-sensitive and likely derives from PTB WSJ / LDC-controlled material."
+    ]
+  },
+  "processing": {
+    "ingest_script": "scripts/datasets/lamm2018_tap/ingest_lamm2018_tap.py",
+    "clean_script": "scripts/datasets/lamm2018_tap/clean_lamm2018_tap.py",
+    "raw_files": {
+      "train_json": "data/lamm2018_tap/raw/train.json",
+      "test_json": "data/lamm2018_tap/raw/test.json",
+      "train_xml": "data/lamm2018_tap/raw/train.xml",
+      "test_xml": "data/lamm2018_tap/raw/test.xml"
+    },
+    "processed_files": {
+      "train": "data/lamm2018_tap/processed/lamm2018_tap_train.jsonl",
+      "test": "data/lamm2018_tap/processed/lamm2018_tap_test.jsonl",
+      "all": "data/lamm2018_tap/processed/lamm2018_tap_all.jsonl",
+      "train_requests": "data/lamm2018_tap/processed/lamm2018_tap_train_requests.jsonl",
+      "test_requests": "data/lamm2018_tap/processed/lamm2018_tap_test_requests.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/lamm2018_tap/raw/lamm2018_tap_ingest_meta.json",
+      "split_meta": "data/lamm2018_tap/processed/lamm2018_tap_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "graph_prediction",
+    "raw_release_format": "sentence_graph_json",
+    "benchmark_transform": "author_benchmark_facing_prune_plus_argmax",
+    "raw_node_inventory": [
+      "agent",
+      "cause",
+      "co_quant",
+      "condition",
+      "location",
+      "manner",
+      "quant",
+      "quant_mod",
+      "reference_time",
+      "source",
+      "theme",
+      "theme_mod",
+      "time",
+      "value",
+      "whole"
+    ],
+    "benchmark_node_inventory": [
+      "agent",
+      "cause",
+      "co_quant",
+      "location",
+      "manner",
+      "quant",
+      "source",
+      "theme",
+      "time",
+      "value",
+      "whole"
+    ],
+    "benchmark_edge_inventory": [
+      "analogy",
+      "equivalence",
+      "fact"
+    ]
+  },
+  "split_policy": {
+    "type": "official_preserved_train_test",
+    "train_split": "train",
+    "test_split": "test",
+    "test_note": "Released test.json contains 97 examples."
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/tap/lamm2018/v0",
+    "publish_allowed": false,
+    "upstream_license": "license_sensitive_ldc_derivative_pending_review",
+    "upstream_license_note": "Do not publish text-bearing artifacts pending redistribution review.",
+    "placeholder_uploaded": false,
+    "placeholder_only": false,
+    "full_publish_completed": false
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false,
+    "hf_placeholder_uploaded": false,
+    "local_ready": true
+  }
+}
