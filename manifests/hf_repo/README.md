@@ -230,42 +230,6 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/lamm2018_tap_v0_publish_record.json`
 
-### 11) Lamm 2018 TAP v0
-
-Dataset artifacts:
-- `datasets/tap/lamm2018/v0/all.jsonl`
-- `datasets/tap/lamm2018/v0/train.jsonl`
-- `datasets/tap/lamm2018/v0/test.jsonl`
-- `datasets/tap/lamm2018/v0/split_meta.json`
-
-Task requests:
-- `tasks/lamm2018_tap_graph_v0/requests/train_requests.jsonl`
-- `tasks/lamm2018_tap_graph_v0/requests/test_requests.jsonl`
-
-Task README snapshot:
-- `tasks/lamm2018_tap_graph_v0/README.md`
-
-Publish bookkeeping:
-- `manifests/publish/lamm2018_tap_v0_publish_record.json`
-
-### 11) Lamm 2018 TAP v0
-
-Dataset artifacts:
-- `datasets/tap/lamm2018/v0/all.jsonl`
-- `datasets/tap/lamm2018/v0/train.jsonl`
-- `datasets/tap/lamm2018/v0/test.jsonl`
-- `datasets/tap/lamm2018/v0/split_meta.json`
-
-Task requests:
-- `tasks/lamm2018_tap_graph_v0/requests/train_requests.jsonl`
-- `tasks/lamm2018_tap_graph_v0/requests/test_requests.jsonl`
-
-Task README snapshot:
-- `tasks/lamm2018_tap_graph_v0/README.md`
-
-Publish bookkeeping:
-- `manifests/publish/lamm2018_tap_v0_publish_record.json`
-
 ## Labeling / split notes
 
 ### FPB

@@ -206,24 +206,6 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/lamm2018_tap_v0_publish_record.json`
 - **Labeling note:** author split preserved as released (`train=1000`, `test=97` in the public repo snapshot); benchmark target uses the reduced active graph label inventory from the author code path; public redistribution approval remains pending.
 
-### 11) Lamm 2018 TAP v0
-- **Dataset ID:** `lamm2018_tap_v0`
-- **Task ID:** `TA_GRAPH_TAP_LAMM2018_v0`
-- **Task type:** structured graph prediction / textual analogy parsing
-- **HF dataset path:** `datasets/tap/lamm2018/v0/`
-- **HF task path:** `tasks/lamm2018_tap_graph_v0/`
-- **Publish record:** `manifests/publish/lamm2018_tap_v0_publish_record.json`
-- **Labeling note:** author split preserved as released (`train=1000`, `test=97` in the public repo snapshot); benchmark target uses the reduced active graph label inventory from the author code path; public redistribution approval remains pending.
-
-### 11) Lamm 2018 TAP v0
-- **Dataset ID:** `lamm2018_tap_v0`
-- **Task ID:** `TA_GRAPH_TAP_LAMM2018_v0`
-- **Task type:** structured graph prediction / textual analogy parsing
-- **HF dataset path:** `datasets/tap/lamm2018/v0/`
-- **HF task path:** `tasks/lamm2018_tap_graph_v0/`
-- **Publish record:** `manifests/publish/lamm2018_tap_v0_publish_record.json`
-- **Labeling note:** author split preserved as released (`train=1000`, `test=97` in the public repo snapshot); benchmark target uses the reduced active graph label inventory from the author code path; public redistribution approval remains pending.
-
 ## Validation
 
 Use:
