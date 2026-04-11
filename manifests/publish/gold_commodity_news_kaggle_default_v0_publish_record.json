@@ -4,7 +4,8 @@
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
   "hf_commits": {
-    "gold_news_bootstrap_upload_latest": "85d7df497763db4abf37c104d1a849b37ef7f5c1"
+    "gold_news_bootstrap_upload_latest": "85d7df497763db4abf37c104d1a849b37ef7f5c1",
+    "gold_news_task_spec_sync_latest": "5b206c46495e746a8b4bbb6dd23835666c101096"
   },
   "artifacts_published": [
     "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean.csv",
