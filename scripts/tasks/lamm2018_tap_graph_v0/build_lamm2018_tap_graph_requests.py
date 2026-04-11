@@ -57,7 +57,7 @@ def main() -> None:
     parser.add_argument(
         "--out",
         type=Path,
-        default=Path("data/lamm2018_tap/processed/lamm2018_tap_graph_test_requests.jsonl"),
+        default=Path("data/lamm2018_tap/processed/lamm2018_tap_test_requests.jsonl"),
     )
     args = parser.parse_args()
 

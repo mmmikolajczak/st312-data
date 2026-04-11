@@ -1,0 +1,24 @@
+{
+  "dataset_id": "lamm2018_tap_v0",
+  "task_id": "TA_GRAPH_TAP_LAMM2018_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": true,
+  "public_release_cleared": false,
+  "hf_commits": {
+    "tap_private_upload": "3d32a5e486e5c4d82df81a75144b682e08ac8de7"
+  },
+  "artifacts_uploaded": [
+    "datasets/tap/lamm2018/v0/all.jsonl",
+    "datasets/tap/lamm2018/v0/train.jsonl",
+    "datasets/tap/lamm2018/v0/test.jsonl",
+    "datasets/tap/lamm2018/v0/split_meta.json",
+    "tasks/lamm2018_tap_graph_v0/requests/train_requests.jsonl",
+    "tasks/lamm2018_tap_graph_v0/requests/test_requests.jsonl",
+    "tasks/lamm2018_tap_graph_v0/README.md",
+    "manifests/datasets/lamm2018_tap_v0/dataset_spec.json",
+    "manifests/datasets/lamm2018_tap_v0/checksums.sha256",
+    "manifests/tasks/lamm2018_tap_graph_v0/task_spec.json"
+  ],
+  "notes": "Private HF upload only. TAP remains license-sensitive and publication-blocked pending explicit redistribution permission."
+}
