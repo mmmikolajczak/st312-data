@@ -75,6 +75,6 @@
     "cleaned": true,
     "split": true,
     "requests_built": true,
-    "published_to_hf": false
+    "published_to_hf": true
   }
 }

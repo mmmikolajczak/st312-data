@@ -137,7 +137,7 @@
       "upstream_source": "daittan/gold-commodity-news-and-dimensions (canonical); ankurzing derivative for provenance only",
       "upstream_license": "unknown_kaggle_terms",
       "task_family": "textual_analysis_multilabel_headline_classification",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

@@ -1,0 +1,29 @@
+{
+  "dataset_id": "gold_commodity_news_kaggle_default_v0",
+  "task_id": "TA_MLC_GOLD_COMMODITY_NEWS_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "gold_news_bootstrap_upload_latest": "85d7df497763db4abf37c104d1a849b37ef7f5c1"
+  },
+  "artifacts_published": [
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean.csv",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean.jsonl",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean_meta.json",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_split_manifest.json",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_test.jsonl",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_test_headlines.json",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_test_urls.json",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_train.jsonl",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_train_headlines.json",
+    "datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_train_urls.json",
+    "manifests/datasets/gold_commodity_news_kaggle_default_v0/checksums.sha256",
+    "manifests/datasets/gold_commodity_news_kaggle_default_v0/dataset_spec.json",
+    "manifests/tasks/gold_commodity_news_multilabel_v0/task_spec.json",
+    "reports/gold_commodity_news/raw_audit_summary.json",
+    "tasks/gold_commodity_news_multilabel_v0/README.md",
+    "tasks/gold_commodity_news_multilabel_v0/gold_commodity_news_test_requests.jsonl",
+    "tasks/gold_commodity_news_multilabel_v0/gold_commodity_news_train_requests.jsonl"
+  ],
+  "notes": "Gold commodity news headline classification integrated from the canonical daittan Kaggle posting. Exact duplicate rows removed in cleaning; deterministic date repair fixes 0200->2000 and 0201->2001. Canonical split is grouped 80/20 over connected components of normalized URL and normalized headline. The ankurzing Kaggle file is retained as derivative provenance only."
+}
