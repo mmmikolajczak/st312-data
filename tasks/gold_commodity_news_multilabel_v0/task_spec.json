@@ -1,0 +1,66 @@
+{
+  "task_id": "TA_MLC_GOLD_COMMODITY_NEWS_v0",
+  "task_name": "Gold commodity headline multi-label classification",
+  "version": "0.1.0",
+  "task_type": "multilabel_classification",
+  "dataset": {
+    "dataset_id": "gold_commodity_news_kaggle_default_v0",
+    "train_file": "data/gold_commodity_news/processed/gold_commodity_news_train.jsonl",
+    "test_file": "data/gold_commodity_news/processed/gold_commodity_news_test.jsonl"
+  },
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "labels",
+    "label_keys": [
+      "price_or_not_norm",
+      "direction_up",
+      "direction_constant",
+      "direction_down",
+      "past_price",
+      "future_price",
+      "past_news",
+      "future_news",
+      "asset_comparison"
+    ],
+    "value_type": "binary_int_0_or_1"
+  },
+  "prompt_template": {
+    "system": "You are a financial news multi-label classifier. Return ONLY a JSON object with exactly one key: \"labels\". The value must be an object containing exactly these keys: \"price_or_not_norm\", \"direction_up\", \"direction_constant\", \"direction_down\", \"past_price\", \"future_price\", \"past_news\", \"future_news\", \"asset_comparison\". Each value must be integer 0 or 1. Do not include any extra text."
+  },
+  "metrics": [
+    "per_label_precision",
+    "per_label_recall",
+    "per_label_f1",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "micro_precision",
+    "micro_recall",
+    "micro_f1",
+    "subset_accuracy"
+  ],
+  "reward": {
+    "script": "scripts/tasks/gold_commodity_news_multilabel_v0/reward_gold_commodity_news_multilabel.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "multilabel_macro_aware_reward_v1",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "components": {
+        "macro_f1": 0.7,
+        "micro_f1": 0.2,
+        "subset_accuracy": 0.1
+      }
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  },
+  "status": "local_ready"
+}

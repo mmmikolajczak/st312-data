@@ -1,0 +1,80 @@
+{
+  "dataset_id": "gold_commodity_news_kaggle_default_v0",
+  "dataset_name": "Gold Commodity News Headline Multi-label Classification",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/gold_commodity_news_kaggle_default_v0",
+  "provenance": {
+    "canonical_paper_title": "Impact of News on the Commodity Market: Dataset and Results",
+    "canonical_source_kind": "user_provided_local_kaggle_copy",
+    "canonical_posting": "daittan/gold-commodity-news-and-dimensions",
+    "canonical_kaggle_url": "https://www.kaggle.com/datasets/daittan/gold-commodity-news-and-dimensions",
+    "canonical_expected_filename": "finalDataset_0208.csv",
+    "derivative_reference_posting": "ankurzing/sentiment-analysis-in-commodity-market-gold",
+    "derivative_reference_kaggle_url": "https://www.kaggle.com/datasets/ankurzing/sentiment-analysis-in-commodity-market-gold",
+    "derivative_reference_expected_filename": "gold-dataset-sinha-khandait.csv",
+    "notes": [
+      "The daittan posting is treated as canonical because it matches the paper-era row count and original 9-label schema.",
+      "The ankurzing posting is retained only as a later simplified derivative reference and not for canonical ingestion."
+    ]
+  },
+  "processed": {
+    "config": "clean_grouped_url_news_split_v1",
+    "files": {
+      "clean_csv": "data/gold_commodity_news/processed/gold_commodity_news_clean.csv",
+      "clean_jsonl": "data/gold_commodity_news/processed/gold_commodity_news_clean.jsonl",
+      "canonical_train": "data/gold_commodity_news/processed/gold_commodity_news_train.jsonl",
+      "canonical_test": "data/gold_commodity_news/processed/gold_commodity_news_test.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/gold_commodity_news/raw/gold_commodity_news_ingest_meta.json",
+      "raw_audit_summary": "reports/gold_commodity_news/raw_audit_summary.json",
+      "clean_meta": "data/gold_commodity_news/processed/gold_commodity_news_clean_meta.json",
+      "split_manifest": "data/gold_commodity_news/processed/gold_commodity_news_split_manifest.json",
+      "train_urls": "data/gold_commodity_news/processed/gold_commodity_news_train_urls.json",
+      "test_urls": "data/gold_commodity_news/processed/gold_commodity_news_test_urls.json",
+      "train_headlines": "data/gold_commodity_news/processed/gold_commodity_news_train_headlines.json",
+      "test_headlines": "data/gold_commodity_news/processed/gold_commodity_news_test_headlines.json"
+    }
+  },
+  "label_scheme": {
+    "type": "headline_multilabel_binary_9way",
+    "task": "textual_analysis",
+    "raw_label_columns": [
+      "Price or Not",
+      "Direction Up",
+      "Direction Constant",
+      "Direction Down",
+      "PastPrice",
+      "FuturePrice",
+      "PastNews",
+      "FutureNews",
+      "Asset Comparision"
+    ],
+    "derived_fields": {
+      "price_or_not_norm": "max(Direction Up, Direction Constant, Direction Down, PastPrice, FuturePrice)",
+      "asset_comparison": "alias of raw Asset Comparision"
+    },
+    "status": "clean_split_ready"
+  },
+  "split_policy": {
+    "type": "custom_grouped_80_20_after_cleaning",
+    "release_split": "none",
+    "canonical_split": "grouped_connected_components_over_url_and_news_seed_42"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/gold_commodity_news/kaggle_default/v0",
+    "upstream_license": "unknown_kaggle_terms",
+    "upstream_license_name": "Check Kaggle terms and dataset-level permission before redistribution beyond current workflow",
+    "upstream_license_url": "",
+    "upstream_license_note": "Treat conservatively until exact redistribution terms are confirmed."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

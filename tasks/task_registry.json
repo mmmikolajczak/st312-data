@@ -115,6 +115,15 @@
       "task_readme_path": "tasks/lamm2018_tap_graph_v0/README.md",
       "dataset_id": "lamm2018_tap_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_MLC_GOLD_COMMODITY_NEWS_v0",
+      "task_name": "Gold commodity headline multi-label classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/gold_commodity_news_multilabel_v0/task_spec.json",
+      "task_readme_path": "tasks/gold_commodity_news_multilabel_v0/README.md",
+      "dataset_id": "gold_commodity_news_kaggle_default_v0",
+      "status": "local_ready"
     }
   ]
 }

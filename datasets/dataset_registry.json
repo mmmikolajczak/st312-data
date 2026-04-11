@@ -127,6 +127,17 @@
       "upstream_license": "license_sensitive_ldc_derivative_pending_review",
       "task_family": "textual_analogy_parsing_graph_prediction",
       "status": "published"
+    },
+    {
+      "dataset_id": "gold_commodity_news_kaggle_default_v0",
+      "dataset_name": "Gold Commodity News Headline Multi-label Classification",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/gold_commodity_news_kaggle_default_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "daittan/gold-commodity-news-and-dimensions (canonical); ankurzing derivative for provenance only",
+      "upstream_license": "unknown_kaggle_terms",
+      "task_family": "textual_analysis_multilabel_headline_classification",
+      "status": "local_ready"
     }
   ]
 }
