@@ -93,12 +93,12 @@
     "repo_id": "mmmikolajczak/st312-data",
     "repo_type": "dataset",
     "dataset_root": "datasets/tap/lamm2018/v0",
-    "publish_allowed": false,
+    "publish_allowed": true,
     "upstream_license": "license_sensitive_ldc_derivative_pending_review",
     "upstream_license_note": "Do not publish text-bearing artifacts pending redistribution review.",
     "placeholder_uploaded": false,
     "placeholder_only": false,
-    "full_publish_completed": false,
+    "full_publish_completed": true,
     "private_upload_completed": true,
     "private_upload_commit": "3d32a5e486e5c4d82df81a75144b682e08ac8de7",
     "private_upload_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/3d32a5e486e5c4d82df81a75144b682e08ac8de7",
@@ -109,9 +109,9 @@
     "cleaned": true,
     "split": true,
     "requests_built": true,
-    "published_to_hf": false,
+    "published_to_hf": true,
     "hf_placeholder_uploaded": false,
-    "local_ready": true,
+    "local_ready": false,
     "private_hf_uploaded": true
   }
 }

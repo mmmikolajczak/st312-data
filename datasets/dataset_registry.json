@@ -126,7 +126,7 @@
       "upstream_source": "mrlamm/textual-analogy-parsing official release",
       "upstream_license": "license_sensitive_ldc_derivative_pending_review",
       "task_family": "textual_analogy_parsing_graph_prediction",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }

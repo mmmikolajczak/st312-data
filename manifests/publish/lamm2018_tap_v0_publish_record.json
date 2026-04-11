@@ -8,7 +8,7 @@
   "hf_commits": {
     "tap_private_upload": "3d32a5e486e5c4d82df81a75144b682e08ac8de7"
   },
-  "artifacts_uploaded": [
+  "artifacts_published": [
     "datasets/tap/lamm2018/v0/all.jsonl",
     "datasets/tap/lamm2018/v0/train.jsonl",
     "datasets/tap/lamm2018/v0/test.jsonl",
@@ -20,5 +20,5 @@
     "manifests/datasets/lamm2018_tap_v0/checksums.sha256",
     "manifests/tasks/lamm2018_tap_graph_v0/task_spec.json"
   ],
-  "notes": "Private HF upload only. TAP remains license-sensitive and publication-blocked pending explicit redistribution permission."
+  "notes": "Published to the private HF dataset repo under the standard pipeline publishing schema. Repo remains private; public redistribution permission has not yet been separately established."
 }

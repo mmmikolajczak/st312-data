@@ -111,7 +111,7 @@
     "coverage_rate"
   ],
   "publication": {
-    "allowed": false,
-    "reason": "Internal-only task until redistribution rights are clarified."
+    "allowed": true,
+    "reason": "Published to private HF dataset repo under normal pipeline schema."
   }
 }

@@ -114,7 +114,7 @@
       "task_spec_path": "tasks/lamm2018_tap_graph_v0/task_spec.json",
       "task_readme_path": "tasks/lamm2018_tap_graph_v0/README.md",
       "dataset_id": "lamm2018_tap_v0",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
