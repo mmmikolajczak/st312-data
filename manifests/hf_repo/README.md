@@ -298,4 +298,3 @@ Licensing metadata is recorded in each dataset manifest under:
 - `manifests/datasets/<dataset_id>/dataset_spec.json`
 
 Please consult upstream licenses before any public redistribution or commercial use.
-

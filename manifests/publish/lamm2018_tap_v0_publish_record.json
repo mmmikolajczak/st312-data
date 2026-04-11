@@ -12,7 +12,8 @@
     "tap_publish_record_fix": "50a92616c5f97821535dba1234465025ee21cddd",
     "tap_index_fix": "409d218285e73e5751fcf334ab03e80ba49969ed",
     "tap_final_index_fix": "c89b7696e796b76dcf330bd3d06438be3f37e031",
-    "tap_readme_dedupe": "bae3a3e675438f4bc0e4ba3dc0f524db208c81e0"
+    "tap_readme_dedupe": "bae3a3e675438f4bc0e4ba3dc0f524db208c81e0",
+    "tap_index_dedupe_final": "fb87fa2710eb673790c27e09fd3929ff068cd21f"
   },
   "artifacts_published": [
     "datasets/tap/lamm2018/v0/all.jsonl",
