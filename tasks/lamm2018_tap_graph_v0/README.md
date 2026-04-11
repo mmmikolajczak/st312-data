@@ -38,4 +38,5 @@ Local evaluator reports:
 - validity / coverage
 
 ## Publication status
-Blocked pending licensing / provenance review.
+Published to the private HF dataset repo under the standard pipeline schema.
+Public redistribution clearance remains unresolved.

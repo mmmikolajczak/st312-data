@@ -5,41 +5,25 @@ import json
 from pathlib import Path
 
 
-def render_user_prompt(example: dict) -> str:
+ALLOWED_NODES = [
+    "agent", "cause", "co_quant", "location", "manner",
+    "quant", "source", "theme", "time", "value", "whole",
+]
+ALLOWED_EDGES = ["analogy", "equivalence", "fact"]
+
+
+def render_user_prompt(example: dict, task_spec: dict) -> str:
     sentence = example["data"]["sentence"]
     tokens = example["data"]["tokens"]
+    token_lines = "\n".join(f"{tok_id}: {tok}" for tok_id, tok in enumerate(tokens))
 
-    token_lines = [f"{tok_id}: {tok}" for tok_id, tok in enumerate(tokens)]
-
-    allowed_nodes = [
-        "agent", "cause", "co_quant", "location", "manner",
-        "quant", "source", "theme", "time", "value", "whole",
-    ]
-    allowed_edges = ["analogy", "equivalence", "fact"]
-
-    return (
-        "Sentence:\n"
-        f"{sentence}\n\n"
-        "Tokens:\n"
-        + "\n".join(token_lines)
-        + "\n\n"
-        "Return a JSON object with this exact top-level shape:\n"
-        "{\n"
-        '  "nodes": [\n'
-        '    {"id": "n0", "label": "value", "token_start": 7, "token_end": 10}\n'
-        "  ],\n"
-        '  "edges": [\n'
-        '    {"source_id": "n0", "target_id": "n1", "label": "fact"}\n'
-        "  ]\n"
-        "}\n\n"
-        f"Allowed node labels: {allowed_nodes}\n"
-        f"Allowed edge labels: {allowed_edges}\n\n"
-        "Rules:\n"
-        "- token_end is exclusive\n"
-        "- labels must be lowercase\n"
-        "- return JSON only\n"
-        "- do not include explanations\n"
-    )
+    template = task_spec["prompt_template"]["user"]
+    rendered = template
+    rendered = rendered.replace("{{data.sentence}}", sentence)
+    rendered = rendered.replace("{{token_lines}}", token_lines)
+    rendered = rendered.replace("{{allowed_node_labels}}", str(ALLOWED_NODES))
+    rendered = rendered.replace("{{allowed_edge_labels}}", str(ALLOWED_EDGES))
+    return rendered
 
 
 def main() -> None:
@@ -77,7 +61,7 @@ def main() -> None:
                 "task_id": task_spec["task_id"],
                 "messages": [
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": render_user_prompt(example)},
+                    {"role": "user", "content": render_user_prompt(example, task_spec)},
                 ],
                 "metadata": {
                     "split": example["split"],

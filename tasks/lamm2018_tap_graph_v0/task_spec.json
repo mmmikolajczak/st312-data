@@ -79,7 +79,7 @@
   },
   "prompt_template": {
     "system": "You extract a benchmark-facing TAP graph from a sentence. Return ONLY valid JSON with exactly two top-level keys: \"nodes\" and \"edges\". Use only the allowed lowercase labels. token_end is exclusive.",
-    "user": "Sentence:\n{{data.sentence}}\n\nTokens:\n{{data.tokens}}"
+    "user": "Sentence:\n{{data.sentence}}\n\nTokens:\n{{token_lines}}\n\nReturn a JSON object with this exact top-level shape:\n{\n  \"nodes\": [\n    {\"id\": \"n0\", \"label\": \"value\", \"token_start\": 7, \"token_end\": 10}\n  ],\n  \"edges\": [\n    {\"source_id\": \"n0\", \"target_id\": \"n1\", \"label\": \"fact\"}\n  ]\n}\n\nAllowed node labels: {{allowed_node_labels}}\nAllowed edge labels: {{allowed_edge_labels}}\n\nRules:\n- token_end is exclusive\n- labels must be lowercase\n- return JSON only\n- do not include explanations\n"
   },
   "prompting": {
     "system_prompt": "You extract a benchmark-facing TAP graph from a sentence. Return ONLY valid JSON with exactly two top-level keys: \"nodes\" and \"edges\". Use only the allowed lowercase labels. token_end is exclusive."
@@ -112,6 +112,6 @@
   ],
   "publication": {
     "allowed": true,
-    "reason": "Published to private HF dataset repo under normal pipeline schema."
+    "reason": "Published to the private HF dataset repo under the normal pipeline schema; public redistribution remains uncleared."
   }
 }

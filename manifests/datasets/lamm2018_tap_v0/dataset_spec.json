@@ -95,14 +95,15 @@
     "dataset_root": "datasets/tap/lamm2018/v0",
     "publish_allowed": true,
     "upstream_license": "license_sensitive_ldc_derivative_pending_review",
-    "upstream_license_note": "Do not publish text-bearing artifacts pending redistribution review.",
+    "upstream_license_note": "Published to the private HF dataset repo for internal pipeline use. Public redistribution of text-bearing artifacts remains uncleared pending permission review.",
     "placeholder_uploaded": false,
     "placeholder_only": false,
     "full_publish_completed": true,
     "private_upload_completed": true,
     "private_upload_commit": "3d32a5e486e5c4d82df81a75144b682e08ac8de7",
     "private_upload_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/3d32a5e486e5c4d82df81a75144b682e08ac8de7",
-    "public_release_cleared": false
+    "public_release_cleared": false,
+    "release_scope": "private_hf_only"
   },
   "status": {
     "raw_ingested": true,
