@@ -185,6 +185,33 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/fnxl_sharma2023_v0_publish_record.json`
 
+### 10) Gold Commodity News Kaggle Default v0
+
+Dataset artifacts:
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean.csv`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean.jsonl`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_clean_meta.json`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_train.jsonl`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_test.jsonl`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_split_manifest.json`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_train_urls.json`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_test_urls.json`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_train_headlines.json`
+- `datasets/gold_commodity_news/kaggle_default/v0/gold_commodity_news_test_headlines.json`
+
+Task requests:
+- `tasks/gold_commodity_news_multilabel_v0/gold_commodity_news_train_requests.jsonl`
+- `tasks/gold_commodity_news_multilabel_v0/gold_commodity_news_test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/gold_commodity_news_multilabel_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/gold_commodity_news/raw_audit_summary.json`
+
+Publish bookkeeping:
+- `manifests/publish/gold_commodity_news_kaggle_default_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -231,9 +258,44 @@ We publish a 3-way discretised label using:
 - `allLabelCount.csv` treated as authoritative label inventory
 - Canonical prediction target is sparse `(token_index, label_id)` over observed used FNXL label IDs
 
+### Gold Commodity News Kaggle Default
+
+- Canonical source is the `daittan` Kaggle posting, chosen because it matches the paper-era row count and original 9-label schema
+- `ankurzing` posting is retained only as a later derivative provenance reference
+- Exact duplicate rows removed in the cleaned layer; duplicate headlines and URLs retained for grouped leakage control
+- Dates repaired deterministically with `0200→2000` and `0201→2001`, yielding full parse success
+- Canonical split rebuilt as grouped 80/20 over connected components of normalized URL and normalized headline
+- Task is strict 9-way binary multi-label headline classification with `price_or_not_norm` as a derived normalized parent label
+
 ## Licensing
 
 Licensing metadata is recorded in each dataset manifest under:
 - `manifests/datasets/<dataset_id>/dataset_spec.json`
 
 Please consult upstream licenses before any public redistribution or commercial use.
+
+### 10) Lamm 2018 TAP v0
+
+Dataset artifacts:
+- `datasets/tap/lamm2018/v0/all.jsonl`
+- `datasets/tap/lamm2018/v0/train.jsonl`
+- `datasets/tap/lamm2018/v0/test.jsonl`
+- `datasets/tap/lamm2018/v0/split_meta.json`
+
+Task requests:
+- `tasks/lamm2018_tap_graph_v0/requests/train_requests.jsonl`
+- `tasks/lamm2018_tap_graph_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/lamm2018_tap_graph_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/lamm2018_tap_v0_publish_record.json`
+
+### Lamm 2018 TAP
+
+- Author split preserved from the released repo snapshot: `train=1000`, `test=97`
+- Canonical benchmark target is the reduced active graph label inventory from the author code path
+- Canonical processed artifacts are published in this private HF repo under the normal pipeline schema
+- Approval for public redistribution remains pending
+

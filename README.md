@@ -188,6 +188,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/fnxl_sharma2023_v0_publish_record.json`
 - **Labeling note:** raw release preserved; original release split archived for provenance only because it leaks across companies and filing paths; canonical split rebuilt as clean grouped 80/20 company/file-disjoint train/test; task predicts sparse `(token_index, label_id)` pairs over the observed used FNXL ID space.
 
+### 10) Gold Commodity News Kaggle Default v0
+- **Dataset ID:** `gold_commodity_news_kaggle_default_v0`
+- **Task ID:** `TA_MLC_GOLD_COMMODITY_NEWS_v0`
+- **Task type:** 9-way binary multi-label headline classification
+- **HF dataset path:** `datasets/gold_commodity_news/kaggle_default/v0/`
+- **HF task path:** `tasks/gold_commodity_news_multilabel_v0/`
+- **Publish record:** `manifests/publish/gold_commodity_news_kaggle_default_v0_publish_record.json`
+- **Labeling note:** canonical source is the `daittan` Kaggle posting matching the paper-era row count and schema; exact duplicate rows were removed; dates were deterministically normalized (`0200→2000`, `0201→2001`); canonical split is grouped 80/20 over connected components of normalized URL and normalized headline; derivative `ankurzing` file is provenance-only.
+
 ## Validation
 
 Use:
@@ -200,3 +209,13 @@ Target status convention:
 ## Notes
 
 This repository is designed so that new datasets/tasks can be added with the same structure and minimal ambiguity. The published-modules section above should remain the only top-level module index, to avoid drift and duplication.
+
+### 10) Lamm 2018 TAP v0
+- **Dataset ID:** `lamm2018_tap_v0`
+- **Task ID:** `TA_GRAPH_TAP_LAMM2018_v0`
+- **Task type:** structured graph prediction / textual analogy parsing
+- **HF dataset path:** `datasets/tap/lamm2018/v0/`
+- **HF task path:** `tasks/lamm2018_tap_graph_v0/`
+- **Publish record:** `manifests/publish/lamm2018_tap_v0_publish_record.json`
+- **Labeling note:** author split preserved as released (`train=1000`, `test=97` in the public repo snapshot); benchmark target uses the reduced active graph label inventory from the author code path; public redistribution approval remains pending.
+

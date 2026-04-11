@@ -1,6 +1,6 @@
 # lamm2018_tap_graph_v0
 
-Internal-only TAP graph prediction task for `lamm2018_tap_v0`.
+TAP graph prediction task for `lamm2018_tap_v0`.
 
 ## Formal task id
 `TA_GRAPH_TAP_LAMM2018_v0`
@@ -38,5 +38,5 @@ Local evaluator reports:
 - validity / coverage
 
 ## Publication status
-Published to the private HF dataset repo under the standard pipeline schema.
-Public redistribution clearance remains unresolved.
+Published in the private HF dataset repo under the normal pipeline schema.
+Public redistribution approval remains pending.
