@@ -9,7 +9,8 @@
     "tap_private_upload": "3d32a5e486e5c4d82df81a75144b682e08ac8de7",
     "tap_private_metadata_sync": "c6ce62c2c246f3c17e0d2d8fff04d727260d3a20",
     "tap_release_docs_sync": "5cddf68c2ab49ff6c04a8430034f109b18596de3",
-    "tap_publish_record_fix": "50a92616c5f97821535dba1234465025ee21cddd"
+    "tap_publish_record_fix": "50a92616c5f97821535dba1234465025ee21cddd",
+    "tap_index_fix": "409d218285e73e5751fcf334ab03e80ba49969ed"
   },
   "artifacts_published": [
     "datasets/tap/lamm2018/v0/all.jsonl",

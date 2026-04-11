@@ -212,6 +212,24 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/gold_commodity_news_kaggle_default_v0_publish_record.json`
 
+### 11) Lamm 2018 TAP v0
+
+Dataset artifacts:
+- `datasets/tap/lamm2018/v0/all.jsonl`
+- `datasets/tap/lamm2018/v0/train.jsonl`
+- `datasets/tap/lamm2018/v0/test.jsonl`
+- `datasets/tap/lamm2018/v0/split_meta.json`
+
+Task requests:
+- `tasks/lamm2018_tap_graph_v0/requests/train_requests.jsonl`
+- `tasks/lamm2018_tap_graph_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/lamm2018_tap_graph_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/lamm2018_tap_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -267,35 +285,18 @@ We publish a 3-way discretised label using:
 - Canonical split rebuilt as grouped 80/20 over connected components of normalized URL and normalized headline
 - Task is strict 9-way binary multi-label headline classification with `price_or_not_norm` as a derived normalized parent label
 
-## Licensing
-
-Licensing metadata is recorded in each dataset manifest under:
-- `manifests/datasets/<dataset_id>/dataset_spec.json`
-
-Please consult upstream licenses before any public redistribution or commercial use.
-
-### 10) Lamm 2018 TAP v0
-
-Dataset artifacts:
-- `datasets/tap/lamm2018/v0/all.jsonl`
-- `datasets/tap/lamm2018/v0/train.jsonl`
-- `datasets/tap/lamm2018/v0/test.jsonl`
-- `datasets/tap/lamm2018/v0/split_meta.json`
-
-Task requests:
-- `tasks/lamm2018_tap_graph_v0/requests/train_requests.jsonl`
-- `tasks/lamm2018_tap_graph_v0/requests/test_requests.jsonl`
-
-Task README snapshot:
-- `tasks/lamm2018_tap_graph_v0/README.md`
-
-Publish bookkeeping:
-- `manifests/publish/lamm2018_tap_v0_publish_record.json`
-
 ### Lamm 2018 TAP
 
 - Author split preserved from the released repo snapshot: `train=1000`, `test=97`
 - Canonical benchmark target is the reduced active graph label inventory from the author code path
 - Canonical processed artifacts are published in this private HF repo under the normal pipeline schema
 - Approval for public redistribution remains pending
+
+
+## Licensing
+
+Licensing metadata is recorded in each dataset manifest under:
+- `manifests/datasets/<dataset_id>/dataset_spec.json`
+
+Please consult upstream licenses before any public redistribution or commercial use.
 
