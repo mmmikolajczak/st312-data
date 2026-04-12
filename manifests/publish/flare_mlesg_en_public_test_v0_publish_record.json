@@ -9,7 +9,8 @@
     "flare_mlesg_en_public_test_initial_publish": "ad6da88ed48ee2d2040986a454ac5c458f9a5fe7",
     "flare_mlesg_en_public_test_manifest_metadata_sync": "8fbd5c33ced191a2b8dfb794b5447a81491dcb29",
     "flare_mlesg_en_public_test_publish_record_sync": "1aa603d5732f48db0f87252f9d5e8d51bbc77361",
-    "flare_mlesg_en_public_test_hf_readme_sync": "ba752b649cc0de1cceb4f2bbee3cdddb60191c1a"
+    "flare_mlesg_en_public_test_hf_readme_sync": "ba752b649cc0de1cceb4f2bbee3cdddb60191c1a",
+    "flare_mlesg_en_public_test_final_publish_record_refresh": "74cb830cb72581ab87c28162ccf948b70b09fa24"
   },
   "artifacts_published": [
     "datasets/flare_mlesg/en_public_test/v0/test.jsonl",
