@@ -1,0 +1,92 @@
+{
+  "dataset_id": "flare_mlesg_en_public_test_v0",
+  "dataset_name": "FLARE-MLESG English Public Test Benchmark",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/flare_mlesg_en_public_test_v0",
+  "provenance": {
+    "canonical_paper_title": "Multi-Lingual ESG Issue Identification",
+    "canonical_public_artifact": "TheFinAI/flare-mlesg",
+    "canonical_public_url": "https://huggingface.co/datasets/TheFinAI/flare-mlesg",
+    "notes": [
+      "This is an eval-only public benchmark wrapper, not the full original ML-ESG-1 English dataset.",
+      "The public artifact exposes a single test split with 300 rows.",
+      "The wrapper shows a 33-label choice inventory, whereas the original paper describes a 35-issue task.",
+      "Do not fabricate train or validation splits.",
+      "Do not infer source clearance for the full original English corpus."
+    ]
+  },
+  "processed": {
+    "config": "public_test_only_eval_v1",
+    "files": {
+      "canonical_test": "data/flare_mlesg/processed/flare_mlesg_en_public_test.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/flare_mlesg/raw/flare_mlesg_en_public_test_ingest_meta.json",
+      "test_requests": "data/flare_mlesg/processed/flare_mlesg_en_public_test_requests.jsonl"
+    }
+  },
+  "label_scheme": {
+    "type": "categorical_multiclass_single_label",
+    "task": "esg_issue_identification",
+    "labels": [
+      "Access to Communications",
+      "Biodiversity & Land Use",
+      "Packaging Material & Waste",
+      "Financing Environmental Impact",
+      "Carbon Emissions",
+      "Human Capital Development",
+      "Ownership & Control",
+      "Community Relations",
+      "Responsible Investment",
+      "Opportunities in Renewable Energy",
+      "Consumer Financial Protection",
+      "Accounting",
+      "Business Ethics",
+      "Opportunities in Clean Tech",
+      "Toxic Emissions & Waste",
+      "Product Carbon Footprint",
+      "Opportunities in Green Building",
+      "Climate Change Vulnerability",
+      "Pay",
+      "Water Stress",
+      "Supply Chain Labor Standards",
+      "Chemical Safety",
+      "Board",
+      "Opportunities in Nutrition & Health",
+      "Access to Health Care",
+      "Electronic Waste",
+      "Access to Finance",
+      "Raw Material Sourcing",
+      "Health & Demographic Risk",
+      "Labor Management",
+      "Controversial Sourcing",
+      "Privacy & Data Security",
+      "Product Safety & Quality"
+    ],
+    "status": "eval_only_public_test_wrapper"
+  },
+  "split_policy": {
+    "type": "public_test_only",
+    "release_split": "test",
+    "canonical_split": "preserve_public_test_only_no_fabricated_train_valid"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/flare_mlesg/en_public_test/v0",
+    "upstream_license": "public_wrapper_only_benchmark_claim_cc_by_nc_nd_full_source_uncleared",
+    "upstream_license_note": "FinBen lists MLESG as CC BY-NC-ND, but the public HF wrapper card does not clearly expose license metadata in the public view. Publish only the already-public wrapper as eval-only; do not infer redistribution clearance for the full original ML-ESG-1 English corpus.",
+    "published_commit": "ad6da88ed48ee2d2040986a454ac5c458f9a5fe7",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/ad6da88ed48ee2d2040986a454ac5c458f9a5fe7",
+    "release_scope": "private_hf_repo_standard_release_eval_only"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "eval_only": true,
+    "local_ready": false
+  }
+}

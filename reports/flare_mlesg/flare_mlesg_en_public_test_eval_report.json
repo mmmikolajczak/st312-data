@@ -1,0 +1,318 @@
+{
+  "task_id": "TA_ESG_ISSUE_MLESG_EN_FLARE_v0",
+  "split": "test",
+  "split_file": "data/flare_mlesg/processed/flare_mlesg_en_public_test.jsonl",
+  "completions_file": "/Users/matti/st312-data/reports/flare_mlesg/flare_mlesg_en_public_test_dummy_gold_completions.jsonl",
+  "total_examples": 300,
+  "completion_rows_read": 300,
+  "completion_coverage": 1.0,
+  "n_with_completion": 300,
+  "n_missing_completion": 0,
+  "n_format_valid": 300,
+  "n_invalid_or_unparseable": 0,
+  "format_valid_rate": 1.0,
+  "accuracy": 1.0,
+  "accuracy_on_valid": 1.0,
+  "macro_f1": 1.0,
+  "per_class": {
+    "Access to Communications": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "Biodiversity & Land Use": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "Packaging Material & Waste": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 20,
+      "fp": 0,
+      "fn": 0
+    },
+    "Financing Environmental Impact": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 18,
+      "fp": 0,
+      "fn": 0
+    },
+    "Carbon Emissions": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 18,
+      "fp": 0,
+      "fn": 0
+    },
+    "Human Capital Development": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 15,
+      "fp": 0,
+      "fn": 0
+    },
+    "Ownership & Control": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 11,
+      "fp": 0,
+      "fn": 0
+    },
+    "Community Relations": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    },
+    "Responsible Investment": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 17,
+      "fp": 0,
+      "fn": 0
+    },
+    "Opportunities in Renewable Energy": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 17,
+      "fp": 0,
+      "fn": 0
+    },
+    "Consumer Financial Protection": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 12,
+      "fp": 0,
+      "fn": 0
+    },
+    "Accounting": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "Business Ethics": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0
+    },
+    "Opportunities in Clean Tech": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 16,
+      "fp": 0,
+      "fn": 0
+    },
+    "Toxic Emissions & Waste": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "Product Carbon Footprint": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 14,
+      "fp": 0,
+      "fn": 0
+    },
+    "Opportunities in Green Building": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 11,
+      "fp": 0,
+      "fn": 0
+    },
+    "Climate Change Vulnerability": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "Pay": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "Water Stress": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "Supply Chain Labor Standards": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "Chemical Safety": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "Board": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 18,
+      "fp": 0,
+      "fn": 0
+    },
+    "Opportunities in Nutrition & Health": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "Access to Health Care": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "Electronic Waste": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "Access to Finance": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "Raw Material Sourcing": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "Health & Demographic Risk": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "Labor Management": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "Controversial Sourcing": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "Privacy & Data Security": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "Product Safety & Quality": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "confusion_counts": {
+    "Access to Communications -> Access to Communications": 3,
+    "Access to Finance -> Access to Finance": 5,
+    "Access to Health Care -> Access to Health Care": 5,
+    "Accounting -> Accounting": 5,
+    "Biodiversity & Land Use -> Biodiversity & Land Use": 13,
+    "Board -> Board": 18,
+    "Business Ethics -> Business Ethics": 8,
+    "Carbon Emissions -> Carbon Emissions": 18,
+    "Chemical Safety -> Chemical Safety": 5,
+    "Climate Change Vulnerability -> Climate Change Vulnerability": 7,
+    "Community Relations -> Community Relations": 10,
+    "Consumer Financial Protection -> Consumer Financial Protection": 12,
+    "Controversial Sourcing -> Controversial Sourcing": 1,
+    "Electronic Waste -> Electronic Waste": 3,
+    "Financing Environmental Impact -> Financing Environmental Impact": 18,
+    "Health & Demographic Risk -> Health & Demographic Risk": 6,
+    "Human Capital Development -> Human Capital Development": 15,
+    "Labor Management -> Labor Management": 1,
+    "Opportunities in Clean Tech -> Opportunities in Clean Tech": 16,
+    "Opportunities in Green Building -> Opportunities in Green Building": 11,
+    "Opportunities in Nutrition & Health -> Opportunities in Nutrition & Health": 6,
+    "Opportunities in Renewable Energy -> Opportunities in Renewable Energy": 17,
+    "Ownership & Control -> Ownership & Control": 11,
+    "Packaging Material & Waste -> Packaging Material & Waste": 20,
+    "Pay -> Pay": 5,
+    "Privacy & Data Security -> Privacy & Data Security": 3,
+    "Product Carbon Footprint -> Product Carbon Footprint": 14,
+    "Product Safety & Quality -> Product Safety & Quality": 3,
+    "Raw Material Sourcing -> Raw Material Sourcing": 7,
+    "Responsible Investment -> Responsible Investment": 17,
+    "Supply Chain Labor Standards -> Supply Chain Labor Standards": 3,
+    "Toxic Emissions & Waste -> Toxic Emissions & Waste": 7,
+    "Water Stress -> Water Stress": 7
+  }
+}

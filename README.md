@@ -213,7 +213,25 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/flare_ma_public_test_v0_publish_record.json`
 - **Labeling note:** canonical artifact is the already-public `TheFinAI/flare-ma` wrapper; only the public 500-example `test` split is onboarded; this module is eval-only and does not imply source clearance for the full original Zephyr-derived corpus.
 
+### 13) FLARE-MLESG English Public Test v0
+- **Dataset ID:** `flare_mlesg_en_public_test_v0`
+- **Task ID:** `TA_ESG_ISSUE_MLESG_EN_FLARE_v0`
+- **Task type:** eval-only multiclass ESG issue identification
+- **HF dataset path:** `datasets/flare_mlesg/en_public_test/v0/`
+- **HF task path:** `tasks/flare_mlesg_en_issue_v0/`
+- **Publish record:** `manifests/publish/flare_mlesg_en_public_test_v0_publish_record.json`
+- **Labeling note:** canonical artifact is the already-public `TheFinAI/flare-mlesg` wrapper; only the public 300-example `test` split is onboarded; the wrapper exposes 33 labels although the original ML-ESG paper describes a 35-issue task; this module is eval-only and does not imply source clearance for the full original English corpus.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
+
+## Labeling / split notes
+
+### FLARE-MLESG English Public Test
+
+- Canonical artifact is the already-public `TheFinAI/flare-mlesg` wrapper
+- Only the public 300-example `test` split is onboarded
+- The wrapper shows 33 labels, although the original ML-ESG-1 paper describes a 35-issue task
+- This module is eval-only and does not imply source clearance for the full original English corpus
 
 ## Validation
 

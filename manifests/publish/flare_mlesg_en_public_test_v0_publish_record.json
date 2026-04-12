@@ -1,0 +1,25 @@
+{
+  "dataset_id": "flare_mlesg_en_public_test_v0",
+  "task_id": "TA_ESG_ISSUE_MLESG_EN_FLARE_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": true,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "flare_mlesg_en_public_test_initial_publish": "ad6da88ed48ee2d2040986a454ac5c458f9a5fe7",
+    "flare_mlesg_en_public_test_manifest_metadata_sync": "8fbd5c33ced191a2b8dfb794b5447a81491dcb29",
+    "flare_mlesg_en_public_test_publish_record_sync": "1aa603d5732f48db0f87252f9d5e8d51bbc77361",
+    "flare_mlesg_en_public_test_hf_readme_sync": "ba752b649cc0de1cceb4f2bbee3cdddb60191c1a"
+  },
+  "artifacts_published": [
+    "datasets/flare_mlesg/en_public_test/v0/test.jsonl",
+    "datasets/flare_mlesg/en_public_test/v0/ingest_meta.json",
+    "tasks/flare_mlesg_en_issue_v0/requests/test_requests.jsonl",
+    "tasks/flare_mlesg_en_issue_v0/README.md",
+    "manifests/datasets/flare_mlesg_en_public_test_v0/dataset_spec.json",
+    "manifests/datasets/flare_mlesg_en_public_test_v0/checksums.sha256",
+    "manifests/tasks/flare_mlesg_en_issue_v0/task_spec.json",
+    "manifests/publish/flare_mlesg_en_public_test_v0_publish_record.json"
+  ],
+  "notes": "Published in the narrow wrapper-only sense: this module republishes the already-public TheFinAI/flare-mlesg eval artifact only. It does not onboard or imply redistribution clearance for the full original ML-ESG-1 English corpus."
+}

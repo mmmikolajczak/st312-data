@@ -246,6 +246,21 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/flare_ma_public_test_v0_publish_record.json`
 
+### 13) FLARE-MLESG English Public Test v0
+
+Dataset artifacts:
+- `datasets/flare_mlesg/en_public_test/v0/test.jsonl`
+- `datasets/flare_mlesg/en_public_test/v0/ingest_meta.json`
+
+Task requests:
+- `tasks/flare_mlesg_en_issue_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/flare_mlesg_en_issue_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/flare_mlesg_en_public_test_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -315,6 +330,13 @@ We publish a 3-way discretised label using:
 - Only the public 500-example `test` split is onboarded
 - This module is eval-only and does not imply source clearance for the full original Zephyr-derived corpus
 - Canonical evaluation metrics are accuracy, macro F1, and MCC
+
+### FLARE-MLESG English Public Test
+
+- Canonical artifact is the already-public `TheFinAI/flare-mlesg` wrapper
+- Only the public 300-example `test` split is onboarded
+- The wrapper shows 33 labels, although the original ML-ESG-1 paper describes a 35-issue task
+- This module is eval-only and does not imply source clearance for the full original English corpus
 
 ## Licensing
 

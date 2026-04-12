@@ -1,0 +1,92 @@
+{
+  "task_id": "TA_ESG_ISSUE_MLESG_EN_FLARE_v0",
+  "task_name": "English ESG issue identification (FLARE-MLESG public test)",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "ESG Issue Identification",
+    "output_type": "label_classification",
+    "scoring_type": "exact_match"
+  },
+  "dataset": {
+    "dataset_id": "flare_mlesg_en_public_test_v0",
+    "config": "public_test_only_eval_v1",
+    "test_file": "data/flare_mlesg/processed/flare_mlesg_en_public_test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.text"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "issue"
+    ],
+    "no_extra_keys": true,
+    "allowed_values": {
+      "issue": [
+        "Access to Communications",
+        "Biodiversity & Land Use",
+        "Packaging Material & Waste",
+        "Financing Environmental Impact",
+        "Carbon Emissions",
+        "Human Capital Development",
+        "Ownership & Control",
+        "Community Relations",
+        "Responsible Investment",
+        "Opportunities in Renewable Energy",
+        "Consumer Financial Protection",
+        "Accounting",
+        "Business Ethics",
+        "Opportunities in Clean Tech",
+        "Toxic Emissions & Waste",
+        "Product Carbon Footprint",
+        "Opportunities in Green Building",
+        "Climate Change Vulnerability",
+        "Pay",
+        "Water Stress",
+        "Supply Chain Labor Standards",
+        "Chemical Safety",
+        "Board",
+        "Opportunities in Nutrition & Health",
+        "Access to Health Care",
+        "Electronic Waste",
+        "Access to Finance",
+        "Raw Material Sourcing",
+        "Health & Demographic Risk",
+        "Labor Management",
+        "Controversial Sourcing",
+        "Privacy & Data Security",
+        "Product Safety & Quality"
+      ]
+    }
+  },
+  "prompt_template": {
+    "system": "You are an ESG issue classifier for financial news. Return ONLY a JSON object with exactly one key: \"issue\". The value must be exactly one allowed ESG issue label. Do not include any extra text.",
+    "user": "Classify the most relevant ESG issue discussed in the following English news article according to the allowed label set.\n\nText: {{data.text}}"
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with exactly one key 'issue' and an allowed value."
+      },
+      {
+        "name": "correctness_reward",
+        "weight": 1.0,
+        "description": "Predicted issue matches the gold label exactly."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "accuracy",
+    "macro_f1",
+    "format_valid_rate"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "Published eval-only module over the already-public TheFinAI/flare-mlesg wrapper; not a release of the full original ML-ESG-1 English corpus."
+  }
+}

@@ -149,6 +149,17 @@
       "upstream_license": "public_wrapper_only_full_source_commercial_uncleared",
       "task_family": "binary_deal_completeness_classification_eval_only",
       "status": "published"
+    },
+    {
+      "dataset_id": "flare_mlesg_en_public_test_v0",
+      "dataset_name": "FLARE-MLESG English Public Test Benchmark",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/flare_mlesg_en_public_test_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/flare-mlesg public test wrapper",
+      "upstream_license": "public_wrapper_only_benchmark_claim_cc_by_nc_nd_full_source_uncleared",
+      "task_family": "esg_issue_identification_eval_only",
+      "status": "published"
     }
   ]
 }
