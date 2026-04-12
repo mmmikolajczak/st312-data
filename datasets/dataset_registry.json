@@ -138,6 +138,17 @@
       "upstream_license": "unknown_kaggle_terms",
       "task_family": "textual_analysis_multilabel_headline_classification",
       "status": "published"
+    },
+    {
+      "dataset_id": "flare_ma_public_test_v0",
+      "dataset_name": "FLARE-MA Public Test Benchmark",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/flare_ma_public_test_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/flare-ma public test wrapper",
+      "upstream_license": "public_wrapper_only_full_source_commercial_uncleared",
+      "task_family": "binary_deal_completeness_classification_eval_only",
+      "status": "local_ready"
     }
   ]
 }

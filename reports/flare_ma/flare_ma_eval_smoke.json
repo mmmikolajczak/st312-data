@@ -1,0 +1,21 @@
+{
+  "task_id": "TA_MA_COMPLETENESS_FLARE_v0",
+  "n_gold_examples": 500,
+  "n_predictions_rows": 500,
+  "n_scored_examples": 500,
+  "coverage_rate": 1.0,
+  "format_valid_rate": 1.0,
+  "missing_predictions": 0,
+  "invalid_predictions": 0,
+  "metrics": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "binary_f1_complete": 1.0,
+    "mcc": 1.0
+  },
+  "notes": [
+    "Eval-only benchmark wrapper over public TheFinAI/flare-ma test split.",
+    "Primary metrics are accuracy, macro F1, and MCC.",
+    "Binary F1 is also reported with 'complete' as the positive label."
+  ]
+}

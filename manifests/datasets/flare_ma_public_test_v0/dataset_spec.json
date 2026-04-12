@@ -1,0 +1,56 @@
+{
+  "dataset_id": "flare_ma_public_test_v0",
+  "dataset_name": "FLARE-MA Public Test Benchmark",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/flare_ma_public_test_v0",
+  "provenance": {
+    "canonical_paper_title": "Generating Plausible Counterfactual Explanations for Deep Transformers in Financial Text Classification",
+    "canonical_public_artifact": "TheFinAI/flare-ma",
+    "canonical_public_url": "https://huggingface.co/datasets/TheFinAI/flare-ma",
+    "notes": [
+      "This is an eval-only public benchmark wrapper, not the full original dataset.",
+      "The public artifact exposes a single test split with 500 rows.",
+      "The full original Yang et al. processed dataset is not treated as source-cleared for training onboarding."
+    ]
+  },
+  "processed": {
+    "config": "public_test_only_eval_v1",
+    "files": {
+      "canonical_test": "data/flare_ma/processed/flare_ma_public_test.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/flare_ma/raw/flare_ma_ingest_meta.json",
+      "test_requests": "data/flare_ma/processed/flare_ma_public_test_requests.jsonl"
+    }
+  },
+  "label_scheme": {
+    "type": "binary_single_label",
+    "task": "deal_completeness_classification",
+    "labels": [
+      "rumour",
+      "complete"
+    ],
+    "status": "eval_only_public_test"
+  },
+  "split_policy": {
+    "type": "public_test_only",
+    "release_split": "test",
+    "canonical_split": "preserve_public_test_only_no_fabricated_train_valid"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/flare_ma/public_test/v0",
+    "upstream_license": "public_wrapper_only_full_source_commercial_uncleared",
+    "upstream_license_note": "Treat the already-public FLARE wrapper as eval-usable. Do not infer redistribution clearance for the full original Zephyr-derived corpus."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false,
+    "eval_only": true,
+    "local_ready": true
+  }
+}

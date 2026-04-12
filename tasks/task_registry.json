@@ -124,6 +124,15 @@
       "task_readme_path": "tasks/gold_commodity_news_multilabel_v0/README.md",
       "dataset_id": "gold_commodity_news_kaggle_default_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_MA_COMPLETENESS_FLARE_v0",
+      "task_name": "Deal completeness classification (FLARE-MA public test)",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/flare_ma_deal_completeness_v0/task_spec.json",
+      "task_readme_path": "tasks/flare_ma_deal_completeness_v0/README.md",
+      "dataset_id": "flare_ma_public_test_v0",
+      "status": "local_ready"
     }
   ]
 }

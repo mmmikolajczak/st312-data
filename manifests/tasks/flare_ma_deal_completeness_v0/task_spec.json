@@ -1,0 +1,63 @@
+{
+  "task_id": "TA_MA_COMPLETENESS_FLARE_v0",
+  "task_name": "Deal completeness classification (FLARE-MA public test)",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "Binary Event Outcome Classification",
+    "output_type": "label_classification",
+    "scoring_type": "exact_match"
+  },
+  "dataset": {
+    "dataset_id": "flare_ma_public_test_v0",
+    "config": "public_test_only_eval_v1",
+    "test_file": "data/flare_ma/processed/flare_ma_public_test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "data.text"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "label"
+    ],
+    "no_extra_keys": true,
+    "allowed_values": {
+      "label": [
+        "rumour",
+        "complete"
+      ]
+    }
+  },
+  "prompt_template": {
+    "system": "You are a financial M&A deal-outcome classifier. Return ONLY a JSON object with exactly one key: \"label\". The value must be either \"rumour\" or \"complete\". Do not include any extra text.",
+    "user": "Classify whether the following M&A item describes a completed deal or only a rumour.\n\nText: {{data.text}}"
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with exactly one key 'label' and an allowed value."
+      },
+      {
+        "name": "correctness_reward",
+        "weight": 1.0,
+        "description": "Predicted label matches the ground-truth deal outcome exactly."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "accuracy",
+    "macro_f1",
+    "binary_f1_complete",
+    "mcc",
+    "format_valid_rate"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "This module is eval-only and uses the already-public FLARE benchmark wrapper; public redistribution claims for the full original Zephyr-derived corpus remain out of scope."
+  }
+}
