@@ -3,7 +3,7 @@
   "datasets": [
     {
       "dataset_id": "fpb_allagree_v0",
-      "status": "published_hf",
+      "status": "published",
       "owners": [
         "Mateusz",
         "Marco"
@@ -27,7 +27,7 @@
       "upstream_source": "TheFinAI/fiqa-sentiment-classification",
       "upstream_license": "mit",
       "task_family": "sentiment_classification_3way",
-      "status": "published_hf"
+      "status": "published"
     },
     {
       "dataset_id": "finben_fomc_v0",

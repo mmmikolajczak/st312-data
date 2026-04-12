@@ -5,7 +5,7 @@
       "task_id": "TA_SENT_FPB_v0",
       "task_folder": "tasks/fpb_sentiment_v0",
       "task_spec_path": "tasks/fpb_sentiment_v0/task_spec.json",
-      "status": "published_hf",
+      "status": "published",
       "owners": [
         "Mateusz",
         "Marco"
@@ -24,7 +24,7 @@
       "task_spec_path": "tasks/fiqasa_sentiment_v0/task_spec.json",
       "task_readme_path": "tasks/fiqasa_sentiment_v0/README.md",
       "dataset_id": "fiqasa_hf_default_v0",
-      "status": "published_hf"
+      "status": "published"
     },
     {
       "task_id": "TA_STANCE_FOMC_FINBEN_v0",
