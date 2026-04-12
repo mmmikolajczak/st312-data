@@ -78,7 +78,7 @@
     "upstream_license_note": "FinBen lists MLESG as CC BY-NC-ND, but the public HF wrapper card does not clearly expose license metadata in the public view. Publish only the already-public wrapper as eval-only; do not infer redistribution clearance for the full original ML-ESG-1 English corpus.",
     "published_commit": "ad6da88ed48ee2d2040986a454ac5c458f9a5fe7",
     "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/ad6da88ed48ee2d2040986a454ac5c458f9a5fe7",
-    "release_scope": "private_hf_repo_standard_release_eval_only"
+    "release_scope": "hf_repo_standard_release_eval_only"
   },
   "status": {
     "raw_ingested": true,

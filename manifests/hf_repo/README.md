@@ -1,16 +1,15 @@
 ---
-pretty_name: "ST312 FinLLM Data (Private)"
+pretty_name: "ST312 FinLLM Data"
 tags:
 - finance
 - llm
-- private-dataset
 - text-classification
 - token-classification
 ---
 
-# ST312 FinLLM Data (Private)
+# ST312 FinLLM Data
 
-Private artifact repository for the ST312 Applied Statistics project (FinLLM pipeline).
+Artifact repository for the ST312 Applied Statistics project (FinLLM pipeline).
 
 This Hugging Face dataset repo stores canonical processed datasets, task request files, manifest snapshots, checksums, and publication bookkeeping artifacts.
 
@@ -344,7 +343,7 @@ We publish a 3-way discretised label using:
 
 - Author split preserved from the released repo snapshot: `train=1000`, `test=97`
 - Canonical benchmark target is the reduced active graph label inventory from the author code path
-- Canonical processed artifacts are published in this private HF repo under the normal pipeline schema
+- Canonical processed artifacts are published in this HF repo under the normal pipeline schema
 - Approval for public redistribution remains pending
 
 
@@ -368,6 +367,7 @@ We publish a 3-way discretised label using:
 - Official `train / dev / test` split is preserved exactly
 - Canonical text is headline only; no crawler enrichment or article-body recovery is included
 - Labels are preserved exactly as released multi-label ESG code lists, including observed codes such as `NN`
+- The pinned official release differs from the FinNLP 2023 workshop paper statistics; this module follows the pinned release as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory
 - Future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
 
 ## Licensing

@@ -24,3 +24,6 @@ Official shared-task release module for Chinese ML-ESG-1 ESG issue identificatio
 - labels are stored as sorted unique code lists per row
 - no article-body recovery is included
 - no heuristic relabeling or split modification is applied
+- the pinned official DynamicESG release differs from the FinNLP 2023 workshop paper statistics; this module follows the pinned release as canonical source of truth
+- observed canonical split counts are `1058 / 118 / 131`
+- observed released label inventory size is `48` codes

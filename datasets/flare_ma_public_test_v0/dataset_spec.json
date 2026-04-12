@@ -45,7 +45,7 @@
     "upstream_license_note": "This published module corresponds only to the already-public TheFinAI/flare-ma benchmark wrapper. Do not infer redistribution clearance for the full original Zephyr-derived Yang et al. corpus.",
     "published_commit": "774053ba0f33579509110b0aac23b3e4d981e7dc",
     "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/774053ba0f33579509110b0aac23b3e4d981e7dc",
-    "release_scope": "private_hf_repo_standard_release_eval_only"
+    "release_scope": "hf_repo_standard_release_eval_only"
   },
   "status": {
     "raw_ingested": true,

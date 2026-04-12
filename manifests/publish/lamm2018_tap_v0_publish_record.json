@@ -3,7 +3,7 @@
   "task_id": "TA_GRAPH_TAP_LAMM2018_v0",
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
-  "hf_private_repo": true,
+  "hf_private_repo": false,
   "public_release_cleared": false,
   "hf_commits": {
     "tap_private_upload": "3d32a5e486e5c4d82df81a75144b682e08ac8de7",
@@ -13,7 +13,9 @@
     "tap_index_fix": "409d218285e73e5751fcf334ab03e80ba49969ed",
     "tap_final_index_fix": "c89b7696e796b76dcf330bd3d06438be3f37e031",
     "tap_readme_dedupe": "bae3a3e675438f4bc0e4ba3dc0f524db208c81e0",
-    "tap_index_dedupe_final": "fb87fa2710eb673790c27e09fd3929ff068cd21f"
+    "tap_index_dedupe_final": "fb87fa2710eb673790c27e09fd3929ff068cd21f",
+    "tap_visibility_metadata_refresh": "66e14650fd04e40ae5d8653c157ab4fd563a1c49",
+    "tap_visibility_publish_record_refresh": "253286cb05fdbebfb3f6a1e7106eb76e9c309993"
   },
   "artifacts_published": [
     "datasets/tap/lamm2018/v0/all.jsonl",
@@ -28,5 +30,5 @@
     "manifests/tasks/lamm2018_tap_graph_v0/task_spec.json",
     "manifests/publish/lamm2018_tap_v0_publish_record.json"
   ],
-  "notes": "Published to the private HF dataset repo under the standard pipeline publishing schema. The repo remains private; approval for public redistribution is still pending."
+  "notes": "Published to the HF dataset repo under the standard pipeline publishing schema. Public redistribution approval for this module remains pending."
 }

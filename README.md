@@ -20,7 +20,7 @@ This repository is the **code + metadata control plane** for the Risko-1 style d
 - dataset/task registries and manifest snapshots for reproducibility
 - publish records and checksums for GitHub/Hugging Face bookkeeping
 
-Large data artifacts are **not** tracked in GitHub. Canonical processed artifacts are published to the private Hugging Face dataset repo:
+Large data artifacts are **not** tracked in GitHub. Canonical processed artifacts are published to the Hugging Face dataset repo:
 - `mmmikolajczak/st312-data`
 
 ## Repository architecture
@@ -229,7 +229,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF dataset path:** `datasets/ml_esg1/zh_official/v0/`
 - **HF task path:** `tasks/ml_esg1_zh_issue_v0/`
 - **Publish record:** `manifests/publish/ml_esg1_zh_official_v0_publish_record.json`
-- **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese split release pinned to a concrete commit; official `train/dev/test` is preserved exactly; canonical text is the released headline only; labels are preserved as released multi-label code lists; family-stable `article_id` is included so ML-ESG-2 can later be onboarded as a separate published module.
+- **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese split release pinned to a concrete commit; official `train/dev/test` is preserved exactly; canonical text is the released headline only; labels are preserved as released multi-label code lists; the pinned release differs from the FinNLP 2023 workshop paper statistics and is treated as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory; family-stable `article_id` is included so ML-ESG-2 can later be onboarded as a separate published module.
 
 <!-- ST312_PUBLISHED_MODULES_END -->
 
@@ -248,6 +248,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Official `train / dev / test` split is preserved exactly
 - Canonical text is headline only; no crawler enrichment or article-body recovery is included
 - Labels are preserved exactly as released multi-label ESG code lists, including observed codes such as `NN`
+- The pinned official release differs from the FinNLP 2023 workshop paper statistics; this module follows the pinned release as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory
 - Future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
 
 ## Validation

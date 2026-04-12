@@ -7,7 +7,7 @@ Eval-only published benchmark module for the public `TheFinAI/flare-mlesg` wrapp
 - no full-source training dataset onboarding
 - no fabricated train/validation split
 - benchmark coverage limited to the public 300-example test wrapper
-- published in the private HF repo under the normal pipeline schema
+- published in the HF repo under the normal pipeline schema
 - the full original ML-ESG-1 English corpus remains out of scope
 
 ## Canonical public artifact

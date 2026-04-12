@@ -3,13 +3,15 @@
   "task_id": "TA_MA_COMPLETENESS_FLARE_v0",
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
-  "hf_private_repo": true,
+  "hf_private_repo": false,
   "public_release_cleared": true,
   "hf_commits": {
     "flare_ma_initial_publish": "774053ba0f33579509110b0aac23b3e4d981e7dc",
     "flare_ma_docs_sync": "755c6b5513d0cd018a02a0abb441606203f869fd",
     "flare_ma_publish_record_fix": "31792a5221225b23800ed4967ec12d9e13f44c1e",
-    "flare_ma_final_publish_record_sync": "3f62ded6277867acee759750c1cf0f0bd119d853"
+    "flare_ma_final_publish_record_sync": "3f62ded6277867acee759750c1cf0f0bd119d853",
+    "flare_ma_public_visibility_metadata_refresh": "66e14650fd04e40ae5d8653c157ab4fd563a1c49",
+    "flare_ma_public_visibility_publish_record_refresh": "253286cb05fdbebfb3f6a1e7106eb76e9c309993"
   },
   "artifacts_published": [
     "datasets/flare_ma/public_test/v0/test.jsonl",

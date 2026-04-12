@@ -3,14 +3,16 @@
   "task_id": "TA_MLCLS_ML_ESG1_ZH_v0",
   "github_repo": "mmmikolajczak/st312-data",
   "hf_repo": "mmmikolajczak/st312-data",
-  "hf_private_repo": true,
+  "hf_private_repo": false,
   "public_release_cleared": true,
   "hf_commits": {
     "ml_esg1_zh_official_initial_publish": "44fb53a4b6aeb30a5c6f9c3e7de4c25f8ec61293",
     "ml_esg1_zh_official_manifest_metadata_sync": "fc3ecce7a037a23f6459fc9afd6b6015f5779349",
     "ml_esg1_zh_official_publish_record_sync": "3045f78a0b5a11aacfdefcf2f10dad0d0eb1e9aa",
     "ml_esg1_zh_official_hf_readme_sync": "6350734168b83af15dce9cf7a5a8cd3480aa167d",
-    "ml_esg1_zh_official_final_publish_record_refresh": "b021b36969c1030181523d76af6bd2a89e3aa51a"
+    "ml_esg1_zh_official_final_publish_record_refresh": "b021b36969c1030181523d76af6bd2a89e3aa51a",
+    "ml_esg1_zh_official_visibility_metadata_refresh": "66e14650fd04e40ae5d8653c157ab4fd563a1c49",
+    "ml_esg1_zh_official_visibility_publish_record_refresh": "253286cb05fdbebfb3f6a1e7106eb76e9c309993"
   },
   "artifacts_published": [
     "datasets/ml_esg1/zh_official/v0/train.jsonl",
