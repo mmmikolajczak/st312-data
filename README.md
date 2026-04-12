@@ -206,6 +206,16 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/lamm2018_tap_v0_publish_record.json`
 - **Labeling note:** author split preserved as released (`train=1000`, `test=97` in the public repo snapshot); benchmark target uses the reduced active graph label inventory from the author code path; public redistribution approval remains pending.
 
+
+### 12) FLARE-MA Public Test v0
+- **Dataset ID:** `flare_ma_public_test_v0`
+- **Task ID:** `TA_MA_COMPLETENESS_FLARE_v0`
+- **Task type:** eval-only binary deal-completeness classification
+- **HF dataset path:** `datasets/flare_ma/public_test/v0/`
+- **HF task path:** `tasks/flare_ma_deal_completeness_v0/`
+- **Publish record:** `manifests/publish/flare_ma_public_test_v0_publish_record.json`
+- **Labeling note:** canonical artifact is the already-public `TheFinAI/flare-ma` wrapper; only the public 500-example `test` split is onboarded; this module is eval-only and does not imply source clearance for the full original Zephyr-derived corpus.
+
 ## Validation
 
 Use:

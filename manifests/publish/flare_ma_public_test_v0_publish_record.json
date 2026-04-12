@@ -1,0 +1,24 @@
+{
+  "dataset_id": "flare_ma_public_test_v0",
+  "task_id": "TA_MA_COMPLETENESS_FLARE_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": true,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "flare_ma_initial_publish": "774053ba0f33579509110b0aac23b3e4d981e7dc",
+    "flare_ma_docs_sync": "755c6b5513d0cd018a02a0abb441606203f869fd",
+    "flare_ma_publish_record_fix": "31792a5221225b23800ed4967ec12d9e13f44c1e"
+  },
+  "artifacts_published": [
+    "datasets/flare_ma/public_test/v0/test.jsonl",
+    "datasets/flare_ma/public_test/v0/ingest_meta.json",
+    "tasks/flare_ma_deal_completeness_v0/requests/test_requests.jsonl",
+    "tasks/flare_ma_deal_completeness_v0/README.md",
+    "manifests/datasets/flare_ma_public_test_v0/dataset_spec.json",
+    "manifests/datasets/flare_ma_public_test_v0/checksums.sha256",
+    "manifests/tasks/flare_ma_deal_completeness_v0/task_spec.json",
+    "manifests/publish/flare_ma_public_test_v0_publish_record.json"
+  ],
+  "notes": "Published as an eval-only module using the already-public TheFinAI/flare-ma wrapper. This does not imply source clearance for the full original Zephyr-derived Yang et al. corpus."
+}

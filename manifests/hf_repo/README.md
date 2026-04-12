@@ -230,6 +230,22 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/lamm2018_tap_v0_publish_record.json`
 
+
+### 12) FLARE-MA Public Test v0
+
+Dataset artifacts:
+- `datasets/flare_ma/public_test/v0/test.jsonl`
+- `datasets/flare_ma/public_test/v0/ingest_meta.json`
+
+Task requests:
+- `tasks/flare_ma_deal_completeness_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/flare_ma_deal_completeness_v0/README.md`
+
+Publish bookkeeping:
+- `manifests/publish/flare_ma_public_test_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -291,6 +307,14 @@ We publish a 3-way discretised label using:
 - Canonical benchmark target is the reduced active graph label inventory from the author code path
 - Canonical processed artifacts are published in this private HF repo under the normal pipeline schema
 - Approval for public redistribution remains pending
+
+
+### FLARE-MA Public Test
+
+- Canonical artifact is the already-public `TheFinAI/flare-ma` wrapper
+- Only the public 500-example `test` split is onboarded
+- This module is eval-only and does not imply source clearance for the full original Zephyr-derived corpus
+- Canonical evaluation metrics are accuracy, macro F1, and MCC
 
 ## Licensing
 

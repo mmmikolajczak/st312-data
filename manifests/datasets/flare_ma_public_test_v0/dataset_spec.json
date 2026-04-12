@@ -42,15 +42,18 @@
     "repo_type": "dataset",
     "dataset_root": "datasets/flare_ma/public_test/v0",
     "upstream_license": "public_wrapper_only_full_source_commercial_uncleared",
-    "upstream_license_note": "Treat the already-public FLARE wrapper as eval-usable. Do not infer redistribution clearance for the full original Zephyr-derived corpus."
+    "upstream_license_note": "This published module corresponds only to the already-public TheFinAI/flare-ma benchmark wrapper. Do not infer redistribution clearance for the full original Zephyr-derived Yang et al. corpus.",
+    "published_commit": "774053ba0f33579509110b0aac23b3e4d981e7dc",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/774053ba0f33579509110b0aac23b3e4d981e7dc",
+    "release_scope": "private_hf_repo_standard_release_eval_only"
   },
   "status": {
     "raw_ingested": true,
     "cleaned": true,
     "split": true,
     "requests_built": true,
-    "published_to_hf": false,
+    "published_to_hf": true,
     "eval_only": true,
-    "local_ready": true
+    "local_ready": false
   }
 }

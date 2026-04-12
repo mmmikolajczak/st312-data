@@ -58,6 +58,6 @@
   ],
   "publication": {
     "allowed": true,
-    "reason": "This module is eval-only and uses the already-public FLARE benchmark wrapper; public redistribution claims for the full original Zephyr-derived corpus remain out of scope."
+    "reason": "Published eval-only module over the already-public TheFinAI/flare-ma wrapper. The full original Zephyr-derived corpus remains out of scope."
   }
 }

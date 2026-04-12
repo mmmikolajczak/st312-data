@@ -148,7 +148,7 @@
       "upstream_source": "TheFinAI/flare-ma public test wrapper",
       "upstream_license": "public_wrapper_only_full_source_commercial_uncleared",
       "task_family": "binary_deal_completeness_classification_eval_only",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
