@@ -150,8 +150,6 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF task path:** `tasks/multifin_highlevel_topic_v0/`
 - **Publish record:** `manifests/publish/multifin_highlevel_v0_publish_record.json`
 
-<!-- ST312_PUBLISHED_MODULES_END -->
-
 ### 6) Salinas SEC loan-agreement NER v0
 - **Dataset ID:** `salinas_sec_loan_ner_v0`
 - **Task ID:** `TA_NER_SEC_LOAN_SALINAS_v0`
@@ -206,7 +204,6 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/lamm2018_tap_v0_publish_record.json`
 - **Labeling note:** author split preserved as released (`train=1000`, `test=97` in the public repo snapshot); benchmark target uses the reduced active graph label inventory from the author code path; public redistribution approval remains pending.
 
-
 ### 12) FLARE-MA Public Test v0
 - **Dataset ID:** `flare_ma_public_test_v0`
 - **Task ID:** `TA_MA_COMPLETENESS_FLARE_v0`
@@ -215,6 +212,8 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF task path:** `tasks/flare_ma_deal_completeness_v0/`
 - **Publish record:** `manifests/publish/flare_ma_public_test_v0_publish_record.json`
 - **Labeling note:** canonical artifact is the already-public `TheFinAI/flare-ma` wrapper; only the public 500-example `test` split is onboarded; this module is eval-only and does not imply source clearance for the full original Zephyr-derived corpus.
+
+<!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Validation
 
