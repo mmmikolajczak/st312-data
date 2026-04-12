@@ -222,6 +222,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/flare_mlesg_en_public_test_v0_publish_record.json`
 - **Labeling note:** canonical artifact is the already-public `TheFinAI/flare-mlesg` wrapper; only the public 300-example `test` split is onboarded; the wrapper exposes 33 labels although the original ML-ESG paper describes a 35-issue task; this module is eval-only and does not imply source clearance for the full original English corpus.
 
+### 14) DynamicESG ML-ESG-1 Chinese Official v0
+- **Dataset ID:** `ml_esg1_zh_official_v0`
+- **Task ID:** `TA_MLCLS_ML_ESG1_ZH_v0`
+- **Task type:** Chinese headline-only multi-label ESG issue classification
+- **HF dataset path:** `datasets/ml_esg1/zh_official/v0/`
+- **HF task path:** `tasks/ml_esg1_zh_issue_v0/`
+- **Publish record:** `manifests/publish/ml_esg1_zh_official_v0_publish_record.json`
+- **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese split release pinned to a concrete commit; official `train/dev/test` is preserved exactly; canonical text is the released headline only; labels are preserved as released multi-label code lists; family-stable `article_id` is included so ML-ESG-2 can later be onboarded as a separate published module.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -232,6 +241,14 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Only the public 300-example `test` split is onboarded
 - The wrapper shows 33 labels, although the original ML-ESG-1 paper describes a 35-issue task
 - This module is eval-only and does not imply source clearance for the full original English corpus
+
+### DynamicESG ML-ESG-1 Chinese Official
+
+- Canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese shared-task release pinned to a concrete Git commit
+- Official `train / dev / test` split is preserved exactly
+- Canonical text is headline only; no crawler enrichment or article-body recovery is included
+- Labels are preserved exactly as released multi-label ESG code lists, including observed codes such as `NN`
+- Future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
 
 ## Validation
 

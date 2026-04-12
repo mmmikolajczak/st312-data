@@ -142,6 +142,15 @@
       "task_readme_path": "tasks/flare_mlesg_en_issue_v0/README.md",
       "dataset_id": "flare_mlesg_en_public_test_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_MLCLS_ML_ESG1_ZH_v0",
+      "task_name": "Chinese ML-ESG-1 ESG issue identification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/ml_esg1_zh_issue_v0/task_spec.json",
+      "task_readme_path": "tasks/ml_esg1_zh_issue_v0/README.md",
+      "dataset_id": "ml_esg1_zh_official_v0",
+      "status": "published"
     }
   ]
 }

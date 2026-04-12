@@ -261,6 +261,30 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/flare_mlesg_en_public_test_v0_publish_record.json`
 
+### 14) DynamicESG ML-ESG-1 Chinese Official v0
+
+Dataset artifacts:
+- `datasets/ml_esg1/zh_official/v0/train.jsonl`
+- `datasets/ml_esg1/zh_official/v0/dev.jsonl`
+- `datasets/ml_esg1/zh_official/v0/test.jsonl`
+- `datasets/ml_esg1/zh_official/v0/label_inventory.json`
+- `datasets/ml_esg1/zh_official/v0/ingest_summary.json`
+- `datasets/ml_esg1/zh_official/v0/download_meta.json`
+
+Task requests:
+- `tasks/ml_esg1_zh_issue_v0/requests/train_requests.jsonl`
+- `tasks/ml_esg1_zh_issue_v0/requests/dev_requests.jsonl`
+- `tasks/ml_esg1_zh_issue_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/ml_esg1_zh_issue_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/ml_esg1_zh_official/ingest_audit.json`
+
+Publish bookkeeping:
+- `manifests/publish/ml_esg1_zh_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -337,6 +361,14 @@ We publish a 3-way discretised label using:
 - Only the public 300-example `test` split is onboarded
 - The wrapper shows 33 labels, although the original ML-ESG-1 paper describes a 35-issue task
 - This module is eval-only and does not imply source clearance for the full original English corpus
+
+### DynamicESG ML-ESG-1 Chinese Official
+
+- Canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese shared-task release pinned to a concrete Git commit
+- Official `train / dev / test` split is preserved exactly
+- Canonical text is headline only; no crawler enrichment or article-body recovery is included
+- Labels are preserved exactly as released multi-label ESG code lists, including observed codes such as `NN`
+- Future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
 
 ## Licensing
 

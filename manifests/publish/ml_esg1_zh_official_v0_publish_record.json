@@ -1,0 +1,33 @@
+{
+  "dataset_id": "ml_esg1_zh_official_v0",
+  "task_id": "TA_MLCLS_ML_ESG1_ZH_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": true,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "ml_esg1_zh_official_initial_publish": "44fb53a4b6aeb30a5c6f9c3e7de4c25f8ec61293",
+    "ml_esg1_zh_official_manifest_metadata_sync": "fc3ecce7a037a23f6459fc9afd6b6015f5779349",
+    "ml_esg1_zh_official_publish_record_sync": "3045f78a0b5a11aacfdefcf2f10dad0d0eb1e9aa",
+    "ml_esg1_zh_official_hf_readme_sync": "6350734168b83af15dce9cf7a5a8cd3480aa167d",
+    "ml_esg1_zh_official_final_publish_record_refresh": "b021b36969c1030181523d76af6bd2a89e3aa51a"
+  },
+  "artifacts_published": [
+    "datasets/ml_esg1/zh_official/v0/train.jsonl",
+    "datasets/ml_esg1/zh_official/v0/dev.jsonl",
+    "datasets/ml_esg1/zh_official/v0/test.jsonl",
+    "datasets/ml_esg1/zh_official/v0/label_inventory.json",
+    "datasets/ml_esg1/zh_official/v0/ingest_summary.json",
+    "datasets/ml_esg1/zh_official/v0/download_meta.json",
+    "reports/ml_esg1_zh_official/ingest_audit.json",
+    "tasks/ml_esg1_zh_issue_v0/requests/train_requests.jsonl",
+    "tasks/ml_esg1_zh_issue_v0/requests/dev_requests.jsonl",
+    "tasks/ml_esg1_zh_issue_v0/requests/test_requests.jsonl",
+    "tasks/ml_esg1_zh_issue_v0/README.md",
+    "manifests/datasets/ml_esg1_zh_official_v0/dataset_spec.json",
+    "manifests/datasets/ml_esg1_zh_official_v0/checksums.sha256",
+    "manifests/tasks/ml_esg1_zh_issue_v0/task_spec.json",
+    "manifests/publish/ml_esg1_zh_official_v0_publish_record.json"
+  ],
+  "notes": "Published official Chinese ML-ESG-1 shared-task split release from DynamicESG commit 4f1bd162504c35df17100ff708ebdf04c68e2b10. Canonical text is headline only, no crawler enrichment is included, and future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics."
+}

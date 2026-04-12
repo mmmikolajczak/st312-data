@@ -1,0 +1,100 @@
+{
+  "dataset_id": "ml_esg1_zh_official_v0",
+  "dataset_name": "DynamicESG ML-ESG-1 Chinese Official Split Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/ml_esg1_zh_official_v0",
+  "provenance": {
+    "canonical_paper_title": "DynamicESG: A Dataset for Dynamically Unearthing ESG Ratings from News Articles",
+    "canonical_paper_venue": "CIKM 2023",
+    "official_repo": "ymntseng/DynamicESG",
+    "official_repo_url": "https://github.com/ymntseng/DynamicESG",
+    "source_commit": "4f1bd162504c35df17100ff708ebdf04c68e2b10",
+    "source_paths": [
+      "data/ML-ESG-1_Chinese/Train.json",
+      "data/ML-ESG-1_Chinese/Dev.json",
+      "data/ML-ESG-1_Chinese/Test.json"
+    ],
+    "source_display_urls": [
+      "https://github.com/ymntseng/DynamicESG/blob/4f1bd162504c35df17100ff708ebdf04c68e2b10/data/ML-ESG-1_Chinese/Train.json",
+      "https://github.com/ymntseng/DynamicESG/blob/4f1bd162504c35df17100ff708ebdf04c68e2b10/data/ML-ESG-1_Chinese/Dev.json",
+      "https://github.com/ymntseng/DynamicESG/blob/4f1bd162504c35df17100ff708ebdf04c68e2b10/data/ML-ESG-1_Chinese/Test.json"
+    ],
+    "notes": [
+      "This module uses the official Chinese ML-ESG-1 shared-task split release only.",
+      "Canonical input text is headline only.",
+      "No crawler enrichment, article-body recovery, heuristic relabeling, or split modification is included.",
+      "Family-stable article_id is included so future ML-ESG-2 onboarding can remain a separate published module while still supporting cross-task joins."
+    ]
+  },
+  "raw": {
+    "files": {
+      "train_json": "data/ml_esg1_zh_official/raw/Train.json",
+      "dev_json": "data/ml_esg1_zh_official/raw/Dev.json",
+      "test_json": "data/ml_esg1_zh_official/raw/Test.json"
+    },
+    "meta_files": {
+      "download_meta": "data/ml_esg1_zh_official/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "official_split_headline_only_v0",
+    "files": {
+      "train": "data/ml_esg1_zh_official/processed/train.jsonl",
+      "dev": "data/ml_esg1_zh_official/processed/dev.jsonl",
+      "test": "data/ml_esg1_zh_official/processed/test.jsonl",
+      "label_inventory": "data/ml_esg1_zh_official/processed/label_inventory.json",
+      "ingest_summary": "data/ml_esg1_zh_official/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "ingest_audit": "reports/ml_esg1_zh_official/ingest_audit.json"
+    }
+  },
+  "schema": {
+    "row_type": "headline_level_multilabel_issue_classification",
+    "primary_text_field": "text",
+    "text_semantics": "headline_only",
+    "label_field": "labels",
+    "label_value_type": "sorted_unique_code_list",
+    "article_id_field": "article_id",
+    "example_id_field": "example_id"
+  },
+  "label_scheme": {
+    "type": "multilabel_code_list",
+    "task": "esg_issue_identification",
+    "inventory_source": "inferred_from_official_release",
+    "labels": [
+      "E00", "E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10", "E11", "E12", "E13",
+      "G00", "G01", "G02", "G03", "G04", "G05", "G06", "G07", "G08", "G09", "G10", "G11",
+      "NN",
+      "S00", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20"
+    ],
+    "inventory_size": 48,
+    "code_pattern_note": "Observed official labels include codes such as E00 and NN; the inventory is inferred from the release rather than guessed from a narrower hand-written schema."
+  },
+  "split_policy": {
+    "type": "official_preserved_train_dev_test",
+    "train_split": "train",
+    "dev_split": "dev",
+    "test_split": "test"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/ml_esg1/zh_official/v0",
+    "upstream_license": "cc-by-sa-4.0",
+    "upstream_license_name": "Creative Commons Attribution-ShareAlike 4.0 International",
+    "upstream_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "upstream_license_note": "The DynamicESG repo includes a CC BY-SA 4.0 license file. This module publishes the official Chinese ML-ESG-1 split release in headline-only task format without crawler enrichment.",
+    "published_commit": "44fb53a4b6aeb30a5c6f9c3e7de4c25f8ec61293",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/44fb53a4b6aeb30a5c6f9c3e7de4c25f8ec61293",
+    "release_scope": "private_hf_repo_standard_release_official_split"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": false
+  }
+}

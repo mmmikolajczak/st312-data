@@ -5,3 +5,5 @@ __pycache__/
 .DS_Store
 .hf_stage/
 .hf_stage_*/
+reports/ml_esg1_zh_official/ml_esg1_zh_test_dummy_gold_completions.jsonl
+reports/ml_esg1_zh_official/ml_esg1_zh_test_eval_report.json

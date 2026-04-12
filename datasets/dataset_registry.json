@@ -160,6 +160,17 @@
       "upstream_license": "public_wrapper_only_benchmark_claim_cc_by_nc_nd_full_source_uncleared",
       "task_family": "esg_issue_identification_eval_only",
       "status": "published"
+    },
+    {
+      "dataset_id": "ml_esg1_zh_official_v0",
+      "dataset_name": "DynamicESG ML-ESG-1 Chinese Official Split Release",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/ml_esg1_zh_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "ymntseng/DynamicESG official ML-ESG-1 Chinese split release",
+      "upstream_license": "cc-by-sa-4.0",
+      "task_family": "multilabel_esg_issue_identification_zh",
+      "status": "published"
     }
   ]
 }

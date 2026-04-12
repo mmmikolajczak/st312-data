@@ -1,0 +1,277 @@
+{
+  "split_counts": {
+    "train": 1058,
+    "dev": 118,
+    "test": 131
+  },
+  "label_inventory": [
+    "E00",
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "E06",
+    "E07",
+    "E08",
+    "E09",
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "G00",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10",
+    "G11",
+    "NN",
+    "S00",
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20"
+  ],
+  "label_inventory_size": 48,
+  "label_frequencies": {
+    "E00": 297,
+    "E01": 409,
+    "E02": 126,
+    "E03": 20,
+    "E04": 92,
+    "E05": 63,
+    "E06": 63,
+    "E07": 100,
+    "E08": 93,
+    "E09": 15,
+    "E10": 163,
+    "E11": 216,
+    "E12": 55,
+    "E13": 66,
+    "G00": 85,
+    "G01": 167,
+    "G02": 86,
+    "G03": 60,
+    "G04": 46,
+    "G05": 127,
+    "G06": 58,
+    "G07": 77,
+    "G08": 391,
+    "G09": 45,
+    "G10": 10,
+    "G11": 52,
+    "NN": 87,
+    "S00": 106,
+    "S01": 264,
+    "S02": 83,
+    "S03": 144,
+    "S04": 33,
+    "S05": 114,
+    "S06": 17,
+    "S07": 23,
+    "S08": 70,
+    "S09": 126,
+    "S10": 18,
+    "S11": 27,
+    "S12": 115,
+    "S13": 288,
+    "S14": 176,
+    "S15": 1,
+    "S16": 58,
+    "S17": 39,
+    "S18": 24,
+    "S19": 16,
+    "S20": 29
+  },
+  "label_cardinality_distribution": {
+    "1": 160,
+    "2": 202,
+    "3": 302,
+    "4": 265,
+    "5": 155,
+    "6": 115,
+    "7": 60,
+    "8": 24,
+    "9": 14,
+    "10": 6,
+    "11": 2,
+    "12": 1,
+    "13": 1
+  },
+  "cross_split_duplicate_article_ids": {
+    "train__dev": {
+      "count": 0,
+      "sample": []
+    },
+    "train__test": {
+      "count": 0,
+      "sample": []
+    },
+    "dev__test": {
+      "count": 0,
+      "sample": []
+    }
+  },
+  "duplicate_headline_audit": {
+    "count": 4,
+    "sample": [
+      {
+        "value": "1000天的煎熬！為何一封「不尋常」信函，讓長榮海運被外資列為「投資黑名單」，歷經3年才「洗白」?",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_367",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_367"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_369",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_369"
+          }
+        ]
+      },
+      {
+        "value": "裁員潮下，誰是箭靶？微軟前人資副總裁：除了約聘職，這 2 種員工也很危險",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2321",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_2321"
+          },
+          {
+            "split": "dev",
+            "article_id": "dynamicesg_bt_2369",
+            "example_id": "ml_esg1_zh_official_v0__dev__dynamicesg_bt_2369"
+          }
+        ]
+      },
+      {
+        "value": "豐田2030年推30款電動車》從不屑到不追不行，第3代掌門人為何決定「認錯」對決特斯拉？",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_1425",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_1425"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_1426",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_1426"
+          }
+        ]
+      },
+      {
+        "value": "踢完世足賽全場絕不讓球衣破！代工9國戰袍，adidas、NIKE都老客戶…遠東新如何「土法煉鋼」？",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2340",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_2340"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2436",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_2436"
+          }
+        ]
+      }
+    ]
+  },
+  "duplicate_url_audit": {
+    "count": 2,
+    "sample": [
+      {
+        "value": "https://esg.businesstoday.com.tw/article/category/180689/post/202211110010",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2321",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_2321"
+          },
+          {
+            "split": "dev",
+            "article_id": "dynamicesg_bt_2369",
+            "example_id": "ml_esg1_zh_official_v0__dev__dynamicesg_bt_2369"
+          }
+        ]
+      },
+      {
+        "value": "https://esg.businesstoday.com.tw/article/category/180689/post/202211160009",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2340",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_2340"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2436",
+            "example_id": "ml_esg1_zh_official_v0__train__dynamicesg_bt_2436"
+          }
+        ]
+      }
+    ]
+  },
+  "missing_field_counts": {
+    "pk": 0,
+    "URL": 0,
+    "News_Headline": 0,
+    "ESG_Category": 0
+  },
+  "label_regex_sanity": {
+    "pattern": "^(?:[ESG]\\d{2}|NN)$",
+    "nonmatching_labels": [],
+    "note": "Observed official labels are reported but not rejected merely for regex mismatch."
+  },
+  "validation_summary_by_split": {
+    "train": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "ESG_Category": 0
+      },
+      "unexpected_label_codes": []
+    },
+    "dev": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "ESG_Category": 0
+      },
+      "unexpected_label_codes": []
+    },
+    "test": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "ESG_Category": 0
+      },
+      "unexpected_label_codes": []
+    }
+  }
+}
