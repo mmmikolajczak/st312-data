@@ -8,7 +8,8 @@
   "hf_commits": {
     "flare_ma_initial_publish": "774053ba0f33579509110b0aac23b3e4d981e7dc",
     "flare_ma_docs_sync": "755c6b5513d0cd018a02a0abb441606203f869fd",
-    "flare_ma_publish_record_fix": "31792a5221225b23800ed4967ec12d9e13f44c1e"
+    "flare_ma_publish_record_fix": "31792a5221225b23800ed4967ec12d9e13f44c1e",
+    "flare_ma_final_publish_record_sync": "3f62ded6277867acee759750c1cf0f0bd119d853"
   },
   "artifacts_published": [
     "datasets/flare_ma/public_test/v0/test.jsonl",
