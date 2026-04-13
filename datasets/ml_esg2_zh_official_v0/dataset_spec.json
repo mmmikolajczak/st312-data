@@ -24,7 +24,7 @@
       "Canonical input text is headline only.",
       "No crawler enrichment, article-body recovery, class collapsing, or split modification is included.",
       "The official release stores Impact_Type as a singleton list, but the canonical task target is normalized to a scalar impact_type label while preserving the original list in metadata.",
-      "Family-stable article_id is reused from the ML-ESG Chinese family so future ML-ESG-3 onboarding can remain a separate published module while still supporting cross-task joins."
+      "Family-stable article_id is reused from the ML-ESG Chinese family so cross-task joins remain straightforward across ML-ESG-1, ML-ESG-2, ML-ESG-3, and future sibling modules."
     ]
   },
   "raw": {

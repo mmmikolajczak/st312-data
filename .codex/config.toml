@@ -1,11 +1,8 @@
-profile = "st312_pipeline"
-
-[profiles.st312_pipeline]
 model_reasoning_effort = "high"
 model_reasoning_summary = "concise"
 sandbox_mode = "workspace-write"
 approval_policy = "never"
-web_search = "enabled"
+web_search = "live"
 
 [sandbox_workspace_write]
 network_access = true

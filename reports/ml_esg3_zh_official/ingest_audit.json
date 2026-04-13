@@ -1,0 +1,113 @@
+{
+  "split_counts": {
+    "train": 995,
+    "dev": 111,
+    "test": 123
+  },
+  "label_inventory": [
+    "<2",
+    "2~5",
+    ">5",
+    "NotRelatedtoCompany",
+    "NotRelatedtoESGTopic"
+  ],
+  "label_inventory_size": 5,
+  "label_frequencies": {
+    "2~5": 69,
+    "<2": 97,
+    ">5": 226,
+    "NotRelatedtoCompany": 659,
+    "NotRelatedtoESGTopic": 178
+  },
+  "label_cardinality_distribution": {
+    "1": 1229
+  },
+  "cross_split_duplicate_article_ids": {
+    "train__dev": {
+      "count": 0,
+      "sample": []
+    },
+    "train__test": {
+      "count": 0,
+      "sample": []
+    },
+    "dev__test": {
+      "count": 0,
+      "sample": []
+    }
+  },
+  "duplicate_headline_audit": {
+    "count": 1,
+    "sample": [
+      {
+        "value": "面對缺電・水荒，油電水價仍穿「國王的新衣」!　台積電未來3年水電需求再增1倍，台灣準備好了嗎？",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_853",
+            "example_id": "ml_esg3_zh_official_v0__train__dynamicesg_bt_853"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_852",
+            "example_id": "ml_esg3_zh_official_v0__train__dynamicesg_bt_852"
+          }
+        ]
+      }
+    ]
+  },
+  "duplicate_url_audit": {
+    "count": 0,
+    "sample": []
+  },
+  "missing_field_counts": {
+    "pk": 0,
+    "URL": 0,
+    "News_Headline": 0,
+    "Impact_Duration": 0
+  },
+  "validation_summary_by_split": {
+    "train": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "Impact_Duration": 0
+      },
+      "observed_labels": [
+        "2~5",
+        "<2",
+        ">5",
+        "NotRelatedtoCompany",
+        "NotRelatedtoESGTopic"
+      ]
+    },
+    "dev": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "Impact_Duration": 0
+      },
+      "observed_labels": [
+        "2~5",
+        "<2",
+        ">5",
+        "NotRelatedtoCompany",
+        "NotRelatedtoESGTopic"
+      ]
+    },
+    "test": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "Impact_Duration": 0
+      },
+      "observed_labels": [
+        "NotRelatedtoESGTopic"
+      ]
+    }
+  },
+  "release_vs_workshop_note": "The pinned released JSON exposes a 5-label single-label duration task including NotRelatedtoCompany and NotRelatedtoESGTopic, which is broader than the narrower 3-duration-label framing in workshop materials."
+}

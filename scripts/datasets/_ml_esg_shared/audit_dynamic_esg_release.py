@@ -116,3 +116,14 @@ def build_single_label_ingest_audit(
         validation_summary_by_split,
         label_getter=lambda row: [row["impact_type"]],
     )
+
+
+def build_duration_ingest_audit(
+    processed_by_split: dict[str, list[dict]],
+    validation_summary_by_split: dict[str, dict],
+) -> dict:
+    return _build_common_audit(
+        processed_by_split,
+        validation_summary_by_split,
+        label_getter=lambda row: [row["impact_duration"]],
+    )

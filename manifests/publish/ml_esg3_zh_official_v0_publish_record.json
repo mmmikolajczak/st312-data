@@ -1,0 +1,29 @@
+{
+  "dataset_id": "ml_esg3_zh_official_v0",
+  "task_id": "TA_MLCLS_ML_ESG3_ZH_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "ml_esg3_zh_official_initial_publish": "TO_BE_FILLED_WITH_REAL_HF_COMMIT_HASH"
+  },
+  "artifacts_published": [
+    "datasets/ml_esg3/zh_official/v0/train.jsonl",
+    "datasets/ml_esg3/zh_official/v0/dev.jsonl",
+    "datasets/ml_esg3/zh_official/v0/test.jsonl",
+    "datasets/ml_esg3/zh_official/v0/label_inventory.json",
+    "datasets/ml_esg3/zh_official/v0/ingest_summary.json",
+    "datasets/ml_esg3/zh_official/v0/download_meta.json",
+    "reports/ml_esg3_zh_official/ingest_audit.json",
+    "tasks/ml_esg3_zh_impact_duration_v0/requests/train_requests.jsonl",
+    "tasks/ml_esg3_zh_impact_duration_v0/requests/dev_requests.jsonl",
+    "tasks/ml_esg3_zh_impact_duration_v0/requests/test_requests.jsonl",
+    "tasks/ml_esg3_zh_impact_duration_v0/README.md",
+    "manifests/datasets/ml_esg3_zh_official_v0/dataset_spec.json",
+    "manifests/datasets/ml_esg3_zh_official_v0/checksums.sha256",
+    "manifests/tasks/ml_esg3_zh_impact_duration_v0/task_spec.json",
+    "manifests/publish/ml_esg3_zh_official_v0_publish_record.json"
+  ],
+  "notes": "Published official Chinese ML-ESG-3 shared-task split release from DynamicESG commit 4f1bd162504c35df17100ff708ebdf04c68e2b10. Canonical text is headline only, the released 5-label impact duration label space is preserved exactly, and the released JSON is treated as canonical even though workshop materials present a narrower 3-duration-label framing."
+}

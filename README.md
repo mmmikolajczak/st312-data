@@ -229,7 +229,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF dataset path:** `datasets/ml_esg1/zh_official/v0/`
 - **HF task path:** `tasks/ml_esg1_zh_issue_v0/`
 - **Publish record:** `manifests/publish/ml_esg1_zh_official_v0_publish_record.json`
-- **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese split release pinned to a concrete commit; official `train/dev/test` is preserved exactly; canonical text is the released headline only; labels are preserved as released multi-label code lists; the pinned release differs from the FinNLP 2023 workshop paper statistics and is treated as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory; family-stable `article_id` supports cross-task joins with ML-ESG-2 and future ML-ESG-3 onboarding as a separate sibling module.
+- **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-1 Chinese split release pinned to a concrete commit; official `train/dev/test` is preserved exactly; canonical text is the released headline only; labels are preserved as released multi-label code lists; the pinned release differs from the FinNLP 2023 workshop paper statistics and is treated as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory; family-stable `article_id` supports cross-task joins across ML-ESG-1, ML-ESG-2, ML-ESG-3, and future DynamicESG sibling modules.
 
 ### 15) DynamicESG ML-ESG-2 Chinese Official v0
 - **Dataset ID:** `ml_esg2_zh_official_v0`
@@ -239,6 +239,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF task path:** `tasks/ml_esg2_zh_impact_type_v0/`
 - **Publish record:** `manifests/publish/ml_esg2_zh_official_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-2 Chinese split release pinned to the same family commit as ML-ESG-1; official `train/dev/test` is preserved exactly; canonical text is the released headline only; the official 5-way impact type space is preserved exactly as `Opportunity`, `Risk`, `CannotDistinguish`, `NotRelatedtoCompany`, and `NotRelatedtoESGTopic`; `Impact_Type` is normalized from the released singleton list to a scalar canonical label while preserving the raw list in metadata.
+
+### 16) DynamicESG ML-ESG-3 Chinese Official v0
+- **Dataset ID:** `ml_esg3_zh_official_v0`
+- **Task ID:** `TA_MLCLS_ML_ESG3_ZH_v0`
+- **Task type:** Chinese headline-only 5-way single-label ESG impact duration classification
+- **HF dataset path:** `datasets/ml_esg3/zh_official/v0/`
+- **HF task path:** `tasks/ml_esg3_zh_impact_duration_v0/`
+- **Publish record:** `manifests/publish/ml_esg3_zh_official_v0_publish_record.json`
+- **Labeling note:** canonical source is the official `ymntseng/DynamicESG` ML-ESG-3 Chinese split release pinned to the same family commit as ML-ESG-1 and ML-ESG-2; official `train/dev/test` is preserved exactly; canonical text is the released headline only; the released 5-way impact duration space is preserved exactly as `<2`, `2~5`, `>5`, `NotRelatedtoCompany`, and `NotRelatedtoESGTopic`; `Impact_Duration` is normalized from the released singleton list to a scalar canonical label while preserving the raw list in metadata; the released JSON is treated as canonical even though workshop materials present a narrower 3-duration-label framing.
 
 <!-- ST312_PUBLISHED_MODULES_END -->
 
@@ -258,7 +267,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical text is headline only; no crawler enrichment or article-body recovery is included
 - Labels are preserved exactly as released multi-label ESG code lists, including observed codes such as `NN`
 - The pinned official release differs from the FinNLP 2023 workshop paper statistics; this module follows the pinned release as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory
-- Family-stable `article_id` supports cross-task joins with ML-ESG-2, and future ML-ESG-3 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
+- Family-stable `article_id` supports cross-task joins across ML-ESG-1, ML-ESG-2, ML-ESG-3, and future DynamicESG sibling modules
 
 ### DynamicESG ML-ESG-2 Chinese Official
 
@@ -267,7 +276,16 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical text is headline only; no crawler enrichment or article-body recovery is included
 - The official label space is preserved exactly as a 5-way single-label task: `Opportunity`, `Risk`, `CannotDistinguish`, `NotRelatedtoCompany`, `NotRelatedtoESGTopic`
 - Upstream `Impact_Type` is stored as a singleton list and is normalized to a scalar canonical label while preserving the raw list in metadata
-- Future ML-ESG-3 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
+- Family-stable `article_id` supports cross-task joins across ML-ESG-1, ML-ESG-2, ML-ESG-3, and future DynamicESG sibling modules
+
+### DynamicESG ML-ESG-3 Chinese Official
+
+- Canonical source is the official `ymntseng/DynamicESG` ML-ESG-3 Chinese shared-task release pinned to the same family commit as ML-ESG-1 and ML-ESG-2
+- Official `train / dev / test` split is preserved exactly
+- Canonical text is headline only; no crawler enrichment or article-body recovery is included
+- The released label space is preserved exactly as a 5-way single-label task: `<2`, `2~5`, `>5`, `NotRelatedtoCompany`, `NotRelatedtoESGTopic`
+- Upstream `Impact_Duration` is stored as a singleton list and is normalized to a scalar canonical label while preserving the raw list in metadata
+- The pinned released JSON is treated as canonical even though workshop materials present a narrower 3-duration-label framing
 
 ## Validation
 

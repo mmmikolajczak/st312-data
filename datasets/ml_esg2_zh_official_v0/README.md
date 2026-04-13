@@ -11,7 +11,7 @@ Official shared-task release module for Chinese ML-ESG-2 ESG impact type classif
 - official `train / dev / test` split preserved exactly
 - no binary or 3-way collapsing is applied
 - family-stable `article_id` reused from the ML-ESG Chinese family
-- future ML-ESG-3 will be published as a separate sibling dataset/task module
+- family-stable `article_id` supports cross-task joins across ML-ESG-1, ML-ESG-2, ML-ESG-3, and future DynamicESG sibling modules
 
 ## Canonical provenance
 - Official repo: `https://github.com/ymntseng/DynamicESG`

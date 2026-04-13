@@ -182,6 +182,17 @@
       "upstream_license": "cc-by-sa-4.0",
       "task_family": "single_label_esg_impact_type_classification_zh",
       "status": "published"
+    },
+    {
+      "dataset_id": "ml_esg3_zh_official_v0",
+      "dataset_name": "DynamicESG ML-ESG-3 Chinese Official Split Release",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/ml_esg3_zh_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "ymntseng/DynamicESG official ML-ESG-3 Chinese split release",
+      "upstream_license": "cc-by-sa-4.0",
+      "task_family": "single_label_esg_impact_duration_classification_zh",
+      "status": "published"
     }
   ]
 }

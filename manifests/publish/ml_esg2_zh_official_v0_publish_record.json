@@ -29,5 +29,5 @@
     "manifests/tasks/ml_esg2_zh_impact_type_v0/task_spec.json",
     "manifests/publish/ml_esg2_zh_official_v0_publish_record.json"
   ],
-  "notes": "Published official Chinese ML-ESG-2 shared-task split release from DynamicESG commit 4f1bd162504c35df17100ff708ebdf04c68e2b10. Canonical text is headline only, the official 5-way impact type label space is preserved exactly, and future ML-ESG-3 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics."
+  "notes": "Published official Chinese ML-ESG-2 shared-task split release from DynamicESG commit 4f1bd162504c35df17100ff708ebdf04c68e2b10. Canonical text is headline only, the official 5-way impact type label space is preserved exactly, and family-stable article_id supports cross-task joins across ML-ESG-1, ML-ESG-2, ML-ESG-3, and future DynamicESG sibling modules."
 }

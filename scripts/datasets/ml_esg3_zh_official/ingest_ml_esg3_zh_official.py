@@ -1,0 +1,158 @@
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+SHARED_DIR = SCRIPT_DIR.parent / "_ml_esg_shared"
+if str(SHARED_DIR) not in sys.path:
+    sys.path.insert(0, str(SHARED_DIR))
+
+from audit_dynamic_esg_release import build_duration_ingest_audit  # noqa: E402
+from download_dynamic_esg_release import (  # noqa: E402
+    SOURCE_REPO,
+    download_release_files,
+    write_download_meta,
+)
+from validate_dynamic_esg_release import validate_and_build_duration_rows  # noqa: E402
+
+
+DATASET_ID = "ml_esg3_zh_official_v0"
+PINNED_SOURCE_COMMIT = "4f1bd162504c35df17100ff708ebdf04c68e2b10"
+RAW_DIR = Path("data/ml_esg3_zh_official/raw")
+PROCESSED_DIR = Path("data/ml_esg3_zh_official/processed")
+REPORTS_DIR = Path("reports/ml_esg3_zh_official")
+SOURCE_PATHS = [
+    "data/ML-ESG-3_Chinese/Train.json",
+    "data/ML-ESG-3_Chinese/Dev.json",
+    "data/ML-ESG-3_Chinese/Test.json",
+]
+SPLIT_TO_SOURCE = {
+    "train": "data/ML-ESG-3_Chinese/Train.json",
+    "dev": "data/ML-ESG-3_Chinese/Dev.json",
+    "test": "data/ML-ESG-3_Chinese/Test.json",
+}
+DOWNLOAD_META_PATH = RAW_DIR / "download_meta.json"
+LABEL_INVENTORY_PATH = PROCESSED_DIR / "label_inventory.json"
+INGEST_SUMMARY_PATH = PROCESSED_DIR / "ingest_summary.json"
+AUDIT_PATH = REPORTS_DIR / "ingest_audit.json"
+CANONICAL_DURATION_LABEL_ORDER = [
+    "<2",
+    "2~5",
+    ">5",
+    "NotRelatedtoCompany",
+    "NotRelatedtoESGTopic",
+]
+
+
+def write_jsonl(path: Path, rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
+def canonical_duration_inventory(labels: list[str]) -> list[str]:
+    label_set = set(labels)
+    if label_set.issubset(set(CANONICAL_DURATION_LABEL_ORDER)):
+        return [label for label in CANONICAL_DURATION_LABEL_ORDER if label in label_set]
+    return sorted(label_set)
+
+
+def main() -> None:
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    download_meta, copied_files = download_release_files(
+        RAW_DIR,
+        SOURCE_PATHS,
+        checkout_commit=PINNED_SOURCE_COMMIT,
+    )
+    if download_meta["source_commit"] != PINNED_SOURCE_COMMIT:
+        raise RuntimeError(
+            f"Expected pinned source commit {PINNED_SOURCE_COMMIT}, got {download_meta['source_commit']}"
+        )
+    write_download_meta(DOWNLOAD_META_PATH, download_meta)
+
+    raw_rows_by_split = {}
+    observed_label_inventory = set()
+    for split, source_path in SPLIT_TO_SOURCE.items():
+        raw_rows = json.loads(copied_files[source_path].read_text(encoding="utf-8"))
+        raw_rows_by_split[split] = raw_rows
+        for row in raw_rows:
+            values = row.get("Impact_Duration")
+            if isinstance(values, list) and len(values) == 1 and isinstance(values[0], str):
+                normalized = " ".join(values[0].split())
+                if normalized:
+                    observed_label_inventory.add(normalized)
+    allowed_labels = set(sorted(observed_label_inventory))
+
+    processed_by_split = {}
+    validation_summary_by_split = {}
+    for split, source_path in SPLIT_TO_SOURCE.items():
+        processed_rows, validation_summary = validate_and_build_duration_rows(
+            dataset_id=DATASET_ID,
+            split=split,
+            source_repo=SOURCE_REPO,
+            source_commit=download_meta["source_commit"],
+            source_path=source_path,
+            rows=raw_rows_by_split[split],
+            allowed_labels=allowed_labels,
+        )
+        processed_by_split[split] = processed_rows
+        validation_summary_by_split[split] = validation_summary
+        write_jsonl(PROCESSED_DIR / f"{split}.jsonl", processed_rows)
+
+    audit = build_duration_ingest_audit(processed_by_split, validation_summary_by_split)
+    audit["release_vs_workshop_note"] = (
+        "The pinned released JSON exposes a 5-label single-label duration task including "
+        "NotRelatedtoCompany and NotRelatedtoESGTopic, which is broader than the narrower 3-duration-label framing in workshop materials."
+    )
+    label_inventory = canonical_duration_inventory(audit["label_inventory"])
+    audit["label_inventory"] = label_inventory
+    AUDIT_PATH.write_text(json.dumps(audit, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    LABEL_INVENTORY_PATH.write_text(
+        json.dumps(
+            {
+                "dataset_id": DATASET_ID,
+                "source_repo": SOURCE_REPO,
+                "source_commit": download_meta["source_commit"],
+                "labels": label_inventory,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    ingest_summary = {
+        "dataset_id": DATASET_ID,
+        "source_repo": SOURCE_REPO,
+        "source_commit": download_meta["source_commit"],
+        "splits": audit["split_counts"],
+        "label_inventory_size": audit["label_inventory_size"],
+        "label_inventory": label_inventory,
+        "headline_only": True,
+        "official_split_preserved": True,
+        "source_paths": SOURCE_PATHS,
+        "release_vs_workshop_note": audit["release_vs_workshop_note"],
+        "download_meta_file": str(DOWNLOAD_META_PATH),
+        "ingest_audit_file": str(AUDIT_PATH),
+    }
+    INGEST_SUMMARY_PATH.write_text(json.dumps(ingest_summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    print("[DONE] ML-ESG-3 Chinese official ingest complete")
+    print(f"[SOURCE_COMMIT] {download_meta['source_commit']}")
+    print(f"[TRAIN] data/ml_esg3_zh_official/processed/train.jsonl ({len(processed_by_split['train'])} rows)")
+    print(f"[DEV]   data/ml_esg3_zh_official/processed/dev.jsonl ({len(processed_by_split['dev'])} rows)")
+    print(f"[TEST]  data/ml_esg3_zh_official/processed/test.jsonl ({len(processed_by_split['test'])} rows)")
+    print(f"[LABELS] {audit['label_inventory_size']}")
+    print(f"[AUDIT] {AUDIT_PATH}")
+
+
+if __name__ == "__main__":
+    main()
