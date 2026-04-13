@@ -8,6 +8,7 @@ Official FinQA program-generation module sourced from the pinned `czyssrs/FinQA`
 - the official README documents 2022 bugfix history that matters for reproducibility
 - canonical public supervised splits are `train / dev / test`
 - `private_test.json` is kept raw for provenance only and is not part of the supervised canonical publication
+- a small non-sensitive `private_test_summary.json` provenance artifact may be published to document count and exclusion policy without releasing raw private-test content
 - canonical task target is executable program generation in the FinQA DSL, not answer-only QA
 - schema drift exists between the official repo README summary and secondary loaders or mirrors, so this module follows the empirically observed pinned-repo schema
 - official source repo license is MIT; the Hugging Face mirror metadata differs and is not treated as canonical

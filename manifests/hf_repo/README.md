@@ -341,6 +341,7 @@ Dataset artifacts:
 - `datasets/finqa/official/v0/label_inventory.json`
 - `datasets/finqa/official/v0/ingest_summary.json`
 - `datasets/finqa/official/v0/download_meta.json`
+- `datasets/finqa/official/v0/private_test_summary.json`
 
 Task requests:
 - `tasks/finqa_program_generation_v0/requests/train_requests.jsonl`
@@ -461,7 +462,7 @@ We publish a 3-way discretised label using:
 - Canonical source is the official `czyssrs/FinQA` GitHub repo pinned to a concrete commit because the repo has no tagged releases
 - The pinned source commit is chosen from a repo state that includes the documented 2022 reproducibility bugfix notes from the official README
 - Canonical public supervised splits are `train / dev / test`
-- `private_test.json` is kept raw for provenance only and is excluded from the supervised canonical publication because it has no references
+- `private_test.json` is kept raw for provenance only and is excluded from the supervised canonical publication because it has no references; only a tiny non-sensitive `private_test_summary.json` provenance artifact is published
 - Canonical target is executable program generation in the FinQA DSL, not answer-only QA
 - Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
 - The official repo is MIT-licensed; the Hugging Face mirror metadata differs and is not treated as canonical

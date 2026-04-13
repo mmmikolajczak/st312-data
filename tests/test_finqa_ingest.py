@@ -1,3 +1,4 @@
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -12,6 +13,7 @@ for path in [INGEST_DIR, TASK_SHARED]:
 
 from ingest_finqa_official import (  # noqa: E402
     PRIVATE_TEST_PATH,
+    PRIVATE_TEST_SUMMARY_PATH,
     PUBLIC_SPLIT_PATHS,
     build_processed_row,
     derive_report_page_id,
@@ -59,6 +61,12 @@ class FinqaIngestTests(unittest.TestCase):
 
     def test_private_test_is_not_a_public_split(self):
         self.assertNotIn(PRIVATE_TEST_PATH, PUBLIC_SPLIT_PATHS.values())
+
+    def test_private_test_summary_artifact_exists_and_is_not_supervised(self):
+        summary = json.loads(PRIVATE_TEST_SUMMARY_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(summary["split"], "private_test")
+        self.assertTrue(summary["no_references"])
+        self.assertFalse(summary["published_in_supervised_canonical_dataset"])
 
 
 if __name__ == "__main__":

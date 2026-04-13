@@ -8,7 +8,7 @@ SHARED_DIR = REPO_ROOT / "scripts" / "tasks" / "_finqa_shared"
 if str(SHARED_DIR) not in sys.path:
     sys.path.insert(0, str(SHARED_DIR))
 
-from execute_finqa_program import equal_program, eval_program  # noqa: E402
+from execute_finqa_program import equal_program, eval_program, execution_matches_gold  # noqa: E402
 from normalize_finqa_answer import normalize_finqa_answer  # noqa: E402
 
 
@@ -41,6 +41,13 @@ class FinqaExecutorTests(unittest.TestCase):
     def test_answer_normalization(self):
         self.assertEqual(normalize_finqa_answer(127.40000), "127.4")
         self.assertEqual(normalize_finqa_answer("yes"), "yes")
+
+    def test_execution_match_uses_canonical_normalization(self):
+        program = ["divide(", "10", "4", ")", "EOF"]
+        matches, invalid, result = execution_matches_gold(program, self.table, "2.5")
+        self.assertEqual(invalid, 0)
+        self.assertEqual(result, 2.5)
+        self.assertTrue(matches)
 
     def test_symbolic_program_equivalence(self):
         gold = ["add(", "1", "2", ")", "EOF"]

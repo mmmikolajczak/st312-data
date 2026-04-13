@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from sympy import simplify
 
+from normalize_finqa_answer import normalize_finqa_answer
+
 
 OFFICIAL_OPERATION_NAMES = [
     "add",
@@ -295,4 +297,6 @@ def program_exact_match(gold_program: list[str], predicted_program: list[str]) -
 
 def execution_matches_gold(program: list[str], table: list[list[str]], gold_answer: object) -> tuple[bool, int, object]:
     invalid_flag, result = eval_program(program, table)
-    return invalid_flag == 0 and result == gold_answer, invalid_flag, result
+    normalized_result = normalize_finqa_answer(result)
+    normalized_gold = normalize_finqa_answer(gold_answer)
+    return invalid_flag == 0 and normalized_result == normalized_gold, invalid_flag, result

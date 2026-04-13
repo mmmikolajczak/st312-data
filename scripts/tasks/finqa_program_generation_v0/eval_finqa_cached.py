@@ -99,7 +99,7 @@ def main() -> None:
         execution_match, _, _ = execution_matches_gold(
             pred_tokens,
             rec["table"],
-            rec["gold_answer_raw"].get("exe_ans"),
+            rec["gold_execution_answer"],
         )
         if execution_match:
             n_execution_correct += 1

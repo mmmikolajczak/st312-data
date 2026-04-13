@@ -32,11 +32,11 @@ def dsl_validity_reward(text: str) -> float:
     return 0.5 if valid else 0.0
 
 
-def execution_reward(text: str, gold_program_tokens: list[str], table: list[list[str]], gold_execution_answer_raw: object) -> float:
+def execution_reward(text: str, gold_program_tokens: list[str], table: list[list[str]], gold_execution_answer: object) -> float:
     tokens = parse_program_prediction(text, require_dsl_valid=True)
     if tokens is None:
         return 0.0
-    matches, _, _ = execution_matches_gold(tokens, table, gold_execution_answer_raw)
+    matches, _, _ = execution_matches_gold(tokens, table, gold_execution_answer)
     return 2.0 if matches else 0.0
 
 
@@ -47,34 +47,34 @@ def program_match_reward(text: str, gold_program_tokens: list[str]) -> float:
     return 0.5 if equal_program(gold_program_tokens, tokens) else 0.0
 
 
-def total_reward(text: str, gold_program_tokens: list[str], table: list[list[str]], gold_execution_answer_raw: object) -> float:
+def total_reward(text: str, gold_program_tokens: list[str], table: list[list[str]], gold_execution_answer: object) -> float:
     return (
         format_reward(text)
         + dsl_validity_reward(text)
-        + execution_reward(text, gold_program_tokens, table, gold_execution_answer_raw)
+        + execution_reward(text, gold_program_tokens, table, gold_execution_answer)
         + program_match_reward(text, gold_program_tokens)
     )
 
 
-def reward_breakdown(text: str, gold_program_tokens: list[str], table: list[list[str]], gold_execution_answer_raw: object) -> dict:
+def reward_breakdown(text: str, gold_program_tokens: list[str], table: list[list[str]], gold_execution_answer: object) -> dict:
     tokens_any = parse_program_prediction(text, require_dsl_valid=False)
     tokens_valid = parse_program_prediction(text, require_dsl_valid=True)
     execution_match, invalid_flag, execution_result = (
-        execution_matches_gold(tokens_valid, table, gold_execution_answer_raw) if tokens_valid is not None else (False, 1, "n/a")
+        execution_matches_gold(tokens_valid, table, gold_execution_answer) if tokens_valid is not None else (False, 1, "n/a")
     )
     return {
         "parsed_program_tokens": tokens_any,
         "dsl_valid_program_tokens": tokens_valid,
         "gold_program_tokens": gold_program_tokens,
-        "gold_execution_answer_raw": gold_execution_answer_raw,
+        "gold_execution_answer": gold_execution_answer,
         "predicted_execution_result": execution_result,
         "execution_invalid_flag": invalid_flag,
         "execution_match": execution_match,
         "format_reward": format_reward(text),
         "dsl_validity_reward": dsl_validity_reward(text),
-        "execution_reward": execution_reward(text, gold_program_tokens, table, gold_execution_answer_raw),
+        "execution_reward": execution_reward(text, gold_program_tokens, table, gold_execution_answer),
         "program_match_reward": program_match_reward(text, gold_program_tokens),
-        "total_reward": total_reward(text, gold_program_tokens, table, gold_execution_answer_raw),
+        "total_reward": total_reward(text, gold_program_tokens, table, gold_execution_answer),
     }
 
 
@@ -85,7 +85,7 @@ def smoke_test() -> None:
         ["cost", "20"],
     ]
     gold_program_tokens = ["subtract(", "120", "20", ")", "EOF"]
-    gold_execution_answer_raw = 100.0
+    gold_execution_answer = "100"
 
     cases = [
         ("perfect_json", '{"program_tokens":["subtract(","120","20",")","EOF"]}'),
@@ -99,7 +99,7 @@ def smoke_test() -> None:
     for name, text in cases:
         print("=" * 72)
         print(name)
-        print(json.dumps(reward_breakdown(text, gold_program_tokens, table, gold_execution_answer_raw), indent=2, ensure_ascii=False))
+        print(json.dumps(reward_breakdown(text, gold_program_tokens, table, gold_execution_answer), indent=2, ensure_ascii=False))
     print("[PASS] Smoke test passed")
 
 
@@ -121,8 +121,8 @@ def main() -> None:
 
     gold_program_tokens = json.loads(args.gold_program_tokens_json)
     table = json.loads(args.table_json)
-    gold_execution_answer_raw = json.loads(args.gold_exe_ans_json)
-    print(json.dumps(reward_breakdown(args.pred_text, gold_program_tokens, table, gold_execution_answer_raw), indent=2, ensure_ascii=False))
+    gold_execution_answer = json.loads(args.gold_exe_ans_json)
+    print(json.dumps(reward_breakdown(args.pred_text, gold_program_tokens, table, gold_execution_answer), indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
