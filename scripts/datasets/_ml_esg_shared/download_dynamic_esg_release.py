@@ -29,9 +29,14 @@ def github_raw_url(source_commit: str, source_path: str) -> str:
     return f"https://raw.githubusercontent.com/{SOURCE_REPO}/{source_commit}/{source_path}"
 
 
-def clone_repo(repo_url: str = SOURCE_REPO_URL) -> tuple[Path, str, str | None]:
+def clone_repo(
+    repo_url: str = SOURCE_REPO_URL,
+    checkout_commit: str | None = None,
+) -> tuple[Path, str, str | None]:
     temp_dir = Path(tempfile.mkdtemp(prefix="dynamic_esg_clone_"))
     subprocess.run(["git", "clone", repo_url, str(temp_dir)], check=True)
+    if checkout_commit is not None:
+        subprocess.run(["git", "-C", str(temp_dir), "checkout", checkout_commit], check=True)
 
     commit = (
         subprocess.run(
@@ -95,8 +100,13 @@ def build_download_meta(
     }
 
 
-def download_release_files(raw_dir: Path, source_paths: list[str]) -> tuple[dict, dict[str, Path]]:
-    repo_dir, source_commit, source_branch_at_download = clone_repo()
+def download_release_files(
+    raw_dir: Path,
+    source_paths: list[str],
+    *,
+    checkout_commit: str | None = None,
+) -> tuple[dict, dict[str, Path]]:
+    repo_dir, source_commit, source_branch_at_download = clone_repo(checkout_commit=checkout_commit)
     try:
         copied_files = copy_source_files(repo_dir, source_paths, raw_dir)
         meta = build_download_meta(

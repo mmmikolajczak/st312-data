@@ -25,9 +25,13 @@ def _duplicate_audit(rows: list[dict], key: str) -> dict:
     }
 
 
-def build_ingest_audit(
+def _build_common_audit(
     processed_by_split: dict[str, list[dict]],
     validation_summary_by_split: dict[str, dict],
+    *,
+    label_getter,
+    label_regex_pattern: str | None = None,
+    label_regex_nonmatching: list[str] | None = None,
 ) -> dict:
     all_rows = []
     split_counts = {}
@@ -41,8 +45,9 @@ def build_ingest_audit(
         article_ids_by_split[split] = {row["article_id"] for row in rows}
         all_rows.extend(rows)
         for row in rows:
-            label_frequencies.update(row["labels"])
-            label_cardinality_distribution[row["label_count"]] += 1
+            labels = label_getter(row)
+            label_frequencies.update(labels)
+            label_cardinality_distribution[len(labels)] += 1
         missing_field_counts.update(validation_summary_by_split[split]["missing_field_counts"])
 
     label_inventory = sorted(label_frequencies)
@@ -56,9 +61,7 @@ def build_ingest_audit(
                 "sample": overlap[:20],
             }
 
-    invalid_by_regex = [label for label in label_inventory if not LABEL_SANITY_RE.match(label)]
-
-    return {
+    report = {
         "split_counts": split_counts,
         "label_inventory": label_inventory,
         "label_inventory_size": len(label_inventory),
@@ -71,10 +74,45 @@ def build_ingest_audit(
         "duplicate_headline_audit": _duplicate_audit(all_rows, "headline"),
         "duplicate_url_audit": _duplicate_audit(all_rows, "url"),
         "missing_field_counts": dict(missing_field_counts),
-        "label_regex_sanity": {
-            "pattern": LABEL_SANITY_RE.pattern,
-            "nonmatching_labels": invalid_by_regex,
-            "note": "Observed official labels are reported but not rejected merely for regex mismatch.",
-        },
         "validation_summary_by_split": validation_summary_by_split,
     }
+    if label_regex_pattern is not None and label_regex_nonmatching is not None:
+        report["label_regex_sanity"] = {
+            "pattern": label_regex_pattern,
+            "nonmatching_labels": label_regex_nonmatching,
+            "note": "Observed official labels are reported but not rejected merely for regex mismatch.",
+        }
+    return report
+
+
+def build_ingest_audit(
+    processed_by_split: dict[str, list[dict]],
+    validation_summary_by_split: dict[str, dict],
+) -> dict:
+    label_inventory = sorted(
+        {
+            label
+            for rows in processed_by_split.values()
+            for row in rows
+            for label in row["labels"]
+        }
+    )
+    invalid_by_regex = [label for label in label_inventory if not LABEL_SANITY_RE.match(label)]
+    return _build_common_audit(
+        processed_by_split,
+        validation_summary_by_split,
+        label_getter=lambda row: row["labels"],
+        label_regex_pattern=LABEL_SANITY_RE.pattern,
+        label_regex_nonmatching=invalid_by_regex,
+    )
+
+
+def build_single_label_ingest_audit(
+    processed_by_split: dict[str, list[dict]],
+    validation_summary_by_split: dict[str, dict],
+) -> dict:
+    return _build_common_audit(
+        processed_by_split,
+        validation_summary_by_split,
+        label_getter=lambda row: [row["impact_type"]],
+    )

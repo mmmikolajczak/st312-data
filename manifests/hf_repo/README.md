@@ -284,6 +284,30 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/ml_esg1_zh_official_v0_publish_record.json`
 
+### 15) DynamicESG ML-ESG-2 Chinese Official v0
+
+Dataset artifacts:
+- `datasets/ml_esg2/zh_official/v0/train.jsonl`
+- `datasets/ml_esg2/zh_official/v0/dev.jsonl`
+- `datasets/ml_esg2/zh_official/v0/test.jsonl`
+- `datasets/ml_esg2/zh_official/v0/label_inventory.json`
+- `datasets/ml_esg2/zh_official/v0/ingest_summary.json`
+- `datasets/ml_esg2/zh_official/v0/download_meta.json`
+
+Task requests:
+- `tasks/ml_esg2_zh_impact_type_v0/requests/train_requests.jsonl`
+- `tasks/ml_esg2_zh_impact_type_v0/requests/dev_requests.jsonl`
+- `tasks/ml_esg2_zh_impact_type_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/ml_esg2_zh_impact_type_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/ml_esg2_zh_official/ingest_audit.json`
+
+Publish bookkeeping:
+- `manifests/publish/ml_esg2_zh_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -368,6 +392,14 @@ We publish a 3-way discretised label using:
 - Canonical text is headline only; no crawler enrichment or article-body recovery is included
 - Labels are preserved exactly as released multi-label ESG code lists, including observed codes such as `NN`
 - The pinned official release differs from the FinNLP 2023 workshop paper statistics; this module follows the pinned release as canonical with observed split counts `1058 / 118 / 131` and an observed 48-code inventory
+
+### DynamicESG ML-ESG-2 Chinese Official
+
+- Canonical source is the official `ymntseng/DynamicESG` ML-ESG-2 Chinese shared-task release pinned to the same family commit as ML-ESG-1
+- Official `train / dev / test` split is preserved exactly
+- Canonical text is headline only; no crawler enrichment or article-body recovery is included
+- The official label space is preserved exactly as a 5-way single-label task: `Opportunity`, `Risk`, `CannotDistinguish`, `NotRelatedtoCompany`, `NotRelatedtoESGTopic`
+- Upstream `Impact_Type` is stored as a singleton list and is normalized to a scalar canonical label while preserving the raw list in metadata
 - Future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
 
 ## Licensing

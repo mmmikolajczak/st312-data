@@ -1,0 +1,64 @@
+{
+  "task_id": "TA_MLCLS_ML_ESG2_ZH_v0",
+  "task_name": "Chinese ML-ESG-2 impact type classification",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Textual Analysis",
+    "finben_task": "ESG Impact Type Classification",
+    "output_type": "single_label_classification",
+    "scoring_type": "exact_match_multiclass"
+  },
+  "dataset": {
+    "dataset_id": "ml_esg2_zh_official_v0",
+    "config": "official_split_headline_only_v0",
+    "train_file": "data/ml_esg2_zh_official/processed/train.jsonl",
+    "dev_file": "data/ml_esg2_zh_official/processed/dev.jsonl",
+    "test_file": "data/ml_esg2_zh_official/processed/test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": ["text"],
+    "optional_fields": ["headline", "url", "article_id"]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": ["impact_type"],
+    "no_extra_keys": true,
+    "allowed_values": {
+      "impact_type": [
+        "CannotDistinguish",
+        "NotRelatedtoCompany",
+        "NotRelatedtoESGTopic",
+        "Opportunity",
+        "Risk"
+      ]
+    }
+  },
+  "prompt_template": {
+    "system": "You are a Chinese ESG impact type classifier for financial news headlines. Classify the headline into exactly one official impact type label. Return ONLY a JSON object with exactly one key: \"impact_type\". The value must be exactly one allowed label. Use only the headline as evidence and do not assume article-body access. Do not include any extra text.",
+    "user": "Classify the following Chinese headline into one official impact type label.\n\nAllowed labels:\n{{allowed_labels}}\n\nReturn JSON only in this form:\n{\"impact_type\": \"Opportunity\"}\n\nHeadline:\n{{text}}"
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with one accepted key and an in-inventory label."
+      },
+      {
+        "name": "correctness_reward",
+        "weight": 1.0,
+        "description": "Predicted impact type matches the gold label exactly."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "accuracy",
+    "macro_f1",
+    "weighted_f1",
+    "format_valid_rate"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "Published official Chinese ML-ESG-2 shared-task release using headline-only canonical text and preserved train/dev/test splits."
+  }
+}

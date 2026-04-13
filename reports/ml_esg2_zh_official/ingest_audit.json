@@ -1,0 +1,143 @@
+{
+  "split_counts": {
+    "train": 1260,
+    "dev": 140,
+    "test": 156
+  },
+  "label_inventory": [
+    "CannotDistinguish",
+    "NotRelatedtoCompany",
+    "NotRelatedtoESGTopic",
+    "Opportunity",
+    "Risk"
+  ],
+  "label_inventory_size": 5,
+  "label_frequencies": {
+    "CannotDistinguish": 182,
+    "NotRelatedtoCompany": 659,
+    "NotRelatedtoESGTopic": 55,
+    "Opportunity": 596,
+    "Risk": 64
+  },
+  "label_cardinality_distribution": {
+    "1": 1556
+  },
+  "cross_split_duplicate_article_ids": {
+    "train__dev": {
+      "count": 0,
+      "sample": []
+    },
+    "train__test": {
+      "count": 0,
+      "sample": []
+    },
+    "dev__test": {
+      "count": 0,
+      "sample": []
+    }
+  },
+  "duplicate_headline_audit": {
+    "count": 2,
+    "sample": [
+      {
+        "value": "踢完世足賽全場絕不讓球衣破！代工9國戰袍，adidas、NIKE都老客戶…遠東新如何「土法煉鋼」？",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2436",
+            "example_id": "ml_esg2_zh_official_v0__train__dynamicesg_bt_2436"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2340",
+            "example_id": "ml_esg2_zh_official_v0__train__dynamicesg_bt_2340"
+          }
+        ]
+      },
+      {
+        "value": "面對缺電・水荒，油電水價仍穿「國王的新衣」!　台積電未來3年水電需求再增1倍，台灣準備好了嗎？",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_853",
+            "example_id": "ml_esg2_zh_official_v0__train__dynamicesg_bt_853"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_852",
+            "example_id": "ml_esg2_zh_official_v0__train__dynamicesg_bt_852"
+          }
+        ]
+      }
+    ]
+  },
+  "duplicate_url_audit": {
+    "count": 1,
+    "sample": [
+      {
+        "value": "https://esg.businesstoday.com.tw/article/category/180689/post/202211160009",
+        "entries": [
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2436",
+            "example_id": "ml_esg2_zh_official_v0__train__dynamicesg_bt_2436"
+          },
+          {
+            "split": "train",
+            "article_id": "dynamicesg_bt_2340",
+            "example_id": "ml_esg2_zh_official_v0__train__dynamicesg_bt_2340"
+          }
+        ]
+      }
+    ]
+  },
+  "missing_field_counts": {
+    "pk": 0,
+    "URL": 0,
+    "News_Headline": 0,
+    "Impact_Type": 0
+  },
+  "validation_summary_by_split": {
+    "train": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "Impact_Type": 0
+      },
+      "observed_labels": [
+        "CannotDistinguish",
+        "NotRelatedtoCompany",
+        "NotRelatedtoESGTopic",
+        "Opportunity",
+        "Risk"
+      ]
+    },
+    "dev": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "Impact_Type": 0
+      },
+      "observed_labels": [
+        "CannotDistinguish",
+        "NotRelatedtoCompany",
+        "NotRelatedtoESGTopic",
+        "Opportunity",
+        "Risk"
+      ]
+    },
+    "test": {
+      "missing_field_counts": {
+        "pk": 0,
+        "URL": 0,
+        "News_Headline": 0,
+        "Impact_Type": 0
+      },
+      "observed_labels": [
+        "CannotDistinguish"
+      ]
+    }
+  }
+}

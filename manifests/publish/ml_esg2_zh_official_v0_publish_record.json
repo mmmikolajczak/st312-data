@@ -1,0 +1,33 @@
+{
+  "dataset_id": "ml_esg2_zh_official_v0",
+  "task_id": "TA_MLCLS_ML_ESG2_ZH_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "ml_esg2_zh_official_initial_publish": "c25eb689f45f33a7a1a6ec708ee34c8642ae13b0",
+    "ml_esg2_zh_official_manifest_metadata_sync": "b832ca792034d59b50062120f4de8fc955abd66c",
+    "ml_esg2_zh_official_publish_record_sync": "4dd504801826b462964a898eed1a3699c7f47023",
+    "ml_esg2_zh_official_hf_readme_sync": "0bea5a7a8757bfc152a6b819d4ce8564d2989317",
+    "ml_esg2_zh_official_final_publish_record_refresh": "8b8d315ab529562ea433dee5f134098eafa89e27"
+  },
+  "artifacts_published": [
+    "datasets/ml_esg2/zh_official/v0/train.jsonl",
+    "datasets/ml_esg2/zh_official/v0/dev.jsonl",
+    "datasets/ml_esg2/zh_official/v0/test.jsonl",
+    "datasets/ml_esg2/zh_official/v0/label_inventory.json",
+    "datasets/ml_esg2/zh_official/v0/ingest_summary.json",
+    "datasets/ml_esg2/zh_official/v0/download_meta.json",
+    "reports/ml_esg2_zh_official/ingest_audit.json",
+    "tasks/ml_esg2_zh_impact_type_v0/requests/train_requests.jsonl",
+    "tasks/ml_esg2_zh_impact_type_v0/requests/dev_requests.jsonl",
+    "tasks/ml_esg2_zh_impact_type_v0/requests/test_requests.jsonl",
+    "tasks/ml_esg2_zh_impact_type_v0/README.md",
+    "manifests/datasets/ml_esg2_zh_official_v0/dataset_spec.json",
+    "manifests/datasets/ml_esg2_zh_official_v0/checksums.sha256",
+    "manifests/tasks/ml_esg2_zh_impact_type_v0/task_spec.json",
+    "manifests/publish/ml_esg2_zh_official_v0_publish_record.json"
+  ],
+  "notes": "Published official Chinese ML-ESG-2 shared-task split release from DynamicESG commit 4f1bd162504c35df17100ff708ebdf04c68e2b10. Canonical text is headline only, the official 5-way impact type label space is preserved exactly, and future ML-ESG-3 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics."
+}
