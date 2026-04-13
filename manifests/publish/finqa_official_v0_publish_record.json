@@ -1,0 +1,32 @@
+{
+  "dataset_id": "finqa_official_v0",
+  "task_id": "TA_PROGGEN_FINQA_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "finqa_official_initial_publish": "e49513e1cc893c0c4346d90cc8aaf5617747f21f",
+    "finqa_official_manifest_metadata_sync": "90b311edbe96053f6dc20eb78aca1eff5943de97",
+    "finqa_official_publish_record_sync": "71fb89acbf2282b4671a4f59ac33d3a32709235d",
+    "finqa_official_hf_readme_sync": "6e3dcdf98e767b07af55d91d6794142aafbd4378",
+    "finqa_official_final_publish_record_refresh": "a5c78f1d52b71c51a4d09d437b1eba6479688f15"
+  },
+  "artifacts_published": [
+    "datasets/finqa/official/v0/train.jsonl",
+    "datasets/finqa/official/v0/dev.jsonl",
+    "datasets/finqa/official/v0/test.jsonl",
+    "datasets/finqa/official/v0/label_inventory.json",
+    "datasets/finqa/official/v0/ingest_summary.json",
+    "datasets/finqa/official/v0/download_meta.json",
+    "tasks/finqa_program_generation_v0/requests/train_requests.jsonl",
+    "tasks/finqa_program_generation_v0/requests/dev_requests.jsonl",
+    "tasks/finqa_program_generation_v0/requests/test_requests.jsonl",
+    "tasks/finqa_program_generation_v0/README.md",
+    "manifests/datasets/finqa_official_v0/dataset_spec.json",
+    "manifests/datasets/finqa_official_v0/checksums.sha256",
+    "manifests/tasks/finqa_program_generation_v0/task_spec.json",
+    "manifests/publish/finqa_official_v0_publish_record.json"
+  ],
+  "notes": "Published canonical FinQA program-generation module from the official pinned GitHub repo commit 0f16e2867befa6840783e58be38c9efb9229d742. The canonical public supervised splits are train, dev, and test; private_test remains raw provenance only and is not published as a supervised split. Execution accuracy is the primary metric and program accuracy is the secondary metric."
+}

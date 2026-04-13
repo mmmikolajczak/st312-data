@@ -1,0 +1,121 @@
+{
+  "dataset_id": "finqa_official_v0",
+  "dataset_name": "FinQA Official Program-Generation Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/finqa_official_v0",
+  "provenance": {
+    "canonical_paper_title": "FinQA: A Dataset of Numerical Reasoning over Financial Data",
+    "canonical_paper_venue": "EMNLP 2021",
+    "official_repo": "czyssrs/FinQA",
+    "official_repo_url": "https://github.com/czyssrs/FinQA",
+    "source_commit": "0f16e2867befa6840783e58be38c9efb9229d742",
+    "repo_has_tagged_releases": false,
+    "source_paths": [
+      "dataset/train.json",
+      "dataset/dev.json",
+      "dataset/test.json",
+      "dataset/private_test.json",
+      "LICENSE",
+      "README.md"
+    ],
+    "notes": [
+      "The official FinQA repo has no tagged releases, so the canonical source must be pinned by exact Git commit SHA.",
+      "The official README documents important 2022 bugfix notes dated 2022-04-29, 2022-05-04, and 2022-05-15.",
+      "The canonical public supervised splits are train, dev, and test.",
+      "private_test is kept as raw provenance only because it has no references and is not part of the supervised canonical publication.",
+      "The canonical task target is program generation over report text and tables, not answer-only QA.",
+      "Schema drift exists between the official README summary and secondary interfaces, so this module follows the empirically observed pinned-repo schema."
+    ]
+  },
+  "raw": {
+    "files": {
+      "train_json": "data/finqa_official/raw/train.json",
+      "dev_json": "data/finqa_official/raw/dev.json",
+      "test_json": "data/finqa_official/raw/test.json",
+      "private_test_json": "data/finqa_official/raw/private_test.json",
+      "license": "data/finqa_official/raw/LICENSE",
+      "readme": "data/finqa_official/raw/README.md"
+    },
+    "meta_files": {
+      "download_meta": "data/finqa_official/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "official_program_generation_public_supervised_v0",
+    "files": {
+      "train": "data/finqa_official/processed/train.jsonl",
+      "dev": "data/finqa_official/processed/dev.jsonl",
+      "test": "data/finqa_official/processed/test.jsonl",
+      "label_inventory": "data/finqa_official/processed/label_inventory.json",
+      "ingest_summary": "data/finqa_official/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "private_test_summary": "data/finqa_official/processed/private_test_summary.json"
+    }
+  },
+  "schema": {
+    "row_type": "financial_report_program_generation",
+    "primary_text_fields": [
+      "question",
+      "pre_text",
+      "table_serialized",
+      "post_text"
+    ],
+    "target_field": "gold_program_tokens",
+    "target_value_type": "list_of_program_tokens",
+    "execution_answer_field": "gold_execution_answer",
+    "supporting_fact_field": "gold_supporting_facts",
+    "report_page_id_field": "report_page_id",
+    "table_representation_note": "The canonical table serialization is a deterministic TSV-like rendering with escaped control characters."
+  },
+  "label_scheme": {
+    "type": "dsl_program_generation",
+    "task": "numerical_reasoning_program_generation",
+    "inventory_source": "official_finqa_evaluator_and_public_splits",
+    "operation_names": [
+      "add",
+      "subtract",
+      "multiply",
+      "divide",
+      "greater",
+      "exp",
+      "table_max",
+      "table_min",
+      "table_sum",
+      "table_average"
+    ],
+    "structural_tokens": [
+      ")",
+      "EOF"
+    ],
+    "reference_pattern": "^#\\d+$",
+    "note": "Canonical tokenization follows the official evaluator token format with underscore table operations."
+  },
+  "split_policy": {
+    "type": "official_preserved_train_dev_test",
+    "train_split": "train",
+    "dev_split": "dev",
+    "test_split": "test",
+    "private_test_policy": "raw_provenance_only_no_references_not_published_as_supervised_split"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/finqa/official/v0",
+    "upstream_license": "mit",
+    "upstream_license_name": "MIT License",
+    "upstream_license_url": "https://opensource.org/licenses/MIT",
+    "upstream_license_note": "The official FinQA source repo is MIT-licensed. The Hugging Face mirror is not treated as canonical for provenance or license interpretation.",
+    "release_scope": "hf_repo_standard_release_official_split",
+    "published_commit": "e49513e1cc893c0c4346d90cc8aaf5617747f21f",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/e49513e1cc893c0c4346d90cc8aaf5617747f21f"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": false
+  }
+}

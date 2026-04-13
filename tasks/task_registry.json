@@ -169,6 +169,15 @@
       "task_readme_path": "tasks/ml_esg3_zh_impact_duration_v0/README.md",
       "dataset_id": "ml_esg3_zh_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_PROGGEN_FINQA_v0",
+      "task_name": "FinQA program generation",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/finqa_program_generation_v0/task_spec.json",
+      "task_readme_path": "tasks/finqa_program_generation_v0/README.md",
+      "dataset_id": "finqa_official_v0",
+      "status": "published"
     }
   ]
 }

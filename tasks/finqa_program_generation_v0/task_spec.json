@@ -1,0 +1,117 @@
+{
+  "task_id": "TA_PROGGEN_FINQA_v0",
+  "task_name": "FinQA program generation",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Question Answering",
+    "finben_task": "Program Generation Numerical Reasoning",
+    "output_type": "program_token_generation",
+    "scoring_type": "execution_accuracy_primary_program_accuracy_secondary"
+  },
+  "dataset": {
+    "dataset_id": "finqa_official_v0",
+    "config": "official_program_generation_public_supervised_v0",
+    "train_file": "data/finqa_official/processed/train.jsonl",
+    "dev_file": "data/finqa_official/processed/dev.jsonl",
+    "test_file": "data/finqa_official/processed/test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "question",
+      "pre_text",
+      "table_serialized",
+      "post_text"
+    ],
+    "optional_fields": [
+      "report_page_id",
+      "gold_supporting_facts"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "program_tokens"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "program_tokens": {
+        "type": "array",
+        "items": "string",
+        "must_end_with": "EOF",
+        "dsl": "official_finqa_v0"
+      }
+    }
+  },
+  "dsl": {
+    "operation_names": [
+      "add",
+      "subtract",
+      "multiply",
+      "divide",
+      "greater",
+      "exp",
+      "table_max",
+      "table_min",
+      "table_sum",
+      "table_average"
+    ],
+    "operation_tokens": [
+      "add(",
+      "subtract(",
+      "multiply(",
+      "divide(",
+      "greater(",
+      "exp(",
+      "table_max(",
+      "table_min(",
+      "table_sum(",
+      "table_average("
+    ],
+    "structural_tokens": [
+      ")",
+      "EOF"
+    ],
+    "reference_pattern": "^#\\d+$"
+  },
+  "prompt_template": {
+    "system": "You are solving numerical reasoning over financial reports. Use only the provided question, pre-table text, table, and post-table text. Return ONLY a JSON object with exactly one key: \"program_tokens\". The value must be a list of FinQA DSL program tokens ending with \"EOF\". Do not return the final answer directly and do not include extra text.",
+    "user": "Question:\n{{question}}\n\nPre-table text:\n{{pre_text}}\n\nTable:\n{{table_serialized}}\n\nPost-table text:\n{{post_text}}\n\nAllowed operations:\n{{allowed_operations}}\n\nReturn JSON only in this form:\n{\"program_tokens\": [\"divide(\", \"9413\", \"20.01\", \")\", \"EOF\"]}"
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 0.5,
+        "description": "Valid JSON object with exactly one key and a token list ending in EOF."
+      },
+      {
+        "name": "dsl_validity_reward",
+        "weight": 0.5,
+        "description": "Program tokens satisfy the FinQA DSL structure and reference rules."
+      },
+      {
+        "name": "execution_reward",
+        "weight": 2.0,
+        "description": "Predicted program executes to the correct gold execution answer."
+      },
+      {
+        "name": "program_match_reward",
+        "weight": 0.5,
+        "description": "Predicted program is symbolically equivalent to the gold program under the official evaluator logic."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "execution_accuracy",
+    "program_accuracy",
+    "format_valid_rate",
+    "dsl_valid_rate",
+    "execution_accuracy_on_valid_programs",
+    "completion_coverage",
+    "program_exact_match"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "Published canonical FinQA program-generation module sourced from the official pinned GitHub repo. private_test remains provenance-only and is not part of supervised publication."
+  }
+}
