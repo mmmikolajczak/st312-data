@@ -6,7 +6,10 @@
   "hf_private_repo": false,
   "public_release_cleared": true,
   "hf_commits": {
-    "ml_esg3_zh_official_initial_publish": "TO_BE_FILLED_WITH_REAL_HF_COMMIT_HASH"
+    "ml_esg3_zh_official_initial_publish": "50bc8dda9dbf84b0f3f3710ad366bf977fbdacf4",
+    "ml_esg3_zh_official_manifest_metadata_sync": "d24bb0ce3abdcdbd9437b26350f9bae966a89995",
+    "ml_esg3_zh_official_publish_record_sync": "96901d73c6682ba04bf81f2eae9dc308eb874007",
+    "ml_esg3_zh_official_final_publish_record_refresh": "bdbd8849c347068869d7b48798f8816cf867fa97"
   },
   "artifacts_published": [
     "datasets/ml_esg3/zh_official/v0/train.jsonl",
