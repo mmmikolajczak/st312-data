@@ -10,8 +10,8 @@ Official shared-task release module for Chinese ML-ESG-1 ESG issue identificatio
 - no crawler enrichment included
 - official `train / dev / test` split preserved exactly
 - labels preserved exactly as released
-- family-stable `article_id` added to support future ML-ESG-2 integration
-- future ML-ESG-2 will be published as a separate dataset/task module
+- family-stable `article_id` supports cross-task joins with ML-ESG-2
+- future ML-ESG-3 will be published as a separate sibling dataset/task module
 
 ## Canonical provenance
 - Official repo: `https://github.com/ymntseng/DynamicESG`

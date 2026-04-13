@@ -400,7 +400,7 @@ We publish a 3-way discretised label using:
 - Canonical text is headline only; no crawler enrichment or article-body recovery is included
 - The official label space is preserved exactly as a 5-way single-label task: `Opportunity`, `Risk`, `CannotDistinguish`, `NotRelatedtoCompany`, `NotRelatedtoESGTopic`
 - Upstream `Impact_Type` is stored as a singleton list and is normalized to a scalar canonical label while preserving the raw list in metadata
-- Future ML-ESG-2 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
+- Family-stable `article_id` supports cross-task joins with ML-ESG-2, and future ML-ESG-3 onboarding is expected to remain a separate published module sharing family helpers and article_id semantics
 
 ## Licensing
 

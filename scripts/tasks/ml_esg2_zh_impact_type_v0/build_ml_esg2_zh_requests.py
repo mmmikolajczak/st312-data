@@ -19,7 +19,7 @@ def render_template(template: str, rec: dict, allowed_labels: str) -> str:
 
 
 def default_out_path(split: str) -> Path:
-    return Path(f"data/ml_esg2_zh_official/processed/ml_esg2_zh_{split}_requests.jsonl")
+    return Path(f"tasks/ml_esg2_zh_impact_type_v0/requests/{split}_requests.jsonl")
 
 
 def main():
@@ -27,7 +27,12 @@ def main():
     ap.add_argument("--split", choices=["train", "dev", "test"], required=True)
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--include-gold", action="store_true")
-    ap.add_argument("--out", type=str, default=None)
+    ap.add_argument(
+        "--out",
+        type=str,
+        default=None,
+        help="Override the output path. Defaults to the canonical task request artifact path under tasks/ml_esg2_zh_impact_type_v0/requests/.",
+    )
     args = ap.parse_args()
 
     task = json.loads(TASK_SPEC_PATH.read_text(encoding="utf-8"))

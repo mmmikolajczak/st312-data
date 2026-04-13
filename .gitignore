@@ -9,3 +9,4 @@ reports/ml_esg1_zh_official/ml_esg1_zh_test_dummy_gold_completions.jsonl
 reports/ml_esg1_zh_official/ml_esg1_zh_test_eval_report.json
 reports/ml_esg2_zh_official/ml_esg2_zh_test_dummy_gold_completions.jsonl
 reports/ml_esg2_zh_official/ml_esg2_zh_test_eval_report.json
+tasks/ml_esg2_zh_impact_type_v0/requests/*.jsonl

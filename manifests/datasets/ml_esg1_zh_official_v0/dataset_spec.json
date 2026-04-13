@@ -23,7 +23,7 @@
       "This module uses the official Chinese ML-ESG-1 shared-task split release only.",
       "Canonical input text is headline only.",
       "No crawler enrichment, article-body recovery, heuristic relabeling, or split modification is included.",
-      "Family-stable article_id is included so future ML-ESG-2 onboarding can remain a separate published module while still supporting cross-task joins.",
+      "Family-stable article_id supports cross-task joins with ML-ESG-2 while future ML-ESG-3 onboarding can remain a separate published module.",
       "The pinned official DynamicESG release differs from the FinNLP 2023 workshop paper statistics; this module follows the pinned release as canonical source of truth.",
       "Observed release counts are train=1058, dev=118, test=131, with an observed 48-code inventory."
     ]
