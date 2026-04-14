@@ -1,17 +1,23 @@
 ---
-pretty_name: "ST312 FinLLM Data"
+pretty_name: "ST312 FinLLM Data Artifact Store"
+viewer: false
+license: "other"
 tags:
 - finance
 - llm
-- text-classification
-- token-classification
+- benchmark
+- artifact-store
+- heterogeneous
 ---
 
-# ST312 FinLLM Data
+# ST312 FinLLM Data Artifact Store
 
 Artifact repository for the ST312 Applied Statistics project (FinLLM pipeline).
 
 This Hugging Face dataset repo stores canonical processed datasets, task request files, manifest snapshots, checksums, and publication bookkeeping artifacts.
+
+This is a heterogeneous multi-module artifact store, not a single ordinary dataset repository.
+The published contents index below is the source of truth for available modules and artifact paths.
 
 ## Structure
 
@@ -23,6 +29,7 @@ This Hugging Face dataset repo stores canonical processed datasets, task request
 ## Viewer note
 
 This repo is a multi-module artifact store rather than a single homogeneous dataset.
+The default dataset viewer may be unavailable or misleading because the repository mixes many artifact types rather than one viewer-friendly dataset schema.
 Per-module file paths below are the reliable index of published contents.
 
 ## Published contents

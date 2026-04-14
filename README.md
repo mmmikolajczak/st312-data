@@ -1,18 +1,21 @@
 ---
 license: other
-pretty_name: ST312 Data Pipeline Artifacts
-task_categories:
-- text-classification
+pretty_name: ST312 Data Artifact Store
+viewer: false
 tags:
 - finance
-- sentiment-analysis
-- benchmark
 - llm
+- benchmark
+- artifact-store
+- heterogeneous
 ---
 
-# ST312 Data
+# ST312 Data Artifact Store
 
 Repository for the ST312 Applied Statistics project data/task pipeline (FinLLM benchmark preparation).
+
+This repository and its Hugging Face counterpart are a heterogeneous multi-module artifact store, not a single ordinary dataset.
+The published module index below is the source of truth for what is available.
 
 This repository is the **code + metadata control plane** for the Risko-1 style dataset/task pipeline:
 - dataset ingestion, cleaning, normalisation, and split scripts
@@ -22,6 +25,12 @@ This repository is the **code + metadata control plane** for the Risko-1 style d
 
 Large data artifacts are **not** tracked in GitHub. Canonical processed artifacts are published to the Hugging Face dataset repo:
 - `mmmikolajczak/st312-data`
+
+## HF surface note
+
+The Hugging Face repo is an artifact store containing mixed JSONL datasets, request files, manifests, checksums, and bookkeeping records.
+The default dataset viewer may be unavailable or misleading for this repository shape.
+Use the published contents index in the HF README and the published module index below as the reliable control-plane view.
 
 ## Repository architecture
 
