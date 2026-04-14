@@ -19,3 +19,6 @@ tasks/finqa_program_generation_v0/requests/*.jsonl
 reports/tatqa_official/tatqa_test_dummy_gold_predictions.json
 reports/tatqa_official/tatqa_test_eval_report.json
 tasks/tatqa_hybrid_qa_structured_v0/requests/*.jsonl
+reports/convfinqa_official/convfinqa_dev_dummy_gold_predictions.json
+reports/convfinqa_official/convfinqa_dev_eval_report.json
+tasks/convfinqa_program_generation_v0/requests/*.jsonl
