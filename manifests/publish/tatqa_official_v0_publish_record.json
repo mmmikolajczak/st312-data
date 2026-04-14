@@ -1,0 +1,33 @@
+{
+  "dataset_id": "tatqa_official_v0",
+  "task_id": "TA_QA_TATQA_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "tatqa_official_initial_publish": "cffa82c4dd5f2d5b583749b3aa0aaf897c025b5d",
+    "tatqa_official_manifest_metadata_sync": "7c36b4d3b656d156f2224debfcdc062c2bb1cbac",
+    "tatqa_official_publish_record_sync": "59308d3e06bf3344473011e85cf6e57d41ff6344",
+    "tatqa_official_final_publish_record_refresh": "ea8d55cb9eaff632fb96954603c5d6767a6fa238"
+  },
+  "artifacts_published": [
+    "datasets/tatqa/official/v0/train.jsonl",
+    "datasets/tatqa/official/v0/dev.jsonl",
+    "datasets/tatqa/official/v0/test.jsonl",
+    "datasets/tatqa/official/v0/label_inventory.json",
+    "datasets/tatqa/official/v0/ingest_summary.json",
+    "datasets/tatqa/official/v0/download_meta.json",
+    "datasets/tatqa/official/v0/original_test_summary.json",
+    "reports/tatqa_official/ingest_audit.json",
+    "tasks/tatqa_hybrid_qa_structured_v0/requests/train_requests.jsonl",
+    "tasks/tatqa_hybrid_qa_structured_v0/requests/dev_requests.jsonl",
+    "tasks/tatqa_hybrid_qa_structured_v0/requests/test_requests.jsonl",
+    "tasks/tatqa_hybrid_qa_structured_v0/README.md",
+    "manifests/datasets/tatqa_official_v0/dataset_spec.json",
+    "manifests/datasets/tatqa_official_v0/checksums.sha256",
+    "manifests/tasks/tatqa_hybrid_qa_structured_v0/task_spec.json",
+    "manifests/publish/tatqa_official_v0_publish_record.json"
+  ],
+  "notes": "Published canonical TAT-QA hybrid QA module from the official pinned GitHub repo commit 644770eb2a66dddc24b92303bd2acbad84cd2b9f. Canonical processed test.jsonl is derived from tatqa_dataset_test_gold.json, while the original unlabeled tatqa_dataset_test.json is retained raw-only for provenance. Official top-line scoring uses answer+scale exact match, F1, and scale score."
+}

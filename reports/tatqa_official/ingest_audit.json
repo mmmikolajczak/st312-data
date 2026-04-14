@@ -1,0 +1,106 @@
+{
+  "dataset_id": "tatqa_official_v0",
+  "source_commit": "644770eb2a66dddc24b92303bd2acbad84cd2b9f",
+  "split_counts": {
+    "train": {
+      "contexts": 2201,
+      "questions": 13215
+    },
+    "dev": {
+      "contexts": 278,
+      "questions": 1668
+    },
+    "test": {
+      "contexts": 277,
+      "questions": 1663
+    }
+  },
+  "answer_type_distribution": {
+    "train": {
+      "multi-span": 1645,
+      "span": 5722,
+      "arithmetic": 5543,
+      "count": 305
+    },
+    "dev": {
+      "span": 701,
+      "multi-span": 217,
+      "arithmetic": 718,
+      "count": 32
+    },
+    "test": {
+      "span": 714,
+      "multi-span": 210,
+      "arithmetic": 699,
+      "count": 40
+    }
+  },
+  "answer_from_distribution": {
+    "train": {
+      "table": 5920,
+      "text": 3125,
+      "table-text": 4170
+    },
+    "dev": {
+      "text": 389,
+      "table-text": 507,
+      "table": 772
+    },
+    "test": {
+      "text": 381,
+      "table-text": 546,
+      "table": 736
+    }
+  },
+  "scale_distribution": {
+    "train": {
+      "": 6457,
+      "percent": 2104,
+      "thousand": 2481,
+      "million": 2153,
+      "billion": 20
+    },
+    "dev": {
+      "": 794,
+      "million": 254,
+      "percent": 268,
+      "thousand": 345,
+      "billion": 7
+    },
+    "test": {
+      "": 836,
+      "percent": 294,
+      "million": 214,
+      "thousand": 319
+    }
+  },
+  "arithmetic_or_count_fraction": {
+    "train": 0.442527,
+    "dev": 0.44964,
+    "test": 0.444378
+  },
+  "empty_answer_example_ids": {
+    "train": [],
+    "dev": [],
+    "test": []
+  },
+  "context_level_split_integrity": {
+    "train__dev": {
+      "context_overlap_count": 0,
+      "question_overlap_count": 0
+    },
+    "train__test": {
+      "context_overlap_count": 0,
+      "question_overlap_count": 0
+    },
+    "dev__test": {
+      "context_overlap_count": 0,
+      "question_overlap_count": 0
+    }
+  },
+  "report_id_leakage_audit": {
+    "performed": false,
+    "reason": "No robust report identifier is exposed in the canonical raw schema beyond context/question UIDs."
+  },
+  "release_vs_original_test_note": "At pinned commit 644770eb2a66dddc24b92303bd2acbad84cd2b9f, tatqa_dataset_test_gold.json has 277 contexts / 1663 questions, while tatqa_dataset_test.json has 278 contexts / 1669 questions."
+}

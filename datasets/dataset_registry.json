@@ -204,6 +204,17 @@
       "upstream_license": "mit",
       "task_family": "program_generation_numerical_reasoning",
       "status": "published"
+    },
+    {
+      "dataset_id": "tatqa_official_v0",
+      "dataset_name": "TAT-QA Official Hybrid QA Release",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/tatqa_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "NExTplusplus/TAT-QA official GitHub repo",
+      "upstream_license": "cc-by-4.0",
+      "task_family": "hybrid_financial_question_answering_structured",
+      "status": "published"
     }
   ]
 }

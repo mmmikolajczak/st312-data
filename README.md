@@ -258,6 +258,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/finqa_official_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `czyssrs/FinQA` GitHub repo pinned to a concrete commit because the repo has no tagged releases; public supervised `train/dev/test` are preserved exactly; `private_test` is kept raw for provenance only and is not published as a supervised split, while a tiny non-sensitive `private_test_summary.json` artifact may be published to document exclusion policy; the canonical task target is executable program generation over `pre_text`, `table`, `post_text`, and question; the final answer is derived from executing the predicted program, with execution accuracy as the primary metric and program accuracy as the secondary metric.
 
+### 18) TAT-QA Official v0
+- **Dataset ID:** `tatqa_official_v0`
+- **Task ID:** `TA_QA_TATQA_v0`
+- **Task type:** structured hybrid financial question answering
+- **HF dataset path:** `datasets/tatqa/official/v0/`
+- **HF task path:** `tasks/tatqa_hybrid_qa_structured_v0/`
+- **Publish record:** `manifests/publish/tatqa_official_v0_publish_record.json`
+- **Labeling note:** canonical source is the official `NExTplusplus/TAT-QA` GitHub repo pinned to commit `644770eb2a66dddc24b92303bd2acbad84cd2b9f`; canonical processed `test.jsonl` is derived from the Jan 2024 `tatqa_dataset_test_gold.json` release, while the original unlabeled `tatqa_dataset_test.json` is retained raw-only for provenance; hybrid table-plus-paragraph context is preserved per question along with derivation, answer-type, answer-source, related-paragraph, comparison, and scale annotations; the top-line benchmark remains the official answer+scale `exact_match`, `f1`, and `scale_score`.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -305,6 +314,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical target is executable program generation in the FinQA DSL, not answer-only QA
 - Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
 - The official repo is MIT-licensed; the Hugging Face mirror metadata differs and is not treated as canonical
+
+### TAT-QA Official
+
+- Canonical source is the official `NExTplusplus/TAT-QA` GitHub repo pinned to commit `644770eb2a66dddc24b92303bd2acbad84cd2b9f`
+- Canonical processed `train / dev / test` preserves the official hybrid-context split, with `test.jsonl` derived from `tatqa_dataset_test_gold.json`
+- The original unlabeled `tatqa_dataset_test.json` is retained raw-only for provenance and summarized separately as `original_test_summary.json`
+- Hybrid context is preserved as question + raw table + ordered paragraphs, with deterministic serializations for prompts
+- Rich supervision fields are preserved in processed rows, but the canonical benchmark contract remains official answer+scale scoring using `exact_match`, `f1`, and `scale_score`
+- The dataset content is CC BY 4.0, while the repository code and official scorer scripts are MIT-licensed
 
 ## Validation
 

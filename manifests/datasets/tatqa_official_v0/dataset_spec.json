@@ -1,0 +1,138 @@
+{
+  "dataset_id": "tatqa_official_v0",
+  "dataset_name": "TAT-QA Official Hybrid QA Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/tatqa_official_v0",
+  "provenance": {
+    "canonical_paper_title": "TAT-QA: A Question Answering Benchmark on a Hybrid of Tabular and Textual Content in Finance",
+    "canonical_paper_venue": "ACL 2021",
+    "official_repo": "NExTplusplus/TAT-QA",
+    "official_repo_url": "https://github.com/NExTplusplus/TAT-QA",
+    "source_commit": "644770eb2a66dddc24b92303bd2acbad84cd2b9f",
+    "source_paths": [
+      "dataset_raw/tatqa_dataset_train.json",
+      "dataset_raw/tatqa_dataset_dev.json",
+      "dataset_raw/tatqa_dataset_test.json",
+      "dataset_raw/tatqa_dataset_test_gold.json",
+      "README.md",
+      "LICENSE",
+      "tatqa_eval.py",
+      "tatqa_metric.py",
+      "tatqa_utils.py",
+      "sample_prediction.json"
+    ],
+    "notes": [
+      "The pinned upstream commit is the Jan 2024 update announcing release of the TAT-QA test-set ground truth.",
+      "Canonical supervised publication uses tatqa_dataset_test_gold.json as the processed test split, while tatqa_dataset_test.json is retained raw-only for provenance.",
+      "The original release split is preserved at hybrid-context level and is not guaranteed to be report-disjoint.",
+      "Rich supervision fields such as derivation, answer_type, answer_from, rel_paragraphs, req_comparison, and scale are preserved in processed rows."
+    ]
+  },
+  "raw": {
+    "files": {
+      "train_json": "data/tatqa_official/raw/tatqa_dataset_train.json",
+      "dev_json": "data/tatqa_official/raw/tatqa_dataset_dev.json",
+      "test_json_unlabeled": "data/tatqa_official/raw/tatqa_dataset_test.json",
+      "test_json_gold": "data/tatqa_official/raw/tatqa_dataset_test_gold.json",
+      "readme": "data/tatqa_official/raw/README.md",
+      "license": "data/tatqa_official/raw/LICENSE",
+      "eval_script": "data/tatqa_official/raw/tatqa_eval.py",
+      "metric_script": "data/tatqa_official/raw/tatqa_metric.py",
+      "utils_script": "data/tatqa_official/raw/tatqa_utils.py",
+      "sample_prediction": "data/tatqa_official/raw/sample_prediction.json"
+    },
+    "meta_files": {
+      "download_meta": "data/tatqa_official/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "official_hybrid_qa_test_gold_supervised_v0",
+    "files": {
+      "train": "data/tatqa_official/processed/train.jsonl",
+      "dev": "data/tatqa_official/processed/dev.jsonl",
+      "test": "data/tatqa_official/processed/test.jsonl",
+      "label_inventory": "data/tatqa_official/processed/label_inventory.json",
+      "ingest_summary": "data/tatqa_official/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "original_test_summary": "data/tatqa_official/processed/original_test_summary.json"
+    }
+  },
+  "schema": {
+    "row_type": "hybrid_financial_question_answering",
+    "primary_text_fields": [
+      "question",
+      "table_serialized",
+      "paragraphs_serialized"
+    ],
+    "target_field": "gold_answer",
+    "scale_field": "gold_scale",
+    "answer_type_field": "gold_answer_type_norm",
+    "answer_from_field": "gold_answer_from",
+    "auxiliary_supervision_fields": [
+      "gold_derivation",
+      "gold_rel_paragraphs_raw",
+      "gold_req_comparison"
+    ],
+    "context_id_field": "context_id",
+    "notes": [
+      "Each processed row is one question over a hybrid table-plus-paragraph context.",
+      "The canonical table representation is a deterministic TSV-like serialization and the paragraph representation preserves explicit paragraph order markers."
+    ]
+  },
+  "label_scheme": {
+    "type": "hybrid_qa_answer_and_scale",
+    "task": "hybrid_financial_question_answering",
+    "scale_inventory": [
+      "",
+      "thousand",
+      "million",
+      "billion",
+      "percent"
+    ],
+    "answer_type_raw_inventory_observed": [
+      "arithmetic",
+      "count",
+      "multi-span",
+      "span"
+    ],
+    "answer_type_norm_inventory": [
+      "arithmetic",
+      "count",
+      "multi-span",
+      "span"
+    ],
+    "answer_from_inventory_observed": [
+      "table",
+      "table-text",
+      "text"
+    ],
+    "note": "Official top-line scoring is on answer plus scale only, but richer supervision fields are preserved in the dataset."
+  },
+  "split_policy": {
+    "type": "official_preserved_train_dev_test_gold",
+    "train_split": "train",
+    "dev_split": "dev",
+    "test_split": "test_from_test_gold",
+    "original_unlabeled_test_policy": "raw_provenance_only_not_used_as_supervised_processed_test"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/tatqa/official/v0",
+    "upstream_license": "cc-by-4.0",
+    "upstream_license_name": "Creative Commons Attribution 4.0 International",
+    "upstream_license_note": "The dataset content is CC BY 4.0 per the official README, while the repository code and official scorer scripts are MIT-licensed.",
+    "release_scope": "hf_repo_standard_release_official_test_gold_split",
+    "published_commit": "cffa82c4dd5f2d5b583749b3aa0aaf897c025b5d",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/cffa82c4dd5f2d5b583749b3aa0aaf897c025b5d"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": false
+  }
+}

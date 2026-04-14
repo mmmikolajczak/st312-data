@@ -354,6 +354,31 @@ Task README snapshot:
 Publish bookkeeping:
 - `manifests/publish/finqa_official_v0_publish_record.json`
 
+### 18) TAT-QA Official v0
+
+Dataset artifacts:
+- `datasets/tatqa/official/v0/train.jsonl`
+- `datasets/tatqa/official/v0/dev.jsonl`
+- `datasets/tatqa/official/v0/test.jsonl`
+- `datasets/tatqa/official/v0/label_inventory.json`
+- `datasets/tatqa/official/v0/ingest_summary.json`
+- `datasets/tatqa/official/v0/download_meta.json`
+- `datasets/tatqa/official/v0/original_test_summary.json`
+
+Task requests:
+- `tasks/tatqa_hybrid_qa_structured_v0/requests/train_requests.jsonl`
+- `tasks/tatqa_hybrid_qa_structured_v0/requests/dev_requests.jsonl`
+- `tasks/tatqa_hybrid_qa_structured_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/tatqa_hybrid_qa_structured_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/tatqa_official/ingest_audit.json`
+
+Publish bookkeeping:
+- `manifests/publish/tatqa_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -466,6 +491,15 @@ We publish a 3-way discretised label using:
 - Canonical target is executable program generation in the FinQA DSL, not answer-only QA
 - Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
 - The official repo is MIT-licensed; the Hugging Face mirror metadata differs and is not treated as canonical
+
+### TAT-QA Official
+
+- Canonical source is the official `NExTplusplus/TAT-QA` GitHub repo pinned to commit `644770eb2a66dddc24b92303bd2acbad84cd2b9f`
+- Canonical processed `train / dev / test` preserves the official hybrid-context split, with `test.jsonl` derived from `tatqa_dataset_test_gold.json`
+- The original unlabeled `tatqa_dataset_test.json` is retained raw-only for provenance and summarized separately as `original_test_summary.json`
+- Hybrid context is preserved per question as the raw table plus ordered paragraphs, with deterministic prompt serializations
+- Rich supervision fields are preserved in processed rows, but the canonical benchmark contract remains official answer+scale scoring with `exact_match`, `f1`, and `scale_score`
+- The dataset content is CC BY 4.0, while the repository code and official scorer scripts are MIT-licensed
 
 ## Licensing
 

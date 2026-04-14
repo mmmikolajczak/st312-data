@@ -1,0 +1,132 @@
+{
+  "task_id": "TA_QA_TATQA_v0",
+  "task_name": "TAT-QA structured hybrid financial QA",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Question Answering",
+    "finben_task": "Hybrid Table-and-Text Question Answering",
+    "output_type": "structured_json_prediction",
+    "scoring_type": "official_answer_plus_scale_em_f1_scale_score"
+  },
+  "dataset": {
+    "dataset_id": "tatqa_official_v0",
+    "config": "official_hybrid_qa_test_gold_supervised_v0",
+    "train_file": "data/tatqa_official/processed/train.jsonl",
+    "dev_file": "data/tatqa_official/processed/dev.jsonl",
+    "test_file": "data/tatqa_official/processed/test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "question",
+      "table_serialized",
+      "paragraphs_serialized"
+    ],
+    "optional_fields": [
+      "context_id",
+      "gold_rel_paragraphs_raw"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "answer",
+      "scale",
+      "derivation",
+      "answer_type",
+      "answer_from",
+      "rel_paragraphs",
+      "req_comparison"
+    ],
+    "no_extra_keys": true,
+    "answer_value_types": [
+      "string",
+      "number",
+      "array_of_strings",
+      "null"
+    ],
+    "allowed_values": {
+      "scale": [
+        "",
+        "thousand",
+        "million",
+        "billion",
+        "percent"
+      ],
+      "answer_type": [
+        "span",
+        "multi-span",
+        "arithmetic",
+        "count"
+      ],
+      "answer_from": [
+        "table",
+        "text",
+        "table-text"
+      ]
+    }
+  },
+  "prompt_template": {
+    "system": "You answer questions over hybrid financial report context using only the provided question, table, and paragraphs. Return ONLY a JSON object with exactly these keys: answer, scale, derivation, answer_type, answer_from, rel_paragraphs, req_comparison. Always predict answer and scale. Do not use chain-of-thought outside the derivation field and do not include extra text.",
+    "user": "Question:\n{{question}}\n\nTable:\n{{table_serialized}}\n\nParagraphs:\n{{paragraphs_serialized}}\n\nAllowed scale values:\n{{scale_values}}\nAllowed answer_type values:\n{{answer_type_values}}\nAllowed answer_from values:\n{{answer_from_values}}\n\nReturn JSON only in this form:\n{\"answer\": -12.6, \"scale\": \"million\", \"derivation\": \"44.1 - 56.7\", \"answer_type\": \"arithmetic\", \"answer_from\": \"table-text\", \"rel_paragraphs\": [\"2\"], \"req_comparison\": false}"
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 0.5,
+        "description": "Valid JSON with the required keys and an allowed scale."
+      },
+      {
+        "name": "official_answer_reward",
+        "weight": 2.0,
+        "description": "Dominant reward component using official answer-plus-scale EM/F1 semantics."
+      },
+      {
+        "name": "scale_reward",
+        "weight": 0.5,
+        "description": "Small explicit bonus for predicting the correct scale."
+      },
+      {
+        "name": "answer_type_reward",
+        "weight": 0.2,
+        "description": "Exact match on normalized answer type."
+      },
+      {
+        "name": "answer_from_reward",
+        "weight": 0.1,
+        "description": "Exact match on answer source."
+      },
+      {
+        "name": "rel_paragraph_reward",
+        "weight": 0.2,
+        "description": "Overlap F1 on related paragraph identifiers."
+      },
+      {
+        "name": "req_comparison_reward",
+        "weight": 0.1,
+        "description": "Exact match on comparison requirement."
+      },
+      {
+        "name": "derivation_reward",
+        "weight": 0.2,
+        "description": "Low-weight exact derivation match for arithmetic questions only."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "exact_match",
+    "f1",
+    "scale_score",
+    "format_valid_rate",
+    "completion_coverage",
+    "answer_type_accuracy_on_structured_predictions",
+    "answer_from_accuracy_on_structured_predictions",
+    "rel_paragraph_f1_on_structured_predictions",
+    "req_comparison_accuracy_on_structured_predictions",
+    "derivation_accuracy_on_arithmetic_structured_predictions"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "Published canonical TAT-QA hybrid QA module sourced from the official pinned GitHub repo and evaluated with the official answer+scale scorer semantics."
+  }
+}
