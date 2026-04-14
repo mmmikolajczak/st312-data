@@ -1,3 +1,4 @@
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -58,6 +59,12 @@ class TatqaIngestTests(unittest.TestCase):
     def test_canonical_test_source_uses_test_gold(self):
         self.assertEqual(CANONICAL_SPLIT_SOURCE_PATHS["test"], "dataset_raw/tatqa_dataset_test_gold.json")
         self.assertEqual(ORIGINAL_TEST_SOURCE_PATH, "dataset_raw/tatqa_dataset_test.json")
+
+    def test_processed_rows_do_not_contain_tagop_side_fields(self):
+        row = json.loads((REPO_ROOT / "data" / "tatqa_official" / "processed" / "test.jsonl").read_text(encoding="utf-8").splitlines()[0])
+        self.assertNotIn("gold_facts_raw", row)
+        self.assertNotIn("gold_consts_raw", row)
+        self.assertNotIn("gold_mappings_raw", row)
 
 
 if __name__ == "__main__":

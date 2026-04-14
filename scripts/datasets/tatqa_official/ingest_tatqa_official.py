@@ -214,9 +214,6 @@ def validate_question(question: object, *, require_labels: bool) -> dict:
                 "rel_paragraph_orders": parse_rel_paragraph_orders(question.get("rel_paragraphs", [])),
                 "req_comparison": question.get("req_comparison", False),
                 "scale": scale,
-                "facts": question.get("facts"),
-                "consts": question.get("consts"),
-                "mappings": question.get("mappings"),
                 "source_fields_present": sorted(question.keys()),
             }
         )
@@ -286,9 +283,6 @@ def build_processed_rows(split: str, source_path: str, source_commit: str, conte
                     "gold_rel_paragraphs_raw": q["rel_paragraphs"],
                     "gold_rel_paragraph_orders": q["rel_paragraph_orders"],
                     "gold_req_comparison": q["req_comparison"],
-                    "gold_facts_raw": q["facts"],
-                    "gold_consts_raw": q["consts"],
-                    "gold_mappings_raw": q["mappings"],
                     "source_repo": SOURCE_REPO,
                     "source_commit": source_commit,
                     "source_path": source_path,

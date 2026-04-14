@@ -49,7 +49,7 @@ def main() -> None:
     out_path = Path(args.out) if args.out else default_out_path(args.split)
     system_prompt = task["prompt_template"]["system"]
     user_template = task["prompt_template"]["user"]
-    scale_values = ", ".join([repr(value) if value == "" else value for value in task["output_schema"]["allowed_values"]["scale"]])
+    scale_values = ", ".join(json.dumps(value, ensure_ascii=False) for value in task["output_schema"]["allowed_values"]["scale"])
     answer_type_values = ", ".join(task["output_schema"]["allowed_values"]["answer_type"])
     answer_from_values = ", ".join(task["output_schema"]["allowed_values"]["answer_from"])
 

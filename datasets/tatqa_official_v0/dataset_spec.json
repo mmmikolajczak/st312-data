@@ -124,8 +124,8 @@
     "upstream_license_name": "Creative Commons Attribution 4.0 International",
     "upstream_license_note": "The dataset content is CC BY 4.0 per the official README, while the repository code and official scorer scripts are MIT-licensed.",
     "release_scope": "hf_repo_standard_release_official_test_gold_split",
-    "published_commit": "cffa82c4dd5f2d5b583749b3aa0aaf897c025b5d",
-    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/cffa82c4dd5f2d5b583749b3aa0aaf897c025b5d"
+    "published_commit": "4621e2d17e9b7ad6b7c566835ea8069ebff3f157",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/4621e2d17e9b7ad6b7c566835ea8069ebff3f157"
   },
   "status": {
     "raw_ingested": true,

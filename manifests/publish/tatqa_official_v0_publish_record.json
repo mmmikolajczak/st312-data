@@ -9,7 +9,11 @@
     "tatqa_official_initial_publish": "cffa82c4dd5f2d5b583749b3aa0aaf897c025b5d",
     "tatqa_official_manifest_metadata_sync": "7c36b4d3b656d156f2224debfcdc062c2bb1cbac",
     "tatqa_official_publish_record_sync": "59308d3e06bf3344473011e85cf6e57d41ff6344",
-    "tatqa_official_final_publish_record_refresh": "ea8d55cb9eaff632fb96954603c5d6767a6fa238"
+    "tatqa_official_final_publish_record_refresh": "ea8d55cb9eaff632fb96954603c5d6767a6fa238",
+    "tatqa_official_schema_cleanup_publish": "4621e2d17e9b7ad6b7c566835ea8069ebff3f157",
+    "tatqa_official_schema_cleanup_manifest_sync": "7251038f6b7502ce302b942abe5031a95f478083",
+    "tatqa_official_schema_cleanup_publish_record_sync": "33fa77ba6fad5394300e866a3781fa53395b5ae8",
+    "tatqa_official_schema_cleanup_final_publish_record_refresh": "de777663b0d77e8a7948bab28a25dfabd597478d"
   },
   "artifacts_published": [
     "datasets/tatqa/official/v0/train.jsonl",
