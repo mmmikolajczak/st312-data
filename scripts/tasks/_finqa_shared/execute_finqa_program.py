@@ -72,6 +72,11 @@ def eval_program(program: list[str], table: list[list[str]]):
 
     try:
         program = program[:-1]
+        if len(program) == 1:
+            single_value = str_to_num(program[0])
+            if single_value == "n/a":
+                return 1, "n/a"
+            return 0, round(float(single_value), 5)
         for ind, token in enumerate(program):
             if ind % 4 == 0:
                 if token.strip("(") not in OFFICIAL_OPERATION_NAMES:
@@ -172,6 +177,9 @@ def equal_program(program1: list[str], program2: list[str]) -> bool:
     sym_map = {}
 
     program1 = program1[:-1]
+    if len(program1) == 1:
+        program2 = program2[:-1]
+        return len(program2) == 1 and program1[0] == program2[0]
     program1 = "|".join(program1)
     steps = program1.split(")")[:-1]
 

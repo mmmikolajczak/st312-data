@@ -379,6 +379,29 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/tatqa_official_v0_publish_record.json`
 
+### 19) ConvFinQA Official v0
+
+Dataset artifacts:
+- `datasets/convfinqa/official/v0/train.jsonl`
+- `datasets/convfinqa/official/v0/dev.jsonl`
+- `datasets/convfinqa/official/v0/label_inventory.json`
+- `datasets/convfinqa/official/v0/ingest_summary.json`
+- `datasets/convfinqa/official/v0/download_meta.json`
+- `datasets/convfinqa/official/v0/test_release_summary.json`
+
+Task requests:
+- `tasks/convfinqa_program_generation_v0/requests/train_requests.jsonl`
+- `tasks/convfinqa_program_generation_v0/requests/dev_requests.jsonl`
+
+Task README snapshot:
+- `tasks/convfinqa_program_generation_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/convfinqa_official/ingest_audit.json`
+
+Publish bookkeeping:
+- `manifests/publish/convfinqa_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -500,6 +523,15 @@ We publish a 3-way discretised label using:
 - Hybrid context is preserved per question as the raw table plus ordered paragraphs, with deterministic prompt serializations
 - Rich supervision fields are preserved in processed rows, but the canonical benchmark contract remains official answer+scale scoring with `exact_match`, `f1`, and `scale_score`
 - The dataset content is CC BY 4.0, while the repository code and official scorer scripts are MIT-licensed
+
+### ConvFinQA Official
+
+- Canonical source is the official `czyssrs/ConvFinQA` GitHub repo pinned to commit `cf3eed2d5984960bf06bb8145bcea5e80b0222a6`
+- ConvFinQA is a FinQA-family conversational derivative, so training on FinQA plus ConvFinQA does not add fully independent source evidence
+- Canonical processed rows are turn-level and preserve dialogue history, `pre_text`, raw table, and `post_text`
+- Canonical public supervised splits are `train / dev`; the pinned release exposes only unlabeled private test files, which are retained raw-only and summarized separately as `test_release_summary.json`
+- Canonical target is executable program generation in the FinQA DSL, not answer-only conversational QA
+- Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
 
 ## Licensing
 

@@ -1,0 +1,119 @@
+{
+  "task_id": "TA_PROGGEN_CONVFINQA_v0",
+  "task_name": "ConvFinQA conversational program generation",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Question Answering",
+    "finben_task": "Conversational Program Generation Numerical Reasoning",
+    "output_type": "program_token_generation",
+    "scoring_type": "execution_accuracy_primary_program_accuracy_secondary"
+  },
+  "dataset": {
+    "dataset_id": "convfinqa_official_v0",
+    "config": "official_turn_level_program_generation_train_dev_v0",
+    "train_file": "data/convfinqa_official/processed/train.jsonl",
+    "dev_file": "data/convfinqa_official/processed/dev.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "current_question",
+      "dialogue_history_serialized",
+      "pre_text",
+      "table_serialized",
+      "post_text"
+    ],
+    "optional_fields": [
+      "current_turn_type",
+      "gold_supporting_facts",
+      "current_qa_split"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "program_tokens"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "program_tokens": {
+        "type": "array",
+        "items": "string",
+        "must_end_with": "EOF",
+        "dsl": "official_convfinqa_finqa_family_v0"
+      }
+    }
+  },
+  "dsl": {
+    "operation_names": [
+      "add",
+      "subtract",
+      "multiply",
+      "divide",
+      "greater",
+      "exp",
+      "table_max",
+      "table_min",
+      "table_sum",
+      "table_average"
+    ],
+    "operation_tokens": [
+      "add(",
+      "subtract(",
+      "multiply(",
+      "divide(",
+      "greater(",
+      "exp(",
+      "table_max(",
+      "table_min(",
+      "table_sum(",
+      "table_average("
+    ],
+    "structural_tokens": [
+      ")",
+      "EOF"
+    ],
+    "reference_pattern": "^#\\d+$",
+    "single_value_program_note": "number_turn supervision may be a single numeric token followed by EOF."
+  },
+  "prompt_template": {
+    "system": "You are solving conversational numerical reasoning over financial reports. Use only the current question, dialogue history, pre-table text, table, and post-table text. Return ONLY a JSON object with exactly one key: \"program_tokens\". The value must be a list of FinQA-family DSL program tokens ending with \"EOF\". Do not return the final answer directly and do not include extra text.",
+    "user": "Current question:\n{{current_question}}\n\nDialogue history:\n{{dialogue_history_serialized}}\n\nPre-table text:\n{{pre_text}}\n\nTable:\n{{table_serialized}}\n\nPost-table text:\n{{post_text}}\n\nAllowed operations:\n{{allowed_operations}}\n\nReturn JSON only in this form:\n{\"program_tokens\": [\"subtract(\", \"5829\", \"5735\", \")\", \"EOF\"]}\nFor number_turn cases, a valid program can also be a single numeric token followed by EOF, for example {\"program_tokens\": [\"206588\", \"EOF\"]}."
+  },
+  "reward_spec": {
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 0.5,
+        "description": "Valid JSON object with exactly one key and a token list ending in EOF."
+      },
+      {
+        "name": "dsl_validity_reward",
+        "weight": 0.5,
+        "description": "Program tokens satisfy the ConvFinQA/FinQA-family DSL structure, including valid single-number programs."
+      },
+      {
+        "name": "execution_reward",
+        "weight": 2.0,
+        "description": "Predicted program executes to the correct gold execution answer."
+      },
+      {
+        "name": "program_match_reward",
+        "weight": 0.5,
+        "description": "Predicted program matches the canonical gold program under the FinQA-family matcher."
+      }
+    ]
+  },
+  "evaluation_metrics": [
+    "execution_accuracy",
+    "program_accuracy",
+    "format_valid_rate",
+    "dsl_valid_rate",
+    "execution_accuracy_on_valid_programs",
+    "completion_coverage",
+    "program_exact_match"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "Published canonical ConvFinQA conversational program-generation module sourced from the official pinned GitHub repo. Only train/dev are published as supervised splits because the pinned test release is private and unlabeled."
+  }
+}

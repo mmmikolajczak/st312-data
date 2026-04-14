@@ -187,6 +187,15 @@
       "task_readme_path": "tasks/tatqa_hybrid_qa_structured_v0/README.md",
       "dataset_id": "tatqa_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_PROGGEN_CONVFINQA_v0",
+      "task_name": "ConvFinQA conversational program generation",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/convfinqa_program_generation_v0/task_spec.json",
+      "task_readme_path": "tasks/convfinqa_program_generation_v0/README.md",
+      "dataset_id": "convfinqa_official_v0",
+      "status": "published"
     }
   ]
 }

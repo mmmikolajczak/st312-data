@@ -42,11 +42,22 @@ class FinqaExecutorTests(unittest.TestCase):
         self.assertEqual(normalize_finqa_answer(127.40000), "127.4")
         self.assertEqual(normalize_finqa_answer("yes"), "yes")
 
+    def test_single_number_program_executes(self):
+        invalid, result = eval_program(["206588", "EOF"], self.table)
+        self.assertEqual(invalid, 0)
+        self.assertEqual(result, 206588.0)
+
     def test_execution_match_uses_canonical_normalization(self):
         program = ["divide(", "10", "4", ")", "EOF"]
         matches, invalid, result = execution_matches_gold(program, self.table, "2.5")
         self.assertEqual(invalid, 0)
         self.assertEqual(result, 2.5)
+        self.assertTrue(matches)
+
+    def test_single_number_program_matches_canonical_normalization(self):
+        matches, invalid, result = execution_matches_gold(["206588", "EOF"], self.table, "206588")
+        self.assertEqual(invalid, 0)
+        self.assertEqual(result, 206588.0)
         self.assertTrue(matches)
 
     def test_symbolic_program_equivalence(self):

@@ -1,0 +1,31 @@
+{
+  "dataset_id": "convfinqa_official_v0",
+  "task_id": "TA_PROGGEN_CONVFINQA_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "convfinqa_canonical_artifacts": "79fd8df1a67d9da95febd32ef2d3ecf328485cc7",
+    "convfinqa_manifest_metadata_sync": "5c9aa423e7a579fe0f67b552688033e4d99ed8da",
+    "convfinqa_hf_readme_sync": "3a5cc74cf32d7083042e5d991bfb2c6267d1c8f6",
+    "convfinqa_publish_record_sync": "437fb2e9a04116f6d98a0bac224d1ea320cf29c8"
+  },
+  "artifacts_published": [
+    "datasets/convfinqa/official/v0/train.jsonl",
+    "datasets/convfinqa/official/v0/dev.jsonl",
+    "datasets/convfinqa/official/v0/label_inventory.json",
+    "datasets/convfinqa/official/v0/ingest_summary.json",
+    "datasets/convfinqa/official/v0/download_meta.json",
+    "datasets/convfinqa/official/v0/test_release_summary.json",
+    "tasks/convfinqa_program_generation_v0/requests/train_requests.jsonl",
+    "tasks/convfinqa_program_generation_v0/requests/dev_requests.jsonl",
+    "tasks/convfinqa_program_generation_v0/README.md",
+    "reports/convfinqa_official/ingest_audit.json",
+    "manifests/datasets/convfinqa_official_v0/dataset_spec.json",
+    "manifests/datasets/convfinqa_official_v0/checksums.sha256",
+    "manifests/tasks/convfinqa_program_generation_v0/task_spec.json",
+    "manifests/publish/convfinqa_official_v0_publish_record.json"
+  ],
+  "notes": "Published canonical ConvFinQA conversational program-generation module from the official pinned GitHub repo commit cf3eed2d5984960bf06bb8145bcea5e80b0222a6. ConvFinQA is a FinQA-family conversational derivative, so training on FinQA and ConvFinQA does not add fully independent evidence sources. The pinned release exposes labeled train/dev turn files and only unlabeled private test files, so the supervised publication is train/dev only; private test remains raw provenance summarized via test_release_summary.json. Execution accuracy is the primary metric and program accuracy is the secondary metric."
+}

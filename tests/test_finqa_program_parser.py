@@ -26,6 +26,15 @@ class FinqaProgramParserTests(unittest.TestCase):
         pred = parse_program_prediction('Answer: {"predicted":["table-average(","2016","none",")","EOF"]}')
         self.assertEqual(pred, ["table_average(", "2016", "none", ")", "EOF"])
 
+    def test_parser_accepts_single_number_program(self):
+        pred = parse_program_prediction('{"program_tokens":["206588","EOF"]}')
+        self.assertEqual(pred, ["206588", "EOF"])
+
+    def test_validator_accepts_single_number_program(self):
+        valid, reason = validate_program_tokens(["206588", "EOF"])
+        self.assertTrue(valid)
+        self.assertIsNone(reason)
+
     def test_validator_rejects_forward_reference(self):
         valid, _ = validate_program_tokens(["subtract(", "#0", "10", ")", "EOF"])
         self.assertFalse(valid)

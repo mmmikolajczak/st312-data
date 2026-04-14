@@ -8,6 +8,7 @@ from execute_finqa_program import (
     END_TOKEN,
     OFFICIAL_OPERATION_NAMES,
     REFERENCE_PREFIX,
+    str_to_num,
 )
 
 
@@ -44,6 +45,8 @@ def detokenize_program_tokens(tokens: list[str]) -> str:
     if not tokens or tokens[-1] != END_TOKEN:
         raise ValueError("Program tokens must end with EOF")
     body = tokens[:-1]
+    if len(body) == 1:
+        return body[0]
     if len(body) % 4 != 0:
         raise ValueError("Program token body must be divisible into 4-token steps")
     steps = []
@@ -102,6 +105,14 @@ def canonicalize_program_tokens(tokens: list[str]) -> list[str]:
     return normalized
 
 
+def _is_valid_single_value_token(token: str) -> bool:
+    if token.startswith(REFERENCE_PREFIX):
+        return False
+    if token.lower() in {"yes", "no"}:
+        return True
+    return str_to_num(token) != "n/a"
+
+
 def validate_program_tokens(tokens: list[str]) -> tuple[bool, str | None]:
     try:
         normalized = canonicalize_program_tokens(tokens)
@@ -114,6 +125,8 @@ def validate_program_tokens(tokens: list[str]) -> tuple[bool, str | None]:
         return False, "Final token must be EOF"
 
     body = normalized[:-1]
+    if len(body) == 1:
+        return (_is_valid_single_value_token(body[0]), None if _is_valid_single_value_token(body[0]) else "Single-value programs must contain a numeric or boolean literal")
     if len(body) == 0 or len(body) % 4 != 0:
         return False, "Program body must consist of 4-token steps before EOF"
 

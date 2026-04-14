@@ -267,6 +267,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/tatqa_official_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `NExTplusplus/TAT-QA` GitHub repo pinned to commit `644770eb2a66dddc24b92303bd2acbad84cd2b9f`; canonical processed `test.jsonl` is derived from the Jan 2024 `tatqa_dataset_test_gold.json` release, while the original unlabeled `tatqa_dataset_test.json` is retained raw-only for provenance; hybrid table-plus-paragraph context is preserved per question along with derivation, answer-type, answer-source, related-paragraph, comparison, and scale annotations; the top-line benchmark remains the official answer+scale `exact_match`, `f1`, and `scale_score`.
 
+### 19) ConvFinQA Official v0
+- **Dataset ID:** `convfinqa_official_v0`
+- **Task ID:** `TA_PROGGEN_CONVFINQA_v0`
+- **Task type:** conversational financial-report numerical reasoning program generation
+- **HF dataset path:** `datasets/convfinqa/official/v0/`
+- **HF task path:** `tasks/convfinqa_program_generation_v0/`
+- **Publish record:** `manifests/publish/convfinqa_official_v0_publish_record.json`
+- **Labeling note:** canonical source is the official `czyssrs/ConvFinQA` GitHub repo pinned to commit `cf3eed2d5984960bf06bb8145bcea5e80b0222a6`; ConvFinQA is a FinQA-family conversational derivative rather than an independent evidence-source family; the canonical modeling unit is the labeled turn-level release; only supervised `train/dev` are published because the pinned release exposes only unlabeled private test files; the canonical target is executable program generation over dialogue history plus report context, with execution accuracy as the primary metric and program accuracy as the secondary metric.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -323,6 +332,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Hybrid context is preserved as question + raw table + ordered paragraphs, with deterministic serializations for prompts
 - Rich supervision fields are preserved in processed rows, but the canonical benchmark contract remains official answer+scale scoring using `exact_match`, `f1`, and `scale_score`
 - The dataset content is CC BY 4.0, while the repository code and official scorer scripts are MIT-licensed
+
+### ConvFinQA Official
+
+- Canonical source is the official `czyssrs/ConvFinQA` GitHub repo pinned to commit `cf3eed2d5984960bf06bb8145bcea5e80b0222a6`
+- ConvFinQA is a FinQA-family conversational derivative, so training on FinQA plus ConvFinQA does not add fully independent source evidence
+- Canonical processed rows are turn-level and preserve dialogue history, `pre_text`, raw table, and `post_text`
+- Canonical public supervised splits are `train / dev`; the pinned release exposes only unlabeled private test files, which are retained raw-only and summarized separately as `test_release_summary.json`
+- Canonical target is executable program generation in the FinQA DSL, not answer-only conversational QA
+- Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
 
 ## Validation
 

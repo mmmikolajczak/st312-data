@@ -215,6 +215,17 @@
       "upstream_license": "cc-by-4.0",
       "task_family": "hybrid_financial_question_answering_structured",
       "status": "published"
+    },
+    {
+      "dataset_id": "convfinqa_official_v0",
+      "dataset_name": "ConvFinQA Official Turn-Level Program-Generation Release",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/convfinqa_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "czyssrs/ConvFinQA official GitHub repo",
+      "upstream_license": "mit",
+      "task_family": "conversational_program_generation_numerical_reasoning",
+      "status": "published"
     }
   ]
 }

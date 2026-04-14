@@ -1,0 +1,127 @@
+{
+  "dataset_id": "convfinqa_official_v0",
+  "dataset_name": "ConvFinQA Official Turn-Level Program-Generation Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/convfinqa_official_v0",
+  "provenance": {
+    "canonical_paper_title": "ConvFinQA: Exploring the Chain of Numerical Reasoning in Conversational Finance Question Answering",
+    "canonical_paper_venue": "EMNLP 2022",
+    "official_repo": "czyssrs/ConvFinQA",
+    "official_repo_url": "https://github.com/czyssrs/ConvFinQA",
+    "source_commit": "cf3eed2d5984960bf06bb8145bcea5e80b0222a6",
+    "repo_has_tagged_releases": false,
+    "source_paths": [
+      "README.md",
+      "LICENSE",
+      "data.zip::data/train.json",
+      "data.zip::data/dev.json",
+      "data.zip::data/test_private.json",
+      "data.zip::data/train_turn.json",
+      "data.zip::data/dev_turn.json",
+      "data.zip::data/test_turn_private.json",
+      "code/utils/general_utils.py",
+      "code/finqanet_generator/finqa_utils.py"
+    ],
+    "notes": [
+      "The official ConvFinQA repo has no tagged releases, so the canonical source must be pinned by exact Git commit SHA.",
+      "ConvFinQA is a FinQA-family conversational derivative and should not be treated as an independent evidence-source family.",
+      "The pinned release archive exposes labeled train/dev turn files and only unlabeled private test files; no public supervised test split is published at this commit.",
+      "The canonical task target is current-turn program generation in the FinQA DSL, not answer-only conversational QA.",
+      "number_turn supervision can be a single numeric token followed by EOF; this matches the upstream conversion and evaluation code."
+    ]
+  },
+  "raw": {
+    "files": {
+      "train_conversation_json": "data/convfinqa_official/raw/train.json",
+      "dev_conversation_json": "data/convfinqa_official/raw/dev.json",
+      "test_private_conversation_json": "data/convfinqa_official/raw/test_private.json",
+      "train_turn_json": "data/convfinqa_official/raw/train_turn.json",
+      "dev_turn_json": "data/convfinqa_official/raw/dev_turn.json",
+      "test_turn_private_json": "data/convfinqa_official/raw/test_turn_private.json",
+      "license": "data/convfinqa_official/raw/LICENSE",
+      "readme": "data/convfinqa_official/raw/README.md",
+      "general_utils": "data/convfinqa_official/raw/general_utils.py",
+      "generator_finqa_utils": "data/convfinqa_official/raw/generator_finqa_utils.py"
+    },
+    "meta_files": {
+      "download_meta": "data/convfinqa_official/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "official_turn_level_program_generation_train_dev_v0",
+    "files": {
+      "train": "data/convfinqa_official/processed/train.jsonl",
+      "dev": "data/convfinqa_official/processed/dev.jsonl",
+      "label_inventory": "data/convfinqa_official/processed/label_inventory.json",
+      "ingest_summary": "data/convfinqa_official/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "test_release_summary": "data/convfinqa_official/processed/test_release_summary.json"
+    }
+  },
+  "schema": {
+    "row_type": "financial_report_conversational_program_generation_turn",
+    "primary_text_fields": [
+      "current_question",
+      "dialogue_history_serialized",
+      "pre_text",
+      "table_serialized",
+      "post_text"
+    ],
+    "target_field": "gold_program_tokens",
+    "target_value_type": "list_of_program_tokens",
+    "execution_answer_field": "gold_execution_answer",
+    "supporting_fact_field": "gold_supporting_facts",
+    "conversation_id_field": "conversation_id",
+    "turn_index_field": "turn_index",
+    "table_representation_note": "The canonical table serialization is a deterministic TSV-like rendering with escaped control characters.",
+    "dialogue_representation_note": "The canonical dialogue history serialization preserves turn order and explicit turn markers."
+  },
+  "label_scheme": {
+    "type": "dsl_program_generation",
+    "task": "conversational_numerical_reasoning_program_generation",
+    "inventory_source": "official_convfinqa_generator_semantics",
+    "operation_names": [
+      "add",
+      "subtract",
+      "multiply",
+      "divide",
+      "greater",
+      "exp",
+      "table_max",
+      "table_min",
+      "table_sum",
+      "table_average"
+    ],
+    "structural_tokens": [
+      ")",
+      "EOF"
+    ],
+    "reference_pattern": "^#\\d+$",
+    "single_value_program_note": "number_turn supervision can be a single numeric token followed by EOF."
+  },
+  "split_policy": {
+    "type": "official_preserved_train_dev_private_test_raw_only",
+    "train_split": "train",
+    "dev_split": "dev",
+    "test_policy": "raw_only_private_unlabeled_not_published_as_supervised_split"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/convfinqa/official/v0",
+    "upstream_license": "mit",
+    "upstream_license_name": "MIT License",
+    "upstream_license_url": "https://opensource.org/licenses/MIT",
+    "upstream_license_note": "The official ConvFinQA source repo is MIT-licensed. ConvFinQA remains a FinQA-family conversational derivative for provenance purposes.",
+    "release_scope": "hf_repo_standard_release_official_train_dev_only"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": false
+  }
+}
