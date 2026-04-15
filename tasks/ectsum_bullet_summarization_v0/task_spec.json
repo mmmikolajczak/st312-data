@@ -1,0 +1,92 @@
+{
+  "task_id": "TA_SUM_ECTSUM_v0",
+  "task_name": "ECTSum bullet summarization",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Summarization",
+    "finben_task": "Bullet-Style Earnings Call Transcript Summarization",
+    "output_type": "single_document_summarization",
+    "scoring_type": "dual_variant_original_default_finben_optional"
+  },
+  "dataset": {
+    "dataset_id": "ectsum_official_v0",
+    "config": "official_bullet_summarization_v0",
+    "train_file": "data/ectsum_official/processed/train.jsonl",
+    "val_file": "data/ectsum_official/processed/val.jsonl",
+    "test_file": "data/ectsum_official/processed/test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "transcript_text"
+    ],
+    "optional_fields": [
+      "transcript_lines",
+      "source_section"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "summary"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "summary": {
+        "type": "string"
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "Summarize the earnings-call prepared remarks into concise bullet-style key points. Preserve important financial facts and numbers. Return ONLY a JSON object with exactly one key: \"summary\". Do not include extra text.",
+    "user": "Transcript:\n{{transcript_text}}\n\nWrite a concise bullet-style summary of the prepared remarks.\n\nReturn JSON only in this form:\n{\"summary\": \"...\"}"
+  },
+  "default_eval_variant": "ectsum_original",
+  "optional_eval_variants": [
+    "finben_summary"
+  ],
+  "evaluation_config": {
+    "variants": {
+      "ectsum_original": {
+        "rouge_package": "rouge-score==0.1.2",
+        "bertscore_package": "bert-score==0.3.13",
+        "bertscore_model": "microsoft/deberta-xlarge-mnli",
+        "summac_package": "summac==0.0.4",
+        "summac_model": "vitc",
+        "num_prec_definition": "fraction_of_predicted_numeric_values_present_in_source_transcript_or_reference_summary_after_partial_normalization"
+      },
+      "finben_summary": {
+        "rouge_package": "rouge-score==0.1.2",
+        "bertscore_package": "bert-score==0.3.13",
+        "bertscore_model": "microsoft/deberta-xlarge-mnli",
+        "bartscore_backend": "transformers==4.24.0",
+        "bartscore_model": "facebook/bart-large-cnn",
+        "bartscore_definition": "reference_conditioned_normalized_sequence_likelihood"
+      }
+    }
+  },
+  "evaluation_metrics": {
+    "ectsum_original": [
+      "rouge1",
+      "rouge2",
+      "rougeL",
+      "bertscore_f1",
+      "summacconv",
+      "num_prec",
+      "format_valid_rate",
+      "completion_coverage"
+    ],
+    "finben_summary": [
+      "rouge1",
+      "rouge2",
+      "rougeL",
+      "bertscore_f1",
+      "bartscore",
+      "format_valid_rate",
+      "completion_coverage"
+    ]
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published in the normal ST312 artifact structure under a private/internal assumption pending licensing and redistribution review."
+  }
+}

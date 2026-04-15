@@ -1,0 +1,30 @@
+{
+  "dataset_id": "ectsum_official_v0",
+  "task_id": "TA_SUM_ECTSUM_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": false,
+  "hf_commits": {
+    "ectsum_artifact_payload_and_readme": "e911f5094334e574e11f60194a34dd2e7df44ff1",
+    "ectsum_manifest_metadata_sync": "9517cfa95c17354cef7c292ec42fd4d267bd150b",
+    "ectsum_publish_record_refresh": "9a22ff00952604af6532dc5895ca21c49897cbab"
+  },
+  "artifacts_published": [
+    "datasets/ectsum/official/v0/train.jsonl",
+    "datasets/ectsum/official/v0/val.jsonl",
+    "datasets/ectsum/official/v0/test.jsonl",
+    "datasets/ectsum/official/v0/ingest_summary.json",
+    "datasets/ectsum/official/v0/download_meta.json",
+    "reports/ectsum_official/ingest_audit.json",
+    "tasks/ectsum_bullet_summarization_v0/requests/train_requests.jsonl",
+    "tasks/ectsum_bullet_summarization_v0/requests/val_requests.jsonl",
+    "tasks/ectsum_bullet_summarization_v0/requests/test_requests.jsonl",
+    "tasks/ectsum_bullet_summarization_v0/README.md",
+    "manifests/datasets/ectsum_official_v0/dataset_spec.json",
+    "manifests/datasets/ectsum_official_v0/checksums.sha256",
+    "manifests/tasks/ectsum_bullet_summarization_v0/task_spec.json",
+    "manifests/publish/ectsum_official_v0_publish_record.json"
+  ],
+  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout, but carried under a private/internal release assumption pending licensing and redistribution review. Source texts derive from Motley Fool earnings-call transcripts and Reuters summaries; public redistribution clearance is not yet established."
+}

@@ -1,0 +1,46 @@
+{
+  "dataset_id": "ectsum_official_v0",
+  "source_repo": "rajdeep345/ECTSum",
+  "source_commit": "6909f1fc543104c1c60cf9de63e799f6620d1b0a",
+  "split_counts": {
+    "train": 1681,
+    "val": 249,
+    "test": 495
+  },
+  "avg_transcript_words": {
+    "train": 2860.314693634741,
+    "val": 2769.3333333333335,
+    "test": 2818.0828282828284
+  },
+  "avg_transcript_lines": {
+    "train": 129.35693039857227,
+    "val": 124.91566265060241,
+    "test": 128.1131313131313
+  },
+  "avg_summary_words": {
+    "train": 44.35633551457466,
+    "val": 42.429718875502004,
+    "test": 42.74747474747475
+  },
+  "avg_summary_bullets": {
+    "train": 4.108863771564545,
+    "val": 4.028112449799197,
+    "test": 4.004040404040404
+  },
+  "empty_file_counts": {
+    "train": 0,
+    "val": 0,
+    "test": 0
+  },
+  "duplicate_filename_checks": {
+    "train": false,
+    "val": false,
+    "test": false
+  },
+  "notes": [
+    "The paper reports 2,425 cleaned transcript-summary pairs with a random 70/10/20 split.",
+    "Source chain involves Motley Fool earnings call transcripts and Reuters article summaries.",
+    "This module is carried under a private/internal publication assumption pending licensing review."
+  ],
+  "cross_split_duplicate_filenames": {}
+}

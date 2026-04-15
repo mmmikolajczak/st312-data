@@ -1,0 +1,80 @@
+{
+  "dataset_id": "ectsum_official_v0",
+  "dataset_name": "ECTSum Official Bullet Summarization Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/ectsum_official_v0",
+  "provenance": {
+    "canonical_public_artifact": "rajdeep345/ECTSum",
+    "canonical_public_url": "https://github.com/rajdeep345/ECTSum",
+    "source_commit": "6909f1fc543104c1c60cf9de63e799f6620d1b0a",
+    "notes": [
+      "The canonical source is the official ECTSum GitHub repository pinned to a concrete commit because the repo has no tagged releases.",
+      "Canonical task is prepared-remarks bullet summarization from the original paper.",
+      "Source texts derive from Motley Fool transcripts and Reuters summaries.",
+      "This module is published under a private/internal assumption pending licensing review."
+    ]
+  },
+  "raw": {
+    "files": {
+      "readme": "data/ectsum_official/raw/README.md",
+      "license": "data/ectsum_official/raw/LICENSE.txt",
+      "evaluate_script": "data/ectsum_official/raw/evaluate.py",
+      "prepare_ext_script": "data/ectsum_official/raw/prepare_data_ectbps_ext.py",
+      "prepare_para_script": "data/ectsum_official/raw/prepare_data_ectbps_para.py",
+      "train_ects_dir": "data/ectsum_official/raw/data/final/train/ects",
+      "train_summaries_dir": "data/ectsum_official/raw/data/final/train/gt_summaries",
+      "val_ects_dir": "data/ectsum_official/raw/data/final/val/ects",
+      "val_summaries_dir": "data/ectsum_official/raw/data/final/val/gt_summaries",
+      "test_ects_dir": "data/ectsum_official/raw/data/final/test/ects",
+      "test_summaries_dir": "data/ectsum_official/raw/data/final/test/gt_summaries"
+    },
+    "meta_files": {
+      "download_meta": "data/ectsum_official/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "official_bullet_summarization_v0",
+    "files": {
+      "train": "data/ectsum_official/processed/train.jsonl",
+      "val": "data/ectsum_official/processed/val.jsonl",
+      "test": "data/ectsum_official/processed/test.jsonl",
+      "ingest_summary": "data/ectsum_official/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "ingest_audit": "reports/ectsum_official/ingest_audit.json"
+    }
+  },
+  "schema": {
+    "row_type": "bullet_style_financial_summarization",
+    "input_field": "transcript_text",
+    "target_field": "reference_summary",
+    "target_structure_field": "reference_bullets",
+    "source_section": "prepared_remarks"
+  },
+  "split_policy": {
+    "type": "official_preserved_train_val_test",
+    "release_splits": [
+      "train",
+      "val",
+      "test"
+    ],
+    "canonical_split": "preserve_official_random_split_release"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/ectsum/official/v0",
+    "upstream_license": "gpl-3.0-only_code_text_redistribution_pending_review",
+    "upstream_license_note": "The upstream repo ships GPL-3.0 code, but dataset texts derive from Motley Fool transcripts and Reuters summaries. This ST312 publication is carried under a private/internal assumption pending licensing and redistribution review.",
+    "public_release_cleared": false,
+    "release_scope": "hf_repo_standard_release_private_scope_pending_clearance"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": true
+  }
+}

@@ -429,6 +429,29 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/regulations_public_test_v0_publish_record.json`
 
+### 21) ECTSum Official v0
+
+Dataset artifacts:
+- `datasets/ectsum/official/v0/train.jsonl`
+- `datasets/ectsum/official/v0/val.jsonl`
+- `datasets/ectsum/official/v0/test.jsonl`
+- `datasets/ectsum/official/v0/ingest_summary.json`
+- `datasets/ectsum/official/v0/download_meta.json`
+
+Task requests:
+- `tasks/ectsum_bullet_summarization_v0/requests/train_requests.jsonl`
+- `tasks/ectsum_bullet_summarization_v0/requests/val_requests.jsonl`
+- `tasks/ectsum_bullet_summarization_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/ectsum_bullet_summarization_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/ectsum_official/ingest_audit.json`
+
+Publish bookkeeping:
+- `manifests/publish/ectsum_official_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -568,6 +591,14 @@ We publish a 3-way discretised label using:
 - The wrapper exposes only `id`, `query`, `answer`, and `text`; canonical `question` uses `text`, while prompt-prefixed `query` is preserved as `source_query`
 - No explicit context, jurisdiction, regulation document, or source section fields are present in the released wrapper
 - Canonical evaluation is best-faith paper-aligned long-form QA scoring with ROUGE and BERTScore
+
+### ECTSum Official
+
+- Canonical source is the official `rajdeep345/ECTSum` GitHub repo pinned to commit `6909f1fc543104c1c60cf9de63e799f6620d1b0a`
+- Official `train / val / test` prepared-remarks transcript-summary pairs are preserved exactly, with observed counts `1681 / 249 / 495`
+- Canonical task is original-paper bullet-style summarization; the default evaluator is original ECTSum and the FinBen-style summarization evaluator is optional
+- Source chain involves Motley Fool transcripts and Reuters summaries
+- Publication is carried in the normal artifact layout under a private/internal assumption pending licensing and redistribution review
 
 ## Licensing
 
