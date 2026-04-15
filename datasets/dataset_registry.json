@@ -226,6 +226,17 @@
       "upstream_license": "mit",
       "task_family": "conversational_program_generation_numerical_reasoning",
       "status": "published"
+    },
+    {
+      "dataset_id": "regulations_public_test_v0",
+      "dataset_name": "FinBen Regulations Public Test Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/regulations_public_test_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/regulations gated Hugging Face dataset",
+      "upstream_license": "mit",
+      "task_family": "longform_regulatory_question_answering_eval_only",
+      "status": "published"
     }
   ]
 }

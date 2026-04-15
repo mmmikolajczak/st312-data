@@ -196,6 +196,15 @@
       "task_readme_path": "tasks/convfinqa_program_generation_v0/README.md",
       "dataset_id": "convfinqa_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_LFQA_REGULATIONS_FINBEN_v0",
+      "task_name": "FinBen Regulations long-form QA",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/regulations_longform_qa_v0/task_spec.json",
+      "task_readme_path": "tasks/regulations_longform_qa_v0/README.md",
+      "dataset_id": "regulations_public_test_v0",
+      "status": "published"
     }
   ]
 }

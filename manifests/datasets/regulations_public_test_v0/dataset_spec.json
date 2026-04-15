@@ -1,0 +1,73 @@
+{
+  "dataset_id": "regulations_public_test_v0",
+  "dataset_name": "FinBen Regulations Public Test Wrapper",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/regulations_public_test_v0",
+  "provenance": {
+    "canonical_public_artifact": "TheFinAI/regulations",
+    "canonical_public_url": "https://huggingface.co/datasets/TheFinAI/regulations",
+    "source_revision": "918111376d5be0f97306f1e0b821529b4021da0b",
+    "notes": [
+      "The canonical source is the gated Hugging Face dataset TheFinAI/regulations.",
+      "Visible release surface and authenticated inspection exposed only README.md and test_regulations.json.",
+      "No public train/dev files were found; this module is treated as eval-only.",
+      "The wrapper exposes only id, query, answer, and text fields.",
+      "The long-form QA domain includes financial regulations such as EMIR."
+    ]
+  },
+  "raw": {
+    "files": {
+      "readme": "data/regulations_public_test/raw/README.md",
+      "test_json": "data/regulations_public_test/raw/test_regulations.json"
+    },
+    "meta_files": {
+      "download_meta": "data/regulations_public_test/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "gated_public_test_only_eval_v0",
+    "files": {
+      "test": "data/regulations_public_test/processed/test.jsonl",
+      "ingest_summary": "data/regulations_public_test/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "raw_schema_summary": "reports/regulations_public_test/raw_schema_summary.json"
+    }
+  },
+  "schema": {
+    "row_type": "financial_regulation_longform_qa",
+    "question_field": "question",
+    "reference_answer_field": "reference_answer",
+    "context_field": "context",
+    "source_metadata_fields": [
+      "source_query",
+      "source_title",
+      "source_document",
+      "source_section",
+      "jurisdiction",
+      "regulation_family"
+    ]
+  },
+  "split_policy": {
+    "type": "public_test_only_eval_wrapper",
+    "release_split": "test",
+    "canonical_split": "preserve_gated_test_only_no_fabricated_train_dev"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/regulations/public_test/v0",
+    "upstream_license": "mit",
+    "upstream_license_note": "The visible wrapper card for TheFinAI/regulations lists MIT, but provenance clarity is limited and the dataset is gated. Users should review upstream gating and use conditions carefully.",
+    "release_scope": "hf_repo_standard_release_eval_only"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "eval_only": true,
+    "local_ready": true
+  }
+}

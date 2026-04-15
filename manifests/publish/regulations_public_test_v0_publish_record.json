@@ -1,0 +1,25 @@
+{
+  "dataset_id": "regulations_public_test_v0",
+  "task_id": "TA_LFQA_REGULATIONS_FINBEN_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "regulations_public_test_initial_publish": "943e6a9291df12f99e1d36ddf9bda07395b24d42",
+    "regulations_public_test_publish_record_sync": "56ff8514c74fb5cfb34133f38e4b910c2342b95c"
+  },
+  "artifacts_published": [
+    "datasets/regulations/public_test/v0/test.jsonl",
+    "datasets/regulations/public_test/v0/ingest_summary.json",
+    "datasets/regulations/public_test/v0/download_meta.json",
+    "reports/regulations_public_test/raw_schema_summary.json",
+    "tasks/regulations_longform_qa_v0/requests/test_requests.jsonl",
+    "tasks/regulations_longform_qa_v0/README.md",
+    "manifests/datasets/regulations_public_test_v0/dataset_spec.json",
+    "manifests/datasets/regulations_public_test_v0/checksums.sha256",
+    "manifests/tasks/regulations_longform_qa_v0/task_spec.json",
+    "manifests/publish/regulations_public_test_v0_publish_record.json"
+  ],
+  "notes": "Published eval-only long-form QA wrapper over the gated TheFinAI/regulations dataset pinned to revision 918111376d5be0f97306f1e0b821529b4021da0b. Authenticated inspection exposed only README.md and test_regulations.json, so no public train/dev split is published. The wrapper schema contains only id/query/answer/text fields, with no explicit context document metadata. Canonical evaluation is a best-faith paper-aligned ROUGE plus BERTScore implementation rather than a hidden internal FinBen scorer replication."
+}

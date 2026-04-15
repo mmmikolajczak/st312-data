@@ -1,0 +1,66 @@
+{
+  "task_id": "TA_LFQA_REGULATIONS_FINBEN_v0",
+  "task_name": "FinBen Regulations long-form QA",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Question Answering",
+    "finben_task": "Long-Form Financial Regulation Question Answering",
+    "output_type": "longform_answer_generation",
+    "scoring_type": "rouge_and_bertscore"
+  },
+  "dataset": {
+    "dataset_id": "regulations_public_test_v0",
+    "config": "gated_public_test_only_eval_v0",
+    "test_file": "data/regulations_public_test/processed/test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "question"
+    ],
+    "optional_fields": [
+      "context",
+      "source_title",
+      "source_document",
+      "source_section",
+      "jurisdiction",
+      "regulation_family"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "answer"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "answer": {
+        "type": "string"
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "You answer financial-regulation questions as accurately and comprehensively as possible. Use only the provided context when context is supplied. Return ONLY a JSON object with exactly one key: \"answer\". Do not include extra text.",
+    "user": "Question:\n{{question}}\n\nContext:\n{{context}}\n\nSource metadata:\n{{source_metadata}}\n\nReturn JSON only in this form:\n{\"answer\": \"...\"}"
+  },
+  "evaluation_config": {
+    "rouge_package": "rouge-score==0.1.2",
+    "bertscore_package": "bert-score==0.3.13",
+    "bertscore_model": "roberta-large",
+    "language": "en",
+    "note": "Best-faith paper-aligned implementation because no public Regulations-specific evaluator/config was found in the searchable FinBen release surfaces."
+  },
+  "evaluation_metrics": [
+    "rouge1",
+    "rouge2",
+    "rougeL",
+    "bertscore_precision",
+    "bertscore_recall",
+    "bertscore_f1",
+    "format_valid_rate",
+    "completion_coverage"
+  ],
+  "publication": {
+    "allowed": true,
+    "reason": "Published eval-only long-form QA wrapper over the gated TheFinAI/regulations dataset; no public train/dev release was found."
+  }
+}

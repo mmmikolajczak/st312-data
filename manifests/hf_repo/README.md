@@ -409,6 +409,25 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/convfinqa_official_v0_publish_record.json`
 
+### 20) FinBen Regulations Public Test v0
+
+Dataset artifacts:
+- `datasets/regulations/public_test/v0/test.jsonl`
+- `datasets/regulations/public_test/v0/ingest_summary.json`
+- `datasets/regulations/public_test/v0/download_meta.json`
+
+Task requests:
+- `tasks/regulations_longform_qa_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/regulations_longform_qa_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/regulations_public_test/raw_schema_summary.json`
+
+Publish bookkeeping:
+- `manifests/publish/regulations_public_test_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -539,6 +558,15 @@ We publish a 3-way discretised label using:
 - Canonical public supervised splits are `train / dev`; the pinned release exposes only unlabeled private test files, which are retained raw-only and summarized separately as `test_release_summary.json`
 - Canonical target is executable program generation in the FinQA DSL, not answer-only conversational QA
 - Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
+
+### FinBen Regulations Public Test
+
+- Canonical source is the gated `TheFinAI/regulations` Hugging Face dataset pinned to revision `918111376d5be0f97306f1e0b821529b4021da0b`
+- Authenticated inspection exposed only `README.md` and `test_regulations.json`; no public `train / dev` release was found
+- Canonical publication is eval-only `test` only, with no fabricated supervised training split
+- The wrapper exposes only `id`, `query`, `answer`, and `text`; canonical `question` uses `text`, while prompt-prefixed `query` is preserved as `source_query`
+- No explicit context, jurisdiction, regulation document, or source section fields are present in the released wrapper
+- Canonical evaluation is best-faith paper-aligned long-form QA scoring with ROUGE and BERTScore
 
 ## Licensing
 

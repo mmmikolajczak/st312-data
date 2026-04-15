@@ -285,6 +285,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/convfinqa_official_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `czyssrs/ConvFinQA` GitHub repo pinned to commit `cf3eed2d5984960bf06bb8145bcea5e80b0222a6`; ConvFinQA is a FinQA-family conversational derivative rather than an independent evidence-source family; the canonical modeling unit is the labeled turn-level release; only supervised `train/dev` are published because the pinned release exposes only unlabeled private test files; the canonical target is executable program generation over dialogue history plus report context, with execution accuracy as the primary metric and program accuracy as the secondary metric.
 
+### 20) FinBen Regulations Public Test v0
+- **Dataset ID:** `regulations_public_test_v0`
+- **Task ID:** `TA_LFQA_REGULATIONS_FINBEN_v0`
+- **Task type:** eval-only financial-regulation long-form question answering
+- **HF dataset path:** `datasets/regulations/public_test/v0/`
+- **HF task path:** `tasks/regulations_longform_qa_v0/`
+- **Publish record:** `manifests/publish/regulations_public_test_v0_publish_record.json`
+- **Labeling note:** canonical source is the gated `TheFinAI/regulations` Hugging Face dataset pinned to revision `918111376d5be0f97306f1e0b821529b4021da0b`; authenticated inspection exposed only `README.md` and `test_regulations.json`, so this module is treated as eval-only `test`-only wrapper input with no fabricated `train/dev`; the released wrapper contains only `id`, `query`, `answer`, and `text`, so the canonical processed schema preserves the bare question, reference answer, and prompt-prefixed source query while leaving context/source-document fields null; canonical scoring is best-faith paper-aligned ROUGE plus BERTScore.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -350,6 +359,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical public supervised splits are `train / dev`; the pinned release exposes only unlabeled private test files, which are retained raw-only and summarized separately as `test_release_summary.json`
 - Canonical target is executable program generation in the FinQA DSL, not answer-only conversational QA
 - Canonical evaluation prioritizes execution accuracy, with program accuracy as the secondary metric
+
+### FinBen Regulations Public Test
+
+- Canonical source is the gated `TheFinAI/regulations` Hugging Face dataset pinned to revision `918111376d5be0f97306f1e0b821529b4021da0b`
+- Authenticated inspection exposed only `README.md` and `test_regulations.json`; no public `train / dev` release was found
+- Canonical publication is eval-only `test` only, with no fabricated supervised training split
+- The wrapper exposes only `id`, `query`, `answer`, and `text`; canonical `question` uses `text`, while prompt-prefixed `query` is preserved as `source_query`
+- No explicit context, jurisdiction, regulation document, or source section fields are present in the released wrapper
+- Canonical evaluation is best-faith paper-aligned long-form QA scoring with ROUGE and BERTScore
 
 ## Validation
 
