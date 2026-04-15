@@ -16,7 +16,36 @@ for path in [TASK_DIR, SHARED_DIR]:
 from eval_regulations_cached import build_sanity_predictions, evaluate  # noqa: E402
 
 
+REQUEST_SCRIPT = REPO_ROOT / "scripts" / "tasks" / "regulations_longform_qa_v0" / "build_regulations_requests.py"
+
+
 class RegulationsEvalTests(unittest.TestCase):
+    def test_request_builder_emits_canonical_rows(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out_path = Path(tmpdir) / "test_requests.jsonl"
+            import subprocess
+
+            subprocess.run(
+                [
+                    sys.executable,
+                    str(REQUEST_SCRIPT),
+                    "--split",
+                    "test",
+                    "--limit",
+                    "1",
+                    "--include-gold",
+                    "--out",
+                    str(out_path),
+                ],
+                check=True,
+                cwd=REPO_ROOT,
+            )
+            row = json.loads(out_path.read_text(encoding="utf-8").splitlines()[0])
+            self.assertIn("example_id", row)
+            self.assertEqual(row["task_id"], "TA_LFQA_REGULATIONS_FINBEN_v0")
+            self.assertEqual(len(row["messages"]), 2)
+            self.assertIn("reference_answer", row)
+
     def test_sanity_predictions_emit_json_answer_rows(self):
         split_path = REPO_ROOT / "data" / "regulations_public_test" / "processed" / "test.jsonl"
         with tempfile.TemporaryDirectory() as tmpdir:
