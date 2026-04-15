@@ -30,6 +30,7 @@ The published contents index below is the source of truth for available modules 
 
 This repo is a multi-module artifact store rather than a single homogeneous dataset.
 The default dataset viewer may be unavailable or misleading because the repository mixes many artifact types rather than one viewer-friendly dataset schema.
+If the Hub page still shows a generic viewer pane or generic task tags, treat those as stale platform-level UI artifacts rather than the repository contract.
 Per-module file paths below are the reliable index of published contents.
 
 ## Published contents
