@@ -1,0 +1,26 @@
+{
+  "dataset_id": "finarg_arc_ecc_official_v0",
+  "task_id": "TA_ARC_FINARG_ECC_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "finarg_ecc_bootstrap_upload_latest": "c3116f18f6d6827cdb27709a51afaa8cf7bd9b05"
+  },
+  "notes": "FinArg ECC ARC module published from the official preserved train/dev/test split. Label mapping inferred from official class totals: 0->other, 1->support, 2->attack. ARC is highly imbalanced, especially for attack, and macro-aware evaluation is used.",
+  "artifacts_published": [
+    "datasets/finarg_arc/ecc/official/v0/finarg_arc_ecc_all_clean.jsonl",
+    "datasets/finarg_arc/ecc/official/v0/finarg_arc_ecc_clean_meta.json",
+    "datasets/finarg_arc/ecc/official/v0/finarg_arc_ecc_train.jsonl",
+    "datasets/finarg_arc/ecc/official/v0/finarg_arc_ecc_dev.jsonl",
+    "datasets/finarg_arc/ecc/official/v0/finarg_arc_ecc_test.jsonl",
+    "datasets/finarg_arc/ecc/official/v0/finarg_arc_ecc_split_meta.json",
+    "manifests/datasets/finarg_arc_ecc_official_v0/checksums.sha256",
+    "manifests/datasets/finarg_arc_ecc_official_v0/dataset_spec.json",
+    "manifests/tasks/finarg_arc_ecc_v0/task_spec.json",
+    "reports/finarg_arc_ecc_official/raw_audit_summary.json",
+    "tasks/finarg_arc_ecc_v0/README.md",
+    "tasks/finarg_arc_ecc_v0/finarg_arc_ecc_train_requests.jsonl",
+    "tasks/finarg_arc_ecc_v0/finarg_arc_ecc_dev_requests.jsonl",
+    "tasks/finarg_arc_ecc_v0/finarg_arc_ecc_test_requests.jsonl"
+  ]
+}
