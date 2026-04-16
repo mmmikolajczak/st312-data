@@ -3,6 +3,7 @@
   "task_name": "ECTSum bullet summarization",
   "version": "0.1.0",
   "taxonomy": {
+    "finben_supercategory": "Text Generation",
     "finben_category": "Summarization",
     "finben_task": "Bullet-Style Earnings Call Transcript Summarization",
     "output_type": "single_document_summarization",
@@ -48,11 +49,12 @@
     "variants": {
       "ectsum_original": {
         "rouge_package": "rouge-score==0.1.2",
-        "bertscore_package": "bert-score==0.3.13",
+        "bertscore_package": "bert-score==0.3.11",
         "bertscore_model": "microsoft/deberta-xlarge-mnli",
+        "bertscore_model_paper_name": "MICROSOFT/DEBERTA-XLARGE-MNLI",
         "summac_package": "summac==0.0.4",
         "summac_model": "vitc",
-        "num_prec_definition": "fraction_of_predicted_numeric_values_present_in_source_transcript_or_reference_summary_after_partial_normalization"
+        "num_prec_definition": "fraction_of_predicted_numeric_values_present_in_source_transcript_after_partial_normalization"
       },
       "finben_summary": {
         "rouge_package": "rouge-score==0.1.2",

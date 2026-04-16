@@ -68,6 +68,4 @@ def compute_num_prec(transcript_lines: list[str], reference_bullets: list[str], 
     if not pred_vals:
         return 0.0
     source_vals = extract_numeric_values(transcript_lines)
-    reference_vals = extract_numeric_values(reference_bullets)
-    allowed_vals = source_vals.union(reference_vals)
-    return len(pred_vals.intersection(allowed_vals)) / len(pred_vals)
+    return len(pred_vals.intersection(source_vals)) / len(pred_vals)

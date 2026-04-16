@@ -13,7 +13,7 @@ PACKAGE_SPECS = [
     "pip>=25.0",
     "protobuf==3.20.3",
     "rouge-score==0.1.2",
-    "bert-score==0.3.13",
+    "bert-score==0.3.11",
     "summac==0.0.4",
     "transformers==4.24.0",
 ]
