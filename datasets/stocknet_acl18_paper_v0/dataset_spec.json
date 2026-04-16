@@ -95,6 +95,6 @@
     "split": true,
     "requests_built": true,
     "published_to_hf": true,
-    "local_ready": true
+    "local_ready": false
   }
 }

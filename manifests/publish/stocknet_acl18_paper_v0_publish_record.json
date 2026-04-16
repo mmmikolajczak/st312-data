@@ -9,7 +9,8 @@
   "hf_commits": {
     "stocknet_acl18_artifact_payload": "e5fb7ae9f38ebdcd046e7272b06949941d5de4cd",
     "stocknet_acl18_hf_readme_update": "9cc193848c3c15e5b75c42e061060a7b27e3cdb0",
-    "stocknet_acl18_metadata_sync": "88d4df7eccc73a899c499c8fad1bb881ddd309f7"
+    "stocknet_acl18_metadata_sync": "88d4df7eccc73a899c499c8fad1bb881ddd309f7",
+    "stocknet_acl18_publish_record_refresh": "381f95fe167824ccf9631e1b517c636702685609"
   },
   "artifacts_published": [
     "datasets/stocknet/acl18_paper/v0/train.jsonl",

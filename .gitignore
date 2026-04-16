@@ -41,4 +41,5 @@ tasks/flare_edtsum_headline_generation_v0/requests/*.jsonl
 reports/bigdata22_official/bigdata22_test_dummy_gold_predictions.jsonl
 reports/bigdata22_official/bigdata22_test_eval_report.json
 tasks/bigdata22_stock_movement_v0/requests/*.jsonl
+tasks/stocknet_acl18_stockmove_v0/requests/*.jsonl
 summac_conv_vitc_sent_perc_e.bin
