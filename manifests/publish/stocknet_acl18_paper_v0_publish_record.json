@@ -1,0 +1,33 @@
+{
+  "dataset_id": "stocknet_acl18_paper_v0",
+  "task_id": "FC_STOCKMOVE_STOCKNET_ACL18_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "github_source_commit": "e39e7a7980fa59c8cb96e402f8cfef68f3d219c4",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": false,
+  "hf_commits": {
+    "stocknet_acl18_artifact_payload": "e5fb7ae9f38ebdcd046e7272b06949941d5de4cd",
+    "stocknet_acl18_hf_readme_update": "9cc193848c3c15e5b75c42e061060a7b27e3cdb0",
+    "stocknet_acl18_metadata_sync": "88d4df7eccc73a899c499c8fad1bb881ddd309f7"
+  },
+  "artifacts_published": [
+    "datasets/stocknet/acl18_paper/v0/train.jsonl",
+    "datasets/stocknet/acl18_paper/v0/dev.jsonl",
+    "datasets/stocknet/acl18_paper/v0/test.jsonl",
+    "datasets/stocknet/acl18_paper/v0/ingest_summary.json",
+    "datasets/stocknet/acl18_paper/v0/download_meta.json",
+    "reports/stocknet_acl18_paper/raw_schema_summary.json",
+    "reports/stocknet_acl18_paper/reconstruction_audit.json",
+    "reports/stocknet_acl18_paper/finben_wrapper_audit.json",
+    "tasks/stocknet_acl18_stockmove_v0/requests/train_requests.jsonl",
+    "tasks/stocknet_acl18_stockmove_v0/requests/dev_requests.jsonl",
+    "tasks/stocknet_acl18_stockmove_v0/requests/test_requests.jsonl",
+    "tasks/stocknet_acl18_stockmove_v0/README.md",
+    "manifests/datasets/stocknet_acl18_paper_v0/dataset_spec.json",
+    "manifests/datasets/stocknet_acl18_paper_v0/checksums.sha256",
+    "manifests/tasks/stocknet_acl18_stockmove_v0/task_spec.json",
+    "manifests/publish/stocknet_acl18_paper_v0_publish_record.json"
+  ],
+  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout as a public artifact with a small source-terms caution. The canonical source is the official yumoxu/stocknet-dataset repository pinned to commit 330708b5ddc359961078bef469f43f48992fd6e4, not the later FinBen / FLARE wrapper. ST312 preserves the ACL18 paper's exact 20,339 / 2,555 / 3,720 temporal split counts, 5-day trading-day alignment semantics, and asymmetric thresholds <= -0.5% -> Fall and > 0.55% -> Rise. The official release does not reproduce the paper counts under an additional hard tweet-presence filter, so that discrepancy is documented in the reconstruction audit rather than silently changing the canonical benchmark. Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse."
+}

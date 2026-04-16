@@ -79,21 +79,22 @@
     "dataset_root": "datasets/stocknet/acl18_paper/v0",
     "upstream_license": "mit_with_twitter_yahoo_source_terms_caution",
     "public_release_cleared": false,
+    "upstream_access_mode": "public_git_release_mit_repo_with_twitter_yahoo_source_terms_caution",
     "publication_mode": "public_artifact_with_source_terms_caution",
     "reuse_caution_summary": "Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse.",
     "upstream_license_note": "The original StockNet repository is MIT-licensed, but the released corpus includes tweets accessed under Twitter's official license and price data sourced from Yahoo Finance. This module is published publicly in the ST312 artifact store with a small source-terms caution.",
     "publish_allowed": true,
-    "published_commit": null,
-    "published_url": null,
+    "published_commit": "e5fb7ae9f38ebdcd046e7272b06949941d5de4cd",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/e5fb7ae9f38ebdcd046e7272b06949941d5de4cd",
     "release_scope": "hf_repo_standard_public_release_with_source_terms_caution",
-    "full_publish_completed": false
+    "full_publish_completed": true
   },
   "status": {
     "raw_ingested": true,
     "cleaned": true,
     "split": true,
     "requests_built": true,
-    "published_to_hf": false,
+    "published_to_hf": true,
     "local_ready": true
   }
 }
