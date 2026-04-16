@@ -471,6 +471,9 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/flare_edtsum_public_test_v0_publish_record.json`
 
+Rights note:
+- This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
+
 ## Labeling / split notes
 
 ### FPB
@@ -626,7 +629,7 @@ We publish a 3-way discretised label using:
 - Canonical task framing is financial news headline generation, or headline-style abstractive summarization, rather than generic paragraph summarization
 - Canonical processed rows preserve the wrapper fields and add `article_text` plus `reference_headline`
 - Stable default evaluation uses ROUGE plus BERTScore; the FinBen-paper-aligned view adds best-effort BARTScore
-- Publication is carried in the normal artifact layout as a public artifact with an upstream licensing and redistribution caution because the source dataset is gated and traces to the EDT financial-news lineage
+- This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
 ## Licensing
 

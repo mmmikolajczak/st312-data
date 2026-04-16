@@ -28,4 +28,5 @@ Return ONLY a JSON object of this form:
 ## Notes
 - prompt wording explicitly asks for a headline-style answer to avoid paragraph-like outputs
 - this module is not treated as a primary GRPO training dataset because it is small, test-only, and rights-sensitive
-- the evaluator tracks format validity separately from content metrics
+- This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
+- the evaluator tracks raw completion coverage, format validity, and non-empty answer rates separately from content metrics

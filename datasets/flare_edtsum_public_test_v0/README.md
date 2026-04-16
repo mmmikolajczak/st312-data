@@ -7,8 +7,7 @@ License-sensitive, eval-first wrapper over the gated Hugging Face dataset `TheFi
 - ST312 treats this task as financial news headline generation, or headline-style abstractive summarization, not generic long-form summarization
 - the visible upstream surface exposes only a single `test` split with 2,000 examples
 - no train or validation split is fabricated in the canonical benchmark module
-- the module is kept `local_ready` until redistribution of full article text is explicitly cleared
-- local ingestion, request building, and evaluation are supported; public full-text mirroring is deferred
+- This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
 ## Canonical public artifact
 - Hugging Face dataset: `TheFinAI/flare-edtsum`
@@ -17,7 +16,7 @@ License-sensitive, eval-first wrapper over the gated Hugging Face dataset `TheFi
 - FinBen describes EDTSUM as manually selected and cleaned from Zhou et al. (2021)
 - public OpenFinLLM documentation describes EDTSUM as financial news paired with their headlines as ground-truth summaries
 - the deeper EDT lineage uses financial news / press-release text sourced from PRNewswire, Businesswire, and GlobeNewswire
-- because of that source chain and the gated upstream terms, ST312 treats public redistribution of the full article text as not yet cleared
+- This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
 ## Observed raw wrapper schema
 - raw release files observed at the pinned revision: `.gitattributes`, `README.md`, and one parquet shard

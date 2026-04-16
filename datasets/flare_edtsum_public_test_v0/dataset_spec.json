@@ -13,7 +13,7 @@
       "ST312 treats the task as financial news headline generation / headline-style abstractive summarization rather than generic long-form summarization.",
       "FinBen describes EDTSUM as manually selected and cleaned from Zhou et al. (2021).",
       "The EDT source chain ultimately includes financial news and press-release text from PRNewswire, Businesswire, and GlobeNewswire.",
-      "Because the upstream access is gated and the deeper source chain is license-sensitive, public redistribution of the full article text is not treated as cleared."
+      "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review."
     ]
   },
   "raw": {
@@ -22,7 +22,8 @@
       "test_parquet": "data/flare_edtsum_public_test/raw/test-00000-of-00001-f8ea79e581c9134b.parquet"
     },
     "meta_files": {
-      "download_meta": "data/flare_edtsum_public_test/raw/download_meta.json"
+      "download_meta": "data/flare_edtsum_public_test/raw/download_meta.json",
+      "download_meta_internal_local_only": "data/flare_edtsum_public_test/raw/download_meta_internal.json"
     }
   },
   "processed": {
@@ -44,7 +45,8 @@
       "query",
       "text",
       "answer"
-    ]
+    ],
+    "blank_reference_policy": "preserve_and_score_as_released"
   },
   "split_policy": {
     "type": "public_test_only_eval_wrapper",
@@ -56,8 +58,12 @@
     "repo_type": "dataset",
     "dataset_root": "datasets/flare_edtsum/public_test/v0",
     "publish_allowed": true,
+    "public_release_cleared": false,
+    "upstream_access_mode": "gated_public_card_file_access_requires_contact_sharing_and_noncommercial_agreement",
+    "publication_mode": "public_artifact_with_rights_caution",
+    "reuse_caution_summary": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.",
     "upstream_license": "license_sensitive_research_access_gated_upstream",
-    "upstream_license_note": "The upstream dataset is gated, requires contact sharing and non-commercial-use agreement, and the deeper EDT source chain includes PRNewswire / Businesswire / GlobeNewswire text. This ST312 publication is therefore carried with an explicit upstream licensing and redistribution caution.",
+    "upstream_license_note": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.",
     "published_commit": "865b2316f73ab6c939509f8b64aadc9ecdf729fc",
     "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/865b2316f73ab6c939509f8b64aadc9ecdf729fc",
     "release_scope": "hf_repo_standard_release_eval_only_with_license_caution",

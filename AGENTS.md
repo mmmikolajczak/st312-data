@@ -46,6 +46,7 @@ Validation command:
 6. Build request files
 7. Snapshot manifests + checksums
 8. Upload canonical artifacts to HF
-9. Add publish record
-10. Push GitHub metadata/manifests
-11. Validate with `python scripts/utils/check_publish_records.py`
+9. Verify published HF surface paths against the expected section in `manifests/hf_repo/README.md`
+10. Add publish record
+11. Push GitHub metadata/manifests
+12. Validate with `python scripts/utils/check_publish_records.py`

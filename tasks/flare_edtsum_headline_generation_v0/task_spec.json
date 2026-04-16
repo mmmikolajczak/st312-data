@@ -52,15 +52,24 @@
         "description": "Valid JSON object with exactly one string key: answer."
       },
       {
+        "name": "non_empty_reward",
+        "weight": 1.0,
+        "description": "Rewards well-formed outputs that provide a non-empty answer string."
+      },
+      {
         "name": "headline_shape_reward",
         "weight": 1.0,
         "description": "Rewards concise headline-like outputs and penalizes paragraph-style or empty generations."
       },
       {
-        "name": "reference_overlap_reward_offline",
+        "name": "degenerate_output_penalty",
         "weight": 1.0,
-        "description": "Offline-only reward view based on ROUGE-L and BERTScore F1 against the reference headline."
+        "description": "Penalizes repeated, filler-heavy, or otherwise degenerate answer strings."
       }
+    ],
+    "notes": [
+      "Reward utilities for EDTSUM are non-canonical and intended only for local offline experimentation.",
+      "Benchmark-authoritative comparison uses the cached evaluator variants, not the reward helper in parse_reward.py."
     ]
   },
   "default_eval_variant": "stable_default",
@@ -95,6 +104,7 @@
       "bertscore_recall",
       "bertscore_f1",
       "format_valid_rate",
+      "nonempty_answer_rate",
       "completion_coverage"
     ],
     "finben_paper_alignment": [
@@ -104,11 +114,12 @@
       "bertscore_f1",
       "bartscore",
       "format_valid_rate",
+      "nonempty_answer_rate",
       "completion_coverage"
     ]
   },
   "publication": {
     "allowed": true,
-    "reason": "Published in the normal ST312 artifact layout as an eval-only headline-generation wrapper, with an explicit upstream licensing and redistribution caution because the source dataset is gated and traces to the EDT financial-news lineage."
+    "reason": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review."
   }
 }

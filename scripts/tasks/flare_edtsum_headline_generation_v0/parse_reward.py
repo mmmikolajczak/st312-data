@@ -1,5 +1,12 @@
 from __future__ import annotations
 
+"""Offline-only EDTSUM reward utilities.
+
+These helpers are intentionally non-canonical and are meant only for local
+experimentation. Benchmark-authoritative comparison should use eval_cached.py,
+not the reward totals defined here.
+"""
+
 import argparse
 import json
 
@@ -41,17 +48,30 @@ def extract_first_json_object(text: str):
     return None
 
 
-def parse_prediction(text: str) -> dict | None:
+def inspect_prediction(text: str) -> dict:
     parsed = extract_first_json_object(text)
-    if not isinstance(parsed, dict) or len(parsed) != 1:
-        return None
-    answer = parsed.get("answer")
-    if not isinstance(answer, str):
-        return None
-    normalized = normalize_headline_text(answer)
+    has_json_object = parsed is not None
+    valid_json_object = isinstance(parsed, dict)
+    valid_answer_key = valid_json_object and len(parsed) == 1 and "answer" in parsed and isinstance(parsed.get("answer"), str)
+    answer = parsed.get("answer") if valid_json_object else None
+    normalized = normalize_headline_text(answer) if isinstance(answer, str) else ""
     return {
-        "answer": answer,
+        "has_json_object": has_json_object,
+        "valid_json_object": valid_json_object,
+        "valid_answer_key": valid_answer_key,
+        "nonempty_answer": bool(normalized),
+        "answer": answer if isinstance(answer, str) else None,
         "normalized_answer": normalized,
+    }
+
+
+def parse_prediction(text: str) -> dict | None:
+    inspected = inspect_prediction(text)
+    if not inspected["valid_answer_key"]:
+        return None
+    return {
+        "answer": inspected["answer"],
+        "normalized_answer": inspected["normalized_answer"],
         "_format_valid": True,
     }
 
@@ -126,6 +146,7 @@ def smoke_test() -> None:
     rows = []
     for text, expected_valid in cases:
         parsed = parse_prediction(text)
+        inspected = inspect_prediction(text)
         actual_valid = parsed is not None
         if actual_valid != expected_valid:
             raise AssertionError(f"Unexpected parser result for input: {text}")
@@ -135,7 +156,9 @@ def smoke_test() -> None:
                 "expected_valid": expected_valid,
                 "actual_valid": actual_valid,
                 "parsed": parsed,
+                "inspected": inspected,
                 "format_reward": format_reward(text),
+                "non_empty_reward": non_empty_reward(text),
                 "headline_shape_reward": headline_shape_reward(text, reference),
                 "degenerate_output_penalty": degenerate_output_penalty(text),
                 "total_reward": total_reward(text, reference),

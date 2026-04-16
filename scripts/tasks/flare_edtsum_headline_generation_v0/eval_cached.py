@@ -14,7 +14,7 @@ if str(SCRIPT_DIR) not in sys.path:
 if str(SHARED_DIR) not in sys.path:
     sys.path.insert(0, str(SHARED_DIR))
 
-from parse_reward import normalize_headline_text, parse_prediction  # noqa: E402
+from parse_reward import inspect_prediction, normalize_headline_text  # noqa: E402
 from run_bartscore import compute_bartscore  # noqa: E402
 from run_rouge_bertscore import compute_rouge_bertscore  # noqa: E402
 
@@ -42,14 +42,47 @@ def default_report_path(split: str, variant: str) -> Path:
     return Path(f"reports/flare_edtsum_public_test/flare_edtsum_{split}_{variant}_eval_report.json")
 
 
-def load_predictions(path: Path) -> tuple[dict[str, dict | None], str]:
-    pred_by_id = {}
+def load_predictions(path: Path, expected_ids: set[str]) -> tuple[dict[str, dict], str, dict]:
+    pred_by_id: dict[str, dict] = {}
+    duplicate_example_ids: set[str] = set()
+    unknown_example_ids: set[str] = set()
+    diagnostics = {
+        "completion_rows_read": 0,
+        "rows_missing_example_id": 0,
+        "rows_missing_completion_text": 0,
+        "duplicate_prediction_rows": 0,
+        "duplicate_example_ids": [],
+        "unknown_example_id_rows": 0,
+        "unknown_example_ids": [],
+        "duplicate_policy": "first_completion_wins_reported_duplicate",
+    }
     for row in load_jsonl(path):
+        diagnostics["completion_rows_read"] += 1
         example_id = row.get("example_id")
         output_text = extract_output_text(row)
-        if isinstance(example_id, str) and isinstance(output_text, str):
-            pred_by_id[example_id] = parse_prediction(output_text)
-    return pred_by_id, "jsonl_completions"
+        if not isinstance(example_id, str) or not example_id.strip():
+            diagnostics["rows_missing_example_id"] += 1
+            continue
+        example_id = example_id.strip()
+        if not isinstance(output_text, str) or not output_text.strip():
+            diagnostics["rows_missing_completion_text"] += 1
+            continue
+        if example_id not in expected_ids:
+            diagnostics["unknown_example_id_rows"] += 1
+            unknown_example_ids.add(example_id)
+            continue
+        if example_id in pred_by_id:
+            diagnostics["duplicate_prediction_rows"] += 1
+            duplicate_example_ids.add(example_id)
+            continue
+        inspection = inspect_prediction(output_text)
+        pred_by_id[example_id] = {
+            "output_text": output_text,
+            "inspection": inspection,
+        }
+    diagnostics["duplicate_example_ids"] = sorted(duplicate_example_ids)
+    diagnostics["unknown_example_ids"] = sorted(unknown_example_ids)
+    return pred_by_id, "jsonl_completions", diagnostics
 
 
 def build_sanity_predictions(split_path: Path, out_path: Path, limit: int | None = None) -> Path:
@@ -76,23 +109,33 @@ def _all_reference_aligned(predictions: list[str], references: list[str]) -> boo
 
 def evaluate(split: str, variant: str, completions_path: Path, report_out: Path, *, sanity_mode: bool = False) -> dict:
     split_path = Path(TASK_SPEC["dataset"][f"{split}_file"])
-    pred_by_id, prediction_input_format = load_predictions(completions_path)
+    split_rows = list(load_jsonl(split_path))
+    expected_ids = {rec["example_id"] for rec in split_rows}
+    pred_by_id, prediction_input_format, prediction_diagnostics = load_predictions(completions_path, expected_ids)
 
     total_examples = 0
-    n_with_completion = 0
-    n_format_valid = 0
+    rows_with_completion_text = 0
+    rows_with_valid_json_object = 0
+    rows_with_valid_answer_key = 0
+    rows_with_nonempty_answer = 0
     metric_predictions = []
     metric_references = []
 
-    for rec in load_jsonl(split_path):
+    for rec in split_rows:
         total_examples += 1
         pred = pred_by_id.get(rec["example_id"])
         if pred is None:
             continue
-        n_with_completion += 1
-        n_format_valid += 1
-        metric_predictions.append(pred["normalized_answer"])
-        metric_references.append(normalize_headline_text(rec["reference_headline"]))
+        rows_with_completion_text += 1
+        inspection = pred["inspection"]
+        if inspection["valid_json_object"]:
+            rows_with_valid_json_object += 1
+        if inspection["valid_answer_key"]:
+            rows_with_valid_answer_key += 1
+            metric_predictions.append(inspection["normalized_answer"])
+            metric_references.append(normalize_headline_text(rec["reference_headline"]))
+        if inspection["nonempty_answer"]:
+            rows_with_nonempty_answer += 1
 
     common = {
         "rouge1": 0.0,
@@ -126,8 +169,15 @@ def evaluate(split: str, variant: str, completions_path: Path, report_out: Path,
         "completions_file": str(completions_path),
         "prediction_input_format": prediction_input_format,
         "total_examples": total_examples,
-        "completion_coverage": n_with_completion / total_examples if total_examples else 0.0,
-        "format_valid_rate": n_format_valid / total_examples if total_examples else 0.0,
+        "completion_coverage": rows_with_completion_text / total_examples if total_examples else 0.0,
+        "format_valid_rate": rows_with_valid_answer_key / total_examples if total_examples else 0.0,
+        "nonempty_answer_rate": rows_with_nonempty_answer / total_examples if total_examples else 0.0,
+        "rows_with_completion_text": rows_with_completion_text,
+        "rows_with_valid_json_object": rows_with_valid_json_object,
+        "rows_with_valid_answer_key": rows_with_valid_answer_key,
+        "rows_with_nonempty_answer": rows_with_nonempty_answer,
+        "content_metric_examples": len(metric_predictions),
+        **prediction_diagnostics,
         **common,
         "metric_versions": TASK_SPEC["evaluation_config"]["variants"][variant],
     }
@@ -186,6 +236,13 @@ def main() -> None:
     print(f"Task: {report['task_id']} | Split: {report['split']} | Variant: {report['variant']}")
     print(f"Completion coverage            : {report['completion_coverage']:.4f}")
     print(f"Format valid rate             : {report['format_valid_rate']:.4f}")
+    print(f"Non-empty answer rate         : {report['nonempty_answer_rate']:.4f}")
+    print(f"Rows with completion text     : {report['rows_with_completion_text']}")
+    print(f"Rows with valid JSON object   : {report['rows_with_valid_json_object']}")
+    print(f"Rows with valid answer key    : {report['rows_with_valid_answer_key']}")
+    print(f"Rows with non-empty answer    : {report['rows_with_nonempty_answer']}")
+    print(f"Duplicate prediction rows     : {report['duplicate_prediction_rows']}")
+    print(f"Unknown example-id rows       : {report['unknown_example_id_rows']}")
     print(f"ROUGE-1                       : {report['rouge1']:.4f}")
     print(f"ROUGE-2                       : {report['rouge2']:.4f}")
     print(f"ROUGE-L                       : {report['rougeL']:.4f}")

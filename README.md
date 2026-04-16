@@ -103,9 +103,19 @@ Every published dataset/task module should have:
 6. Build request files
 7. Snapshot manifests + checksums
 8. Upload canonical artifacts to HF
-9. Add publish record
-10. Push GitHub metadata/manifests
-11. Validate with `python scripts/utils/check_publish_records.py`
+9. Verify published HF surface paths against the expected section in `manifests/hf_repo/README.md`
+10. Add publish record
+11. Push GitHub metadata/manifests
+12. Validate with `python scripts/utils/check_publish_records.py`
+
+## Rights-governance fields for sensitive modules
+
+For public-but-sensitive modules, use the same machine-readable control-plane keys in the dataset spec:
+
+- `public_release_cleared`
+- `upstream_access_mode`
+- `publication_mode`
+- `reuse_caution_summary`
 
 ## Published dataset/task modules
 
@@ -311,7 +321,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF dataset path:** `datasets/flare_edtsum/public_test/v0/`
 - **HF task path:** `tasks/flare_edtsum_headline_generation_v0/`
 - **Publish record:** `manifests/publish/flare_edtsum_public_test_v0_publish_record.json`
-- **Labeling note:** canonical source is the gated `TheFinAI/flare-edtsum` Hugging Face dataset pinned to revision `e37154379a3162faf9d7b7a9cd1d582f2ae19adb`; authenticated inspection exposed only a single `test` split with `2000` examples and fields `id`, `query`, `answer`, and `text`; ST312 treats the task as financial news headline generation rather than generic long-form summarization, preserving raw wrapper fields while adding `article_text` and `reference_headline` aliases; this module is publicly published in the standard artifact layout with an explicit upstream licensing and redistribution caution because the source is gated and the EDT lineage includes PRNewswire, Businesswire, and GlobeNewswire content.
+- **Labeling note:** canonical source is the gated `TheFinAI/flare-edtsum` Hugging Face dataset pinned to revision `e37154379a3162faf9d7b7a9cd1d582f2ae19adb`; authenticated inspection exposed only a single `test` split with `2000` examples and fields `id`, `query`, `answer`, and `text`; ST312 treats the task as financial news headline generation rather than generic long-form summarization, preserving raw wrapper fields while adding `article_text` and `reference_headline` aliases; this module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
 <!-- ST312_PUBLISHED_MODULES_END -->
 
@@ -404,7 +414,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - The wrapper exposes only `id`, `query`, `answer`, and `text`; canonical processed rows preserve those fields and add `article_text` plus `reference_headline`
 - Canonical task framing is financial news headline generation, or headline-style abstractive summarization, not generic paragraph summarization
 - Stable default evaluation uses ROUGE plus BERTScore, while the FinBen-paper-aligned view adds best-effort BARTScore
-- Publication is carried in the normal artifact layout with an upstream licensing and redistribution caution because the source dataset is gated and traces to the EDT financial-news lineage
+- This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
 ## Validation
 

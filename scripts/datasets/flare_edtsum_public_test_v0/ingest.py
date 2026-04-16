@@ -27,9 +27,14 @@ HF_CACHE_DIR = Path(".hf_cache")
 RAW_README_PATH = RAW_DIR / "README.md"
 RAW_PARQUET_PATH = RAW_DIR / "test-00000-of-00001-f8ea79e581c9134b.parquet"
 DOWNLOAD_META_PATH = RAW_DIR / "download_meta.json"
+DOWNLOAD_META_INTERNAL_PATH = RAW_DIR / "download_meta_internal.json"
 PROCESSED_TEST_PATH = PROCESSED_DIR / "test.jsonl"
 INGEST_SUMMARY_PATH = PROCESSED_DIR / "ingest_summary.json"
 RAW_SCHEMA_SUMMARY_PATH = REPORT_DIR / "raw_schema_summary.json"
+RIGHTS_STATUS_NOTE = (
+    "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; "
+    "upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review."
+)
 
 
 def configure_hf_cache() -> None:
@@ -153,8 +158,15 @@ def main() -> None:
     if len(raw_df) != EXPECTED_ROWS:
         raise ValueError(f"Expected {EXPECTED_ROWS} rows, found {len(raw_df)}")
     field_names_seen = list(raw_df.columns)
-    if field_names_seen != EXPECTED_FIELDS:
-        raise ValueError(f"Expected field order {EXPECTED_FIELDS}, found {field_names_seen}")
+    expected_field_set = set(EXPECTED_FIELDS)
+    seen_field_set = set(field_names_seen)
+    missing_fields = sorted(expected_field_set - seen_field_set)
+    unexpected_fields = sorted(seen_field_set - expected_field_set)
+    if missing_fields or unexpected_fields:
+        raise ValueError(
+            f"Expected required fields {EXPECTED_FIELDS}; missing={missing_fields or None}, unexpected={unexpected_fields or None}, "
+            f"observed_order={field_names_seen}"
+        )
 
     rows = raw_df.to_dict(orient="records")
     processed_rows = [build_processed_row(source_revision, RAW_PARQUET_PATH.name, row) for row in rows]
@@ -186,6 +198,7 @@ def main() -> None:
         "duplicate_id_count": int(raw_df["id"].duplicated().sum()),
         "duplicate_full_row_count": int(raw_df.duplicated().sum()),
         "blank_reference_count": blank_reference_count,
+        "blank_reference_policy": "preserve_and_score_as_released",
         "max_lengths": {
             "id": int(raw_df["id"].map(len).max()),
             "query": int(raw_df["query"].map(len).max()),
@@ -208,29 +221,47 @@ def main() -> None:
     download_meta = {
         "source_repo": SOURCE_REPO,
         "gated_access": True,
-        "active_hf_account": who["name"],
         "download_timestamp_utc": datetime.now(timezone.utc).isoformat(),
         "source_revision": source_revision,
         "visible_upstream_file_list": sibling_names,
         "visible_upstream_split_metadata": info.cardData.get("dataset_info", {}).get("splits", []),
         "visible_upstream_features": info.cardData.get("dataset_info", {}).get("features", []),
         "download_method": "huggingface_hub_authenticated_download",
-        "source_file_metadata": source_file_metadata,
-        "local_raw_paths": {name: str(path) for name, path in downloaded_paths.items()},
+        "source_file_metadata": {
+            name: {
+                "resolved_url": metadata["resolved_url"],
+                "etag": metadata["etag"],
+                "commit_hash": metadata["commit_hash"],
+                "size": metadata["size"],
+            }
+            for name, metadata in source_file_metadata.items()
+        },
         "local_file_sizes_bytes": {name: path.stat().st_size for name, path in downloaded_paths.items()},
         "sha256_by_file": {name: sha256_file(path) for name, path in downloaded_paths.items()},
-        "downloader_environment": {
-          "python": sys.version.split()[0],
-          "platform": platform.platform(),
-          "huggingface_hub": huggingface_hub_version
-        },
         "notes": [
             "Access required agreeing to contact sharing and non-commercial-use-only conditions.",
             "The raw parquet is treated as immutable after download.",
-            "The canonical module remains local_ready until redistribution of the full article text is explicitly cleared."
+            RIGHTS_STATUS_NOTE
         ],
     }
     write_json(DOWNLOAD_META_PATH, download_meta)
+
+    download_meta_internal = {
+        **download_meta,
+        "active_hf_account": who["name"],
+        "local_raw_paths": {name: str(path) for name, path in downloaded_paths.items()},
+        "source_file_metadata": source_file_metadata,
+        "downloader_environment": {
+            "python": sys.version.split()[0],
+            "platform": platform.platform(),
+            "huggingface_hub": huggingface_hub_version,
+        },
+        "notes": [
+            "Internal local-only metadata artifact for operational debugging.",
+            *download_meta["notes"],
+        ],
+    }
+    write_json(DOWNLOAD_META_INTERNAL_PATH, download_meta_internal)
 
     ingest_summary = {
         "dataset_id": DATASET_ID,
@@ -244,12 +275,14 @@ def main() -> None:
         "query_contains_text_count": query_contains_text_count,
         "query_answer_suffix_count": query_answer_suffix_count,
         "blank_reference_count": blank_reference_count,
+        "blank_reference_policy": "preserve_and_score_as_released",
         "max_lengths": raw_schema_summary["max_lengths"],
         "notes": [
             "The module preserves upstream wrapper fields and adds canonical headline-generation aliases.",
             "The task target is headline generation over financial news article text.",
             "Blank upstream reference answers are preserved verbatim and surfaced in metadata rather than dropped.",
-            "No train/dev split is fabricated."
+            "No train/dev split is fabricated.",
+            RIGHTS_STATUS_NOTE,
         ],
     }
     write_json(INGEST_SUMMARY_PATH, ingest_summary)
