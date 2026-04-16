@@ -1,0 +1,75 @@
+{
+  "dataset_id": "flare_edtsum_public_test_v0",
+  "dataset_name": "FLARE-EDTSUM Public Test Benchmark",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/flare_edtsum_public_test_v0",
+  "provenance": {
+    "canonical_public_artifact": "TheFinAI/flare-edtsum",
+    "canonical_public_url": "https://huggingface.co/datasets/TheFinAI/flare-edtsum",
+    "source_revision": "e37154379a3162faf9d7b7a9cd1d582f2ae19adb",
+    "notes": [
+      "The canonical source is the gated Hugging Face dataset TheFinAI/flare-edtsum.",
+      "The visible wrapper exposes a single test split with 2,000 examples and fields id, query, answer, and text.",
+      "ST312 treats the task as financial news headline generation / headline-style abstractive summarization rather than generic long-form summarization.",
+      "FinBen describes EDTSUM as manually selected and cleaned from Zhou et al. (2021).",
+      "The EDT source chain ultimately includes financial news and press-release text from PRNewswire, Businesswire, and GlobeNewswire.",
+      "Because the upstream access is gated and the deeper source chain is license-sensitive, public redistribution of the full article text is not treated as cleared."
+    ]
+  },
+  "raw": {
+    "files": {
+      "readme": "data/flare_edtsum_public_test/raw/README.md",
+      "test_parquet": "data/flare_edtsum_public_test/raw/test-00000-of-00001-f8ea79e581c9134b.parquet"
+    },
+    "meta_files": {
+      "download_meta": "data/flare_edtsum_public_test/raw/download_meta.json"
+    }
+  },
+  "processed": {
+    "config": "gated_public_test_headline_generation_v0",
+    "files": {
+      "test": "data/flare_edtsum_public_test/processed/test.jsonl",
+      "ingest_summary": "data/flare_edtsum_public_test/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "raw_schema_summary": "reports/flare_edtsum_public_test/raw_schema_summary.json"
+    }
+  },
+  "schema": {
+    "row_type": "financial_news_headline_generation",
+    "source_text_field": "article_text",
+    "reference_field": "reference_headline",
+    "preserved_upstream_raw_fields": [
+      "id",
+      "query",
+      "text",
+      "answer"
+    ]
+  },
+  "split_policy": {
+    "type": "public_test_only_eval_wrapper",
+    "release_split": "test",
+    "canonical_split": "preserve_gated_test_only_no_fabricated_train_dev"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/flare_edtsum/public_test/v0",
+    "publish_allowed": true,
+    "upstream_license": "license_sensitive_research_access_gated_upstream",
+    "upstream_license_note": "The upstream dataset is gated, requires contact sharing and non-commercial-use agreement, and the deeper EDT source chain includes PRNewswire / Businesswire / GlobeNewswire text. This ST312 publication is therefore carried with an explicit upstream licensing and redistribution caution.",
+    "published_commit": "865b2316f73ab6c939509f8b64aadc9ecdf729fc",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/865b2316f73ab6c939509f8b64aadc9ecdf729fc",
+    "release_scope": "hf_repo_standard_release_eval_only_with_license_caution",
+    "full_publish_completed": true
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "eval_only": true,
+    "local_ready": false
+  }
+}

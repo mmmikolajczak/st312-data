@@ -1,0 +1,114 @@
+{
+  "task_id": "TA_HEADLINE_EDTSUM_FLARE_v0",
+  "task_name": "FinBen EDTSUM financial news headline generation",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Text Generation",
+    "finben_task": "Financial News Headline Generation",
+    "output_type": "single_document_headline_generation",
+    "scoring_type": "dual_variant_stable_default_finben_paper_alignment"
+  },
+  "dataset": {
+    "dataset_id": "flare_edtsum_public_test_v0",
+    "config": "gated_public_test_headline_generation_v0",
+    "test_file": "data/flare_edtsum_public_test/processed/test.jsonl",
+    "meta_files": {
+      "ingest_summary": "data/flare_edtsum_public_test/processed/ingest_summary.json",
+      "raw_schema_summary": "reports/flare_edtsum_public_test/raw_schema_summary.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "article_text"
+    ],
+    "optional_fields": [
+      "query",
+      "id",
+      "source_split"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "answer"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "answer": {
+        "type": "string"
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "You generate a concise headline-style summary of a financial news article. The target style is a short news headline or title, not a paragraph summary. Preserve key entities, material financial facts, and important numbers. Return ONLY a JSON object with exactly one key: \"answer\".",
+    "user": "Article:\n{{article_text}}\n\nReturn JSON only in this form:\n{\"answer\":\"...\"}"
+  },
+  "reward_spec": {
+    "status": "exploratory_only_not_primary_training_target",
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with exactly one string key: answer."
+      },
+      {
+        "name": "headline_shape_reward",
+        "weight": 1.0,
+        "description": "Rewards concise headline-like outputs and penalizes paragraph-style or empty generations."
+      },
+      {
+        "name": "reference_overlap_reward_offline",
+        "weight": 1.0,
+        "description": "Offline-only reward view based on ROUGE-L and BERTScore F1 against the reference headline."
+      }
+    ]
+  },
+  "default_eval_variant": "stable_default",
+  "optional_eval_variants": [
+    "finben_paper_alignment"
+  ],
+  "evaluation_config": {
+    "variants": {
+      "stable_default": {
+        "rouge_package": "rouge-score==0.1.2",
+        "bertscore_package": "bert-score==0.3.13",
+        "bertscore_model": "microsoft/deberta-xlarge-mnli",
+        "language": "en",
+        "headline_length_note": "Operational default avoids BARTScore as a hard dependency and is intended to be stable for local cached evaluation."
+      },
+      "finben_paper_alignment": {
+        "rouge_package": "rouge-score==0.1.2",
+        "bertscore_package": "bert-score==0.3.13",
+        "bertscore_model": "microsoft/deberta-xlarge-mnli",
+        "bartscore_backend": "transformers==4.24.0",
+        "bartscore_model": "facebook/bart-large-cnn",
+        "bartscore_status": "best_effort_optional_not_required_for_pipeline_progress"
+      }
+    }
+  },
+  "evaluation_metrics": {
+    "stable_default": [
+      "rouge1",
+      "rouge2",
+      "rougeL",
+      "bertscore_precision",
+      "bertscore_recall",
+      "bertscore_f1",
+      "format_valid_rate",
+      "completion_coverage"
+    ],
+    "finben_paper_alignment": [
+      "rouge1",
+      "rouge2",
+      "rougeL",
+      "bertscore_f1",
+      "bartscore",
+      "format_valid_rate",
+      "completion_coverage"
+    ]
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published in the normal ST312 artifact layout as an eval-only headline-generation wrapper, with an explicit upstream licensing and redistribution caution because the source dataset is gated and traces to the EDT financial-news lineage."
+  }
+}

@@ -248,6 +248,17 @@
       "upstream_license": "gpl-3.0-only_code_text_redistribution_pending_review",
       "task_family": "financial_bullet_summarization_public_with_rights_caution",
       "status": "published"
+    },
+    {
+      "dataset_id": "flare_edtsum_public_test_v0",
+      "dataset_name": "FLARE-EDTSUM Public Test Benchmark",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/flare_edtsum_public_test_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/flare-edtsum gated Hugging Face dataset",
+      "upstream_license": "license_sensitive_research_access_gated_upstream",
+      "task_family": "headline_generation_financial_news_eval_only",
+      "status": "published"
     }
   ]
 }

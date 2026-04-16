@@ -1,0 +1,26 @@
+{
+  "dataset_id": "flare_edtsum_public_test_v0",
+  "task_id": "TA_HEADLINE_EDTSUM_FLARE_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": false,
+  "hf_commits": {
+    "flare_edtsum_artifact_payload": "865b2316f73ab6c939509f8b64aadc9ecdf729fc",
+    "flare_edtsum_hf_readme_update": "dcd64a4d44f49e77fc5de6193b176f1d53d4dcec",
+    "flare_edtsum_publish_bookkeeping_sync": "e6bdba75d2d6497bf90246e14debedb888a51a93"
+  },
+  "artifacts_published": [
+    "datasets/flare_edtsum/public_test/v0/test.jsonl",
+    "datasets/flare_edtsum/public_test/v0/ingest_summary.json",
+    "datasets/flare_edtsum/public_test/v0/download_meta.json",
+    "reports/flare_edtsum_public_test/raw_schema_summary.json",
+    "tasks/flare_edtsum_headline_generation_v0/requests/test_requests.jsonl",
+    "tasks/flare_edtsum_headline_generation_v0/README.md",
+    "manifests/datasets/flare_edtsum_public_test_v0/dataset_spec.json",
+    "manifests/datasets/flare_edtsum_public_test_v0/checksums.sha256",
+    "manifests/tasks/flare_edtsum_headline_generation_v0/task_spec.json",
+    "manifests/publish/flare_edtsum_public_test_v0_publish_record.json"
+  ],
+  "notes": "Published eval-only headline-generation wrapper over the gated TheFinAI/flare-edtsum dataset pinned to revision e37154379a3162faf9d7b7a9cd1d582f2ae19adb. The wrapper exposes only a single 2,000-example test split with id/query/answer/text fields, so the canonical processed schema preserves those fields while adding article_text and reference_headline aliases. The task is framed as financial news headline generation rather than generic long-form summarization. Publication is carried with an explicit upstream licensing and redistribution caution because the source is gated and the EDT lineage includes PRNewswire, Businesswire, and GlobeNewswire content."
+}

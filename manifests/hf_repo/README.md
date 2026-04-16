@@ -452,6 +452,25 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/ectsum_official_v0_publish_record.json`
 
+### 22) FLARE-EDTSUM Public Test v0
+
+Dataset artifacts:
+- `datasets/flare_edtsum/public_test/v0/test.jsonl`
+- `datasets/flare_edtsum/public_test/v0/ingest_summary.json`
+- `datasets/flare_edtsum/public_test/v0/download_meta.json`
+
+Task requests:
+- `tasks/flare_edtsum_headline_generation_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/flare_edtsum_headline_generation_v0/README.md`
+
+Auxiliary provenance report:
+- `reports/flare_edtsum_public_test/raw_schema_summary.json`
+
+Publish bookkeeping:
+- `manifests/publish/flare_edtsum_public_test_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FPB
@@ -599,6 +618,15 @@ We publish a 3-way discretised label using:
 - Canonical task is original-paper bullet-style summarization; the default evaluator is original ECTSum and the FinBen-style summarization evaluator is optional
 - Source chain involves Motley Fool transcripts and Reuters summaries
 - Publication is carried in the normal artifact layout as a public artifact with an upstream licensing and redistribution caution
+
+### FLARE-EDTSUM Public Test
+
+- Canonical source is the gated `TheFinAI/flare-edtsum` Hugging Face dataset pinned to revision `e37154379a3162faf9d7b7a9cd1d582f2ae19adb`
+- Authenticated inspection exposed only a single `test` split with `2000` rows and fields `id`, `query`, `answer`, and `text`
+- Canonical task framing is financial news headline generation, or headline-style abstractive summarization, rather than generic paragraph summarization
+- Canonical processed rows preserve the wrapper fields and add `article_text` plus `reference_headline`
+- Stable default evaluation uses ROUGE plus BERTScore; the FinBen-paper-aligned view adds best-effort BARTScore
+- Publication is carried in the normal artifact layout as a public artifact with an upstream licensing and redistribution caution because the source dataset is gated and traces to the EDT financial-news lineage
 
 ## Licensing
 

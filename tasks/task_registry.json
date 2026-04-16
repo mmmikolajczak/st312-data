@@ -214,6 +214,15 @@
       "task_readme_path": "tasks/ectsum_bullet_summarization_v0/README.md",
       "dataset_id": "ectsum_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_HEADLINE_EDTSUM_FLARE_v0",
+      "task_name": "FinBen EDTSUM financial news headline generation",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/flare_edtsum_headline_generation_v0/task_spec.json",
+      "task_readme_path": "tasks/flare_edtsum_headline_generation_v0/README.md",
+      "dataset_id": "flare_edtsum_public_test_v0",
+      "status": "published"
     }
   ]
 }

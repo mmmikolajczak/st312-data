@@ -304,6 +304,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/ectsum_official_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `rajdeep345/ECTSum` GitHub repo pinned to commit `6909f1fc543104c1c60cf9de63e799f6620d1b0a`; official `train/val/test` is preserved exactly over transcript-summary pairs from Prepared Remarks; the canonical task is original-paper bullet-style summarization with ROUGE, BERTScore, SummaCConv, and Num-Prec as the default evaluation variant, plus an optional FinBen-compatible ROUGE/BERTScore/BARTScore view; source texts derive from Motley Fool transcripts and Reuters summaries, so this module is publicly published with an upstream licensing and redistribution caution.
 
+### 22) FLARE-EDTSUM Public Test v0
+- **Dataset ID:** `flare_edtsum_public_test_v0`
+- **Task ID:** `TA_HEADLINE_EDTSUM_FLARE_v0`
+- **Task type:** eval-only financial news headline generation
+- **HF dataset path:** `datasets/flare_edtsum/public_test/v0/`
+- **HF task path:** `tasks/flare_edtsum_headline_generation_v0/`
+- **Publish record:** `manifests/publish/flare_edtsum_public_test_v0_publish_record.json`
+- **Labeling note:** canonical source is the gated `TheFinAI/flare-edtsum` Hugging Face dataset pinned to revision `e37154379a3162faf9d7b7a9cd1d582f2ae19adb`; authenticated inspection exposed only a single `test` split with `2000` examples and fields `id`, `query`, `answer`, and `text`; ST312 treats the task as financial news headline generation rather than generic long-form summarization, preserving raw wrapper fields while adding `article_text` and `reference_headline` aliases; this module is publicly published in the standard artifact layout with an explicit upstream licensing and redistribution caution because the source is gated and the EDT lineage includes PRNewswire, Businesswire, and GlobeNewswire content.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -387,6 +396,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical task is original-paper bullet-style summarization, not a FinBen-only wrapper
 - Default evaluation variant is original ECTSum with ROUGE, BERTScore, SummaCConv, and Num-Prec; an optional FinBen-compatible ROUGE/BERTScore/BARTScore view is also provided
 - Source chain involves Motley Fool transcripts and Reuters summaries, so upstream licensing and redistribution terms should be reviewed before reuse
+
+### FLARE-EDTSUM Public Test
+
+- Canonical source is the gated `TheFinAI/flare-edtsum` Hugging Face dataset pinned to revision `e37154379a3162faf9d7b7a9cd1d582f2ae19adb`
+- Authenticated inspection exposed only a single `test` split with `2000` rows; no `train / dev` release is published in the wrapper
+- The wrapper exposes only `id`, `query`, `answer`, and `text`; canonical processed rows preserve those fields and add `article_text` plus `reference_headline`
+- Canonical task framing is financial news headline generation, or headline-style abstractive summarization, not generic paragraph summarization
+- Stable default evaluation uses ROUGE plus BERTScore, while the FinBen-paper-aligned view adds best-effort BARTScore
+- Publication is carried in the normal artifact layout with an upstream licensing and redistribution caution because the source dataset is gated and traces to the EDT financial-news lineage
 
 ## Validation
 
