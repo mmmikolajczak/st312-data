@@ -13,7 +13,8 @@
     "flare_edtsum_publish_bookkeeping_sync": "e6bdba75d2d6497bf90246e14debedb888a51a93",
     "flare_edtsum_publish_record_polish": "108985d1ab14c1aac352a107ca5a16a8294b9132",
     "flare_edtsum_cleanup_artifact_refresh": "e4faf7a92913ee96b3e2f0d8ec0a54d88abd5428",
-    "flare_edtsum_cleanup_hf_readme_refresh": "b4e4a599b9571231c5ef226c695f1f0b91c4ee61"
+    "flare_edtsum_cleanup_hf_readme_refresh": "b4e4a599b9571231c5ef226c695f1f0b91c4ee61",
+    "flare_edtsum_cleanup_publish_record_sync": "94179fa16cdd9a4738a8bb50353e435021723770"
   },
   "artifacts_published": [
     "datasets/flare_edtsum/public_test/v0/test.jsonl",
