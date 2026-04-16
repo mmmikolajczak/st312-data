@@ -12,6 +12,7 @@
       "The repo README states that the repository stores the accepted paper and its dataset.",
       "The bundled archive contains BigData22 together with ACL18 and CIKM18; this module canonically ingests only BigData22.",
       "The archive does not ship explicit split files, so ST312 derives a documented chronological train/valid/test reconstruction over sorted unique target trading dates within the paper window.",
+      "No public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history.",
       "The release surface does not expose a clear dataset redistribution license for the tweets and market data, so publication carries an upstream rights caution."
     ]
   },
@@ -63,8 +64,10 @@
     "type": "reconstructed_chronological_train_valid_test",
     "official_split_files_present": false,
     "split_reconstruction_is_st312_derived": true,
+    "split_source": "st312_derived_due_to_public_first_party_split_unrecoverable",
     "paper_only_claim": "chronological_split_without_published_cut_dates",
     "reconstruction_basis": "target_trading_dates",
+    "official_author_split_recovered_from_public_first_party_materials": false,
     "paper_window_start": "2019-07-05",
     "paper_window_end": "2020-06-30",
     "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
@@ -91,6 +94,7 @@
     "notes": [
       "The paper states that BigData22 uses a chronological train/validation/test split.",
       "The archive does not expose split files or split boundary notes, so ST312 derives the split explicitly and documents the target-date ranges in the ingest audit.",
+      "No public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history.",
       "The paper's 362-day figure matches the inclusive calendar span of the benchmark window, while the observed archive yields 250 non-neutral target trading dates inside that same window."
     ]
   },

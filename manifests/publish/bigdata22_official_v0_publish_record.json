@@ -10,7 +10,8 @@
     "bigdata22_manifest_metadata_sync": "15b4e9aa030de85a4b9ce26881d3141e3f09cc6b",
     "bigdata22_publish_record_sync": "a3ade5d1d9329d52656b142cd06af9dc004b715c",
     "bigdata22_precision_refresh": "98c8b58768cfd242c3034b771d635ad81ae5af9d",
-    "bigdata22_publish_record_precision_refresh": "6426551e56aaa0d0261635928a579acc0eb69301"
+    "bigdata22_publish_record_precision_refresh": "6426551e56aaa0d0261635928a579acc0eb69301",
+    "bigdata22_split_unrecoverability_refresh": "4b446264b5bdad99d8a6f435727453006bab0d5e"
   },
   "artifacts_published": [
     "datasets/bigdata22/official/v0/train.jsonl",
@@ -30,5 +31,5 @@
     "manifests/tasks/bigdata22_stock_movement_v0/task_spec.json",
     "manifests/publish/bigdata22_official_v0_publish_record.json"
   ],
-  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout as a public artifact with an upstream rights caution. The official slot repo is the canonical source, but the archive does not expose explicit split files or a clear redistribution license for the tweets and market data, so users should review upstream source-chain terms before reuse. The paper states only that the split is chronological, so ST312 derives the train/valid/test partition over sorted unique target trading dates inside the paper window after excluding neutral-band rows."
+  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout as a public artifact with an upstream rights caution. The official slot repo is the canonical source, but the archive does not expose explicit split files or a clear redistribution license for the tweets and market data, so users should review upstream source-chain terms before reuse. The paper states only that the split is chronological, and no public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history, so ST312 keeps a documented train/valid/test reconstruction over sorted unique target trading dates inside the paper window after excluding neutral-band rows."
 }

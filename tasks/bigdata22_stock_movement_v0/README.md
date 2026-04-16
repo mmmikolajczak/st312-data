@@ -21,6 +21,7 @@ Canonical original-paper BigData22 stock movement prediction task over `bigdata2
 ## Split note
 - the official archive does not ship split files
 - the paper states only that the split is chronological, so ST312 derives a documented reconstruction over sorted unique target trading dates inside the paper window after excluding neutral-band rows
+- no public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history
 - the current ST312-derived target-date ranges are `2019-07-05..2020-03-13`, `2020-03-16..2020-04-20`, and `2020-04-21..2020-06-30`
 
 ## Output schema

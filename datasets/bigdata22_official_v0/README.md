@@ -32,5 +32,6 @@ Canonical dataset module for the original-paper BigData22 stock movement predict
 ## Split note
 - the official archive does not ship explicit `train / valid / test` files or boundary dates
 - the paper states only that the split is chronological, so ST312 derives a documented chronological `train / valid / test` reconstruction over sorted unique target trading dates inside the paper window after excluding neutral-band rows
+- no public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history
 - the current ST312-derived split uses `175 / 25 / 50` target-trading-date buckets and yields `5624 / 1164 / 2016` examples for `train / valid / test`
 - the public wrapper `TheFinAI/en-forecasting-bigdata` exposes different counts over a broader date range and is treated only as a secondary comparison surface, not as the canonical source of truth

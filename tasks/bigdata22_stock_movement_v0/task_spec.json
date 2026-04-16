@@ -71,11 +71,14 @@
   "split_policy": {
     "official_split_files_present": false,
     "split_reconstruction_is_st312_derived": true,
+    "split_source": "st312_derived_due_to_public_first_party_split_unrecoverable",
     "paper_only_claim": "chronological_split_without_published_cut_dates",
     "reconstruction_basis": "target_trading_dates",
+    "official_author_split_recovered_from_public_first_party_materials": false,
     "notes": [
       "The official archive does not ship split files or cut dates.",
       "The paper states only that the split is chronological.",
+      "No public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history.",
       "ST312 therefore derives the train/valid/test split over sorted unique target trading dates within the paper window after excluding neutral-band rows."
     ]
   }

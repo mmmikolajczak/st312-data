@@ -171,8 +171,17 @@ def build_split_policy(target_dates: list[str]) -> tuple[dict[str, str], dict]:
     summary = {
         "official_split_files_present": False,
         "split_reconstruction_is_st312_derived": True,
+        "split_source": "st312_derived_due_to_public_first_party_split_unrecoverable",
         "paper_only_claim": "chronological_split_without_published_cut_dates",
         "reconstruction_basis": "target_trading_dates",
+        "public_first_party_recovery_search_completed": True,
+        "official_author_split_recovered_from_public_first_party_materials": False,
+        "checked_first_party_sources": [
+            "official_repo_pinned_commit",
+            "repo_git_history_and_branches",
+            "bundled_data_zip_contents",
+            "paper_pdf_main_text_and_appendix_search",
+        ],
         "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
         "paper_window_start": PAPER_WINDOW_START.isoformat(),
         "paper_window_end": PAPER_WINDOW_END.isoformat(),
@@ -190,6 +199,7 @@ def build_split_policy(target_dates: list[str]) -> tuple[dict[str, str], dict]:
         "notes": [
             "The official archive does not ship split files or split boundary notes.",
             "The paper states only that the split is chronological; it does not publish cut dates.",
+            "No public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history.",
             "ST312 therefore derives the train/valid/test split over sorted unique target trading dates within the paper window after excluding neutral-band rows.",
         ],
     }
@@ -486,11 +496,15 @@ def main() -> None:
         },
         "split_policy": {
             "split_reconstruction_is_st312_derived": split_policy["split_reconstruction_is_st312_derived"],
+            "split_source": split_policy["split_source"],
             "reconstruction_basis": split_policy["reconstruction_basis"],
             "paper_only_claim": split_policy["paper_only_claim"],
+            "public_first_party_recovery_search_completed": split_policy["public_first_party_recovery_search_completed"],
+            "official_author_split_recovered_from_public_first_party_materials": split_policy["official_author_split_recovered_from_public_first_party_materials"],
             "reconstruction_strategy": split_policy["reconstruction_strategy"],
             "split_target_trading_date_counts": split_policy["split_target_trading_date_counts"],
             "split_target_trading_date_ranges": split_policy["split_target_trading_date_ranges"],
+            "notes": split_policy["notes"],
         },
         "non_canonical_wrapper_note": {
             "wrapper_family": "FinBen/OpenFinLLM derived prompt surface",

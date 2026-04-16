@@ -155,8 +155,11 @@
   },
   "split_policy": {
     "split_reconstruction_is_st312_derived": true,
+    "split_source": "st312_derived_due_to_public_first_party_split_unrecoverable",
     "reconstruction_basis": "target_trading_dates",
     "paper_only_claim": "chronological_split_without_published_cut_dates",
+    "public_first_party_recovery_search_completed": true,
+    "official_author_split_recovered_from_public_first_party_materials": false,
     "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
     "split_target_trading_date_counts": {
       "train": 175,
@@ -176,7 +179,13 @@
         "min": "2020-04-21",
         "max": "2020-06-30"
       }
-    }
+    },
+    "notes": [
+      "The official archive does not ship split files or split boundary notes.",
+      "The paper states only that the split is chronological; it does not publish cut dates.",
+      "No public first-party split files or cut dates were recoverable from the official repo, bundled archive, paper PDF, or repo git history.",
+      "ST312 therefore derives the train/valid/test split over sorted unique target trading dates within the paper window after excluding neutral-band rows."
+    ]
   },
   "non_canonical_wrapper_note": {
     "wrapper_family": "FinBen/OpenFinLLM derived prompt surface",

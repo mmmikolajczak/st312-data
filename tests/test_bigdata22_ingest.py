@@ -29,6 +29,8 @@ class BigData22IngestTests(unittest.TestCase):
         self.assertTrue(split_policy["split_reconstruction_is_st312_derived"])
         self.assertEqual(split_policy["reconstruction_basis"], "target_trading_dates")
         self.assertEqual(split_policy["paper_only_claim"], "chronological_split_without_published_cut_dates")
+        self.assertEqual(split_policy["split_source"], "st312_derived_due_to_public_first_party_split_unrecoverable")
+        self.assertFalse(split_policy["official_author_split_recovered_from_public_first_party_materials"])
 
     def test_split_ranges_are_non_overlapping_and_trading_date_based(self):
         summary = json.loads((REPO_ROOT / "data" / "bigdata22_official" / "processed" / "ingest_summary.json").read_text(encoding="utf-8"))
@@ -45,6 +47,14 @@ class BigData22IngestTests(unittest.TestCase):
         self.assertGreater(threshold_audit["total_checked_rows"], 0)
         self.assertEqual(threshold_audit["mismatch_count"], 0)
         self.assertEqual(threshold_audit["threshold_consistent_rows"], threshold_audit["total_checked_rows"])
+
+    def test_metadata_records_unrecoverable_official_split(self):
+        audit = json.loads((REPO_ROOT / "reports" / "bigdata22_official" / "ingest_audit.json").read_text(encoding="utf-8"))
+        split_policy = audit["split_policy"]
+        self.assertTrue(split_policy["public_first_party_recovery_search_completed"])
+        self.assertFalse(split_policy["official_author_split_recovered_from_public_first_party_materials"])
+        joined_notes = " ".join(split_policy["notes"]).lower()
+        self.assertIn("no public first-party split files or cut dates were recoverable", joined_notes)
 
     def test_task_spec_has_explicit_finben_taxonomy(self):
         spec = json.loads((REPO_ROOT / "tasks" / "bigdata22_stock_movement_v0" / "task_spec.json").read_text(encoding="utf-8"))
