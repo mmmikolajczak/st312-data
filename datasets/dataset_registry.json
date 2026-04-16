@@ -259,6 +259,17 @@
       "upstream_license": "license_sensitive_research_access_gated_upstream",
       "task_family": "headline_generation_financial_news_eval_only",
       "status": "published"
+    },
+    {
+      "dataset_id": "bigdata22_official_v0",
+      "dataset_name": "BigData22 Official Stock Movement Prediction Release",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/bigdata22_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "deeptrade-public/slot official GitHub repo",
+      "upstream_license": "license_not_explicit_tweets_and_market_data_publication_with_caution",
+      "task_family": "stock_movement_prediction_public_with_rights_caution",
+      "status": "published"
     }
   ]
 }

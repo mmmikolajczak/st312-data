@@ -323,6 +323,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/flare_edtsum_public_test_v0_publish_record.json`
 - **Labeling note:** canonical source is the gated `TheFinAI/flare-edtsum` Hugging Face dataset pinned to revision `e37154379a3162faf9d7b7a9cd1d582f2ae19adb`; authenticated inspection exposed only a single `test` split with `2000` examples and fields `id`, `query`, `answer`, and `text`; ST312 treats the task as financial news headline generation rather than generic long-form summarization, preserving raw wrapper fields while adding `article_text` and `reference_headline` aliases; this module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
+### 23) BigData22 Official v0
+- **Dataset ID:** `bigdata22_official_v0`
+- **Task ID:** `TA_FORECAST_BIGDATA22_v0`
+- **Task type:** binary stock movement forecasting from price history plus tweets
+- **HF dataset path:** `datasets/bigdata22/official/v0/`
+- **HF task path:** `tasks/bigdata22_stock_movement_v0/`
+- **Publish record:** `manifests/publish/bigdata22_official_v0_publish_record.json`
+- **Labeling note:** canonical source is the official `deeptrade-public/slot` GitHub repo pinned to commit `1c1a25671d4c81f5fcd45607447225862c308dd5`; the bundled archive contains BigData22 together with ACL18 and CIKM18, but this module canonically ingests only BigData22; labels are taken directly from the release and mapped to the stable binary interface `Rise / Fall`, with the neutral band excluded; the paper-window benchmark range `2019-07-05` through `2020-06-30` is preserved as canonical scope, while the missing split files are handled via a documented chronological `train / valid / test` reconstruction; publication is public but carries an upstream rights caution because the repo surface does not expose a clear redistribution license for the tweets and market data.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -415,6 +424,16 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical task framing is financial news headline generation, or headline-style abstractive summarization, not generic paragraph summarization
 - Stable default evaluation uses ROUGE plus BERTScore, while the FinBen-paper-aligned view adds best-effort BARTScore
 - This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
+
+### BigData22 Official
+
+- Canonical source is the official `deeptrade-public/slot` GitHub repo pinned to commit `1c1a25671d4c81f5fcd45607447225862c308dd5`
+- The bundled `data.zip` archive contains `bigdata22`, `acl18`, and `cikm18`; only `bigdata22` is onboarded as the canonical module in this turn
+- Canonical paper-window scope is `2019-07-05` through `2020-06-30`, which matches the paper's reported `272,762` tweet lines and 362-day calendar span
+- Canonical labels are taken directly from the release: `1 -> Rise`, `-1 -> Fall`, and the neutral band `0` is excluded from the binary task
+- The official archive does not ship split files or cut dates, so ST312 reconstructs a documented chronological `70 / 10 / 20` `train / valid / test` partition over the paper window, yielding `5624 / 1117 / 2063` examples
+- Canonical evaluation uses `mcc` as the primary metric and `accuracy` as the secondary metric
+- The public FinBen/OpenFinLLM-style wrapper is treated as a derived comparison surface rather than the source of truth because its counts and date range differ from the official paper-window release
 
 ## Validation
 

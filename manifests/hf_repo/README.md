@@ -471,6 +471,31 @@ Auxiliary provenance report:
 Publish bookkeeping:
 - `manifests/publish/flare_edtsum_public_test_v0_publish_record.json`
 
+### 23) BigData22 Official v0
+
+Dataset artifacts:
+- `datasets/bigdata22/official/v0/train.jsonl`
+- `datasets/bigdata22/official/v0/valid.jsonl`
+- `datasets/bigdata22/official/v0/test.jsonl`
+- `datasets/bigdata22/official/v0/label_inventory.json`
+- `datasets/bigdata22/official/v0/ingest_summary.json`
+- `datasets/bigdata22/official/v0/download_meta.json`
+
+Task requests:
+- `tasks/bigdata22_stock_movement_v0/requests/train_requests.jsonl`
+- `tasks/bigdata22_stock_movement_v0/requests/valid_requests.jsonl`
+- `tasks/bigdata22_stock_movement_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/bigdata22_stock_movement_v0/README.md`
+
+Auxiliary provenance reports:
+- `reports/bigdata22_official/raw_schema_summary.json`
+- `reports/bigdata22_official/ingest_audit.json`
+
+Publish bookkeeping:
+- `manifests/publish/bigdata22_official_v0_publish_record.json`
+
 Rights note:
 - This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
@@ -630,6 +655,17 @@ We publish a 3-way discretised label using:
 - Canonical processed rows preserve the wrapper fields and add `article_text` plus `reference_headline`
 - Stable default evaluation uses ROUGE plus BERTScore; the FinBen-paper-aligned view adds best-effort BARTScore
 - This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
+
+### BigData22 Official
+
+- Canonical source is the official `deeptrade-public/slot` GitHub repo pinned to commit `1c1a25671d4c81f5fcd45607447225862c308dd5`
+- The bundled `data.zip` archive contains `bigdata22`, `acl18`, and `cikm18`; only `bigdata22` is onboarded as the canonical module in this turn
+- Canonical paper-window scope is `2019-07-05` through `2020-06-30`, which matches the paper's reported `272,762` tweet lines and 362-day calendar span
+- Canonical labels are taken directly from the release: `1 -> Rise`, `-1 -> Fall`, and the neutral band `0` is excluded from the binary task
+- The official archive does not ship split files or cut dates, so ST312 reconstructs a documented chronological `70 / 10 / 20` `train / valid / test` partition over the paper window, yielding `5624 / 1117 / 2063` examples
+- Canonical evaluation uses `mcc` as the primary metric and `accuracy` as the secondary metric
+- The public FinBen/OpenFinLLM-style wrapper is treated as a derived comparison surface rather than the source of truth because its counts and date range differ from the official paper-window release
+- Publication is public but carries an upstream rights caution because the repo surface does not expose a clear redistribution license for the tweets and market data
 
 ## Licensing
 

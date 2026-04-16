@@ -1,0 +1,69 @@
+{
+  "task_id": "TA_FORECAST_BIGDATA22_v0",
+  "task_name": "BigData22 stock movement prediction",
+  "version": "0.1.0",
+  "taxonomy": {
+    "benchmark_family": "bigdata22",
+    "task_type": "binary_stock_movement_prediction",
+    "output_type": "classification",
+    "primary_metric": "mcc",
+    "secondary_metric": "accuracy",
+    "optional_secondary_view": "finben_openfinllm_prompt_wrapper_compatible"
+  },
+  "dataset": {
+    "dataset_id": "bigdata22_official_v0",
+    "config": "official_stock_movement_prediction_v0",
+    "train_file": "data/bigdata22_official/processed/train.jsonl",
+    "valid_file": "data/bigdata22_official/processed/valid.jsonl",
+    "test_file": "data/bigdata22_official/processed/test.jsonl"
+  },
+  "input_schema": {
+    "required_fields": [
+      "ticker",
+      "target_date",
+      "price_history_text",
+      "tweets_text"
+    ],
+    "optional_fields": [
+      "price_history_rows",
+      "tweets",
+      "history_end_date"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "label"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "label": {
+        "type": "string",
+        "enum": [
+          "Rise",
+          "Fall"
+        ]
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "Predict whether the stock's closing price will rise or fall on the target date. Use the provided historical price information and tweets. Return ONLY a JSON object with exactly one key: \"label\". Allowed labels are \"Rise\" and \"Fall\".",
+    "user": "Ticker: {{ticker}}\nTarget date: {{target_date}}\n\nHistorical price context:\n{{price_history_text}}\n\nTweet context:\n{{tweets_text}}\n\nReturn JSON only in this form:\n{\"label\": \"Rise\"}"
+  },
+  "evaluation_config": {
+    "label_mapping": {
+      "Rise": 1,
+      "Fall": 0
+    },
+    "metrics": [
+      "mcc",
+      "accuracy",
+      "format_valid_rate",
+      "completion_coverage"
+    ]
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published in the normal ST312 artifact structure as a public artifact with an upstream rights and redistribution caution."
+  }
+}

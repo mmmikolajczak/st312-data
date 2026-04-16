@@ -1,0 +1,55 @@
+{
+  "dataset_id": "bigdata22_official_v0",
+  "source_repo": "deeptrade-public/slot",
+  "source_commit": "1c1a25671d4c81f5fcd45607447225862c308dd5",
+  "archive_contains_multiple_families": true,
+  "archive_top_level_families": [
+    "acl18",
+    "bigdata22",
+    "cikm18"
+  ],
+  "archive_file_count_by_root": {
+    "acl18": 29337,
+    "bigdata22": 15065,
+    "cikm18": 14079
+  },
+  "bigdata22_only_canonical_scope_for_this_module": true,
+  "explicit_split_files_present": false,
+  "labels_materialized_in_release": true,
+  "price_row_columns": [
+    "date",
+    "c_open",
+    "c_high",
+    "c_low",
+    "n_close",
+    "n_adj_close",
+    "adj_sum_5",
+    "adj_sum_10",
+    "adj_sum_15",
+    "adj_sum_20",
+    "adj_sum_25",
+    "adj_sum_30",
+    "label",
+    "closing_price_for_label"
+  ],
+  "tweet_line_schema": {
+    "text": "string json per line"
+  },
+  "split_reconstruction_note": "The official archive does not ship split files or boundary dates. ST312 reconstructs a chronological train/valid/test partition over the official paper window using a documented 70/10/20 calendar-day rule.",
+  "paper_window": {
+    "start_date": "2019-07-05",
+    "end_date": "2020-06-30",
+    "calendar_days": 362,
+    "observed_trading_rows_per_ticker": 250,
+    "observed_tweet_lines_matching_paper_window": 272762
+  },
+  "wrapper_comparison": {
+    "wrapper_dataset": "TheFinAI/en-forecasting-bigdata",
+    "wrapper_split_counts_observed": {
+      "train": 4897,
+      "valid": 798,
+      "test": 1472
+    },
+    "note": "The public wrapper uses a later derived prompt format over a broader date range and is not the canonical source of truth for this module."
+  }
+}

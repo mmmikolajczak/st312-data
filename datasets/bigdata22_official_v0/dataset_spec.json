@@ -1,0 +1,93 @@
+{
+  "dataset_id": "bigdata22_official_v0",
+  "dataset_name": "BigData22 Official Stock Movement Prediction Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/bigdata22_official_v0",
+  "provenance": {
+    "canonical_public_artifact": "deeptrade-public/slot",
+    "canonical_public_url": "https://github.com/deeptrade-public/slot",
+    "source_commit": "1c1a25671d4c81f5fcd45607447225862c308dd5",
+    "notes": [
+      "The canonical source is the official slot GitHub repository pinned to a concrete commit because the repo has no tagged releases.",
+      "The repo README states that the repository stores the accepted paper and its dataset.",
+      "The bundled archive contains BigData22 together with ACL18 and CIKM18; this module canonically ingests only BigData22.",
+      "The archive does not ship explicit split files, so ST312 reconstructs a documented chronological train/valid/test partition over the official paper window.",
+      "The release surface does not expose a clear dataset redistribution license for the tweets and market data, so publication carries an upstream rights caution."
+    ]
+  },
+  "raw": {
+    "files": {
+      "readme": "data/bigdata22_official/raw/README.md",
+      "paper_pdf": "data/bigdata22_official/raw/Accurate Stock Movement Prediction with Self-supervised Learning from Sparse Noisy Tweets(BigData22).pdf",
+      "archive": "data/bigdata22_official/raw/data.zip",
+      "extracted_root": "data/bigdata22_official/raw/extracted"
+    },
+    "meta_files": {
+      "download_meta": "data/bigdata22_official/raw/download_meta.json",
+      "raw_schema_summary": "reports/bigdata22_official/raw_schema_summary.json"
+    }
+  },
+  "processed": {
+    "config": "official_stock_movement_prediction_v0",
+    "files": {
+      "train": "data/bigdata22_official/processed/train.jsonl",
+      "valid": "data/bigdata22_official/processed/valid.jsonl",
+      "test": "data/bigdata22_official/processed/test.jsonl",
+      "label_inventory": "data/bigdata22_official/processed/label_inventory.json",
+      "ingest_summary": "data/bigdata22_official/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "ingest_audit": "reports/bigdata22_official/ingest_audit.json"
+    }
+  },
+  "schema": {
+    "row_type": "stock_date_binary_forecasting",
+    "input_fields": [
+      "ticker",
+      "target_date",
+      "price_history_rows",
+      "tweets"
+    ],
+    "target_field": "gold_label_text",
+    "target_label_space": [
+      "Rise",
+      "Fall"
+    ],
+    "label_mapping": {
+      "1": "Rise",
+      "-1": "Fall",
+      "0": "excluded_neutral_band"
+    }
+  },
+  "split_policy": {
+    "type": "reconstructed_chronological_train_valid_test",
+    "official_split_files_present": false,
+    "paper_window_start": "2019-07-05",
+    "paper_window_end": "2020-06-30",
+    "reconstruction_strategy": "chronological_70_10_20_calendar_day_partition_over_paper_window",
+    "train_end": "2020-03-13",
+    "valid_end": "2020-04-18",
+    "notes": [
+      "The paper states that BigData22 uses a chronological train/validation/test split.",
+      "The archive does not expose split files or split boundary notes, so ST312 reconstructs the split explicitly and documents the cut dates in the ingest audit.",
+      "The paper's 362-day figure matches the inclusive calendar span of the benchmark window, while the observed archive yields 250 trading dates inside that same window."
+    ]
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/bigdata22/official/v0",
+    "upstream_license": "license_not_explicit_tweets_and_market_data_publication_with_caution",
+    "upstream_license_note": "The public repo surface is lightweight and does not expose a clear dataset redistribution license for the tweets and market data. This ST312 publication is public, but upstream source-chain terms should be reviewed before reuse.",
+    "public_release_cleared": false,
+    "release_scope": "hf_repo_standard_public_release_with_upstream_rights_caution"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": true
+  }
+}

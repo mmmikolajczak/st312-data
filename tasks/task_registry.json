@@ -223,6 +223,15 @@
       "task_readme_path": "tasks/flare_edtsum_headline_generation_v0/README.md",
       "dataset_id": "flare_edtsum_public_test_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_FORECAST_BIGDATA22_v0",
+      "task_name": "BigData22 stock movement prediction",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/bigdata22_stock_movement_v0/task_spec.json",
+      "task_readme_path": "tasks/bigdata22_stock_movement_v0/README.md",
+      "dataset_id": "bigdata22_official_v0",
+      "status": "published"
     }
   ]
 }

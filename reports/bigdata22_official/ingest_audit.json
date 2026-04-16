@@ -1,0 +1,95 @@
+{
+  "dataset_id": "bigdata22_official_v0",
+  "source_repo": "deeptrade-public/slot",
+  "source_commit": "1c1a25671d4c81f5fcd45607447225862c308dd5",
+  "split_counts": {
+    "train": 5624,
+    "valid": 1117,
+    "test": 2063
+  },
+  "class_counts_by_split": {
+    "train": {
+      "Fall": 2769,
+      "Rise": 2855
+    },
+    "valid": {
+      "Fall": 547,
+      "Rise": 570
+    },
+    "test": {
+      "Fall": 981,
+      "Rise": 1082
+    }
+  },
+  "split_target_date_ranges": {
+    "train": {
+      "min": "2019-07-05",
+      "max": "2020-03-13"
+    },
+    "valid": {
+      "min": "2020-03-16",
+      "max": "2020-04-17"
+    },
+    "test": {
+      "min": "2020-04-20",
+      "max": "2020-06-30"
+    }
+  },
+  "release_window_notes": [
+    "The official archive contains extra dates outside the paper benchmark window; ST312 restricts the canonical BigData22 module to the paper window 2019-07-05 through 2020-06-30.",
+    "The paper's 362-day figure matches the inclusive calendar span of the benchmark window; the release yields 250 trading dates in that same window.",
+    "The official archive does not ship split files, so ST312 reconstructs the chronological split explicitly and documents the cut dates in this audit.",
+    "The prompt-wrapper counts in TheFinAI/en-forecasting-bigdata do not match the paper-window archive counts because the wrapper uses a derived format and a broader observed date range."
+  ],
+  "paper_window_total_stock_dates": 12500,
+  "paper_window_calendar_days": 362,
+  "paper_window_trading_dates_with_non_neutral_examples": 250,
+  "paper_window_label_counts": {
+    "-1": 4297,
+    "0": 3696,
+    "1": 4507
+  },
+  "paper_window_non_neutral_examples": 8804,
+  "paper_window_examples_with_local_tweets": 6068,
+  "source_field_sets_observed": [
+    {
+      "fields": [
+        "adj_sum_10",
+        "adj_sum_15",
+        "adj_sum_20",
+        "adj_sum_25",
+        "adj_sum_30",
+        "adj_sum_5",
+        "c_high",
+        "c_low",
+        "c_open",
+        "closing_price_for_label",
+        "date",
+        "label",
+        "n_adj_close",
+        "n_close",
+        "tweet.text"
+      ],
+      "count": 8804
+    }
+  ],
+  "missing_local_tweet_examples_by_split": {
+    "test": 618,
+    "train": 1811,
+    "valid": 307
+  },
+  "tweet_line_counts_by_split": {
+    "test": 46258,
+    "train": 83490,
+    "valid": 26233
+  },
+  "split_date_boundaries": {
+    "paper_window_start": "2019-07-05",
+    "paper_window_end": "2020-06-30",
+    "train_end": "2020-03-13",
+    "valid_end": "2020-04-18",
+    "train_calendar_days": 253,
+    "valid_calendar_days": 36,
+    "test_calendar_days": 73
+  }
+}
