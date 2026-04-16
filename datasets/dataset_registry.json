@@ -291,7 +291,7 @@
       "upstream_source": "FinArg-1 ECC Argument Classification local release copy",
       "upstream_license": "GPL-3.0_inferred_from_public_finarg_repo",
       "task_family": "argument_unit_classification",
-      "status": "local_ready"
+      "status": "published"
     },
     {
       "dataset_id": "finarg_arc_ecc_official_v0",
@@ -302,7 +302,7 @@
       "upstream_source": "FinArg-1 ECC Argument Relation local release copy",
       "upstream_license": "GPL-3.0_inferred_from_public_finarg_repo",
       "task_family": "argument_relation_classification",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
