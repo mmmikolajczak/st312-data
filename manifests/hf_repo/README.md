@@ -31,6 +31,7 @@ The published contents index below is the source of truth for available modules 
 This repo is a multi-module artifact store rather than a single homogeneous dataset.
 The default dataset viewer may be unavailable or misleading because the repository mixes many artifact types rather than one viewer-friendly dataset schema.
 If the Hub page still shows a generic viewer pane or generic task tags, treat those as stale platform-level UI artifacts rather than the repository contract.
+Per-module file paths below are the reliable index of published contents.
 
 ## Published contents
 
@@ -741,6 +742,16 @@ Manifest / bookkeeping artifacts:
 - `manifests/datasets/finarg_arc_ecc_official_v0/checksums.sha256`
 - `manifests/datasets/finarg_arc_ecc_official_v0/dataset_spec.json`
 - `manifests/tasks/finarg_arc_ecc_v0/task_spec.json`
+
+## Labeling / split notes
+
+### FinArg ECC
+
+- AUC uses the preserved official ECC split with labels inferred from official totals as `0 -> premise`, `1 -> claim`
+- ARC uses the preserved official ECC split with labels inferred from official totals as `0 -> other`, `1 -> support`, `2 -> attack`
+- One exact AUC sentence overlap exists across train/dev and is preserved as a documented release issue
+- ARC shows no cross-split exact-pair overlap in the local ECC release
+- ARC is strongly class-imbalanced, especially for the `attack` class, so macro-aware evaluation is emphasized
 
 ## Licensing
 
