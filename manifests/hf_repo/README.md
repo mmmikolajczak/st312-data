@@ -499,6 +499,37 @@ Publish bookkeeping:
 Rights note:
 - This module is publicly published in the ST312 artifact store, but `public_release_cleared` remains `false`; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.
 
+### 24) StockNet ACL18 Paper v0
+
+Dataset artifacts:
+- `datasets/stocknet/acl18_paper/v0/train.jsonl`
+- `datasets/stocknet/acl18_paper/v0/dev.jsonl`
+- `datasets/stocknet/acl18_paper/v0/test.jsonl`
+- `datasets/stocknet/acl18_paper/v0/ingest_summary.json`
+- `datasets/stocknet/acl18_paper/v0/download_meta.json`
+
+Task requests:
+- `tasks/stocknet_acl18_stockmove_v0/requests/train_requests.jsonl`
+- `tasks/stocknet_acl18_stockmove_v0/requests/dev_requests.jsonl`
+- `tasks/stocknet_acl18_stockmove_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/stocknet_acl18_stockmove_v0/README.md`
+
+Auxiliary provenance reports:
+- `reports/stocknet_acl18_paper/raw_schema_summary.json`
+- `reports/stocknet_acl18_paper/reconstruction_audit.json`
+- `reports/stocknet_acl18_paper/finben_wrapper_audit.json`
+
+Publish bookkeeping:
+- `manifests/datasets/stocknet_acl18_paper_v0/dataset_spec.json`
+- `manifests/datasets/stocknet_acl18_paper_v0/checksums.sha256`
+- `manifests/tasks/stocknet_acl18_stockmove_v0/task_spec.json`
+- `manifests/publish/stocknet_acl18_paper_v0_publish_record.json`
+
+Rights note:
+- Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse.
+
 ## Labeling / split notes
 
 ### FPB
@@ -666,6 +697,16 @@ We publish a 3-way discretised label using:
 - Canonical evaluation uses `mcc` as the primary metric and `accuracy` as the secondary metric
 - The public FinBen/OpenFinLLM-style wrapper is treated as a derived comparison surface rather than the source of truth because its counts and date range differ from the official paper-window release
 - Publication is public but carries an upstream rights caution because the repo surface does not expose a clear redistribution license for the tweets and market data
+
+### StockNet ACL18 Paper
+
+- Canonical source is the official `yumoxu/stocknet-dataset` GitHub repo pinned to commit `330708b5ddc359961078bef469f43f48992fd6e4`
+- Canonical scope preserves the ACL18 paper's exact temporal `train / dev / test` split with counts `20,339 / 2,555 / 3,720` for `26,614` total prediction targets
+- Canonical labels preserve the paper's asymmetric thresholds: `<= -0.5% -> Fall` and `> 0.55% -> Rise`, with the middle band removed
+- Canonical processed rows preserve structured `aligned_days` and `auxiliary_targets` rather than collapsing the task into a wrapper-style prompt field
+- The later `TheFinAI/flare-sm-acl` wrapper is audited only as a compatibility surface because its observed counts differ from the paper-canonical reconstruction
+- The official release reproduces the exact paper counts only when preserving split boundaries, trading-day alignment, and thresholding without an extra hard tweet-presence filter; ST312 documents that source inconsistency explicitly in the reconstruction audit
+- Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse.
 
 ## Licensing
 

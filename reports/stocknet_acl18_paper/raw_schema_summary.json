@@ -1,0 +1,39 @@
+{
+  "dataset_id": "stocknet_acl18_paper_v0",
+  "source_repo": "yumoxu/stocknet-dataset",
+  "source_commit": "330708b5ddc359961078bef469f43f48992fd6e4",
+  "price_preprocessed_file_count": 88,
+  "price_raw_file_count": 88,
+  "tweet_preprocessed_dir_count": 87,
+  "tweet_raw_dir_count": 87,
+  "missing_tweet_dirs": [
+    "GMRE"
+  ],
+  "sample_price_preprocessed_fields": [
+    "date",
+    "movement_percent",
+    "open_norm",
+    "high_norm",
+    "low_norm",
+    "close_norm",
+    "volume"
+  ],
+  "sample_price_raw_fields": [
+    "date",
+    "open",
+    "high",
+    "low",
+    "close",
+    "adj_close",
+    "volume"
+  ],
+  "sample_preprocessed_tweet_texts": [
+    "dividend portfolio playoffs wild card game : wells fargo vs . dupont URL $ wfc $ dd"
+  ],
+  "notes": [
+    "The official StockNet release exposes 88 price files and 87 tweet directories at the pinned source snapshot.",
+    "GMRE appears in the price release but has no corresponding tweet directory and no canonical paper-window samples.",
+    "Preprocessed tweet texts are token lists that ST312 joins back into space-separated strings for canonical JSONL serialization.",
+    "Price movement percents in the preprocessed release match adjusted-close returns computed from the raw Yahoo Finance CSVs within float tolerance."
+  ]
+}

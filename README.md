@@ -332,6 +332,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/bigdata22_official_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `deeptrade-public/slot` GitHub repo pinned to commit `1c1a25671d4c81f5fcd45607447225862c308dd5`; the bundled archive contains BigData22 together with ACL18 and CIKM18, but this module canonically ingests only BigData22; labels are taken directly from the release and mapped to the stable binary interface `Rise / Fall`, with the neutral band excluded; the paper-window benchmark range `2019-07-05` through `2020-06-30` is preserved as canonical scope, while the missing split files are handled via a documented chronological `train / valid / test` reconstruction; publication is public but carries an upstream rights caution because the repo surface does not expose a clear redistribution license for the tweets and market data.
 
+### 24) StockNet ACL18 Paper v0
+- **Dataset ID:** `stocknet_acl18_paper_v0`
+- **Task ID:** `FC_STOCKMOVE_STOCKNET_ACL18_v0`
+- **Task type:** paper-canonical binary stock movement forecasting from 5-day aligned tweets plus price history
+- **HF dataset path:** `datasets/stocknet/acl18_paper/v0/`
+- **HF task path:** `tasks/stocknet_acl18_stockmove_v0/`
+- **Publish record:** `manifests/publish/stocknet_acl18_paper_v0_publish_record.json`
+- **Labeling note:** canonical source is the official `yumoxu/stocknet-dataset` GitHub repo pinned to commit `330708b5ddc359961078bef469f43f48992fd6e4`; ST312 preserves the ACL18 paper's exact `20,339 / 2,555 / 3,720` temporal split counts, 5-day trading-day alignment semantics, and asymmetric threshold rule `<= -0.5% -> Fall`, `> 0.55% -> Rise`; the later `TheFinAI/flare-sm-acl` wrapper is audited only as a compatibility surface because its observed counts differ from the paper-canonical reconstruction; the official release does not reproduce the paper counts under an additional hard tweet-presence filter, so ST312 treats that line as a documented source inconsistency rather than silently changing the benchmark; original source repository is MIT-licensed, but the released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance, so downstream users should review applicable platform/source terms before reuse.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -434,6 +443,16 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - The official archive does not ship split files or cut dates, so ST312 reconstructs a documented chronological `70 / 10 / 20` `train / valid / test` partition over the paper window, yielding `5624 / 1117 / 2063` examples
 - Canonical evaluation uses `mcc` as the primary metric and `accuracy` as the secondary metric
 - The public FinBen/OpenFinLLM-style wrapper is treated as a derived comparison surface rather than the source of truth because its counts and date range differ from the official paper-window release
+
+### StockNet ACL18 Paper
+
+- Canonical source is the official `yumoxu/stocknet-dataset` GitHub repo pinned to commit `330708b5ddc359961078bef469f43f48992fd6e4`
+- Canonical scope preserves the ACL18 paper's exact temporal `train / dev / test` split with counts `20,339 / 2,555 / 3,720` for `26,614` total prediction targets
+- Canonical labels preserve the paper's asymmetric thresholds: `<= -0.5% -> Fall` and `> 0.55% -> Rise`, with the middle band removed
+- Canonical processed rows preserve structured `aligned_days` and `auxiliary_targets` rather than collapsing the task into a wrapper-style prompt field
+- The later `TheFinAI/flare-sm-acl` wrapper is audited only as a compatibility surface because its observed counts differ from the paper-canonical reconstruction
+- The official release reproduces the exact paper counts only when preserving split boundaries, trading-day alignment, and thresholding without an extra hard tweet-presence filter; ST312 documents that source inconsistency explicitly in the reconstruction audit
+- Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse.
 
 ## Validation
 

@@ -1,0 +1,126 @@
+{
+  "wrapper_dataset": "TheFinAI/flare-sm-acl",
+  "wrapper_split_counts_observed": {
+    "train": 20781,
+    "test": 3720,
+    "valid": 2555
+  },
+  "canonical_split_counts": {
+    "train": 20339,
+    "dev": 2555,
+    "test": 3720
+  },
+  "field_shape_differences": {
+    "wrapper_fields": {
+      "train": [
+        "id",
+        "query",
+        "answer",
+        "text",
+        "choices",
+        "gold"
+      ],
+      "test": [
+        "id",
+        "query",
+        "answer",
+        "text",
+        "choices",
+        "gold"
+      ],
+      "valid": [
+        "id",
+        "query",
+        "answer",
+        "text",
+        "choices",
+        "gold"
+      ]
+    },
+    "canonical_row_shape": [
+      "example_id",
+      "dataset_id",
+      "split",
+      "stock_symbol",
+      "target_date",
+      "label_int",
+      "label_text",
+      "target_movement_percent",
+      "target_price_prev_adj_close",
+      "target_price_adj_close",
+      "calendar_lag_days",
+      "aligned_trading_days_count",
+      "aligned_days",
+      "auxiliary_targets",
+      "source_dataset",
+      "source_policy"
+    ]
+  },
+  "sample_rows": {
+    "train": {
+      "id": "aclsm0",
+      "query": "Scrutinize the data and tweets to envisage if the closing price of $csco will swell or contract at 2014-01-02. Please affirm either Rise or Fall.\nContext: date,open,high,low,close,adj-close,inc-5,inc-10,inc-15,inc-20,inc-25,inc-30\n2013-12-17,-0.9,1.0,-1.1,1.2,1.2,-1.3,-0.0,0.4,0.9,2.1,3.6\n2013-12-18,-0.6,0.2,-2.3,0.4,0.4,-1.6,-0.5,-0.0,0.4,1.2,2.9\n2013-12-19,0.0,0.0,-1.4,0.3,0.3,-1.4,-0.8,-0.4,0.0,0.3,2.2\n2013-12-20,-0.3,0.6,-0.8,0.3,0.3,-0.8,-1.2,-0.7,-0.4,-0.0,1.6\n2013-12-23,-1.5,0.3,-1.6,2.1,2.1,-2.0,-3.0,-2.6,-2.4,-2.1,-0.8\n2013-12-24,-1.1,0.3,-1.2,0.6,0.6,-1.8,-3.3,-3.0,-2.8,-2.5,-1.6\n2013-12-26,-0.4,0.4,-0.4,0.5,0.5,-1.6,-3.4,-3.3,-3.2,-3.0,-2.4\n2013-12-27,-1.0,0.1,-1.1,1.0,1.0,-1.7,-3.7,-4.0,-4.0,-3.8,-3.6\n2013-12-30,-1.1,0.4,-1.1,1.0,1.0,-1.7,-3.8,-4.7,-4.7,-4.6,-4.5\n2013-12-31,-0.8,0.2,-1.2,0.8,0.8,-1.7,-3.8,-5.1,-5.2,-5.2,-5.1\n\n2014-01-01: weekly s&amp;p500 #stocks trend $btu $dhi $jcp $mat $joy $oke $isrg $omc $jnpr $dis $csco $ctxs $se $emn $nbr $fls @ |2013 wrap-up and trading set review - part iii  $aapl #apple $bp $cnw $csco $csx $\nAnswer:",
+      "answer": "Fall",
+      "text": "date,open,high,low,close,adj-close,inc-5,inc-10,inc-15,inc-20,inc-25,inc-30\n2013-12-17,-0.9,1.0,-1.1,1.2,1.2,-1.3,-0.0,0.4,0.9,2.1,3.6\n2013-12-18,-0.6,0.2,-2.3,0.4,0.4,-1.6,-0.5,-0.0,0.4,1.2,2.9\n2013-12-19,0.0,0.0,-1.4,0.3,0.3,-1.4,-0.8,-0.4,0.0,0.3,2.2\n2013-12-20,-0.3,0.6,-0.8,0.3,0.3,-0.8,-1.2,-0.7,-0.4,-0.0,1.6\n2013-12-23,-1.5,0.3,-1.6,2.1,2.1,-2.0,-3.0,-2.6,-2.4,-2.1,-0.8\n2013-12-24,-1.1,0.3,-1.2,0.6,0.6,-1.8,-3.3,-3.0,-2.8,-2.5,-1.6\n2013-12-26,-0.4,0.4,-0.4,0.5,0.5,-1.6,-3.4,-3.3,-3.2,-3.0,-2.4\n2013-12-27,-1.0,0.1,-1.1,1.0,1.0,-1.7,-3.7,-4.0,-4.0,-3.8,-3.6\n2013-12-30,-1.1,0.4,-1.1,1.0,1.0,-1.7,-3.8,-4.7,-4.7,-4.6,-4.5\n2013-12-31,-0.8,0.2,-1.2,0.8,0.8,-1.7,-3.8,-5.1,-5.2,-5.2,-5.1\n\n2014-01-01: weekly s&amp;p500 #stocks trend $btu $dhi $jcp $mat $joy $oke $isrg $omc $jnpr $dis $csco $ctxs $se $emn $nbr $fls @ |2013 wrap-up and trading set review - part iii  $aapl #apple $bp $cnw $csco $csx $",
+      "choices": [
+        "Rise",
+        "Fall"
+      ],
+      "gold": 1
+    },
+    "test": {
+      "id": "aclsm23336",
+      "query": "By reviewing the data and tweets, can we predict if the closing price of $csco will go upwards or downwards at 2015-10-01? Please indicate either Rise or Fall.\nContext: date,open,high,low,close,adj-close,inc-5,inc-10,inc-15,inc-20,inc-25,inc-30\n2015-09-17,0.3,1.5,-0.3,-0.7,-0.7,0.2,0.3,0.0,-0.0,2.0,3.2\n2015-09-18,0.1,0.8,-1.1,-1.3,-1.3,1.2,1.5,1.2,1.0,2.9,4.2\n2015-09-21,-0.4,1.1,-0.7,0.0,0.0,1.0,1.5,1.1,0.8,2.3,3.8\n2015-09-22,-0.3,0.3,-0.7,-1.6,-1.6,2.0,2.7,2.5,2.4,3.4,5.0\n2015-09-23,-0.2,0.1,-1.1,0.6,0.6,0.8,1.8,2.0,2.0,2.3,4.1\n2015-09-24,-1.3,0.4,-1.9,0.5,0.5,-0.1,1.0,1.4,1.4,1.4,3.2\n2015-09-25,-0.8,1.0,-0.9,2.4,2.4,-2.1,-1.4,-1.0,-1.0,-1.1,0.4\n2015-09-28,0.7,1.4,-0.3,-1.4,-1.4,-0.6,-0.0,0.5,0.3,0.2,1.4\n2015-09-29,0.0,1.1,-0.3,-0.1,-0.1,-0.1,-0.1,0.4,0.3,0.3,1.1\n2015-09-30,-1.0,0.5,-1.4,2.4,2.4,-1.7,-2.3,-1.9,-1.8,-1.8,-1.5\n\n2015-09-19: csco cisco systems, inc. p/e ratio$csco $cprt $tanh $eca.to #csco #investing #stock|csco cisco systems, inc. short sales$csco $gs $dbb $pfe #csco #pennystocks #pennystocks\n2015-09-23: gdxj market vectors junior gold miners volume$gdxj $xly $uup $csco #gdxj #pennystocks #invest|cisco helped build china's internet, now struggles push it to strike a deal. $csco  via AT_USER|$spy bull \n2015-09-24: will cisco systems, inc. $csco will be able to crack a deal in china? |bnd vanguard total bond market ask$bnd $csco $gdx $joy #bnd #tradeideas #stock\n2015-09-25: saluting the other great #norcal #tech cos including: $aapl $goog $tsla $crm $fb $intc $twtr $adbe $adsk $csco $nflx $ebay $dna $hpq $orcl.|$fb $msft $adbe $twtr $csco $qcom:which high-tech heavy hitt\n2015-09-26: rt  rt  cvc cablevision systems investor opinions$cvc $ewi $csco…\n2015-09-27: apdn applied dna sciences inc. tick$apdn $csco $tvix $infn #apdn #nasdaq #invest|qld proshares ultra qqq fund short sales$qld $aav.to $csco $iwm #qld #nasdaq #investingqtmm quantum materials…\n2015-09-28: csco cisco systems, inc. stock message board$csco $jjc $tsla $t #csco #pennystocks #nasdaqcsh/un.to chartwell…|$met news: \"i walk the line $cmcsa $csco $cvc $ebay $emc $gm $met $pypl $sbgi …\"   analyz\n2015-09-29: fro frontline ltd. company info$fro $avxl $ziop $csco #fro #tradeideas #stockmarket|csco cisco systems, inc. shares$csco $gild $oil $spxu #csco #tradeideas #share|dis walt disney co. eod data$dis $hzn\n2015-09-30: our platinum members have been seeing massive gains on our penny stock picks! subscribe today:  $amzn $qcom $csco|$csco - proxy statement (definitive) (def 14a) |recent buy: cisco systems  $csco\nAnswer:",
+      "answer": "Fall",
+      "text": "date,open,high,low,close,adj-close,inc-5,inc-10,inc-15,inc-20,inc-25,inc-30\n2015-09-17,0.3,1.5,-0.3,-0.7,-0.7,0.2,0.3,0.0,-0.0,2.0,3.2\n2015-09-18,0.1,0.8,-1.1,-1.3,-1.3,1.2,1.5,1.2,1.0,2.9,4.2\n2015-09-21,-0.4,1.1,-0.7,0.0,0.0,1.0,1.5,1.1,0.8,2.3,3.8\n2015-09-22,-0.3,0.3,-0.7,-1.6,-1.6,2.0,2.7,2.5,2.4,3.4,5.0\n2015-09-23,-0.2,0.1,-1.1,0.6,0.6,0.8,1.8,2.0,2.0,2.3,4.1\n2015-09-24,-1.3,0.4,-1.9,0.5,0.5,-0.1,1.0,1.4,1.4,1.4,3.2\n2015-09-25,-0.8,1.0,-0.9,2.4,2.4,-2.1,-1.4,-1.0,-1.0,-1.1,0.4\n2015-09-28,0.7,1.4,-0.3,-1.4,-1.4,-0.6,-0.0,0.5,0.3,0.2,1.4\n2015-09-29,0.0,1.1,-0.3,-0.1,-0.1,-0.1,-0.1,0.4,0.3,0.3,1.1\n2015-09-30,-1.0,0.5,-1.4,2.4,2.4,-1.7,-2.3,-1.9,-1.8,-1.8,-1.5\n\n2015-09-19: csco cisco systems, inc. p/e ratio$csco $cprt $tanh $eca.to #csco #investing #stock|csco cisco systems, inc. short sales$csco $gs $dbb $pfe #csco #pennystocks #pennystocks\n2015-09-23: gdxj market vectors junior gold miners volume$gdxj $xly $uup $csco #gdxj #pennystocks #invest|cisco helped build china's internet, now struggles push it to strike a deal. $csco  via AT_USER|$spy bull \n2015-09-24: will cisco systems, inc. $csco will be able to crack a deal in china? |bnd vanguard total bond market ask$bnd $csco $gdx $joy #bnd #tradeideas #stock\n2015-09-25: saluting the other great #norcal #tech cos including: $aapl $goog $tsla $crm $fb $intc $twtr $adbe $adsk $csco $nflx $ebay $dna $hpq $orcl.|$fb $msft $adbe $twtr $csco $qcom:which high-tech heavy hitt\n2015-09-26: rt  rt  cvc cablevision systems investor opinions$cvc $ewi $csco…\n2015-09-27: apdn applied dna sciences inc. tick$apdn $csco $tvix $infn #apdn #nasdaq #invest|qld proshares ultra qqq fund short sales$qld $aav.to $csco $iwm #qld #nasdaq #investingqtmm quantum materials…\n2015-09-28: csco cisco systems, inc. stock message board$csco $jjc $tsla $t #csco #pennystocks #nasdaqcsh/un.to chartwell…|$met news: \"i walk the line $cmcsa $csco $cvc $ebay $emc $gm $met $pypl $sbgi …\"   analyz\n2015-09-29: fro frontline ltd. company info$fro $avxl $ziop $csco #fro #tradeideas #stockmarket|csco cisco systems, inc. shares$csco $gild $oil $spxu #csco #tradeideas #share|dis walt disney co. eod data$dis $hzn\n2015-09-30: our platinum members have been seeing massive gains on our penny stock picks! subscribe today:  $amzn $qcom $csco|$csco - proxy statement (definitive) (def 14a) |recent buy: cisco systems  $csco",
+      "choices": [
+        "Rise",
+        "Fall"
+      ],
+      "gold": 1
+    },
+    "valid": {
+      "id": "aclsm20781",
+      "query": "By reviewing the data and tweets, can we predict if the closing price of $v will go upwards or downwards at 2015-08-03? Please indicate either Rise or Fall.\nContext: date,open,high,low,close,adj-close,inc-5,inc-10,inc-15,inc-20,inc-25,inc-30\n2015-07-20,-1.9,0.4,-2.0,2.6,2.6,-2.5,-4.6,-5.4,-5.3,-5.3,-5.3\n2015-07-21,1.1,1.2,-0.4,-0.9,-0.9,-1.1,-3.1,-4.0,-4.2,-4.2,-4.2\n2015-07-22,-0.0,0.3,-0.5,-0.1,-0.1,-0.5,-2.3,-3.5,-4.0,-4.0,-4.0\n2015-07-23,0.6,0.7,-0.8,-0.3,-0.3,0.2,-1.3,-2.8,-3.5,-3.5,-3.6\n2015-07-24,2.6,2.8,-0.5,4.3,4.3,-2.9,-4.5,-6.2,-7.0,-7.2,-7.3\n2015-07-27,0.6,1.2,-0.4,-1.3,-1.3,-1.3,-2.7,-4.5,-5.5,-5.7,-5.9\n2015-07-28,-0.6,0.6,-1.2,1.2,1.2,-1.8,-3.2,-5.0,-6.1,-6.5,-6.7\n2015-07-29,-1.4,0.6,-1.8,1.7,1.7,-2.3,-4.1,-5.8,-7.0,-7.7,-8.0\n2015-07-30,-0.6,0.5,-1.5,0.5,0.5,-1.6,-3.8,-5.4,-6.9,-7.8,-8.1\n2015-07-31,1.5,1.6,-0.0,-1.4,-1.4,-0.1,-1.8,-3.5,-5.2,-6.2,-6.6\n\n2015-07-20: $gs $v $erx $xiv $f july 20th, 2015 watch list - update from option millionaires - stock options chatroom futures... \n2015-07-21: #wallstreet: #dowjones +0.08%, en 18,100.41, #sp500 +0.08% en 2,128.28 y #nasdaq +0.17%. mejor valor: $v +2.57% pe… |dbc db commodities tracking index fund 52wk low$dbc $v $jbl $ng #dbc #invest #stock\n2015-07-22: AT_USER $v visa declares $0.12 dividend |my rental property calculator  $bac $usb $wfc $key $jpm $v $ma $dfs $axp|v visa inc. stock forum$v $googl $mu $abc #v #investing #nasdaq|$gs $v $erx $xiv $f we\n2015-07-23: ijjp ijj corp. shares$ijjp $v $luv $xeg.to #ijjp #share #shareinfn infinera corp. dividend…|AT_USER $v just reported earnings for q3 2015 – |rt AT_USER $amzn $v $sbux all up big a/h...strong stocks ge\n2015-07-24: rt AT_USER $v's charlie scharf told it like it is v. #fifa--totally unacceptable behavior. watch #fifa change tomorrow. $v is too power…|fv currency shares canadian dollar trust ex-div date$fv $uso $v\n2015-07-25: v visa inc. last trade$v $gdx $xlv $goog #v #investing #tradeideas|$v message board : \n2015-07-27: \"redrum\" monday? $spy $spx $qqq  $iwm $djia $dji $es_f $googl $amzn $aapl $v $p $twtr $fb #bolsa #stocks #trading … |$cat $dd $utx $v trading july's biggest movers month to date \n2015-07-29: ocls oculus innovative sciences inc. investor opinions$ocls $v $iyr $xbi #ocls #stockmarket #shareoih market…|bwld buffalo wild wings inc. message board posts$bwld $ung $jnj $v #bwld #pennystocks #nas\n2015-07-30: vrx valeant pharmaceuticals intl, inc. 52wk high$vrx $rsp $vxx $v #vrx #investing #stockmarket|jake132013 : mnkd mannkind corp. ask size$mnkd $xlp $gdx $v #mn…  |fbiox fidelity select biotechnology la\n2015-07-31: v visa inc. chart$v $uso $ew $agn #v #nasdaq #share|*g=tfpxcpte$v&lt;t)$fd:v^p6;oej4r?8lpj?\n2015-08-01: fxy currency shares japanese yen trust p/e ratio$fxy $rig $v $goog #fxy #stockmarket #investing|tsla tesla motors inc. filings$tsla $mdy $spxu $v #tsla #nasdaq #tradeideas|gmcr keurig green mountain, \n2015-08-02: $gs $v $erx $xiv $f the week ahead – august 2nd, 2015 - update from option millionaires - stock options chatroom ... |v visa inc. tick$v $ibm $epi $agn #v #finance #stock|v visa inc. open$v $tfi.to $g\nAnswer:",
+      "answer": "Rise",
+      "text": "date,open,high,low,close,adj-close,inc-5,inc-10,inc-15,inc-20,inc-25,inc-30\n2015-07-20,-1.9,0.4,-2.0,2.6,2.6,-2.5,-4.6,-5.4,-5.3,-5.3,-5.3\n2015-07-21,1.1,1.2,-0.4,-0.9,-0.9,-1.1,-3.1,-4.0,-4.2,-4.2,-4.2\n2015-07-22,-0.0,0.3,-0.5,-0.1,-0.1,-0.5,-2.3,-3.5,-4.0,-4.0,-4.0\n2015-07-23,0.6,0.7,-0.8,-0.3,-0.3,0.2,-1.3,-2.8,-3.5,-3.5,-3.6\n2015-07-24,2.6,2.8,-0.5,4.3,4.3,-2.9,-4.5,-6.2,-7.0,-7.2,-7.3\n2015-07-27,0.6,1.2,-0.4,-1.3,-1.3,-1.3,-2.7,-4.5,-5.5,-5.7,-5.9\n2015-07-28,-0.6,0.6,-1.2,1.2,1.2,-1.8,-3.2,-5.0,-6.1,-6.5,-6.7\n2015-07-29,-1.4,0.6,-1.8,1.7,1.7,-2.3,-4.1,-5.8,-7.0,-7.7,-8.0\n2015-07-30,-0.6,0.5,-1.5,0.5,0.5,-1.6,-3.8,-5.4,-6.9,-7.8,-8.1\n2015-07-31,1.5,1.6,-0.0,-1.4,-1.4,-0.1,-1.8,-3.5,-5.2,-6.2,-6.6\n\n2015-07-20: $gs $v $erx $xiv $f july 20th, 2015 watch list - update from option millionaires - stock options chatroom futures... \n2015-07-21: #wallstreet: #dowjones +0.08%, en 18,100.41, #sp500 +0.08% en 2,128.28 y #nasdaq +0.17%. mejor valor: $v +2.57% pe… |dbc db commodities tracking index fund 52wk low$dbc $v $jbl $ng #dbc #invest #stock\n2015-07-22: AT_USER $v visa declares $0.12 dividend |my rental property calculator  $bac $usb $wfc $key $jpm $v $ma $dfs $axp|v visa inc. stock forum$v $googl $mu $abc #v #investing #nasdaq|$gs $v $erx $xiv $f we\n2015-07-23: ijjp ijj corp. shares$ijjp $v $luv $xeg.to #ijjp #share #shareinfn infinera corp. dividend…|AT_USER $v just reported earnings for q3 2015 – |rt AT_USER $amzn $v $sbux all up big a/h...strong stocks ge\n2015-07-24: rt AT_USER $v's charlie scharf told it like it is v. #fifa--totally unacceptable behavior. watch #fifa change tomorrow. $v is too power…|fv currency shares canadian dollar trust ex-div date$fv $uso $v\n2015-07-25: v visa inc. last trade$v $gdx $xlv $goog #v #investing #tradeideas|$v message board : \n2015-07-27: \"redrum\" monday? $spy $spx $qqq  $iwm $djia $dji $es_f $googl $amzn $aapl $v $p $twtr $fb #bolsa #stocks #trading … |$cat $dd $utx $v trading july's biggest movers month to date \n2015-07-29: ocls oculus innovative sciences inc. investor opinions$ocls $v $iyr $xbi #ocls #stockmarket #shareoih market…|bwld buffalo wild wings inc. message board posts$bwld $ung $jnj $v #bwld #pennystocks #nas\n2015-07-30: vrx valeant pharmaceuticals intl, inc. 52wk high$vrx $rsp $vxx $v #vrx #investing #stockmarket|jake132013 : mnkd mannkind corp. ask size$mnkd $xlp $gdx $v #mn…  |fbiox fidelity select biotechnology la\n2015-07-31: v visa inc. chart$v $uso $ew $agn #v #nasdaq #share|*g=tfpxcpte$v&lt;t)$fd:v^p6;oej4r?8lpj?\n2015-08-01: fxy currency shares japanese yen trust p/e ratio$fxy $rig $v $goog #fxy #stockmarket #investing|tsla tesla motors inc. filings$tsla $mdy $spxu $v #tsla #nasdaq #tradeideas|gmcr keurig green mountain, \n2015-08-02: $gs $v $erx $xiv $f the week ahead – august 2nd, 2015 - update from option millionaires - stock options chatroom ... |v visa inc. tick$v $ibm $epi $agn #v #finance #stock|v visa inc. open$v $tfi.to $g",
+      "choices": [
+        "Rise",
+        "Fall"
+      ],
+      "gold": 0
+    }
+  },
+  "threshold_rule_difference_note": "The FLARE wrapper is promptized and aligns with a simplified public description, while the canonical ST312 module preserves the paper-level asymmetric thresholds <= -0.5% / > 0.55% and exact ACL18 split counts.",
+  "wrapper_date_range_and_lag_window_note": "Wrapper examples appear to present a 10-row flattened historical context and observed split counts 20,781 / 2,555 / 3,720, which do not match the paper's 20,339 / 2,555 / 3,720 split counts.",
+  "answer_gold_semantics": {
+    "train": {
+      "answer_label": "Fall",
+      "gold_label": "Fall",
+      "choices": [
+        "Rise",
+        "Fall"
+      ]
+    },
+    "test": {
+      "answer_label": "Fall",
+      "gold_label": "Fall",
+      "choices": [
+        "Rise",
+        "Fall"
+      ]
+    },
+    "valid": {
+      "answer_label": "Rise",
+      "gold_label": "Rise",
+      "choices": [
+        "Rise",
+        "Fall"
+      ]
+    }
+  },
+  "notes": [
+    "The FLARE wrapper is audited only as a compatibility surface and does not define the canonical StockNet dataset.",
+    "Wrapper answer values appear to use Rise/Fall directly, while wrapper gold values appear to be choice indices."
+  ]
+}

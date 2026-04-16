@@ -1,0 +1,129 @@
+{
+  "task_id": "FC_STOCKMOVE_STOCKNET_ACL18_v0",
+  "task_name": "ACL18 StockNet stock movement prediction",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Forecasting",
+    "finben_task": "Stock Movement Prediction",
+    "output_type": "binary_direction_classification",
+    "scoring_type": "dual_variant_paper_default_finben_optional"
+  },
+  "dataset": {
+    "dataset_id": "stocknet_acl18_paper_v0",
+    "config": "paper_canonical_stockmove_v0",
+    "train_file": "data/stocknet_acl18_paper/processed/train.jsonl",
+    "dev_file": "data/stocknet_acl18_paper/processed/dev.jsonl",
+    "test_file": "data/stocknet_acl18_paper/processed/test.jsonl",
+    "meta_files": {
+      "ingest_summary": "data/stocknet_acl18_paper/processed/ingest_summary.json",
+      "reconstruction_audit": "reports/stocknet_acl18_paper/reconstruction_audit.json",
+      "finben_wrapper_audit": "reports/stocknet_acl18_paper/finben_wrapper_audit.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "stock_symbol",
+      "target_date",
+      "aligned_days"
+    ],
+    "optional_fields": [
+      "auxiliary_targets",
+      "paper_context_text"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "label"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "label": {
+        "type": "string",
+        "enum": [
+          "Rise",
+          "Fall"
+        ]
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "You are forecasting whether the target stock's next trading-day movement is Rise or Fall using the provided 5-day aligned history of tweets and historical prices. Return only a JSON object with exactly one key, label, whose value is either Rise or Fall.",
+    "user": "Rendered by scripts/tasks/stocknet_acl18_stockmove_v0/render_prompt.py from the structured aligned_days field."
+  },
+  "reward_spec": {
+    "status": "exploratory_only_not_primary_training_target",
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 1.0,
+        "description": "Valid JSON object with exactly one accepted key."
+      },
+      {
+        "name": "label_valid_reward",
+        "weight": 1.0,
+        "description": "Reward valid Rise/Fall labels."
+      },
+      {
+        "name": "exact_match_reward",
+        "weight": 1.0,
+        "description": "Reward exact label match against the canonical gold label."
+      },
+      {
+        "name": "malformed_output_penalty",
+        "weight": 1.0,
+        "description": "Penalty for malformed or invalid outputs."
+      }
+    ],
+    "notes": [
+      "Reward utilities for StockNet ACL18 are non-canonical and intended only for local offline experimentation.",
+      "Benchmark-authoritative comparison uses the cached evaluator variants with accuracy and MCC, not the reward totals in parse_reward.py."
+    ]
+  },
+  "default_eval_variant": "paper_default",
+  "optional_eval_variants": [
+    "finben_acl18_optional"
+  ],
+  "evaluation_config": {
+    "label_mapping": {
+      "Rise": 1,
+      "Fall": 0
+    },
+    "variants": {
+      "paper_default": {
+        "parser_mode": "label_only",
+        "metrics": [
+          "accuracy",
+          "mcc"
+        ]
+      },
+      "finben_acl18_optional": {
+        "parser_mode": "label_or_answer",
+        "metrics": [
+          "accuracy",
+          "mcc"
+        ]
+      }
+    }
+  },
+  "evaluation_metrics": {
+    "paper_default": [
+      "accuracy",
+      "mcc",
+      "format_valid_rate",
+      "completion_coverage",
+      "nonempty_label_rate"
+    ],
+    "finben_acl18_optional": [
+      "accuracy",
+      "mcc",
+      "format_valid_rate",
+      "completion_coverage",
+      "nonempty_label_rate"
+    ]
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published in the normal ST312 artifact layout with a small source-terms caution because the upstream repository is MIT-licensed but the corpus contains tweet-derived content and Yahoo Finance price data."
+  }
+}

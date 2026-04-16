@@ -232,6 +232,15 @@
       "task_readme_path": "tasks/bigdata22_stock_movement_v0/README.md",
       "dataset_id": "bigdata22_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "FC_STOCKMOVE_STOCKNET_ACL18_v0",
+      "task_name": "ACL18 StockNet stock movement prediction",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/stocknet_acl18_stockmove_v0/task_spec.json",
+      "task_readme_path": "tasks/stocknet_acl18_stockmove_v0/README.md",
+      "dataset_id": "stocknet_acl18_paper_v0",
+      "status": "published"
     }
   ]
 }

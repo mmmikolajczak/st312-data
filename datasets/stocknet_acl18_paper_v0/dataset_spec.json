@@ -1,0 +1,100 @@
+{
+  "dataset_id": "stocknet_acl18_paper_v0",
+  "dataset_name": "StockNet ACL18 Paper-Canonical Release",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/stocknet_acl18_paper_v0",
+  "provenance": {
+    "canonical_public_artifact": "yumoxu/stocknet-dataset",
+    "canonical_public_url": "https://github.com/yumoxu/stocknet-dataset",
+    "canonical_paper": "Xu & Cohen (ACL 2018)",
+    "source_commit": "330708b5ddc359961078bef469f43f48992fd6e4",
+    "notes": [
+      "The canonical source is the official StockNet dataset repository, not the later FLARE / FinBen wrapper.",
+      "The canonical split boundaries and exact counts are taken from the ACL18 paper.",
+      "The FLARE wrapper TheFinAI/flare-sm-acl exists as a compatibility surface but is not the canonical provenance source.",
+      "The official release reproduces the paper's exact 26,614 total only when preserving the paper split boundaries, 5-day alignment, and asymmetric thresholding as the primary invariants.",
+      "A stricter hard tweet-presence filter drops every official StockNet source snapshot to 18,695 examples, so ST312 documents that source discrepancy explicitly instead of silently overriding the exact paper counts.",
+      "Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse."
+    ]
+  },
+  "raw": {
+    "files": {
+      "source_snapshot_root": "data/stocknet_acl18_paper/raw/source_snapshot"
+    },
+    "meta_files": {
+      "download_meta": "data/stocknet_acl18_paper/raw/download_meta.json",
+      "source_snapshot_checksums": "data/stocknet_acl18_paper/raw/source_snapshot_checksums.sha256",
+      "raw_schema_summary": "reports/stocknet_acl18_paper/raw_schema_summary.json"
+    }
+  },
+  "processed": {
+    "config": "paper_canonical_stockmove_v0",
+    "files": {
+      "train": "data/stocknet_acl18_paper/processed/train.jsonl",
+      "dev": "data/stocknet_acl18_paper/processed/dev.jsonl",
+      "test": "data/stocknet_acl18_paper/processed/test.jsonl",
+      "ingest_summary": "data/stocknet_acl18_paper/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "reconstruction_audit": "reports/stocknet_acl18_paper/reconstruction_audit.json",
+      "finben_wrapper_audit": "reports/stocknet_acl18_paper/finben_wrapper_audit.json"
+    }
+  },
+  "schema": {
+    "row_type": "stock_movement_prediction_paper_canonical",
+    "label_space": [
+      "Fall",
+      "Rise"
+    ],
+    "label_mapping": {
+      "Fall": 0,
+      "Rise": 1
+    },
+    "main_target_field": "label_text",
+    "main_target_int_field": "label_int",
+    "auxiliary_target_field": "auxiliary_targets",
+    "aligned_input_field": "aligned_days"
+  },
+  "split_policy": {
+    "type": "paper_temporal_split_exact",
+    "train": {
+      "start": "2014-01-01",
+      "end_exclusive": "2015-08-01",
+      "count": 20339
+    },
+    "dev": {
+      "start": "2015-08-01",
+      "end_exclusive": "2015-10-01",
+      "count": 2555
+    },
+    "test": {
+      "start": "2015-10-01",
+      "end_exclusive": "2016-01-01",
+      "count": 3720
+    }
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/stocknet/acl18_paper/v0",
+    "upstream_license": "mit_with_twitter_yahoo_source_terms_caution",
+    "public_release_cleared": false,
+    "upstream_access_mode": "public_git_release_mit_repo_with_twitter_yahoo_source_terms_caution",
+    "publication_mode": "public_artifact_with_source_terms_caution",
+    "reuse_caution_summary": "Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse.",
+    "upstream_license_note": "The original StockNet repository is MIT-licensed, but the released corpus includes tweets accessed under Twitter's official license and price data sourced from Yahoo Finance. This module is published publicly in the ST312 artifact store with a small source-terms caution.",
+    "publish_allowed": true,
+    "published_commit": "e5fb7ae9f38ebdcd046e7272b06949941d5de4cd",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/e5fb7ae9f38ebdcd046e7272b06949941d5de4cd",
+    "release_scope": "hf_repo_standard_public_release_with_source_terms_caution",
+    "full_publish_completed": true
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": true
+  }
+}
