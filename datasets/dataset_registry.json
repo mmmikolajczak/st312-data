@@ -281,6 +281,28 @@
       "upstream_license": "mit_with_twitter_yahoo_source_terms_caution",
       "task_family": "binary_stock_movement_prediction_paper_canonical",
       "status": "published"
+    },
+    {
+      "dataset_id": "finarg_auc_ecc_official_v0",
+      "dataset_name": "FinArg ECC Argument Unit Classification",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/finarg_auc_ecc_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "FinArg-1 ECC Argument Classification local release copy",
+      "upstream_license": "GPL-3.0_inferred_from_public_finarg_repo",
+      "task_family": "argument_unit_classification",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "finarg_arc_ecc_official_v0",
+      "dataset_name": "FinArg ECC Argument Relation Classification",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/finarg_arc_ecc_official_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "FinArg-1 ECC Argument Relation local release copy",
+      "upstream_license": "GPL-3.0_inferred_from_public_finarg_repo",
+      "task_family": "argument_relation_classification",
+      "status": "local_ready"
     }
   ]
 }

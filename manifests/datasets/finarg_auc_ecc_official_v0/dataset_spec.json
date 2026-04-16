@@ -1,0 +1,68 @@
+{
+  "dataset_id": "finarg_auc_ecc_official_v0",
+  "dataset_name": "FinArg ECC Argument Unit Classification",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/finarg_auc_ecc_official_v0",
+  "provenance": {
+    "canonical_paper_title": "A Financial Argument Mining Dataset in Traditional Chinese and English",
+    "shared_task_series": "NTCIR-17 FinArg-1",
+    "source_kind": "user_provided_local_release_copy",
+    "source_root_description": "FinArg-1/ECC/Argument Classification",
+    "notes": [
+      "Official ECC train/dev/test split is preserved as released.",
+      "Local files are JSON arrays of [sentence, label].",
+      "Label mapping 0->premise, 1->claim is inferred from exact match to official class totals.",
+      "One exact sentence overlap across train and dev is preserved and recorded in metadata.",
+      "Local package contains no embedded README/LICENSE."
+    ]
+  },
+  "processed": {
+    "config": "official_split_materialized_v1",
+    "files": {
+      "all_clean": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_all_clean.jsonl",
+      "train": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_train.jsonl",
+      "dev": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_dev.jsonl",
+      "test": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_test.jsonl"
+    },
+    "meta_files": {
+      "ingest_meta": "data/finarg_auc_ecc_official/raw/finarg_auc_ecc_ingest_meta.json",
+      "raw_audit_summary": "reports/finarg_auc_ecc_official/raw_audit_summary.json",
+      "clean_meta": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_clean_meta.json",
+      "split_meta": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_split_meta.json"
+    }
+  },
+  "label_scheme": {
+    "type": "single_label_classification",
+    "labels": [
+      "premise",
+      "claim"
+    ],
+    "raw_numeric_mapping_inferred": {
+      "0": "premise",
+      "1": "claim"
+    },
+    "status": "clean_split_ready"
+  },
+  "split_policy": {
+    "type": "author_provided_split",
+    "train": "preserved",
+    "dev": "preserved",
+    "test": "preserved"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/finarg_auc/ecc/official/v0",
+    "upstream_license": "GPL-3.0_inferred_from_public_finarg_repo",
+    "upstream_license_name": "GPL-3.0 (inferred from public FinArg repo; local release lacks embedded license)",
+    "upstream_license_url": "",
+    "upstream_license_note": "Verify against shared-task release terms before any broader redistribution decision."
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "task_id": "TA_AUC_FINARG_ECC_v0",
+  "task_name": "FinArg ECC Argument Unit Classification",
+  "version": "0.1.0",
+  "task_type": "single_label_classification",
+  "dataset": {
+    "dataset_id": "finarg_auc_ecc_official_v0",
+    "train_file": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_train.jsonl",
+    "dev_file": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_dev.jsonl",
+    "test_file": "data/finarg_auc_ecc_official/processed/finarg_auc_ecc_test.jsonl"
+  },
+  "label_space": [
+    "premise",
+    "claim"
+  ],
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "label",
+    "allowed_labels": [
+      "premise",
+      "claim"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a financial argument unit classification system. Classify the sentence as exactly one of \"premise\" or \"claim\". Return ONLY a JSON object with exactly one key: \"label\". Do not include any extra text."
+  },
+  "metrics": [
+    "accuracy",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "micro_precision",
+    "micro_recall",
+    "micro_f1",
+    "weighted_precision",
+    "weighted_recall",
+    "weighted_f1"
+  ],
+  "reward": {
+    "script": "scripts/tasks/finarg_auc_ecc_v0/reward_finarg_auc_ecc.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 1.0
+    },
+    "correctness_reward": {
+      "name": "exact_label_match",
+      "range": [
+        0.0,
+        1.0
+      ]
+    },
+    "total_reward_range": [
+      0.0,
+      2.0
+    ]
+  },
+  "status": "local_ready"
+}
