@@ -25,10 +25,12 @@ class EctsumIngestTests(unittest.TestCase):
         self.assertEqual(row["reference_bullets"], ["revenue rose 10 percent.", "margins improved."])
         self.assertEqual(row["source_section"], "prepared_remarks")
 
-    def test_private_scope_metadata_present(self):
+    def test_public_release_with_rights_caution_metadata_present(self):
         spec = json.loads((REPO_ROOT / "datasets" / "ectsum_official_v0" / "dataset_spec.json").read_text(encoding="utf-8"))
         self.assertFalse(spec["hf_publish"]["public_release_cleared"])
-        self.assertIn("private", spec["hf_publish"]["release_scope"])
+        self.assertIn("public", spec["hf_publish"]["release_scope"])
+        self.assertIn("caution", spec["hf_publish"]["release_scope"])
+        self.assertIn("reviewed before reuse", spec["hf_publish"]["upstream_license_note"])
 
     def test_paired_filename_counts_match_processed_release(self):
         summary = json.loads((REPO_ROOT / "data" / "ectsum_official" / "processed" / "ingest_summary.json").read_text(encoding="utf-8"))

@@ -8,7 +8,7 @@ Canonical dataset module for the original-paper ECTSum benchmark.
 - canonical task is bullet-style summarization of the Prepared Remarks section of earnings-call transcripts
 - the paper reports 2,425 cleaned transcript-summary pairs with a random `70 / 10 / 20` split
 - the source chain involves Motley Fool earnings-call transcripts and Reuters summary text
-- this module is integrated and published under a private/internal assumption pending licensing review
+- this module is publicly published in the standard artifact layout with an upstream licensing / redistribution caution
 - canonical task framing follows the original paper rather than a FinBen-only wrapper
 
 ## Preserved raw release
@@ -31,5 +31,5 @@ Canonical dataset module for the original-paper ECTSum benchmark.
 
 ## Publication note
 - artifacts are published in the normal ST312 HF artifact layout
-- public redistribution clearance is still pending
-- metadata and publish bookkeeping mark this module as private-scope / licensing-pending
+- upstream source-chain licensing should be reviewed before reuse
+- metadata and publish bookkeeping carry a concise redistribution caution rather than a non-public release restriction

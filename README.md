@@ -302,7 +302,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF dataset path:** `datasets/ectsum/official/v0/`
 - **HF task path:** `tasks/ectsum_bullet_summarization_v0/`
 - **Publish record:** `manifests/publish/ectsum_official_v0_publish_record.json`
-- **Labeling note:** canonical source is the official `rajdeep345/ECTSum` GitHub repo pinned to commit `6909f1fc543104c1c60cf9de63e799f6620d1b0a`; official `train/val/test` is preserved exactly over transcript-summary pairs from Prepared Remarks; the canonical task is original-paper bullet-style summarization with ROUGE, BERTScore, SummaCConv, and Num-Prec as the default evaluation variant, plus an optional FinBen-compatible ROUGE/BERTScore/BARTScore view; source texts derive from Motley Fool transcripts and Reuters summaries, so this module is published under a private/internal assumption pending licensing and redistribution review.
+- **Labeling note:** canonical source is the official `rajdeep345/ECTSum` GitHub repo pinned to commit `6909f1fc543104c1c60cf9de63e799f6620d1b0a`; official `train/val/test` is preserved exactly over transcript-summary pairs from Prepared Remarks; the canonical task is original-paper bullet-style summarization with ROUGE, BERTScore, SummaCConv, and Num-Prec as the default evaluation variant, plus an optional FinBen-compatible ROUGE/BERTScore/BARTScore view; source texts derive from Motley Fool transcripts and Reuters summaries, so this module is publicly published with an upstream licensing and redistribution caution.
 
 <!-- ST312_PUBLISHED_MODULES_END -->
 
@@ -386,7 +386,7 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical modeling unit is one transcript-summary pair, preserving both joined text and ordered line/bullet lists
 - Canonical task is original-paper bullet-style summarization, not a FinBen-only wrapper
 - Default evaluation variant is original ECTSum with ROUGE, BERTScore, SummaCConv, and Num-Prec; an optional FinBen-compatible ROUGE/BERTScore/BARTScore view is also provided
-- Source chain involves Motley Fool transcripts and Reuters summaries, so publication remains private/internal pending licensing and redistribution review
+- Source chain involves Motley Fool transcripts and Reuters summaries, so upstream licensing and redistribution terms should be reviewed before reuse
 
 ## Validation
 

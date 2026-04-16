@@ -246,7 +246,7 @@
       "canonical_hf_repo": "mmmikolajczak/st312-data",
       "upstream_source": "rajdeep345/ECTSum official GitHub repo",
       "upstream_license": "gpl-3.0-only_code_text_redistribution_pending_review",
-      "task_family": "financial_bullet_summarization_private_scope",
+      "task_family": "financial_bullet_summarization_public_with_rights_caution",
       "status": "published"
     }
   ]

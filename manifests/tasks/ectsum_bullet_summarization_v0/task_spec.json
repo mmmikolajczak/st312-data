@@ -87,6 +87,6 @@
   },
   "publication": {
     "allowed": true,
-    "reason": "Published in the normal ST312 artifact structure under a private/internal assumption pending licensing and redistribution review."
+    "reason": "Published in the normal ST312 artifact structure as a public artifact with an upstream licensing and redistribution caution."
   }
 }

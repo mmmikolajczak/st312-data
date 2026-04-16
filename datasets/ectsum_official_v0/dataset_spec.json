@@ -11,7 +11,7 @@
       "The canonical source is the official ECTSum GitHub repository pinned to a concrete commit because the repo has no tagged releases.",
       "Canonical task is prepared-remarks bullet summarization from the original paper.",
       "Source texts derive from Motley Fool transcripts and Reuters summaries.",
-      "This module is published under a private/internal assumption pending licensing review."
+      "This module is publicly published in the standard artifact layout with an upstream licensing and redistribution caution."
     ]
   },
   "raw": {
@@ -65,9 +65,9 @@
     "repo_type": "dataset",
     "dataset_root": "datasets/ectsum/official/v0",
     "upstream_license": "gpl-3.0-only_code_text_redistribution_pending_review",
-    "upstream_license_note": "The upstream repo ships GPL-3.0 code, but dataset texts derive from Motley Fool transcripts and Reuters summaries. This ST312 publication is carried under a private/internal assumption pending licensing and redistribution review.",
+    "upstream_license_note": "The upstream repo ships GPL-3.0 code, but dataset texts derive from Motley Fool transcripts and Reuters summaries. This ST312 publication is public, while upstream source-chain licensing and redistribution terms should be reviewed before reuse.",
     "public_release_cleared": false,
-    "release_scope": "hf_repo_standard_release_private_scope_pending_clearance"
+    "release_scope": "hf_repo_standard_public_release_with_upstream_rights_caution"
   },
   "status": {
     "raw_ingested": true,

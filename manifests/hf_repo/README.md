@@ -598,7 +598,7 @@ We publish a 3-way discretised label using:
 - Official `train / val / test` prepared-remarks transcript-summary pairs are preserved exactly, with observed counts `1681 / 249 / 495`
 - Canonical task is original-paper bullet-style summarization; the default evaluator is original ECTSum and the FinBen-style summarization evaluator is optional
 - Source chain involves Motley Fool transcripts and Reuters summaries
-- Publication is carried in the normal artifact layout under a private/internal assumption pending licensing and redistribution review
+- Publication is carried in the normal artifact layout as a public artifact with an upstream licensing and redistribution caution
 
 ## Licensing
 

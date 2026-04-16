@@ -8,7 +8,9 @@
   "hf_commits": {
     "ectsum_artifact_payload_and_readme": "e911f5094334e574e11f60194a34dd2e7df44ff1",
     "ectsum_manifest_metadata_sync": "9517cfa95c17354cef7c292ec42fd4d267bd150b",
-    "ectsum_publish_record_refresh": "9a22ff00952604af6532dc5895ca21c49897cbab"
+    "ectsum_publish_record_refresh": "9a22ff00952604af6532dc5895ca21c49897cbab",
+    "ectsum_public_wording_refresh": "f11e4addd7b8cce388d7145c7b0f667e4b63ba19",
+    "ectsum_public_wording_record_final": "a0425469e5b7f1f063fe0ab8757e4eec6fa5fea6"
   },
   "artifacts_published": [
     "datasets/ectsum/official/v0/train.jsonl",
@@ -26,5 +28,5 @@
     "manifests/tasks/ectsum_bullet_summarization_v0/task_spec.json",
     "manifests/publish/ectsum_official_v0_publish_record.json"
   ],
-  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout, but carried under a private/internal release assumption pending licensing and redistribution review. Source texts derive from Motley Fool earnings-call transcripts and Reuters summaries; public redistribution clearance is not yet established."
+  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout as a public artifact with an upstream rights caution. Source texts derive from Motley Fool earnings-call transcripts and Reuters summaries; users should review upstream licensing and redistribution terms before reuse."
 }

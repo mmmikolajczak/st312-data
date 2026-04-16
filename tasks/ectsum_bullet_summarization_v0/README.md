@@ -27,7 +27,7 @@ Canonical original-paper ECTSum summarization task over `ectsum_official_v0`.
 
 ## Publication note
 - this module is fully integrated into the normal ST312 pipeline and artifact layout
-- publication scope remains private/internal pending licensing review
+- the artifact is publicly published with an upstream licensing / redistribution caution
 - the module should not be described as publicly redistribution-cleared
 
 ## Output schema
