@@ -693,7 +693,7 @@ We publish a 3-way discretised label using:
 - The bundled `data.zip` archive contains `bigdata22`, `acl18`, and `cikm18`; only `bigdata22` is onboarded as the canonical module in this turn
 - Canonical paper-window scope is `2019-07-05` through `2020-06-30`, which matches the paper's reported `272,762` tweet lines and 362-day calendar span
 - Canonical labels are taken directly from the release: `1 -> Rise`, `-1 -> Fall`, and the neutral band `0` is excluded from the binary task
-- The official archive does not ship split files or cut dates, so ST312 reconstructs a documented chronological `70 / 10 / 20` `train / valid / test` partition over the paper window, yielding `5624 / 1117 / 2063` examples
+- The official archive does not ship split files or cut dates, so ST312 derives a documented chronological `train / valid / test` reconstruction over sorted unique target trading dates inside the paper window after excluding neutral-band rows, yielding `5624 / 1164 / 2016` examples
 - Canonical evaluation uses `mcc` as the primary metric and `accuracy` as the secondary metric
 - The public FinBen/OpenFinLLM-style wrapper is treated as a derived comparison surface rather than the source of truth because its counts and date range differ from the official paper-window release
 - Publication is public but carries an upstream rights caution because the repo surface does not expose a clear redistribution license for the tweets and market data

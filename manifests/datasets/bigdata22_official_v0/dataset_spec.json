@@ -11,7 +11,7 @@
       "The canonical source is the official slot GitHub repository pinned to a concrete commit because the repo has no tagged releases.",
       "The repo README states that the repository stores the accepted paper and its dataset.",
       "The bundled archive contains BigData22 together with ACL18 and CIKM18; this module canonically ingests only BigData22.",
-      "The archive does not ship explicit split files, so ST312 reconstructs a documented chronological train/valid/test partition over the official paper window.",
+      "The archive does not ship explicit split files, so ST312 derives a documented chronological train/valid/test reconstruction over sorted unique target trading dates within the paper window.",
       "The release surface does not expose a clear dataset redistribution license for the tweets and market data, so publication carries an upstream rights caution."
     ]
   },
@@ -62,15 +62,36 @@
   "split_policy": {
     "type": "reconstructed_chronological_train_valid_test",
     "official_split_files_present": false,
+    "split_reconstruction_is_st312_derived": true,
+    "paper_only_claim": "chronological_split_without_published_cut_dates",
+    "reconstruction_basis": "target_trading_dates",
     "paper_window_start": "2019-07-05",
     "paper_window_end": "2020-06-30",
-    "reconstruction_strategy": "chronological_70_10_20_calendar_day_partition_over_paper_window",
-    "train_end": "2020-03-13",
-    "valid_end": "2020-04-18",
+    "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
+    "target_trading_dates_total": 250,
+    "split_target_trading_date_counts": {
+      "train": 175,
+      "valid": 25,
+      "test": 50
+    },
+    "split_target_trading_date_ranges": {
+      "train": {
+        "min": "2019-07-05",
+        "max": "2020-03-13"
+      },
+      "valid": {
+        "min": "2020-03-16",
+        "max": "2020-04-20"
+      },
+      "test": {
+        "min": "2020-04-21",
+        "max": "2020-06-30"
+      }
+    },
     "notes": [
       "The paper states that BigData22 uses a chronological train/validation/test split.",
-      "The archive does not expose split files or split boundary notes, so ST312 reconstructs the split explicitly and documents the cut dates in the ingest audit.",
-      "The paper's 362-day figure matches the inclusive calendar span of the benchmark window, while the observed archive yields 250 trading dates inside that same window."
+      "The archive does not expose split files or split boundary notes, so ST312 derives the split explicitly and documents the target-date ranges in the ingest audit.",
+      "The paper's 362-day figure matches the inclusive calendar span of the benchmark window, while the observed archive yields 250 non-neutral target trading dates inside that same window."
     ]
   },
   "hf_publish": {

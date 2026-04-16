@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "taxonomy": {
     "benchmark_family": "bigdata22",
+    "finben_supercategory": "Forecasting",
+    "finben_category": "Stock Movement Prediction",
     "task_type": "binary_stock_movement_prediction",
     "output_type": "classification",
     "primary_metric": "mcc",
@@ -65,5 +67,16 @@
   "publication": {
     "allowed": true,
     "reason": "Published in the normal ST312 artifact structure as a public artifact with an upstream rights and redistribution caution."
+  },
+  "split_policy": {
+    "official_split_files_present": false,
+    "split_reconstruction_is_st312_derived": true,
+    "paper_only_claim": "chronological_split_without_published_cut_dates",
+    "reconstruction_basis": "target_trading_dates",
+    "notes": [
+      "The official archive does not ship split files or cut dates.",
+      "The paper states only that the split is chronological.",
+      "ST312 therefore derives the train/valid/test split over sorted unique target trading dates within the paper window after excluding neutral-band rows."
+    ]
   }
 }

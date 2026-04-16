@@ -35,21 +35,151 @@
   "tweet_line_schema": {
     "text": "string json per line"
   },
-  "split_reconstruction_note": "The official archive does not ship split files or boundary dates. ST312 reconstructs a chronological train/valid/test partition over the official paper window using a documented 70/10/20 calendar-day rule.",
+  "split_reconstruction_note": "The official archive does not ship split files or boundary dates. The paper states only that the split is chronological, so ST312 derives a documented train/valid/test reconstruction over sorted unique target trading dates inside the paper window after excluding neutral-band rows.",
   "paper_window": {
     "start_date": "2019-07-05",
     "end_date": "2020-06-30",
     "calendar_days": 362,
-    "observed_trading_rows_per_ticker": 250,
-    "observed_tweet_lines_matching_paper_window": 272762
-  },
-  "wrapper_comparison": {
-    "wrapper_dataset": "TheFinAI/en-forecasting-bigdata",
-    "wrapper_split_counts_observed": {
-      "train": 4897,
-      "valid": 798,
-      "test": 1472
+    "trading_rows_per_ticker": {
+      "min": 250,
+      "max": 250,
+      "counts_by_ticker": {
+        "AAPL": 250,
+        "AEP": 250,
+        "AGFS": 250,
+        "AMGN": 250,
+        "AMZN": 250,
+        "BA": 250,
+        "BAC": 250,
+        "C": 250,
+        "CAT": 250,
+        "CMCSA": 250,
+        "CODI": 250,
+        "CSCO": 250,
+        "CVX": 250,
+        "D": 250,
+        "DIS": 250,
+        "DUK": 250,
+        "EXC": 250,
+        "GD": 250,
+        "GE": 250,
+        "GMRE": 250,
+        "GOOG": 250,
+        "HD": 250,
+        "HON": 250,
+        "INTC": 250,
+        "JNJ": 250,
+        "JPM": 250,
+        "KO": 250,
+        "LMT": 250,
+        "MA": 250,
+        "MCD": 250,
+        "MDT": 250,
+        "MMM": 250,
+        "MO": 250,
+        "MRK": 250,
+        "MSFT": 250,
+        "NEE": 250,
+        "ORCL": 250,
+        "PCG": 250,
+        "PM": 250,
+        "PPL": 250,
+        "REX": 250,
+        "SO": 250,
+        "SRE": 250,
+        "T": 250,
+        "UPS": 250,
+        "V": 250,
+        "VZ": 250,
+        "WFC": 250,
+        "WMT": 250,
+        "XOM": 250
+      }
     },
-    "note": "The public wrapper uses a later derived prompt format over a broader date range and is not the canonical source of truth for this module."
+    "observed_non_neutral_target_trading_dates": 250,
+    "observed_tweet_line_counts": {
+      "total": 272762,
+      "counts_by_ticker": {
+        "AAPL": 5889,
+        "AEP": 73,
+        "AGFS": 13,
+        "AMGN": 302,
+        "AMZN": 4427,
+        "BA": 10753,
+        "BAC": 959,
+        "C": 60921,
+        "CAT": 1009,
+        "CMCSA": 261,
+        "CODI": 51,
+        "CSCO": 411,
+        "CVX": 302,
+        "D": 46956,
+        "DIS": 2206,
+        "DUK": 70,
+        "EXC": 196,
+        "GD": 1805,
+        "GE": 2028,
+        "GMRE": 21,
+        "GOOG": 3042,
+        "HD": 1280,
+        "HON": 375,
+        "INTC": 751,
+        "JNJ": 658,
+        "JPM": 1183,
+        "KO": 987,
+        "LMT": 256,
+        "MA": 11225,
+        "MCD": 709,
+        "MDT": 179,
+        "MMM": 326,
+        "MO": 3313,
+        "MRK": 479,
+        "MSFT": 2556,
+        "NEE": 284,
+        "ORCL": 283,
+        "PCG": 309,
+        "PM": 507,
+        "PPL": 70,
+        "REX": 61,
+        "SO": 2876,
+        "SRE": 91,
+        "T": 77726,
+        "UPS": 211,
+        "V": 21776,
+        "VZ": 382,
+        "WFC": 556,
+        "WMT": 940,
+        "XOM": 718
+      }
+    }
+  },
+  "split_policy": {
+    "split_reconstruction_is_st312_derived": true,
+    "reconstruction_basis": "target_trading_dates",
+    "paper_only_claim": "chronological_split_without_published_cut_dates",
+    "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
+    "split_target_trading_date_counts": {
+      "train": 175,
+      "valid": 25,
+      "test": 50
+    },
+    "split_target_trading_date_ranges": {
+      "train": {
+        "min": "2019-07-05",
+        "max": "2020-03-13"
+      },
+      "valid": {
+        "min": "2020-03-16",
+        "max": "2020-04-20"
+      },
+      "test": {
+        "min": "2020-04-21",
+        "max": "2020-06-30"
+      }
+    }
+  },
+  "non_canonical_wrapper_note": {
+    "wrapper_family": "FinBen/OpenFinLLM derived prompt surface",
+    "note": "Derived wrappers may exist, but this canonical ingest and audit are computed only from the official slot release archive."
   }
 }

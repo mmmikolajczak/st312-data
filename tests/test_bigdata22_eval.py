@@ -54,7 +54,20 @@ class BigData22EvalTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdir:
             preds_path = Path(tmpdir) / "preds.jsonl"
             report_path = Path(tmpdir) / "report.json"
-            build_sanity_predictions(split_path, preds_path, limit=5)
+            gold_rows = [json.loads(line) for line in split_path.read_text(encoding="utf-8").splitlines()]
+            rise_row = next(row for row in gold_rows if row["gold_label_text"] == "Rise")
+            fall_row = next(row for row in gold_rows if row["gold_label_text"] == "Fall")
+            preds_path.write_text(
+                "\n".join(
+                    json.dumps(
+                        {"example_id": row["example_id"], "output_text": json.dumps({"label": row["gold_label_text"]})},
+                        ensure_ascii=False,
+                    )
+                    for row in [rise_row, fall_row]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
             report = evaluate("test", preds_path, report_path)
             self.assertEqual(report["accuracy"], 1.0)
             self.assertEqual(report["mcc"], 1.0)

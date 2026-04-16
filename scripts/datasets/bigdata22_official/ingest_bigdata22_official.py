@@ -6,8 +6,8 @@ import json
 import shutil
 import subprocess
 import zipfile
-from collections import Counter, defaultdict
-from datetime import date, datetime, timedelta, timezone
+from collections import Counter
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 
@@ -24,10 +24,8 @@ TEMP_CLONE_DIR = Path("/tmp/slot_src")
 PAPER_WINDOW_START = date(2019, 7, 5)
 PAPER_WINDOW_END = date(2020, 6, 30)
 PAPER_WINDOW_DAYS = (PAPER_WINDOW_END - PAPER_WINDOW_START).days + 1
-TRAIN_CALENDAR_DAYS = int(PAPER_WINDOW_DAYS * 0.7)
-VALID_CALENDAR_DAYS = int(PAPER_WINDOW_DAYS * 0.1)
-TRAIN_END = PAPER_WINDOW_START + timedelta(days=TRAIN_CALENDAR_DAYS - 1)
-VALID_END = TRAIN_END + timedelta(days=VALID_CALENDAR_DAYS)
+TRAIN_SPLIT_FRACTION = 0.7
+VALID_SPLIT_FRACTION = 0.1
 
 LABEL_THRESHOLD_POLICY = "rise if return >= 0.55%; fall if return <= -0.5%; neutral band excluded"
 PAPER_PRICE_FEATURE_COLUMNS = [
@@ -144,12 +142,58 @@ def load_tweets(tweet_path: Path | None, tweet_date: str) -> list[dict]:
     return tweets
 
 
-def assign_split(target_date: date) -> str:
-    if target_date <= TRAIN_END:
-        return "train"
-    if target_date <= VALID_END:
-        return "valid"
-    return "test"
+def count_nonempty_lines(path: Path) -> int:
+    return sum(1 for line in path.read_text(encoding="utf-8", errors="ignore").splitlines() if line.strip())
+
+
+def expected_label_from_return(adjusted_close_return: float) -> int:
+    if adjusted_close_return >= 0.0055:
+        return 1
+    if adjusted_close_return <= -0.005:
+        return -1
+    return 0
+
+
+def build_split_policy(target_dates: list[str]) -> tuple[dict[str, str], dict]:
+    total_dates = len(target_dates)
+    train_date_count = int(total_dates * TRAIN_SPLIT_FRACTION)
+    valid_date_count = int(total_dates * VALID_SPLIT_FRACTION)
+    test_date_count = total_dates - train_date_count - valid_date_count
+    if min(train_date_count, valid_date_count, test_date_count) <= 0:
+        raise ValueError(f"Invalid split date counts derived from {total_dates} target dates")
+
+    train_dates = target_dates[:train_date_count]
+    valid_dates = target_dates[train_date_count : train_date_count + valid_date_count]
+    test_dates = target_dates[train_date_count + valid_date_count :]
+    split_map = {target_date: "train" for target_date in train_dates}
+    split_map.update({target_date: "valid" for target_date in valid_dates})
+    split_map.update({target_date: "test" for target_date in test_dates})
+    summary = {
+        "official_split_files_present": False,
+        "split_reconstruction_is_st312_derived": True,
+        "paper_only_claim": "chronological_split_without_published_cut_dates",
+        "reconstruction_basis": "target_trading_dates",
+        "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
+        "paper_window_start": PAPER_WINDOW_START.isoformat(),
+        "paper_window_end": PAPER_WINDOW_END.isoformat(),
+        "target_trading_dates_total": total_dates,
+        "split_target_trading_date_counts": {
+            "train": len(train_dates),
+            "valid": len(valid_dates),
+            "test": len(test_dates),
+        },
+        "split_target_trading_date_ranges": {
+            "train": {"min": train_dates[0], "max": train_dates[-1]},
+            "valid": {"min": valid_dates[0], "max": valid_dates[-1]},
+            "test": {"min": test_dates[0], "max": test_dates[-1]},
+        },
+        "notes": [
+            "The official archive does not ship split files or split boundary notes.",
+            "The paper states only that the split is chronological; it does not publish cut dates.",
+            "ST312 therefore derives the train/valid/test split over sorted unique target trading dates within the paper window after excluding neutral-band rows.",
+        ],
+    }
+    return split_map, summary
 
 
 def current_adjusted_close(row: dict) -> float:
@@ -231,12 +275,10 @@ def build_processed_row(
 
     canonical_label = 1 if raw_label == 1 else 0
     canonical_label_text = "Rise" if raw_label == 1 else "Fall"
-    split = assign_split(target_date)
 
     return {
         "example_id": f"{DATASET_ID}__{ticker}__{row['date']}",
         "dataset_id": DATASET_ID,
-        "split": split,
         "ticker": ticker,
         "target_date": row["date"],
         "history_end_date": history_end_date,
@@ -270,43 +312,84 @@ def build_processed_rows(raw_extract_root: Path) -> tuple[dict[str, list[dict]],
         raise ValueError(f"Expected 50 BigData22 price CSVs, found {len(price_files)}")
 
     processed = {"train": [], "valid": [], "test": []}
+    provisional_rows = []
     paper_window_label_counts = Counter()
-    paper_window_non_neutral_dates = set()
+    paper_window_ticker_row_counts = Counter()
     paper_window_total_rows = 0
     paper_window_with_local_tweets = 0
     source_field_sets = Counter()
     missing_tweet_by_split = Counter()
     tweets_per_split = Counter()
+    paper_window_tweet_line_counts_by_ticker = Counter()
     duplicate_ids = set()
     seen_ids = set()
+    threshold_total_checked = 0
+    threshold_consistent = 0
+    threshold_mismatches = []
 
     for price_path in price_files:
         ticker = price_path.stem
         rows = load_price_rows(price_path)
         ticker_tweet_root = tweet_dir / ticker
+        if ticker_tweet_root.exists():
+            for tweet_path in sorted(p for p in ticker_tweet_root.iterdir() if p.is_file()):
+                try:
+                    tweet_date = date.fromisoformat(tweet_path.name)
+                except ValueError:
+                    continue
+                if PAPER_WINDOW_START <= tweet_date <= PAPER_WINDOW_END:
+                    paper_window_tweet_line_counts_by_ticker[ticker] += count_nonempty_lines(tweet_path)
         for row_idx in range(len(rows)):
             row = rows[row_idx]
             target = date.fromisoformat(row["date"])
             if PAPER_WINDOW_START <= target <= PAPER_WINDOW_END:
                 paper_window_total_rows += 1
                 paper_window_label_counts[str(int(row["label"]))] += 1
+                paper_window_ticker_row_counts[ticker] += 1
+                if row_idx > 0:
+                    current_price = current_adjusted_close(row)
+                    prev_price = current_adjusted_close(rows[row_idx - 1])
+                    adjusted_close_return = (current_price / prev_price) - 1.0
+                    expected_label = expected_label_from_return(adjusted_close_return)
+                    raw_label = int(row["label"])
+                    threshold_total_checked += 1
+                    if expected_label == raw_label:
+                        threshold_consistent += 1
+                    elif len(threshold_mismatches) < 10:
+                        threshold_mismatches.append(
+                            {
+                                "ticker": ticker,
+                                "target_date": row["date"],
+                                "raw_label": raw_label,
+                                "expected_label": expected_label,
+                                "adjusted_close_return": adjusted_close_return,
+                                "current_adjusted_close": current_price,
+                                "previous_adjusted_close": prev_price,
+                            }
+                        )
             processed_row = build_processed_row(ticker, row_idx, rows, ticker_tweet_root)
             if processed_row is None:
                 continue
             if processed_row["example_id"] in seen_ids:
                 duplicate_ids.add(processed_row["example_id"])
             seen_ids.add(processed_row["example_id"])
-            processed[processed_row["split"]].append(processed_row)
-            paper_window_non_neutral_dates.add(processed_row["target_date"])
+            provisional_rows.append(processed_row)
             source_field_sets[tuple(processed_row["source_fields_present"])] += 1
-            if processed_row["tweets"]:
-                paper_window_with_local_tweets += 1
-                tweets_per_split[processed_row["split"]] += len(processed_row["tweets"])
-            else:
-                missing_tweet_by_split[processed_row["split"]] += 1
 
     if duplicate_ids:
         raise ValueError(f"Duplicate example ids found: {sorted(list(duplicate_ids))[:5]}")
+
+    target_dates = sorted({row["target_date"] for row in provisional_rows})
+    split_map, split_policy = build_split_policy(target_dates)
+    for row in provisional_rows:
+        split = split_map[row["target_date"]]
+        row["split"] = split
+        processed[split].append(row)
+        if row["tweets"]:
+            paper_window_with_local_tweets += 1
+            tweets_per_split[split] += len(row["tweets"])
+        else:
+            missing_tweet_by_split[split] += 1
 
     for split in processed:
         processed[split].sort(key=lambda row: (row["target_date"], row["ticker"]))
@@ -314,24 +397,33 @@ def build_processed_rows(raw_extract_root: Path) -> tuple[dict[str, list[dict]],
     audit = {
         "paper_window_total_stock_dates": paper_window_total_rows,
         "paper_window_calendar_days": PAPER_WINDOW_DAYS,
-        "paper_window_trading_dates_with_non_neutral_examples": len(paper_window_non_neutral_dates),
+        "paper_window_trading_dates_with_non_neutral_examples": len(target_dates),
+        "paper_window_trading_rows_per_ticker": {
+            "min": min(paper_window_ticker_row_counts.values()),
+            "max": max(paper_window_ticker_row_counts.values()),
+            "counts_by_ticker": dict(sorted(paper_window_ticker_row_counts.items())),
+        },
         "paper_window_label_counts": dict(sorted(paper_window_label_counts.items())),
         "paper_window_non_neutral_examples": sum(len(rows) for rows in processed.values()),
         "paper_window_examples_with_local_tweets": paper_window_with_local_tweets,
+        "paper_window_tweet_line_counts": {
+            "total": sum(paper_window_tweet_line_counts_by_ticker.values()),
+            "counts_by_ticker": dict(sorted(paper_window_tweet_line_counts_by_ticker.items())),
+        },
         "source_field_sets_observed": [
             {"fields": list(fields), "count": count}
             for fields, count in source_field_sets.items()
         ],
         "missing_local_tweet_examples_by_split": dict(sorted(missing_tweet_by_split.items())),
         "tweet_line_counts_by_split": dict(sorted(tweets_per_split.items())),
-        "split_date_boundaries": {
-            "paper_window_start": PAPER_WINDOW_START.isoformat(),
-            "paper_window_end": PAPER_WINDOW_END.isoformat(),
-            "train_end": TRAIN_END.isoformat(),
-            "valid_end": VALID_END.isoformat(),
-            "train_calendar_days": TRAIN_CALENDAR_DAYS,
-            "valid_calendar_days": VALID_CALENDAR_DAYS,
-            "test_calendar_days": PAPER_WINDOW_DAYS - TRAIN_CALENDAR_DAYS - VALID_CALENDAR_DAYS,
+        "split_policy": split_policy,
+        "label_threshold_consistency_audit": {
+            "total_checked_rows": threshold_total_checked,
+            "threshold_consistent_rows": threshold_consistent,
+            "mismatch_count": threshold_total_checked - threshold_consistent,
+            "mismatch_examples": threshold_mismatches,
+            "neutral_band_treatment": "Expected label 0 is treated as the paper-defined neutral band and is excluded from the canonical binary task.",
+            "note": "This audit compares the raw release label against the label implied by the reconstructed adjusted-close return and the paper thresholds.",
         },
     }
     return processed, audit
@@ -369,11 +461,13 @@ def main() -> None:
 
     zip_summary = summarize_zip_tree(archive_path)
     price_sample_rows = load_price_rows(raw_extract_root / "bigdata22" / "price" / "AAPL.csv")[:3]
+    split_policy = audit["split_policy"]
+    observed_target_trading_dates = audit["paper_window_trading_dates_with_non_neutral_examples"]
     raw_schema_summary = {
         "dataset_id": DATASET_ID,
         "source_repo": SOURCE_REPO_NAME,
         "source_commit": SOURCE_COMMIT,
-        "archive_contains_multiple_families": True,
+        "archive_contains_multiple_families": len(zip_summary["file_count_by_root"]) > 1,
         "archive_top_level_families": sorted(zip_summary["file_count_by_root"].keys()),
         "archive_file_count_by_root": zip_summary["file_count_by_root"],
         "bigdata22_only_canonical_scope_for_this_module": True,
@@ -381,18 +475,26 @@ def main() -> None:
         "labels_materialized_in_release": True,
         "price_row_columns": list(price_sample_rows[0].keys()),
         "tweet_line_schema": {"text": "string json per line"},
-        "split_reconstruction_note": "The official archive does not ship split files or boundary dates. ST312 reconstructs a chronological train/valid/test partition over the official paper window using a documented 70/10/20 calendar-day rule.",
+        "split_reconstruction_note": "The official archive does not ship split files or boundary dates. The paper states only that the split is chronological, so ST312 derives a documented train/valid/test reconstruction over sorted unique target trading dates inside the paper window after excluding neutral-band rows.",
         "paper_window": {
             "start_date": PAPER_WINDOW_START.isoformat(),
             "end_date": PAPER_WINDOW_END.isoformat(),
             "calendar_days": PAPER_WINDOW_DAYS,
-            "observed_trading_rows_per_ticker": 250,
-            "observed_tweet_lines_matching_paper_window": 272762,
+            "trading_rows_per_ticker": audit["paper_window_trading_rows_per_ticker"],
+            "observed_non_neutral_target_trading_dates": audit["paper_window_trading_dates_with_non_neutral_examples"],
+            "observed_tweet_line_counts": audit["paper_window_tweet_line_counts"],
         },
-        "wrapper_comparison": {
-            "wrapper_dataset": "TheFinAI/en-forecasting-bigdata",
-            "wrapper_split_counts_observed": {"train": 4897, "valid": 798, "test": 1472},
-            "note": "The public wrapper uses a later derived prompt format over a broader date range and is not the canonical source of truth for this module.",
+        "split_policy": {
+            "split_reconstruction_is_st312_derived": split_policy["split_reconstruction_is_st312_derived"],
+            "reconstruction_basis": split_policy["reconstruction_basis"],
+            "paper_only_claim": split_policy["paper_only_claim"],
+            "reconstruction_strategy": split_policy["reconstruction_strategy"],
+            "split_target_trading_date_counts": split_policy["split_target_trading_date_counts"],
+            "split_target_trading_date_ranges": split_policy["split_target_trading_date_ranges"],
+        },
+        "non_canonical_wrapper_note": {
+            "wrapper_family": "FinBen/OpenFinLLM derived prompt surface",
+            "note": "Derived wrappers may exist, but this canonical ingest and audit are computed only from the official slot release archive."
         },
     }
     write_json(REPORT_DIR / "raw_schema_summary.json", raw_schema_summary)
@@ -412,9 +514,8 @@ def main() -> None:
         },
         "release_window_notes": [
             "The official archive contains extra dates outside the paper benchmark window; ST312 restricts the canonical BigData22 module to the paper window 2019-07-05 through 2020-06-30.",
-            "The paper's 362-day figure matches the inclusive calendar span of the benchmark window; the release yields 250 trading dates in that same window.",
-            "The official archive does not ship split files, so ST312 reconstructs the chronological split explicitly and documents the cut dates in this audit.",
-            "The prompt-wrapper counts in TheFinAI/en-forecasting-bigdata do not match the paper-window archive counts because the wrapper uses a derived format and a broader observed date range.",
+            f"The paper's 362-day figure matches the inclusive calendar span of the benchmark window; the release yields {observed_target_trading_dates} non-neutral target trading dates in that same window.",
+            "The official archive does not ship split files, so ST312 derives a chronological split reconstruction over sorted unique target trading dates and documents that policy explicitly in this audit.",
         ],
         **audit,
     }
@@ -461,12 +562,7 @@ def main() -> None:
         "row_counts": split_counts,
         "class_counts_by_split": class_counts,
         "total_rows": sum(split_counts.values()),
-        "split_policy": {
-            "official_split_files_present": False,
-            "reconstruction_strategy": "chronological_70_10_20_calendar_day_partition_over_paper_window",
-            "train_end": TRAIN_END.isoformat(),
-            "valid_end": VALID_END.isoformat(),
-        },
+        "split_policy": split_policy,
         "label_inventory_file": "data/bigdata22_official/processed/label_inventory.json",
         "publication_rights_caution": True,
     }

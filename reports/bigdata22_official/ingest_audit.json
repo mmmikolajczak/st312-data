@@ -4,8 +4,8 @@
   "source_commit": "1c1a25671d4c81f5fcd45607447225862c308dd5",
   "split_counts": {
     "train": 5624,
-    "valid": 1117,
-    "test": 2063
+    "valid": 1164,
+    "test": 2016
   },
   "class_counts_by_split": {
     "train": {
@@ -13,12 +13,12 @@
       "Rise": 2855
     },
     "valid": {
-      "Fall": 547,
-      "Rise": 570
+      "Fall": 590,
+      "Rise": 574
     },
     "test": {
-      "Fall": 981,
-      "Rise": 1082
+      "Fall": 938,
+      "Rise": 1078
     }
   },
   "split_target_date_ranges": {
@@ -28,22 +28,77 @@
     },
     "valid": {
       "min": "2020-03-16",
-      "max": "2020-04-17"
+      "max": "2020-04-20"
     },
     "test": {
-      "min": "2020-04-20",
+      "min": "2020-04-21",
       "max": "2020-06-30"
     }
   },
   "release_window_notes": [
     "The official archive contains extra dates outside the paper benchmark window; ST312 restricts the canonical BigData22 module to the paper window 2019-07-05 through 2020-06-30.",
-    "The paper's 362-day figure matches the inclusive calendar span of the benchmark window; the release yields 250 trading dates in that same window.",
-    "The official archive does not ship split files, so ST312 reconstructs the chronological split explicitly and documents the cut dates in this audit.",
-    "The prompt-wrapper counts in TheFinAI/en-forecasting-bigdata do not match the paper-window archive counts because the wrapper uses a derived format and a broader observed date range."
+    "The paper's 362-day figure matches the inclusive calendar span of the benchmark window; the release yields 250 non-neutral target trading dates in that same window.",
+    "The official archive does not ship split files, so ST312 derives a chronological split reconstruction over sorted unique target trading dates and documents that policy explicitly in this audit."
   ],
   "paper_window_total_stock_dates": 12500,
   "paper_window_calendar_days": 362,
   "paper_window_trading_dates_with_non_neutral_examples": 250,
+  "paper_window_trading_rows_per_ticker": {
+    "min": 250,
+    "max": 250,
+    "counts_by_ticker": {
+      "AAPL": 250,
+      "AEP": 250,
+      "AGFS": 250,
+      "AMGN": 250,
+      "AMZN": 250,
+      "BA": 250,
+      "BAC": 250,
+      "C": 250,
+      "CAT": 250,
+      "CMCSA": 250,
+      "CODI": 250,
+      "CSCO": 250,
+      "CVX": 250,
+      "D": 250,
+      "DIS": 250,
+      "DUK": 250,
+      "EXC": 250,
+      "GD": 250,
+      "GE": 250,
+      "GMRE": 250,
+      "GOOG": 250,
+      "HD": 250,
+      "HON": 250,
+      "INTC": 250,
+      "JNJ": 250,
+      "JPM": 250,
+      "KO": 250,
+      "LMT": 250,
+      "MA": 250,
+      "MCD": 250,
+      "MDT": 250,
+      "MMM": 250,
+      "MO": 250,
+      "MRK": 250,
+      "MSFT": 250,
+      "NEE": 250,
+      "ORCL": 250,
+      "PCG": 250,
+      "PM": 250,
+      "PPL": 250,
+      "REX": 250,
+      "SO": 250,
+      "SRE": 250,
+      "T": 250,
+      "UPS": 250,
+      "V": 250,
+      "VZ": 250,
+      "WFC": 250,
+      "WMT": 250,
+      "XOM": 250
+    }
+  },
   "paper_window_label_counts": {
     "-1": 4297,
     "0": 3696,
@@ -51,6 +106,61 @@
   },
   "paper_window_non_neutral_examples": 8804,
   "paper_window_examples_with_local_tweets": 6068,
+  "paper_window_tweet_line_counts": {
+    "total": 272762,
+    "counts_by_ticker": {
+      "AAPL": 5889,
+      "AEP": 73,
+      "AGFS": 13,
+      "AMGN": 302,
+      "AMZN": 4427,
+      "BA": 10753,
+      "BAC": 959,
+      "C": 60921,
+      "CAT": 1009,
+      "CMCSA": 261,
+      "CODI": 51,
+      "CSCO": 411,
+      "CVX": 302,
+      "D": 46956,
+      "DIS": 2206,
+      "DUK": 70,
+      "EXC": 196,
+      "GD": 1805,
+      "GE": 2028,
+      "GMRE": 21,
+      "GOOG": 3042,
+      "HD": 1280,
+      "HON": 375,
+      "INTC": 751,
+      "JNJ": 658,
+      "JPM": 1183,
+      "KO": 987,
+      "LMT": 256,
+      "MA": 11225,
+      "MCD": 709,
+      "MDT": 179,
+      "MMM": 326,
+      "MO": 3313,
+      "MRK": 479,
+      "MSFT": 2556,
+      "NEE": 284,
+      "ORCL": 283,
+      "PCG": 309,
+      "PM": 507,
+      "PPL": 70,
+      "REX": 61,
+      "SO": 2876,
+      "SRE": 91,
+      "T": 77726,
+      "UPS": 211,
+      "V": 21776,
+      "VZ": 382,
+      "WFC": 556,
+      "WMT": 940,
+      "XOM": 718
+    }
+  },
   "source_field_sets_observed": [
     {
       "fields": [
@@ -74,22 +184,55 @@
     }
   ],
   "missing_local_tweet_examples_by_split": {
-    "test": 618,
+    "test": 603,
     "train": 1811,
-    "valid": 307
+    "valid": 322
   },
   "tweet_line_counts_by_split": {
-    "test": 46258,
+    "test": 45106,
     "train": 83490,
-    "valid": 26233
+    "valid": 27385
   },
-  "split_date_boundaries": {
+  "split_policy": {
+    "official_split_files_present": false,
+    "split_reconstruction_is_st312_derived": true,
+    "paper_only_claim": "chronological_split_without_published_cut_dates",
+    "reconstruction_basis": "target_trading_dates",
+    "reconstruction_strategy": "chronological_70_10_20_partition_over_sorted_unique_target_trading_dates_after_excluding_neutral_band",
     "paper_window_start": "2019-07-05",
     "paper_window_end": "2020-06-30",
-    "train_end": "2020-03-13",
-    "valid_end": "2020-04-18",
-    "train_calendar_days": 253,
-    "valid_calendar_days": 36,
-    "test_calendar_days": 73
+    "target_trading_dates_total": 250,
+    "split_target_trading_date_counts": {
+      "train": 175,
+      "valid": 25,
+      "test": 50
+    },
+    "split_target_trading_date_ranges": {
+      "train": {
+        "min": "2019-07-05",
+        "max": "2020-03-13"
+      },
+      "valid": {
+        "min": "2020-03-16",
+        "max": "2020-04-20"
+      },
+      "test": {
+        "min": "2020-04-21",
+        "max": "2020-06-30"
+      }
+    },
+    "notes": [
+      "The official archive does not ship split files or split boundary notes.",
+      "The paper states only that the split is chronological; it does not publish cut dates.",
+      "ST312 therefore derives the train/valid/test split over sorted unique target trading dates within the paper window after excluding neutral-band rows."
+    ]
+  },
+  "label_threshold_consistency_audit": {
+    "total_checked_rows": 12500,
+    "threshold_consistent_rows": 12500,
+    "mismatch_count": 0,
+    "mismatch_examples": [],
+    "neutral_band_treatment": "Expected label 0 is treated as the paper-defined neutral band and is excluded from the canonical binary task.",
+    "note": "This audit compares the raw release label against the label implied by the reconstructed adjusted-close return and the paper thresholds."
   }
 }
