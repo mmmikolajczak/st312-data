@@ -3,6 +3,7 @@
   "task_id": "TA_HEADLINE_EDTSUM_FLARE_v0",
   "github_repo": "mmmikolajczak/st312-data",
   "github_source_commit": "dddd8530db1bde4666fbc265951728852105d1ed",
+  "github_cleanup_commit": "6288c6d05f867770d2790d662fc52caa240ef11c",
   "hf_repo": "mmmikolajczak/st312-data",
   "hf_private_repo": false,
   "public_release_cleared": false,
@@ -10,7 +11,9 @@
     "flare_edtsum_artifact_payload": "865b2316f73ab6c939509f8b64aadc9ecdf729fc",
     "flare_edtsum_hf_readme_update": "dcd64a4d44f49e77fc5de6193b176f1d53d4dcec",
     "flare_edtsum_publish_bookkeeping_sync": "e6bdba75d2d6497bf90246e14debedb888a51a93",
-    "flare_edtsum_publish_record_polish": "108985d1ab14c1aac352a107ca5a16a8294b9132"
+    "flare_edtsum_publish_record_polish": "108985d1ab14c1aac352a107ca5a16a8294b9132",
+    "flare_edtsum_cleanup_artifact_refresh": "e4faf7a92913ee96b3e2f0d8ec0a54d88abd5428",
+    "flare_edtsum_cleanup_hf_readme_refresh": "b4e4a599b9571231c5ef226c695f1f0b91c4ee61"
   },
   "artifacts_published": [
     "datasets/flare_edtsum/public_test/v0/test.jsonl",
@@ -24,5 +27,5 @@
     "manifests/tasks/flare_edtsum_headline_generation_v0/task_spec.json",
     "manifests/publish/flare_edtsum_public_test_v0_publish_record.json"
   ],
-  "notes": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review. Published eval-only headline-generation wrapper over the gated TheFinAI/flare-edtsum dataset pinned to revision e37154379a3162faf9d7b7a9cd1d582f2ae19adb. The wrapper exposes only a single 2,000-example test split with id/query/answer/text fields, so the canonical processed schema preserves those fields while adding article_text and reference_headline aliases. The task is framed as financial news headline generation rather than generic long-form summarization."
+  "notes": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review. Published eval-only headline-generation wrapper over the gated TheFinAI/flare-edtsum dataset pinned to revision e37154379a3162faf9d7b7a9cd1d582f2ae19adb. The wrapper exposes only a single 2,000-example test split with id/query/answer/text fields, so the canonical processed schema preserves those fields while adding article_text and reference_headline aliases. The task is framed as financial news headline generation rather than generic long-form summarization. The April 16, 2026 governance cleanup refreshed the public download metadata to a sanitized form, added explicit rights-governance fields to the dataset spec, and hardened evaluator diagnostics for completion coverage, format validity, duplicate completions, and non-empty answers."
 }

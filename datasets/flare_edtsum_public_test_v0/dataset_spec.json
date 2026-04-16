@@ -64,8 +64,8 @@
     "reuse_caution_summary": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.",
     "upstream_license": "license_sensitive_research_access_gated_upstream",
     "upstream_license_note": "This module is publicly published in the ST312 artifact store, but public_release_cleared remains false; upstream access is gated and redistribution / downstream reuse should be treated with caution pending rights review.",
-    "published_commit": "865b2316f73ab6c939509f8b64aadc9ecdf729fc",
-    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/865b2316f73ab6c939509f8b64aadc9ecdf729fc",
+    "published_commit": "e4faf7a92913ee96b3e2f0d8ec0a54d88abd5428",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/e4faf7a92913ee96b3e2f0d8ec0a54d88abd5428",
     "release_scope": "hf_repo_standard_release_eval_only_with_license_caution",
     "full_publish_completed": true
   },

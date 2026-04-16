@@ -12,6 +12,12 @@
       "hf_commit": "dcd64a4d44f49e77fc5de6193b176f1d53d4dcec",
       "source_file": "manifests/hf_repo/README.md",
       "notes": "Global HF dataset repo README updated to include the FLARE-EDTSUM public-test headline-generation module with an upstream licensing caution note."
+    },
+    {
+      "update_type": "root_readme",
+      "hf_commit": "b4e4a599b9571231c5ef226c695f1f0b91c4ee61",
+      "source_file": "manifests/hf_repo/README.md",
+      "notes": "Global HF dataset repo README refreshed to standardize the FLARE-EDTSUM rights-status phrasing after the governance cleanup."
     }
   ]
 }
