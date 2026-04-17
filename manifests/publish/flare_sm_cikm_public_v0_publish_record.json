@@ -1,0 +1,32 @@
+{
+  "dataset_id": "flare_sm_cikm_public_v0",
+  "task_id": "TA_FORECAST_FLARE_SM_CIKM_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": false,
+  "hf_commits": {
+    "flare_sm_cikm_artifact_payload_and_readme": "4e2c6213600bc635dd6455d4f9447f9a783014f2",
+    "flare_sm_cikm_manifest_metadata_sync": "2ae814f8f8987b98d9ad2852f16ecdf4ea0aedc1",
+    "flare_sm_cikm_publish_record_sync": "cbb478f59cc6522c3e0abff5b06399a0e4902d42"
+  },
+  "artifacts_published": [
+    "datasets/flare_sm_cikm/public/v0/train.jsonl",
+    "datasets/flare_sm_cikm/public/v0/valid.jsonl",
+    "datasets/flare_sm_cikm/public/v0/test.jsonl",
+    "datasets/flare_sm_cikm/public/v0/label_inventory.json",
+    "datasets/flare_sm_cikm/public/v0/ingest_summary.json",
+    "datasets/flare_sm_cikm/public/v0/download_meta.json",
+    "reports/flare_sm_cikm_public/raw_schema_summary.json",
+    "reports/flare_sm_cikm_public/ingest_audit.json",
+    "tasks/flare_sm_cikm_stock_movement_v0/requests/train_requests.jsonl",
+    "tasks/flare_sm_cikm_stock_movement_v0/requests/valid_requests.jsonl",
+    "tasks/flare_sm_cikm_stock_movement_v0/requests/test_requests.jsonl",
+    "tasks/flare_sm_cikm_stock_movement_v0/README.md",
+    "manifests/datasets/flare_sm_cikm_public_v0/dataset_spec.json",
+    "manifests/datasets/flare_sm_cikm_public_v0/checksums.sha256",
+    "manifests/tasks/flare_sm_cikm_stock_movement_v0/task_spec.json",
+    "manifests/publish/flare_sm_cikm_public_v0_publish_record.json"
+  ],
+  "notes": "Published from the accessible FinAI wrapper TheFinAI/flare-sm-cikm pinned to revision af627b4405e69e298ec45505c91dc17395be712b. The original first-party CIKM18 release is publicly unrecoverable from first-party author surfaces, so this module is explicitly wrapper-based rather than an original-author release. The wrapper split is preserved exactly. Default evaluation stays as close as possible to original-paper CIKM18 by reporting accuracy only, while an optional FinBen-compatible view adds MCC. Upstream/source-chain rights for market data and social text should be reviewed before reuse."
+}

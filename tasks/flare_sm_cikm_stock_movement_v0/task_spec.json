@@ -1,0 +1,131 @@
+{
+  "task_id": "TA_FORECAST_FLARE_SM_CIKM_v0",
+  "task_name": "FLARE-SM CIKM stock movement prediction",
+  "version": "0.1.0",
+  "taxonomy": {
+    "benchmark_family": "cikm18_finai_wrapper",
+    "finben_supercategory": "Forecasting",
+    "finben_category": "Stock Movement Prediction",
+    "task_type": "binary_stock_movement_prediction",
+    "output_type": "classification",
+    "primary_metric": "accuracy",
+    "optional_secondary_metric": "mcc",
+    "source_surface_type": "wrapper_based_canonical_accessible_surface"
+  },
+  "dataset": {
+    "dataset_id": "flare_sm_cikm_public_v0",
+    "config": "wrapper_accessible_stock_movement_v0",
+    "train_file": "data/flare_sm_cikm_public/processed/train.jsonl",
+    "valid_file": "data/flare_sm_cikm_public/processed/valid.jsonl",
+    "test_file": "data/flare_sm_cikm_public/processed/test.jsonl",
+    "meta_files": {
+      "ingest_summary": "data/flare_sm_cikm_public/processed/ingest_summary.json",
+      "raw_schema_summary": "reports/flare_sm_cikm_public/raw_schema_summary.json",
+      "ingest_audit": "reports/flare_sm_cikm_public/ingest_audit.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "query",
+      "context_text"
+    ],
+    "optional_fields": [
+      "ticker",
+      "target_date",
+      "price_history_block",
+      "social_text_block",
+      "wrapper_choices"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "label"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "label": {
+        "type": "string",
+        "enum": [
+          "Rise",
+          "Fall"
+        ]
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "Predict whether the stock's next-day closing price will rise or fall. Use the provided historical price information and social text context. Return ONLY a JSON object with exactly one key: \"label\". Allowed labels are \"Rise\" and \"Fall\".",
+    "user": "Original query:\n{{query}}\n\nOriginal context:\n{{context_text}}\n\nReturn JSON only in this form:\n{\"label\": \"Rise\"}"
+  },
+  "reward_spec": {
+    "default_reward_script": "scripts/tasks/flare_sm_cikm_stock_movement_v0/reward_cikm18_label.py",
+    "optional_reward_scripts": [
+      "scripts/tasks/flare_sm_cikm_stock_movement_v0/reward_cikm18_finben.py"
+    ],
+    "default_reward_status": "canonical_grpo_training_reward",
+    "components": [
+      {
+        "name": "valid_json_reward",
+        "weight": 0.1,
+        "description": "Reward valid JSON outputs."
+      },
+      {
+        "name": "exact_schema_reward",
+        "weight": 0.1,
+        "description": "Reward exactly one accepted key named label with no extras."
+      },
+      {
+        "name": "exact_label_correctness_reward",
+        "weight": 0.8,
+        "description": "Reward exact Rise/Fall correctness."
+      }
+    ],
+    "notes": [
+      "The default GRPO reward is intentionally strict because this is a binary classification task with a stable structured output contract.",
+      "The optional FinBen-compatible reward relaxes parsing to benchmark-style label extraction from JSON or plain text, but it is not the canonical default training reward.",
+      "MCC remains a batch-level evaluation metric and is not used as a per-example reward."
+    ]
+  },
+  "default_eval_variant": "cikm18_original_like",
+  "optional_eval_variants": [
+    "finben_compatible"
+  ],
+  "evaluation_config": {
+    "label_mapping": {
+      "Rise": 1,
+      "Fall": 0
+    },
+    "variants": {
+      "cikm18_original_like": {
+        "parser_mode": "strict_json_label_only",
+        "metrics": [
+          "accuracy"
+        ]
+      },
+      "finben_compatible": {
+        "parser_mode": "json_or_unambiguous_text_label",
+        "metrics": [
+          "accuracy",
+          "mcc"
+        ]
+      }
+    }
+  },
+  "evaluation_metrics": {
+    "cikm18_original_like": [
+      "accuracy",
+      "format_valid_rate",
+      "completion_coverage"
+    ],
+    "finben_compatible": [
+      "accuracy",
+      "mcc",
+      "format_valid_rate",
+      "completion_coverage"
+    ]
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published in the normal ST312 artifact layout as a public wrapper-based artifact with an upstream/source-chain caution because the original first-party release is unrecoverable."
+  }
+}

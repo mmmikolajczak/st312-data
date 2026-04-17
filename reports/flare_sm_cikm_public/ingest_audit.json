@@ -1,0 +1,88 @@
+{
+  "dataset_id": "flare_sm_cikm_public_v0",
+  "source_repo": "TheFinAI/flare-sm-cikm",
+  "source_revision": "af627b4405e69e298ec45505c91dc17395be712b",
+  "wrapper_answer_gold_mapping_consistent": true,
+  "wrapper_answer_gold_crosstab_by_split": {
+    "train": {
+      "0": {
+        "answer": "Rise",
+        "count": 1814
+      },
+      "1": {
+        "answer": "Fall",
+        "count": 1582
+      }
+    },
+    "test": {
+      "0": {
+        "answer": "Rise",
+        "count": 664
+      },
+      "1": {
+        "answer": "Fall",
+        "count": 479
+      }
+    },
+    "valid": {
+      "0": {
+        "answer": "Rise",
+        "count": 238
+      },
+      "1": {
+        "answer": "Fall",
+        "count": 193
+      }
+    }
+  },
+  "split_counts": {
+    "train": 3396,
+    "valid": 431,
+    "test": 1143
+  },
+  "class_balance_by_split": {
+    "train": {
+      "Fall": 1582,
+      "Rise": 1814
+    },
+    "test": {
+      "Fall": 479,
+      "Rise": 664
+    },
+    "valid": {
+      "Fall": 193,
+      "Rise": 238
+    }
+  },
+  "parseability_by_split": {
+    "train": {
+      "rows": 3396,
+      "ticker_parse_success": 3396,
+      "target_date_parse_success": 3396,
+      "price_history_block_parse_success": 3396,
+      "social_text_block_parse_success": 3396
+    },
+    "test": {
+      "rows": 1143,
+      "ticker_parse_success": 1143,
+      "target_date_parse_success": 1143,
+      "price_history_block_parse_success": 1143,
+      "social_text_block_parse_success": 1143
+    },
+    "valid": {
+      "rows": 431,
+      "ticker_parse_success": 431,
+      "target_date_parse_success": 431,
+      "price_history_block_parse_success": 431,
+      "social_text_block_parse_success": 431
+    }
+  },
+  "rights_source_chain_caution_present": true,
+  "wrapper_surface_drift_notes": [
+    "The original first-party CIKM18 release is publicly unrecoverable from the author repo plus linked Baidu Pan surface.",
+    "This module therefore uses the accessible FinAI wrapper as the canonical public source surface.",
+    "The wrapper page shows roughly 4.97k rows, while OpenFinLLM documentation cites 4,967 rows.",
+    "OpenFinLLM documentation also introduces benchmark-layer wording drift on threshold semantics and ACC+MCC reporting relative to the original paper's ACC-only evaluation."
+  ],
+  "original_first_party_release_publicly_unrecoverable": true
+}

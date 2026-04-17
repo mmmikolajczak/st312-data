@@ -799,6 +799,37 @@ Manifest / bookkeeping artifacts:
 - `manifests/tasks/australian_credit_mc_v0/task_spec.json`
 - `manifests/publish/australian_credit_uci_statlog_v0_publish_record.json`
 
+### 29) FLARE-SM CIKM Public v0
+
+- Dataset ID: `flare_sm_cikm_public_v0`
+- Task ID: `TA_FORECAST_FLARE_SM_CIKM_v0`
+- Publish record: `manifests/publish/flare_sm_cikm_public_v0_publish_record.json`
+- Notes: Published wrapper-based accessible CIKM18 module from `TheFinAI/flare-sm-cikm` pinned to revision `af627b4405e69e298ec45505c91dc17395be712b`. The original first-party CIKM18 release is publicly unrecoverable, so this module preserves the FinAI wrapper split exactly rather than claiming original-author recovery. Wrapper gold mapping is derived empirically as `0 -> Rise`, `1 -> Fall`. Default evaluation preserves original-like `accuracy` only, while an optional FinBen-compatible view adds `mcc`.
+
+Dataset artifacts:
+- `datasets/flare_sm_cikm/public/v0/train.jsonl`
+- `datasets/flare_sm_cikm/public/v0/valid.jsonl`
+- `datasets/flare_sm_cikm/public/v0/test.jsonl`
+- `datasets/flare_sm_cikm/public/v0/label_inventory.json`
+- `datasets/flare_sm_cikm/public/v0/ingest_summary.json`
+- `datasets/flare_sm_cikm/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/flare_sm_cikm_stock_movement_v0/requests/train_requests.jsonl`
+- `tasks/flare_sm_cikm_stock_movement_v0/requests/valid_requests.jsonl`
+- `tasks/flare_sm_cikm_stock_movement_v0/requests/test_requests.jsonl`
+- `tasks/flare_sm_cikm_stock_movement_v0/README.md`
+
+Reports:
+- `reports/flare_sm_cikm_public/raw_schema_summary.json`
+- `reports/flare_sm_cikm_public/ingest_audit.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/flare_sm_cikm_public_v0/checksums.sha256`
+- `manifests/datasets/flare_sm_cikm_public_v0/dataset_spec.json`
+- `manifests/tasks/flare_sm_cikm_stock_movement_v0/task_spec.json`
+- `manifests/publish/flare_sm_cikm_public_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FinArg ECC
@@ -818,6 +849,15 @@ Manifest / bookkeeping artifacts:
 - Canonical default evaluation is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]` for `1 = Good` and `2 = Bad`
 - The optional compatibility view reports macro F1 and MCC, but it is not the canonical source-task scorer
 - This historical benchmark includes sensitive demographic-style variables such as personal status and sex, age, and foreign-worker status, and should not be interpreted as a deployment template
+
+### FLARE-SM CIKM Public
+
+- Canonical accessible source is the public `TheFinAI/flare-sm-cikm` wrapper pinned to revision `af627b4405e69e298ec45505c91dc17395be712b`
+- The original first-party CIKM18 release is publicly unrecoverable from the author repo plus linked Baidu Pan surface, so this module is explicitly wrapper-based rather than an original-author release
+- The wrapper split is preserved exactly with observed counts `3396 / 431 / 1143`
+- Wrapper gold mapping is derived empirically and is consistent across all splits: `0 -> Rise`, `1 -> Fall`
+- Default evaluation preserves the original-paper convention of reporting `accuracy` only; an optional FinBen-compatible view reports `accuracy + mcc`
+- Wrapper documentation drifts from original-paper CIKM18 on row counts, metric wording, and threshold wording; ST312 documents that drift rather than treating it as canonical truth
 
 ### Australian Credit UCI Statlog
 
@@ -854,5 +894,6 @@ Manifest / bookkeeping artifacts:
 - `flare_edtsum_public_test_v0` — license_sensitive_research_access_gated_upstream
 - `bigdata22_official_v0` — license_not_explicit_tweets_and_market_data_publication_with_caution
 - `stocknet_acl18_paper_v0` — mit_with_twitter_yahoo_source_terms_caution
+- `flare_sm_cikm_public_v0` — public_wrapper_with_market_data_social_text_source_chain_caution
 - `finarg_auc_ecc_official_v0` — GPL-3.0 (inferred from public FinArg repo; local release lacks embedded license)
 - `finarg_arc_ecc_official_v0` — GPL-3.0 (inferred from public FinArg repo; local release lacks embedded license)

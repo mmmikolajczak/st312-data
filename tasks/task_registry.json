@@ -277,6 +277,15 @@
       "task_readme_path": "tasks/australian_credit_mc_v0/README.md",
       "dataset_id": "australian_credit_uci_statlog_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_FORECAST_FLARE_SM_CIKM_v0",
+      "task_name": "FLARE-SM CIKM stock movement prediction",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/flare_sm_cikm_stock_movement_v0/task_spec.json",
+      "task_readme_path": "tasks/flare_sm_cikm_stock_movement_v0/README.md",
+      "dataset_id": "flare_sm_cikm_public_v0",
+      "status": "published"
     }
   ]
 }

@@ -325,6 +325,17 @@
       "upstream_license": "CC BY 4.0",
       "task_family": "binary_classification",
       "status": "published"
+    },
+    {
+      "dataset_id": "flare_sm_cikm_public_v0",
+      "dataset_name": "FLARE-SM CIKM Public Wrapper Benchmark",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/flare_sm_cikm_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "TheFinAI/flare-sm-cikm Hugging Face dataset",
+      "upstream_license": "public_wrapper_with_market_data_social_text_source_chain_caution",
+      "task_family": "stock_movement_prediction_wrapper_based_accessible_surface",
+      "status": "published"
     }
   ]
 }

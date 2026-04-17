@@ -1,0 +1,90 @@
+{
+  "dataset_id": "flare_sm_cikm_public_v0",
+  "dataset_name": "FLARE-SM CIKM Public Wrapper Benchmark",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/flare_sm_cikm_public_v0",
+  "provenance": {
+    "canonical_public_artifact": "TheFinAI/flare-sm-cikm",
+    "canonical_public_url": "https://huggingface.co/datasets/TheFinAI/flare-sm-cikm",
+    "source_revision": "af627b4405e69e298ec45505c91dc17395be712b",
+    "original_first_party_release_publicly_unrecoverable": true,
+    "notes": [
+      "The canonical accessible source is the public FinAI wrapper TheFinAI/flare-sm-cikm pinned to a concrete HF revision.",
+      "The original first-party CIKM18 release is publicly unrecoverable from the author repo plus linked Baidu Pan surface, so this module is wrapper-based rather than an original-author release.",
+      "The wrapper split is preserved exactly as observed and is not reconstructed or reshuffled.",
+      "Public documentation drifts relative to original-paper CIKM18 semantics on row counts, threshold wording, and metric wording; those drifts are documented rather than treated as canonical truth.",
+      "The public wrapper sits over a source chain involving market data and social text, so publication carries an upstream/source-chain caution."
+    ]
+  },
+  "raw": {
+    "files": {
+      "readme": "data/flare_sm_cikm_public/raw/README.md",
+      "train_parquet": "data/flare_sm_cikm_public/raw/train-00000-of-00001-f71a7dda3fae0889.parquet",
+      "valid_parquet": "data/flare_sm_cikm_public/raw/valid-00000-of-00001-b105ab56855808e4.parquet",
+      "test_parquet": "data/flare_sm_cikm_public/raw/test-00000-of-00001-e1663a0932037903.parquet"
+    },
+    "meta_files": {
+      "download_meta": "data/flare_sm_cikm_public/raw/download_meta.json",
+      "raw_schema_summary": "reports/flare_sm_cikm_public/raw_schema_summary.json"
+    }
+  },
+  "processed": {
+    "config": "wrapper_accessible_stock_movement_v0",
+    "files": {
+      "train": "data/flare_sm_cikm_public/processed/train.jsonl",
+      "valid": "data/flare_sm_cikm_public/processed/valid.jsonl",
+      "test": "data/flare_sm_cikm_public/processed/test.jsonl",
+      "label_inventory": "data/flare_sm_cikm_public/processed/label_inventory.json",
+      "ingest_summary": "data/flare_sm_cikm_public/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "ingest_audit": "reports/flare_sm_cikm_public/ingest_audit.json"
+    }
+  },
+  "schema": {
+    "row_type": "wrapper_promptized_stock_movement_prediction",
+    "input_fields": [
+      "query",
+      "context_text"
+    ],
+    "target_field": "gold_label_text",
+    "target_label_space": [
+      "Rise",
+      "Fall"
+    ],
+    "label_mapping": {
+      "wrapper_gold_0": "Rise",
+      "wrapper_gold_1": "Fall",
+      "canonical_internal_rise": 1,
+      "canonical_internal_fall": 0
+    }
+  },
+  "split_policy": {
+    "type": "preserved_wrapper_train_valid_test",
+    "official_split_files_present": true,
+    "split_reconstruction_is_st312_derived": false,
+    "split_source": "thefinai_wrapper_release",
+    "notes": [
+      "The wrapper train/valid/test split is preserved exactly as observed in the pinned Hugging Face dataset revision.",
+      "ST312 does not reconstruct or infer the original paper split in this wrapper-based module.",
+      "The original first-party CIKM18 release remains publicly unrecoverable from first-party surfaces."
+    ]
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/flare_sm_cikm/public/v0",
+    "upstream_license": "public_wrapper_with_market_data_social_text_source_chain_caution",
+    "upstream_license_note": "The wrapper itself is public, but the underlying original dataset family is unrecoverable and built from social text plus market data. Upstream/source-chain terms should be reviewed before reuse.",
+    "public_release_cleared": false,
+    "release_scope": "hf_repo_standard_public_release_with_upstream_rights_caution"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
+    "local_ready": true
+  }
+}

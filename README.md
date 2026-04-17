@@ -377,6 +377,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/australian_credit_uci_statlog_v0_publish_record.json`
 - **Labeling note:** canonical source is UCI Statlog (Australian Credit Approval), DOI `10.24432/C59012`, with raw UCI files preserved; exact FLARE row alignment was attempted but not verified, so the canonical split is a fixed-seed count-matched reconstruction with counts `482 / 69 / 139`.
 
+### 29) FLARE-SM CIKM Public v0
+- **Dataset ID:** `flare_sm_cikm_public_v0`
+- **Task ID:** `TA_FORECAST_FLARE_SM_CIKM_v0`
+- **Task type:** wrapper-based binary stock movement forecasting
+- **HF dataset path:** `datasets/flare_sm_cikm/public/v0/`
+- **HF task path:** `tasks/flare_sm_cikm_stock_movement_v0/`
+- **Publish record:** `manifests/publish/flare_sm_cikm_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is the public `TheFinAI/flare-sm-cikm` wrapper pinned to revision `af627b4405e69e298ec45505c91dc17395be712b`; the original first-party CIKM18 release is publicly unrecoverable, so this module is explicitly wrapper-based rather than an original-author release; the wrapper `train / valid / test` split is preserved exactly at `3396 / 431 / 1143`; wrapper gold mapping is derived empirically as `0 -> Rise`, `1 -> Fall`; default evaluation stays as close as possible to original-paper CIKM18 by reporting `accuracy` only, while an optional FinBen-compatible view adds `mcc`; publication is public but carries an upstream/source-chain caution because the wrapper sits over market-data and social-text sources.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -508,6 +517,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Canonical default evaluation is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]` for `1 = Good` and `2 = Bad`
 - The optional compatibility view reports macro F1 and MCC, but it is not the canonical source-task scorer
 - This historical benchmark includes sensitive demographic-style variables such as personal status and sex, age, and foreign-worker status, and should not be interpreted as a deployment template
+
+### FLARE-SM CIKM Public
+
+- Canonical accessible source is the public `TheFinAI/flare-sm-cikm` wrapper pinned to revision `af627b4405e69e298ec45505c91dc17395be712b`
+- The original first-party CIKM18 release is publicly unrecoverable from the author repo plus linked Baidu Pan surface, so this module is explicitly wrapper-based rather than an original-author release
+- The wrapper split is preserved exactly with observed counts `3396 / 431 / 1143`
+- Wrapper integer gold mapping is derived empirically and is consistent across all splits: `0 -> Rise`, `1 -> Fall`
+- Default evaluation preserves the original-paper convention of reporting `accuracy` only; an optional FinBen-compatible view reports `accuracy + mcc`
+- Public wrapper documentation drifts from original-paper CIKM18 on row counts, metric wording, and threshold wording; ST312 documents that drift rather than treating it as canonical truth
 
 ## Validation
 
