@@ -45,8 +45,14 @@
   "label_scheme": {
     "type": "binary_classification",
     "canonical_labels": [
-      {"label_id": 0, "label": "Reject"},
-      {"label_id": 1, "label": "Approve"}
+      {
+        "label_id": 0,
+        "label": "Reject"
+      },
+      {
+        "label_id": 1,
+        "label": "Approve"
+      }
     ],
     "status": "audited_from_raw_file",
     "notes": [
@@ -74,6 +80,6 @@
     "cleaned": true,
     "split": true,
     "requests_built": true,
-    "published_to_hf": false
+    "published_to_hf": true
   }
 }

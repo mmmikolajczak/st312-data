@@ -1,0 +1,26 @@
+{
+  "dataset_id": "australian_credit_uci_statlog_v0",
+  "task_id": "TA_MC_AUSTRALIAN_CREDIT_UCI_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_commits": {
+    "australian_credit_bootstrap_upload_latest": "c3952a0445e07f5c96e3203d7aed10939cf57704"
+  },
+  "artifacts_published": [
+    "datasets/australian_credit/uci_statlog/v0/australian_credit_all_clean.jsonl",
+    "datasets/australian_credit/uci_statlog/v0/australian_credit_clean_meta.json",
+    "datasets/australian_credit/uci_statlog/v0/australian_credit_train.jsonl",
+    "datasets/australian_credit/uci_statlog/v0/australian_credit_valid.jsonl",
+    "datasets/australian_credit/uci_statlog/v0/australian_credit_test.jsonl",
+    "datasets/australian_credit/uci_statlog/v0/australian_credit_split_manifest.json",
+    "manifests/datasets/australian_credit_uci_statlog_v0/checksums.sha256",
+    "manifests/datasets/australian_credit_uci_statlog_v0/dataset_spec.json",
+    "manifests/tasks/australian_credit_mc_v0/task_spec.json",
+    "reports/australian_credit_uci_statlog/raw_audit_summary.json",
+    "tasks/australian_credit_mc_v0/README.md",
+    "tasks/australian_credit_mc_v0/australian_credit_train_requests.jsonl",
+    "tasks/australian_credit_mc_v0/australian_credit_valid_requests.jsonl",
+    "tasks/australian_credit_mc_v0/australian_credit_test_requests.jsonl"
+  ],
+  "notes": "Canonical source is UCI Statlog (Australian Credit Approval), with FLARE treated as a derived promptified reference only. Exact FLARE row alignment was attempted but not verified; canonical split is a fixed-seed count-matched reconstruction with counts 482/69/139."
+}

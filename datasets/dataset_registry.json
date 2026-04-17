@@ -324,7 +324,7 @@
       "upstream_source": "UCI Statlog (Australian Credit Approval)",
       "upstream_license": "CC BY 4.0",
       "task_family": "binary_classification",
-      "status": "local_ready"
+      "status": "published"
     }
   ]
 }
