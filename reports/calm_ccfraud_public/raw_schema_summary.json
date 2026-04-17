@@ -1,0 +1,40 @@
+{
+  "dataset_id": "calm_ccfraud_public_v0",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_subset": "CRA-CCFraud",
+  "available_splits": {
+    "test": 2098
+  },
+  "fields": [
+    "id",
+    "query",
+    "answer",
+    "choices",
+    "gold",
+    "text"
+  ],
+  "sample_row": {
+    "id": 0,
+    "query": "Detect the credit card fraud with the following financial profile. Respond with only 'good' or 'bad', and do not provide any additional information. For instance, 'The client is a female, the state number is 25, the number of cards is 1, the credit balance is 7000, the number of transactions is 16, the number of international transactions is 0, the credit limit is 6.' should be classified as 'good'. \nText: 'The client is a female, the state number is 15, the number of cards is 1, the credit balance is 3000, the number of transactions is 23, the number of international transactions is 1, the credit limit is 2.' \nAnswer:",
+    "answer": "good",
+    "choices": [
+      "good",
+      "bad"
+    ],
+    "gold": 0,
+    "text": "The client is a female, the state number is 15, the number of cards is 1, the credit balance is 3000, the number of transactions is 23, the number of international transactions is 1, the credit limit is 2."
+  },
+  "files": {
+    "README.md": {
+      "repo_path": "README.md",
+      "sha256": "46782775e5dfea340ead19d5ffa931173604562a1089fc6d2ea388fb0bedd791",
+      "size_bytes": 12397
+    },
+    "test-00000-of-00001.parquet": {
+      "repo_path": "CRA-CCFraud/test-00000-of-00001.parquet",
+      "sha256": "cd28ea272ee80054cbfff16bc6a7dd5817021d75bd5d8094c7fa17639f1e34f7",
+      "size_bytes": 192800
+    }
+  }
+}

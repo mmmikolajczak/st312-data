@@ -1,0 +1,40 @@
+{
+  "dataset_id": "calm_portoseguro_public_v0",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_subset": "CRA-ProtoSeguro",
+  "available_splits": {
+    "test": 2382
+  },
+  "fields": [
+    "id",
+    "query",
+    "answer",
+    "choices",
+    "gold",
+    "text"
+  ],
+  "sample_row": {
+    "id": 0,
+    "query": "Identify whether or not to files a claim for the auto insurance policy holder using the following table attributes about individual financial profile. Respond with only 'yes' or 'no', and do not provide any additional information. And the table attributes that belong to similar groupings are tagged as such in the feature names (e.g., ind, reg, car, calc). In addition, feature names include the postfix bin to indicate binary features and cat to indicate categorical features. Features without these designations are either continuous or ordinal. Values of -1 indicate that the feature was missing from the observation. For instance, 'The client has attributes: ps_ind_01: 1.0, ps_ind_02_cat: 2.0, ps_ind_03: 0.0, ..., ps_calc_18_bin: 0.0, ps_calc_19_bin: 0.0, ps_calc_20_bin: 0.0.' should be classified as 'no'. \nText: 'The client has attributes: ps_ind_01: 4.0, ps_ind_02_cat: 1.0, ps_ind_03: 4.0, ps_ind_04_cat: 0.0, ps_ind_05_cat: 0.0, ps_ind_06_bin: 0.0, ps_ind_07_bin: 0.0, ps_ind_08_bin: 0.0, ps_ind_09_bin: 1.0, ps_ind_10_bin: 0.0, ps_ind_11_bin: 0.0, ps_ind_12_bin: 0.0, ps_ind_13_bin: 0.0, ps_ind_14: 0.0, ps_ind_15: 6.0, ps_ind_16_bin: 1.0, ps_ind_17_bin: 0.0, ps_ind_18_bin: 0.0, ps_reg_01: 0.9, ps_reg_02: 0.5, ps_reg_03: 1.06, ps_car_01_cat: 7.0, ps_car_02_cat: 0.0, ps_car_03_cat: -1.0, ps_car_04_cat: 0.0, ps_car_05_cat: -1.0, ps_car_06_cat: 6.0, ps_car_07_cat: 1.0, ps_car_08_cat: 1.0, ps_car_09_cat: 0.0, ps_car_10_cat: 1.0, ps_car_11_cat: 104.00, ps_car_11: 3.0, ps_car_12: 0.45, ps_car_13: 1.08, ps_car_14: 0.42, ps_car_15: 3.61, ps_calc_01: 0.1, ps_calc_02: 0.8, ps_calc_03: 0.9, ps_calc_04: 2.0, ps_calc_05: 2.0, ps_calc_06: 8.0, ps_calc_07: 1.0, ps_calc_08: 10.0, ps_calc_09: 2.0, ps_calc_10: 9.0, ps_calc_11: 4.0, ps_calc_12: 1.0, ps_calc_13: 0.0, ps_calc_14: 10.0, ps_calc_15_bin: 0.0, ps_calc_16_bin: 0.0, ps_calc_17_bin: 0.0, ps_calc_18_bin: 0.0, ps_calc_19_bin: 1.0, ps_calc_20_bin: 0.0.' \nAnswer:",
+    "answer": "no",
+    "choices": [
+      "yes",
+      "no"
+    ],
+    "gold": 1,
+    "text": "The client has attributes: ps_ind_01: 4.0, ps_ind_02_cat: 1.0, ps_ind_03: 4.0, ps_ind_04_cat: 0.0, ps_ind_05_cat: 0.0, ps_ind_06_bin: 0.0, ps_ind_07_bin: 0.0, ps_ind_08_bin: 0.0, ps_ind_09_bin: 1.0, ps_ind_10_bin: 0.0, ps_ind_11_bin: 0.0, ps_ind_12_bin: 0.0, ps_ind_13_bin: 0.0, ps_ind_14: 0.0, ps_ind_15: 6.0, ps_ind_16_bin: 1.0, ps_ind_17_bin: 0.0, ps_ind_18_bin: 0.0, ps_reg_01: 0.9, ps_reg_02: 0.5, ps_reg_03: 1.06, ps_car_01_cat: 7.0, ps_car_02_cat: 0.0, ps_car_03_cat: -1.0, ps_car_04_cat: 0.0, ps_car_05_cat: -1.0, ps_car_06_cat: 6.0, ps_car_07_cat: 1.0, ps_car_08_cat: 1.0, ps_car_09_cat: 0.0, ps_car_10_cat: 1.0, ps_car_11_cat: 104.00, ps_car_11: 3.0, ps_car_12: 0.45, ps_car_13: 1.08, ps_car_14: 0.42, ps_car_15: 3.61, ps_calc_01: 0.1, ps_calc_02: 0.8, ps_calc_03: 0.9, ps_calc_04: 2.0, ps_calc_05: 2.0, ps_calc_06: 8.0, ps_calc_07: 1.0, ps_calc_08: 10.0, ps_calc_09: 2.0, ps_calc_10: 9.0, ps_calc_11: 4.0, ps_calc_12: 1.0, ps_calc_13: 0.0, ps_calc_14: 10.0, ps_calc_15_bin: 0.0, ps_calc_16_bin: 0.0, ps_calc_17_bin: 0.0, ps_calc_18_bin: 0.0, ps_calc_19_bin: 1.0, ps_calc_20_bin: 0.0."
+  },
+  "files": {
+    "README.md": {
+      "repo_path": "README.md",
+      "sha256": "46782775e5dfea340ead19d5ffa931173604562a1089fc6d2ea388fb0bedd791",
+      "size_bytes": 12397
+    },
+    "test-00000-of-00001.parquet": {
+      "repo_path": "CRA-ProtoSeguro/test-00000-of-00001.parquet",
+      "sha256": "7a39465ed73d2f716d58ce1dcc118a27762b55aad23ab2c30cbb4bfc7d47753a",
+      "size_bytes": 1252843
+    }
+  }
+}

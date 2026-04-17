@@ -1,0 +1,40 @@
+{
+  "dataset_id": "calm_ccf_public_v0",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_subset": "CRA-CCF",
+  "available_splits": {
+    "test": 2279
+  },
+  "fields": [
+    "id",
+    "query",
+    "answer",
+    "choices",
+    "gold",
+    "text"
+  ],
+  "sample_row": {
+    "id": 0,
+    "query": "Detect the credit card fraud using the following financial table attributes. Respond with only 'yes' or 'no', and do not provide any additional information. Therein, the data contains 28 numerical input variables V1, V2, ..., and V28 which are the result of a PCA transformation and 1 input variable Amount which has not been transformed with PCA. The feature 'Amount' is the transaction Amount, this feature can be used for example-dependant cost-sensitive learning. For instance, 'The client has attributes: V1: 0.144, V2: 0.358, V3: 1.220, V4: 0.331, V5: -0.273, V6: 0.429, V7: -0.307, V8: -0.577, V9: 0.116, V10: -0.337, V11: 1.016, V12: 1.043, V13: -0.527, V14: 0.160, V15: -0.951, V16: -0.452, V17: 0.166, V18: -0.446, V19: 0.036, V20: -0.275, V21: 0.768, V22: -0.051, V23: -0.180, V24: 0.067, V25: 0.741, V26: 0.477, V27: 0.152, V28: 0.201, Amount: 6.990.' should be classified as 'no'. \nText: 'The client has attributes: V1: -0.414, V2: 0.600, V3: 1.650, V4: -0.146, V5: 0.699, V6: -0.351, V7: 0.925, V8: -0.387, V9: -0.443, V10: 0.245, V11: 1.754, V12: 0.520, V13: -0.236, V14: 0.047, V15: 0.274, V16: -0.329, V17: -0.463, V18: -0.226, V19: -0.163, V20: 0.007, V21: 0.120, V22: 0.676, V23: -0.222, V24: 0.264, V25: -0.539, V26: 0.222, V27: -0.325, V28: -0.323, Amount: 1.500.' \nAnswer:",
+    "answer": "no",
+    "choices": [
+      "no",
+      "yes"
+    ],
+    "gold": 0,
+    "text": "The client has attributes: V1: -0.414, V2: 0.600, V3: 1.650, V4: -0.146, V5: 0.699, V6: -0.351, V7: 0.925, V8: -0.387, V9: -0.443, V10: 0.245, V11: 1.754, V12: 0.520, V13: -0.236, V14: 0.047, V15: 0.274, V16: -0.329, V17: -0.463, V18: -0.226, V19: -0.163, V20: 0.007, V21: 0.120, V22: 0.676, V23: -0.222, V24: 0.264, V25: -0.539, V26: 0.222, V27: -0.325, V28: -0.323, Amount: 1.500."
+  },
+  "files": {
+    "README.md": {
+      "repo_path": "README.md",
+      "sha256": "46782775e5dfea340ead19d5ffa931173604562a1089fc6d2ea388fb0bedd791",
+      "size_bytes": 12397
+    },
+    "test-00000-of-00001.parquet": {
+      "repo_path": "CRA-CCF/test-00000-of-00001.parquet",
+      "sha256": "36c912f3eeead68a3b698ff57ddbe4ef7d1833a53947e7498bd6e47c489fbb17",
+      "size_bytes": 1037140
+    }
+  }
+}

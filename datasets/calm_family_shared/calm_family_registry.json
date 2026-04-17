@@ -1,0 +1,234 @@
+{
+  "family_name": "CALM",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_url": "https://huggingface.co/datasets/Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_release_license": "cc-by-nc-4.0",
+  "modules": {
+    "lendingclub": {
+      "dataset_id": "calm_lendingclub_public_v0",
+      "task_id": "RM_CREDIT_LENDINGCLUB_CALM_v0",
+      "dataset_name": "CALM LendingClub Public Benchmark Wrapper",
+      "task_name": "CALM LendingClub credit-risk classification",
+      "dataset_folder": "datasets/calm_lendingclub_public_v0",
+      "task_folder": "tasks/calm_lendingclub_risk_v0",
+      "data_slug": "calm_lendingclub_public",
+      "benchmark_subset": "CRA-LendingClub",
+      "benchmark_subset_path": "CRA-LendingClub/test-00000-of-00001.parquet",
+      "task_family": "calm_credit_scoring_wrapper_family",
+      "finben_task": "Credit Scoring",
+      "benchmark_task_type": "binary_credit_risk_classification",
+      "allowed_labels": [
+        "good",
+        "bad"
+      ],
+      "normalized_label_map": {
+        "good": "good",
+        "bad": "bad"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "description_based",
+      "calm_role": "eval_only",
+      "calm_training_recipe_minority_resampled": false,
+      "best_known_raw_source": "Lending Club accepted-loans public release lineage, commonly mirrored through Kaggle derivatives",
+      "best_known_raw_source_url": "https://www.kaggle.com/datasets/wordsforthewise/lending-club",
+      "best_known_raw_source_license": "source_chain_not_canonical_public_lineage",
+      "raw_source_confidence": "medium",
+      "source_chain_caution": "Observed wrapper fields include likely post-outcome or downstream lending signals such as lastPaymentAmount, grade, and interestRate. ST312 treats this as a benchmark wrapper rather than a source-canonical underwriting dataset.",
+      "system_instruction": "You are assessing loan credit risk from a Lending Club benchmark record. Return ONLY a JSON object with exactly one key, \"label\", whose value is either \"good\" or \"bad\".",
+      "user_preamble": "Classify the following benchmark loan record. Use the provided feature text only."
+    },
+    "ccfraud": {
+      "dataset_id": "calm_ccfraud_public_v0",
+      "task_id": "RM_FRAUD_CCFRAUD_CALM_v0",
+      "dataset_name": "CALM ccFraud Public Benchmark Wrapper",
+      "task_name": "CALM ccFraud fraud-detection classification",
+      "dataset_folder": "datasets/calm_ccfraud_public_v0",
+      "task_folder": "tasks/calm_ccfraud_risk_v0",
+      "data_slug": "calm_ccfraud_public",
+      "benchmark_subset": "CRA-CCFraud",
+      "benchmark_subset_path": "CRA-CCFraud/test-00000-of-00001.parquet",
+      "task_family": "calm_fraud_detection_wrapper_family",
+      "finben_task": "Fraud Detection",
+      "benchmark_task_type": "binary_fraud_classification",
+      "allowed_labels": [
+        "good",
+        "bad"
+      ],
+      "normalized_label_map": {
+        "good": "good",
+        "bad": "bad"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "description_based",
+      "calm_role": "train_eval",
+      "calm_training_recipe_minority_resampled": true,
+      "best_known_raw_source": "ccFraud benchmark lineage as surfaced through CALM and FinEval public wrappers",
+      "best_known_raw_source_url": "",
+      "best_known_raw_source_license": "source_chain_unclear_wrapper_release_stronger_than_raw_lineage",
+      "raw_source_confidence": "low",
+      "source_chain_caution": "The public benchmark release provenance is stronger than the raw-source trail. ST312 treats the FinEval wrapper as the canonical accessible surface and records CALM's minority-resampling note as training metadata only.",
+      "system_instruction": "You are detecting fraud from a ccFraud benchmark profile. Return ONLY a JSON object with exactly one key, \"label\", whose value is either \"good\" or \"bad\".",
+      "user_preamble": "Classify the following ccFraud benchmark profile. Use the provided feature text only."
+    },
+    "taiwan": {
+      "dataset_id": "calm_taiwan_public_v0",
+      "task_id": "RM_DISTRESS_TAIWAN_CALM_v0",
+      "dataset_name": "CALM Taiwan Public Benchmark Wrapper",
+      "task_name": "CALM Taiwan financial-distress classification",
+      "dataset_folder": "datasets/calm_taiwan_public_v0",
+      "task_folder": "tasks/calm_taiwan_risk_v0",
+      "data_slug": "calm_taiwan_public",
+      "benchmark_subset": "CRA-Taiwan",
+      "benchmark_subset_path": "CRA-Taiwan/test-00000-of-00001.parquet",
+      "task_family": "calm_financial_distress_wrapper_family",
+      "finben_task": "Financial Distress Identification",
+      "benchmark_task_type": "binary_bankruptcy_prediction",
+      "allowed_labels": [
+        "no",
+        "yes"
+      ],
+      "normalized_label_map": {
+        "no": "no",
+        "yes": "yes"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "description_based",
+      "calm_role": "train_eval",
+      "calm_training_recipe_minority_resampled": true,
+      "best_known_raw_source": "UCI Taiwanese Bankruptcy Prediction",
+      "best_known_raw_source_url": "https://archive.ics.uci.edu/dataset/572/taiwanese%2Bbankruptcy%2Bprediction%29",
+      "best_known_raw_source_license": "cc-by-4.0",
+      "raw_source_confidence": "high",
+      "source_chain_caution": "The FinEval CRA subset is the canonical public benchmark release surface for this module. ST312 records the stronger UCI source lineage for future source-canonical audit work, but does not reconstruct or replace the public benchmark wrapper in this pass.",
+      "system_instruction": "You are predicting whether a company will face bankruptcy from a Taiwanese benchmark profile. Return ONLY a JSON object with exactly one key, \"label\", whose value is either \"no\" or \"yes\".",
+      "user_preamble": "Classify the following Taiwanese bankruptcy benchmark profile. Use the provided feature text only."
+    },
+    "travelinsurance": {
+      "dataset_id": "calm_travelinsurance_public_v0",
+      "task_id": "RM_CLAIM_TRAVELINSURANCE_CALM_v0",
+      "dataset_name": "CALM TravelInsurance Public Benchmark Wrapper",
+      "task_name": "CALM TravelInsurance claim-status classification",
+      "dataset_folder": "datasets/calm_travelinsurance_public_v0",
+      "task_folder": "tasks/calm_travelinsurance_risk_v0",
+      "data_slug": "calm_travelinsurance_public",
+      "benchmark_subset": "CRA-TravelInsurance",
+      "benchmark_subset_path": "CRA-TravelInsurance/test-00000-of-00001.parquet",
+      "task_family": "calm_claim_analysis_wrapper_family",
+      "finben_task": "Claim Analysis",
+      "benchmark_task_type": "binary_claim_status_classification",
+      "allowed_labels": [
+        "yes",
+        "no"
+      ],
+      "normalized_label_map": {
+        "yes": "yes",
+        "no": "no"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "description_based",
+      "calm_role": "train_eval",
+      "calm_training_recipe_minority_resampled": true,
+      "best_known_raw_source": "Travel Insurance claim-status dataset lineage as surfaced through CALM and FinEval public wrappers",
+      "best_known_raw_source_url": "",
+      "best_known_raw_source_license": "source_chain_unclear_wrapper_release_stronger_than_raw_lineage",
+      "raw_source_confidence": "low",
+      "source_chain_caution": "The public benchmark release provenance is stronger than the raw-source trail. ST312 preserves the FinEval wrapper exactly and records the CALM minority-resampling note as training metadata only.",
+      "system_instruction": "You are classifying travel insurance claim status from a benchmark record. Return ONLY a JSON object with exactly one key, \"label\", whose value is either \"yes\" or \"no\".",
+      "user_preamble": "Classify the following travel insurance benchmark record. Use the provided feature text only."
+    },
+    "ccf": {
+      "dataset_id": "calm_ccf_public_v0",
+      "task_id": "RM_FRAUD_CCF_CALM_v0",
+      "dataset_name": "CALM CCF Public Benchmark Wrapper",
+      "task_name": "CALM CCF fraud-detection classification",
+      "dataset_folder": "datasets/calm_ccf_public_v0",
+      "task_folder": "tasks/calm_ccf_risk_v0",
+      "data_slug": "calm_ccf_public",
+      "benchmark_subset": "CRA-CCF",
+      "benchmark_subset_path": "CRA-CCF/test-00000-of-00001.parquet",
+      "task_family": "calm_fraud_detection_wrapper_family",
+      "finben_task": "Fraud Detection",
+      "benchmark_task_type": "binary_fraud_classification",
+      "allowed_labels": [
+        "no",
+        "yes"
+      ],
+      "normalized_label_map": {
+        "no": "no",
+        "yes": "yes"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "table_based",
+      "calm_role": "train_eval",
+      "calm_training_recipe_minority_resampled": true,
+      "best_known_raw_source": "Credit-card-fraud benchmark lineage as surfaced through CALM and FinEval public wrappers",
+      "best_known_raw_source_url": "",
+      "best_known_raw_source_license": "source_chain_unclear_wrapper_release_stronger_than_raw_lineage",
+      "raw_source_confidence": "low",
+      "source_chain_caution": "This task is table-based and symbol-heavy. ST312 should preserve the public wrapper formatting exactly rather than inventing semantic decodings beyond what the release itself states."
+    },
+    "polish": {
+      "dataset_id": "calm_polish_public_v0",
+      "task_id": "RM_DISTRESS_POLISH_CALM_v0",
+      "dataset_name": "CALM Polish Public Benchmark Wrapper",
+      "task_name": "CALM Polish financial-distress classification",
+      "dataset_folder": "datasets/calm_polish_public_v0",
+      "task_folder": "tasks/calm_polish_risk_v0",
+      "data_slug": "calm_polish_public",
+      "benchmark_subset": "CRA-Polish",
+      "benchmark_subset_path": "CRA-Polish/test-00000-of-00001.parquet",
+      "task_family": "calm_financial_distress_wrapper_family",
+      "finben_task": "Financial Distress Identification",
+      "benchmark_task_type": "binary_bankruptcy_prediction",
+      "allowed_labels": [
+        "no",
+        "yes"
+      ],
+      "normalized_label_map": {
+        "no": "no",
+        "yes": "yes"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "description_based",
+      "calm_role": "eval_only",
+      "calm_training_recipe_minority_resampled": false,
+      "best_known_raw_source": "UCI Polish Companies Bankruptcy",
+      "best_known_raw_source_url": "https://archive.ics.uci.edu/ml/datasets/polish%2Bcompanies%2Bbankruptcy%2Bdata",
+      "best_known_raw_source_license": "uci_public_archive_terms",
+      "raw_source_confidence": "high",
+      "source_chain_caution": "The benchmark release is wrapper-based, but the raw-source lineage is strong enough that a future source-canonical alignment audit is appropriate."
+    },
+    "portoseguro": {
+      "dataset_id": "calm_portoseguro_public_v0",
+      "task_id": "RM_CLAIM_PORTOSEGURO_CALM_v0",
+      "dataset_name": "CALM PortoSeguro Public Benchmark Wrapper",
+      "task_name": "CALM PortoSeguro claim-status classification",
+      "dataset_folder": "datasets/calm_portoseguro_public_v0",
+      "task_folder": "tasks/calm_portoseguro_risk_v0",
+      "data_slug": "calm_portoseguro_public",
+      "benchmark_subset": "CRA-ProtoSeguro",
+      "benchmark_subset_path": "CRA-ProtoSeguro/test-00000-of-00001.parquet",
+      "task_family": "calm_claim_analysis_wrapper_family",
+      "finben_task": "Claim Analysis",
+      "benchmark_task_type": "binary_claim_status_classification",
+      "allowed_labels": [
+        "yes",
+        "no"
+      ],
+      "normalized_label_map": {
+        "yes": "yes",
+        "no": "no"
+      },
+      "calm_family": true,
+      "calm_instruction_style": "table_based",
+      "calm_role": "eval_only",
+      "calm_training_recipe_minority_resampled": false,
+      "best_known_raw_source": "Porto Seguro claim-status benchmark lineage as surfaced through CALM and FinEval public wrappers",
+      "best_known_raw_source_url": "",
+      "best_known_raw_source_license": "source_chain_unclear_wrapper_release_stronger_than_raw_lineage",
+      "raw_source_confidence": "low",
+      "source_chain_caution": "Keep spelling standardized to portoseguro in ST312 IDs. The wrapper should be treated as the canonical accessible release surface rather than as proof of a clean raw-source chain."
+    }
+  }
+}

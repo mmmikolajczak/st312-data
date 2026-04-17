@@ -1,0 +1,102 @@
+{
+  "dataset_id": "calm_taiwan_public_v0",
+  "dataset_name": "CALM Taiwan Public Benchmark Wrapper",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/calm_taiwan_public_v0",
+  "provenance": {
+    "canonical_benchmark_release": "Salesforce/FinEval",
+    "canonical_benchmark_release_url": "https://huggingface.co/datasets/Salesforce/FinEval",
+    "canonical_benchmark_subset": "CRA-Taiwan",
+    "canonical_benchmark_subset_url": "https://huggingface.co/datasets/Salesforce/FinEval/tree/main/CRA-Taiwan",
+    "benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+    "benchmark_release_license": "cc-by-nc-4.0",
+    "best_known_raw_source": "UCI Taiwanese Bankruptcy Prediction",
+    "best_known_raw_source_url": "https://archive.ics.uci.edu/dataset/572/taiwanese%2Bbankruptcy%2Bprediction%29",
+    "best_known_raw_source_license": "cc-by-4.0",
+    "raw_source_confidence": "high",
+    "notes": [
+      "This CALM-family module is anchored on the public Salesforce/FinEval subset CRA-Taiwan.",
+      "CALM metadata records calm_role=train_eval and calm_instruction_style=description_based, while ST312 preserves the public benchmark wrapper release surface as-is.",
+      "The FinEval CRA subset is the canonical public benchmark release surface for this module. ST312 records the stronger UCI source lineage for future source-canonical audit work, but does not reconstruct or replace the public benchmark wrapper in this pass."
+    ]
+  },
+  "calm_family_metadata": {
+    "calm_family": true,
+    "calm_instruction_style": "description_based",
+    "calm_role": "train_eval",
+    "calm_training_recipe_minority_resampled": true
+  },
+  "raw": {
+    "files": {
+      "readme": "data/calm_taiwan_public/raw/README.md",
+      "test_parquet": "data/calm_taiwan_public/raw/test-00000-of-00001.parquet"
+    },
+    "meta_files": {
+      "download_meta": "data/calm_taiwan_public/raw/download_meta.json",
+      "raw_schema_summary": "reports/calm_taiwan_public/raw_schema_summary.json"
+    }
+  },
+  "processed": {
+    "config": "fineval_public_test_calm_wrapper_v0",
+    "files": {
+      "test": "data/calm_taiwan_public/processed/test.jsonl",
+      "label_inventory": "data/calm_taiwan_public/processed/label_inventory.json",
+      "ingest_summary": "data/calm_taiwan_public/processed/ingest_summary.json"
+    }
+  },
+  "schema": {
+    "row_type": "calm_binary_risk_benchmark_wrapper",
+    "preserved_wrapper_fields": [
+      "id",
+      "query",
+      "answer",
+      "choices",
+      "gold",
+      "text"
+    ],
+    "normalized_fields": [
+      "label_raw",
+      "label_normalized",
+      "label_id",
+      "feature_text",
+      "source_dataset",
+      "source_release_repo",
+      "calm_role",
+      "calm_instruction_style"
+    ],
+    "label_space": [
+      "no",
+      "yes"
+    ]
+  },
+  "split_policy": {
+    "type": "public_test_only_preserved_benchmark_wrapper",
+    "release_split": "test",
+    "canonical_split": "preserve_public_test_only_no_fabricated_train_valid"
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/calm/taiwan/public/v0",
+    "upstream_license": "cc-by-nc-4.0",
+    "public_release_cleared": true,
+    "upstream_access_mode": "public_fineval_benchmark_release",
+    "publication_mode": "public_artifact_standard_release_with_source_chain_caution",
+    "reuse_caution_summary": "The FinEval CRA subset is the canonical public benchmark release surface for this module. ST312 records the stronger UCI source lineage for future source-canonical audit work, but does not reconstruct or replace the public benchmark wrapper in this pass.",
+    "upstream_license_note": "Salesforce/FinEval is publicly released under CC BY-NC 4.0. ST312 publishes the benchmark wrapper surface with separate source-chain confidence notes for the underlying raw lineage.",
+    "publish_allowed": true,
+    "published_commit": null,
+    "published_url": null,
+    "release_scope": "hf_repo_standard_release_eval_only",
+    "full_publish_completed": false
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false,
+    "eval_only": true,
+    "local_ready": true
+  }
+}

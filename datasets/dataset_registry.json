@@ -336,6 +336,83 @@
       "upstream_license": "public_wrapper_with_market_data_social_text_source_chain_caution",
       "task_family": "stock_movement_prediction_wrapper_based_accessible_surface",
       "status": "published"
+    },
+    {
+      "dataset_id": "calm_lendingclub_public_v0",
+      "dataset_name": "CALM LendingClub Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_lendingclub_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-LendingClub",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_credit_scoring_wrapper_family",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "calm_ccfraud_public_v0",
+      "dataset_name": "CALM ccFraud Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_ccfraud_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-CCFraud",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_fraud_detection_wrapper_family",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "calm_taiwan_public_v0",
+      "dataset_name": "CALM Taiwan Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_taiwan_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-Taiwan",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_financial_distress_wrapper_family",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "calm_travelinsurance_public_v0",
+      "dataset_name": "CALM TravelInsurance Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_travelinsurance_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-TravelInsurance",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_claim_analysis_wrapper_family",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "calm_ccf_public_v0",
+      "dataset_name": "CALM CCF Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_ccf_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-CCF",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_fraud_detection_wrapper_family",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "calm_polish_public_v0",
+      "dataset_name": "CALM Polish Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_polish_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-Polish",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_financial_distress_wrapper_family",
+      "status": "local_ready"
+    },
+    {
+      "dataset_id": "calm_portoseguro_public_v0",
+      "dataset_name": "CALM PortoSeguro Public Benchmark Wrapper",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/calm_portoseguro_public_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "Salesforce/FinEval CRA-ProtoSeguro",
+      "upstream_license": "cc-by-nc-4.0",
+      "task_family": "calm_claim_analysis_wrapper_family",
+      "status": "local_ready"
     }
   ]
 }

@@ -286,6 +286,69 @@
       "task_readme_path": "tasks/flare_sm_cikm_stock_movement_v0/README.md",
       "dataset_id": "flare_sm_cikm_public_v0",
       "status": "published"
+    },
+    {
+      "task_id": "RM_CREDIT_LENDINGCLUB_CALM_v0",
+      "task_name": "CALM LendingClub credit-risk classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_lendingclub_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_lendingclub_risk_v0/README.md",
+      "dataset_id": "calm_lendingclub_public_v0",
+      "status": "local_ready"
+    },
+    {
+      "task_id": "RM_FRAUD_CCFRAUD_CALM_v0",
+      "task_name": "CALM ccFraud fraud-detection classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_ccfraud_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_ccfraud_risk_v0/README.md",
+      "dataset_id": "calm_ccfraud_public_v0",
+      "status": "local_ready"
+    },
+    {
+      "task_id": "RM_DISTRESS_TAIWAN_CALM_v0",
+      "task_name": "CALM Taiwan financial-distress classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_taiwan_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_taiwan_risk_v0/README.md",
+      "dataset_id": "calm_taiwan_public_v0",
+      "status": "local_ready"
+    },
+    {
+      "task_id": "RM_CLAIM_TRAVELINSURANCE_CALM_v0",
+      "task_name": "CALM TravelInsurance claim-status classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_travelinsurance_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_travelinsurance_risk_v0/README.md",
+      "dataset_id": "calm_travelinsurance_public_v0",
+      "status": "local_ready"
+    },
+    {
+      "task_id": "RM_FRAUD_CCF_CALM_v0",
+      "task_name": "CALM CCF fraud-detection classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_ccf_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_ccf_risk_v0/README.md",
+      "dataset_id": "calm_ccf_public_v0",
+      "status": "local_ready"
+    },
+    {
+      "task_id": "RM_DISTRESS_POLISH_CALM_v0",
+      "task_name": "CALM Polish financial-distress classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_polish_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_polish_risk_v0/README.md",
+      "dataset_id": "calm_polish_public_v0",
+      "status": "local_ready"
+    },
+    {
+      "task_id": "RM_CLAIM_PORTOSEGURO_CALM_v0",
+      "task_name": "CALM PortoSeguro claim-status classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/calm_portoseguro_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/calm_portoseguro_risk_v0/README.md",
+      "dataset_id": "calm_portoseguro_public_v0",
+      "status": "local_ready"
     }
   ]
 }

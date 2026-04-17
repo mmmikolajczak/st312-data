@@ -1,0 +1,123 @@
+{
+  "task_id": "RM_DISTRESS_TAIWAN_CALM_v0",
+  "task_name": "CALM Taiwan financial-distress classification",
+  "version": "0.1.0",
+  "taxonomy": {
+    "benchmark_family": "CALM",
+    "finben_category": "Risk Management",
+    "finben_task": "Financial Distress Identification",
+    "output_type": "binary_risk_classification",
+    "scoring_type": "shared_closed_label_default"
+  },
+  "dataset": {
+    "dataset_id": "calm_taiwan_public_v0",
+    "config": "fineval_public_test_calm_wrapper_v0",
+    "test_file": "data/calm_taiwan_public/processed/test.jsonl",
+    "meta_files": {
+      "ingest_summary": "data/calm_taiwan_public/processed/ingest_summary.json",
+      "label_inventory": "data/calm_taiwan_public/processed/label_inventory.json",
+      "raw_schema_summary": "reports/calm_taiwan_public/raw_schema_summary.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "feature_text"
+    ],
+    "optional_fields": [
+      "query",
+      "choices",
+      "gold",
+      "label_raw",
+      "label_id",
+      "calm_role",
+      "calm_instruction_style"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "label"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "label": {
+        "type": "string",
+        "enum": [
+          "no",
+          "yes"
+        ]
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "You are predicting whether a company will face bankruptcy from a Taiwanese benchmark profile. Return ONLY a JSON object with exactly one key, \"label\", whose value is either \"no\" or \"yes\".",
+    "user": "Classify the following Taiwanese bankruptcy benchmark profile. Use the provided feature text only.\n\nBenchmark feature text:\n{{feature_text}}\n\nReturn JSON only in this form:\n{\"label\":\"{{label_example}}\"}"
+  },
+  "reward_spec": {
+    "status": "shared_closed_label_family_helper",
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 0.2,
+        "description": "Reward valid JSON object outputs."
+      },
+      {
+        "name": "label_valid_reward",
+        "weight": 0.2,
+        "description": "Reward exactly one accepted label key with an allowed value."
+      },
+      {
+        "name": "exact_match_reward",
+        "weight": 0.6,
+        "description": "Reward exact match against the benchmark label."
+      },
+      {
+        "name": "malformed_output_penalty",
+        "weight": 0.0,
+        "description": "Diagnostic-only malformed output flag; not part of the weighted total reward."
+      }
+    ],
+    "notes": [
+      "This shared reward helper is intentionally simple because CALM-family benchmark wrappers are binary closed-label classification tasks.",
+      "Minority-resampling belongs to the original CALM training recipe and is not encoded in the reward function or public benchmark splits."
+    ]
+  },
+  "default_eval_variant": "calm_family_default",
+  "evaluation_config": {
+    "label_mapping": {
+      "no": 0,
+      "yes": 1
+    },
+    "variants": {
+      "calm_family_default": {
+        "parser_mode": "json_label_or_answer_lowercase",
+        "metrics": [
+          "macro_f1",
+          "mcc",
+          "accuracy",
+          "format_valid_rate",
+          "completion_coverage"
+        ]
+      }
+    }
+  },
+  "evaluation_metrics": {
+    "calm_family_default": [
+      "macro_f1",
+      "mcc",
+      "accuracy",
+      "format_valid_rate",
+      "completion_coverage",
+      "nonempty_label_rate"
+    ],
+    "diagnostics": [
+      "class_counts",
+      "confusion_matrix",
+      "per_class_metrics"
+    ]
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published public benchmark-wrapper module over Salesforce/FinEval with source-chain confidence metadata."
+  }
+}

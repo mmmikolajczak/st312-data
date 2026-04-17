@@ -1,0 +1,40 @@
+{
+  "dataset_id": "calm_polish_public_v0",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_subset": "CRA-Polish",
+  "available_splits": {
+    "test": 1737
+  },
+  "fields": [
+    "id",
+    "query",
+    "answer",
+    "choices",
+    "gold",
+    "text"
+  ],
+  "sample_row": {
+    "id": 0,
+    "query": "Predict whether the company will face bankruptcy based on the financial profile attributes provided in the following text. Respond with only 'no' or 'yes', and do not provide any additional information. \nFor instance, 'The client has attributes: net profit / total assets: -0.046186, ..., sales / short-term liabilities: 5.7063, sales / fixed assets: 1.3882.' should be classified as 'no'. \nText: 'The client has attributes: net profit / total assets: 0.035199, total liabilities / total assets: 0.66281, working capital / total assets: 0.10989, current assets / short-term liabilities: 1.4925, [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365: -8.6215, retained earnings / total assets: 0.0, EBIT / total assets: 0.042841, book value of equity / total liabilities: 0.50872, sales / total assets: 1.4192, equity / total assets: 0.33719, (gross profit + extraordinary items + financial expenses) / total assets: 0.070706, gross profit / short-term liabilities: 0.19199, (gross profit + depreciation) / sales: 0.14364, (gross profit + interest) / total assets: 0.042841, (total liabilities * 365) / (gross profit + depreciation): 1186.8, (gross profit + depreciation) / total liabilities: 0.30755, total assets / total liabilities: 1.5087, gross profit / total assets: 0.042841, gross profit / sales: 0.030187, (inventory * 365) / sales: 16.315, sales (n) / sales (n-1): 0.97108, profit on operating activities / total assets: 0.067212, net profit / sales: 0.024802, gross profit (in 3 years) / total assets: 0.18453, (equity - share capital) / total assets: 0.30796, (net profit + depreciation) / total liabilities: 0.29602, profit on operating activities / financial expenses: 2.412, working capital / fixed assets: 0.16475, logarithm of total assets: 3.5755, (total liabilities - cash) / sales: 0.45219, (total liabilities - cash) / sales: 0.04737, (current liabilities * 365) / cost of products sold: 57.837, operating expenses / short-term liabilities: 6.3108, operating expenses / total liabilities: 2.1246, profit on sales / total assets: 0.011016, total sales / total assets: 1.4192, (current assets - inventories) / long-term liabilities: 1.338, constant capital / total assets: 0.53867, profit on sales / sales: 0.0077619, (current assets - inventory - receivables) / short-term liabilities: 0.43641, total liabilities / ((profit on operating activities + depreciation) * (12/365)): 0.09681, profit on operating activities / sales: 0.047359, rotation receivables + inventory turnover in days: 60.605, (receivables * 365) / sales: 44.29, net profit / inventory: 0.55486, (current assets - inventory) / short-term liabilities: 1.2082, (inventory * 365) / cost of products sold: 16.443, EBITDA (profit on operating activities - depreciation) / total assets: -0.093794, EBITDA (profit on operating activities - depreciation) / sales: -0.066089, current assets / total liabilities: 0.50244, short-term liabilities / total assets: 0.22314, (short-term liabilities * 365) / cost of products sold): 0.15846, equity / fixed assets: 0.50555, constant capital / fixed assets: 0.80764, working capital: 413.5, (sales - cost of products sold) / sales: 0.0077619, (current assets - inventory - short-term liabilities) / (sales - gross profit - depreciation): 0.10439, total costs /total sales: 0.97103, long-term liabilities / equity: 0.59755, sales / inventory: 22.372, sales / receivables: 8.2412, (short-term liabilities *365) / sales: 57.388, sales / short-term liabilities: 6.3602, sales / fixed assets: 2.1278.' \nAnswer:",
+    "answer": "no",
+    "choices": [
+      "no",
+      "yes"
+    ],
+    "gold": 0,
+    "text": "The client has attributes: net profit / total assets: 0.035199, total liabilities / total assets: 0.66281, working capital / total assets: 0.10989, current assets / short-term liabilities: 1.4925, [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365: -8.6215, retained earnings / total assets: 0.0, EBIT / total assets: 0.042841, book value of equity / total liabilities: 0.50872, sales / total assets: 1.4192, equity / total assets: 0.33719, (gross profit + extraordinary items + financial expenses) / total assets: 0.070706, gross profit / short-term liabilities: 0.19199, (gross profit + depreciation) / sales: 0.14364, (gross profit + interest) / total assets: 0.042841, (total liabilities * 365) / (gross profit + depreciation): 1186.8, (gross profit + depreciation) / total liabilities: 0.30755, total assets / total liabilities: 1.5087, gross profit / total assets: 0.042841, gross profit / sales: 0.030187, (inventory * 365) / sales: 16.315, sales (n) / sales (n-1): 0.97108, profit on operating activities / total assets: 0.067212, net profit / sales: 0.024802, gross profit (in 3 years) / total assets: 0.18453, (equity - share capital) / total assets: 0.30796, (net profit + depreciation) / total liabilities: 0.29602, profit on operating activities / financial expenses: 2.412, working capital / fixed assets: 0.16475, logarithm of total assets: 3.5755, (total liabilities - cash) / sales: 0.45219, (total liabilities - cash) / sales: 0.04737, (current liabilities * 365) / cost of products sold: 57.837, operating expenses / short-term liabilities: 6.3108, operating expenses / total liabilities: 2.1246, profit on sales / total assets: 0.011016, total sales / total assets: 1.4192, (current assets - inventories) / long-term liabilities: 1.338, constant capital / total assets: 0.53867, profit on sales / sales: 0.0077619, (current assets - inventory - receivables) / short-term liabilities: 0.43641, total liabilities / ((profit on operating activities + depreciation) * (12/365)): 0.09681, profit on operating activities / sales: 0.047359, rotation receivables + inventory turnover in days: 60.605, (receivables * 365) / sales: 44.29, net profit / inventory: 0.55486, (current assets - inventory) / short-term liabilities: 1.2082, (inventory * 365) / cost of products sold: 16.443, EBITDA (profit on operating activities - depreciation) / total assets: -0.093794, EBITDA (profit on operating activities - depreciation) / sales: -0.066089, current assets / total liabilities: 0.50244, short-term liabilities / total assets: 0.22314, (short-term liabilities * 365) / cost of products sold): 0.15846, equity / fixed assets: 0.50555, constant capital / fixed assets: 0.80764, working capital: 413.5, (sales - cost of products sold) / sales: 0.0077619, (current assets - inventory - short-term liabilities) / (sales - gross profit - depreciation): 0.10439, total costs /total sales: 0.97103, long-term liabilities / equity: 0.59755, sales / inventory: 22.372, sales / receivables: 8.2412, (short-term liabilities *365) / sales: 57.388, sales / short-term liabilities: 6.3602, sales / fixed assets: 2.1278."
+  },
+  "files": {
+    "README.md": {
+      "repo_path": "README.md",
+      "sha256": "46782775e5dfea340ead19d5ffa931173604562a1089fc6d2ea388fb0bedd791",
+      "size_bytes": 12397
+    },
+    "test-00000-of-00001.parquet": {
+      "repo_path": "CRA-Polish/test-00000-of-00001.parquet",
+      "sha256": "6ad38b4f4d84b5c8996386aaf74f0d5b6a0b877830a3b628f2ce18c930b309de",
+      "size_bytes": 2971097
+    }
+  }
+}

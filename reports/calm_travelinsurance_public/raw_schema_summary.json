@@ -1,0 +1,40 @@
+{
+  "dataset_id": "calm_travelinsurance_public_v0",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_subset": "CRA-TravelInsurance",
+  "available_splits": {
+    "test": 2534
+  },
+  "fields": [
+    "id",
+    "query",
+    "answer",
+    "choices",
+    "gold",
+    "text"
+  ],
+  "sample_row": {
+    "id": 0,
+    "query": "Identify the claim status of insurance companies using the following table attributes for travel insurance status. Respond with only 'yes' or 'no', and do not provide any additional information. And the table attributes including 5 categorical attributes and 4 numerical attributes are as follows: \nAgency: Name of agency (categorical). \nAgency Type: Type of travel insurance agencies (categorical). \nDistribution Channel: Distribution channel of travel insurance agencies (categorical). \nProduct Name: Name of the travel insurance products (categorical). \nDuration: Duration of travel (categorical). \nDestination: Destination of travel (numerical). \nNet Sales: Amount of sales of travel insurance policies (categorical). \nCommission: Commission received for travel insurance agency (numerical). \nAge: Age of insured (numerical). \nFor instance: 'The insurance company has attributes: Agency: CBH, Agency Type: Travel Agency, Distribution Chanel: Offline, Product Name: Comprehensive Plan, Duration: 186, Destination: MALAYSIA, Net Sales: -29, Commision: 9.57, Age: 81.', should be classified as 'no'. \nText: 'The insurance company has attributes: Agency: EPX, Agency Type: Travel Agency, Distribution Channel: Online, Product Name: Cancellation Plan, Duration: 32, Destination: CHINA, Net Sales: 28.0, Commission: 0.0, Age: 35.' \nAnswer:",
+    "answer": "no",
+    "choices": [
+      "yes",
+      "no"
+    ],
+    "gold": 1,
+    "text": "The insurance company has attributes: Agency: EPX, Agency Type: Travel Agency, Distribution Channel: Online, Product Name: Cancellation Plan, Duration: 32, Destination: CHINA, Net Sales: 28.0, Commission: 0.0, Age: 35."
+  },
+  "files": {
+    "README.md": {
+      "repo_path": "README.md",
+      "sha256": "46782775e5dfea340ead19d5ffa931173604562a1089fc6d2ea388fb0bedd791",
+      "size_bytes": 12397
+    },
+    "test-00000-of-00001.parquet": {
+      "repo_path": "CRA-TravelInsurance/test-00000-of-00001.parquet",
+      "sha256": "c632884b5b1f6a6afc94b4e10e4c3b4713e2dbd880e366ff8ed8b26032595c93",
+      "size_bytes": 382191
+    }
+  }
+}

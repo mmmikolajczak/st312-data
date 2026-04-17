@@ -1,0 +1,40 @@
+{
+  "dataset_id": "calm_lendingclub_public_v0",
+  "canonical_benchmark_release_repo": "Salesforce/FinEval",
+  "canonical_benchmark_release_revision": "a911ec4dbd635228f216349c2f4eda8354ed15cc",
+  "canonical_benchmark_subset": "CRA-LendingClub",
+  "available_splits": {
+    "test": 2691
+  },
+  "fields": [
+    "id",
+    "query",
+    "answer",
+    "choices",
+    "gold",
+    "text"
+  ],
+  "sample_row": {
+    "id": 0,
+    "query": "Assess the client's loan status based on the following loan records from Lending Club. Respond with only 'good' or 'bad', and do not provide any additional information. For instance, 'The client has a stable income, no previous debts, and owns a property.' should be classified as 'good'. \nText: 'The client has attributes as follows: The state of Installment is 267.07. The state of Loan Purpose is other. The state of Loan Application Type is Individual. The state of Interest Rate is 24.08%. The state of Last Payment Amount is 267.02. The state of Loan Amount is 6800.0. The state of Revolving Balance is 17607.0. The state of Delinquency In 2 years is 2.0. The state of Inquiries In 6 Months is 1.0. The state of Mortgage Accounts is 4.0. The state of Grade is F. The state of Open Accounts is 14.0. The state of Revolving Utilization Rate is 91.7%. The state of Total Accounts is 22.0. The state of Fico Range Low is 665.0. The state of Fico Range High is 669.0. The state of Address State is GA. The state of Employment Length is 10+ years. The state of Home Ownership is MORTGAGE. The state of Verification Status is Not Verified. The state of Annual Income is 66400.0.' \nAnswer:",
+    "answer": "good",
+    "choices": [
+      "good",
+      "bad"
+    ],
+    "gold": 0,
+    "text": "The client has attributes as follows: The state of Installment is 267.07. The state of Loan Purpose is other. The state of Loan Application Type is Individual. The state of Interest Rate is 24.08%. The state of Last Payment Amount is 267.02. The state of Loan Amount is 6800.0. The state of Revolving Balance is 17607.0. The state of Delinquency In 2 years is 2.0. The state of Inquiries In 6 Months is 1.0. The state of Mortgage Accounts is 4.0. The state of Grade is F. The state of Open Accounts is 14.0. The state of Revolving Utilization Rate is 91.7%. The state of Total Accounts is 22.0. The state of Fico Range Low is 665.0. The state of Fico Range High is 669.0. The state of Address State is GA. The state of Employment Length is 10+ years. The state of Home Ownership is MORTGAGE. The state of Verification Status is Not Verified. The state of Annual Income is 66400.0."
+  },
+  "files": {
+    "README.md": {
+      "repo_path": "README.md",
+      "sha256": "46782775e5dfea340ead19d5ffa931173604562a1089fc6d2ea388fb0bedd791",
+      "size_bytes": 12397
+    },
+    "test-00000-of-00001.parquet": {
+      "repo_path": "CRA-LendingClub/test-00000-of-00001.parquet",
+      "sha256": "de3f6eaa6f6fd7b22439f145b7cf7d33324d33d4f42209bdaf9e955a8d2e7c14",
+      "size_bytes": 786942
+    }
+  }
+}
