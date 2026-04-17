@@ -9,6 +9,12 @@
     "output_type": "binary_risk_classification",
     "scoring_type": "shared_closed_label_default"
   },
+  "calm_family_metadata": {
+    "calm_family": true,
+    "calm_instruction_style": "description_based",
+    "calm_role": "eval_only",
+    "calm_training_recipe_minority_resampled": false
+  },
   "dataset": {
     "dataset_id": "calm_polish_public_v0",
     "config": "fineval_public_test_calm_wrapper_v0",

@@ -10,7 +10,9 @@
     "calm_family_artifact_payload": "8069990316d8ee63e02f2490edf2b0326b9baafa",
     "calm_family_hf_readme_update": "8485357d5ba4e1a80fca52007f1d90c082f7ca82",
     "calm_family_metadata_sync": "5392d991eaee0d280e1b744d248843344972f4ba",
-    "calm_family_publish_record_refresh": "9baad1c41c8b087c48d3d15617a790866bf4f362"
+    "calm_family_publish_record_refresh": "9baad1c41c8b087c48d3d15617a790866bf4f362",
+    "calm_family_task_audit_sync": "6256b6836a2f9b15d00fd595b944b2c66d135f51",
+    "calm_family_audit_publish_record_refresh": "e3db3e02754d4dcf75138b8324c5a99eb3014476"
   },
   "artifacts_published": [
     "datasets/calm/ccfraud/public/v0/test.jsonl",
