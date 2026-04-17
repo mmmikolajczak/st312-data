@@ -1,0 +1,34 @@
+{
+  "dataset_id": "statlog_german_credit_uci_v0",
+  "task_id": "RM_CREDIT_GERMAN_UCI_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "github_source_commit": "24776e611c18ed991c2e3b2a76b88c84881b669f",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "german_credit_artifact_payload": "8305385a201857f8928cdfd50a6f3c57b4bc73a6",
+    "german_credit_hf_readme_update": "f4e2732408d4ee2b886ee268b6389ed1306f2739",
+    "german_credit_metadata_sync": "60845329437f67976da749f4a1fe3325367e1e2f",
+    "german_credit_publish_record_refresh": "d57ed566af18882c156d7715c2e0531f0fcb0a54"
+  },
+  "artifacts_published": [
+    "datasets/german_credit/uci_statlog/v0/train.jsonl",
+    "datasets/german_credit/uci_statlog/v0/valid.jsonl",
+    "datasets/german_credit/uci_statlog/v0/test.jsonl",
+    "datasets/german_credit/uci_statlog/v0/ingest_summary.json",
+    "datasets/german_credit/uci_statlog/v0/download_meta.json",
+    "reports/statlog_german_credit_uci/raw_schema_summary.json",
+    "reports/statlog_german_credit_uci/split_replication_audit.json",
+    "reports/statlog_german_credit_uci/wrapper_alignment_audit.json",
+    "tasks/german_credit_risk_v0/requests/train_requests.jsonl",
+    "tasks/german_credit_risk_v0/requests/valid_requests.jsonl",
+    "tasks/german_credit_risk_v0/requests/test_requests.jsonl",
+    "tasks/german_credit_risk_v0/README.md",
+    "manifests/datasets/statlog_german_credit_uci_v0/dataset_spec.json",
+    "manifests/datasets/statlog_german_credit_uci_v0/checksums.sha256",
+    "manifests/tasks/german_credit_risk_v0/task_spec.json",
+    "manifests/publish/statlog_german_credit_uci_v0_publish_record.json"
+  ],
+  "notes": "Published to the HF dataset repo under the standard ST312 artifact layout with attribution to the canonical UCI Statlog (German Credit Data) archive and DOI 10.24432/C5NC77. The canonical preserved source surface is the original symbolic german.data file; german.data-numeric is auxiliary only. ST312 reuses the public TheFinAI/german-credit-benchmark split only after exact 1,000/1,000 row-level replication at 700 train / 100 valid / 200 test. The default evaluator is cost-sensitive because UCI explicitly specifies the asymmetric cost matrix [[0,1],[5,0]] over source labels 1 = Good and 2 = Bad. This historical credit-scoring benchmark contains sensitive demographic-style variables and should not be interpreted as a deployment recommendation."
+}

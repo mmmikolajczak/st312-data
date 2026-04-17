@@ -10,7 +10,7 @@ Canonical dataset module for the UCI Statlog (German Credit Data) archive.
 - the public wrapper `TheFinAI/german-credit-benchmark` is used only to replicate a `700 / 100 / 200` split after exact row-level matching; it is not the provenance source of truth
 - default evaluation is cost-sensitive because UCI explicitly states the task requires the cost matrix `[[0,1],[5,0]]` over classes `1 = Good`, `2 = Bad`
 - the dataset contains sensitive demographic-style variables including personal status and sex, age in years, and foreign-worker status; ST312 treats it as a historical benchmark, not a deployment template
-- canonical source license is CC BY 4.0, so this module is intended for normal public artifact publication with attribution
+- canonical source license is CC BY 4.0, and this module is published in the standard ST312 artifact layout with attribution
 
 ## Canonical processed mapping
 - one processed row preserves `uci_row_index`, `Attribute1..Attribute20`, and `Class`
@@ -23,4 +23,3 @@ Canonical dataset module for the UCI Statlog (German Credit Data) archive.
 - UCI does not publish an official supervised split on the archive page
 - ST312 therefore reuses the public wrapper split only if exact row-level replication succeeds against all 1,000 UCI rows
 - no fallback split is invented in this implementation pass; failure to replicate exactly is a publication blocker
-
