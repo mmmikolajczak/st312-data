@@ -341,6 +341,25 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/stocknet_acl18_paper_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `yumoxu/stocknet-dataset` GitHub repo pinned to commit `330708b5ddc359961078bef469f43f48992fd6e4`; ST312 preserves the ACL18 paper's exact `20,339 / 2,555 / 3,720` temporal split counts, 5-day trading-day alignment semantics, and asymmetric threshold rule `<= -0.5% -> Fall`, `> 0.55% -> Rise`; the later `TheFinAI/flare-sm-acl` wrapper is audited only as a compatibility surface because its observed counts differ from the paper-canonical reconstruction; the official release does not reproduce the paper counts under an additional hard tweet-presence filter, so ST312 treats that line as a documented source inconsistency rather than silently changing the benchmark; original source repository is MIT-licensed, but the released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance, so downstream users should review applicable platform/source terms before reuse.
 
+
+### 25) FinArg ECC AUC v0
+- **Dataset ID:** `finarg_auc_ecc_official_v0`
+- **Task ID:** `TA_AUC_FINARG_ECC_v0`
+- **Task type:** argument unit classification (`premise` vs `claim`)
+- **HF dataset path:** `datasets/finarg_auc/ecc/official/v0/`
+- **HF task path:** `tasks/finarg_auc_ecc_v0/`
+- **Publish record:** `manifests/publish/finarg_auc_ecc_official_v0_publish_record.json`
+- **Labeling note:** official ECC `train/dev/test` split preserved; label mapping inferred from official totals as `0 -> premise`, `1 -> claim`; one exact sentence overlap across `train/dev` is preserved and documented as a release issue.
+
+### 26) FinArg ECC ARC v0
+- **Dataset ID:** `finarg_arc_ecc_official_v0`
+- **Task ID:** `TA_ARC_FINARG_ECC_v0`
+- **Task type:** argument relation classification (`other` / `support` / `attack`)
+- **HF dataset path:** `datasets/finarg_arc/ecc/official/v0/`
+- **HF task path:** `tasks/finarg_arc_ecc_v0/`
+- **Publish record:** `manifests/publish/finarg_arc_ecc_official_v0_publish_record.json`
+- **Labeling note:** official ECC `train/dev/test` split preserved; label mapping inferred from official totals as `0 -> other`, `1 -> support`, `2 -> attack`; ARC is heavily imbalanced, especially for `attack`.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
