@@ -774,6 +774,31 @@ Publish bookkeeping:
 Rights note:
 - UCI publishes this historical benchmark under CC BY 4.0. The dataset includes sensitive demographic-style variables and should not be interpreted as a deployment recommendation.
 
+### UCI Statlog (Australian Credit Approval)
+
+Dataset artifacts:
+- `datasets/australian_credit/uci_statlog/v0/australian_credit_all_clean.jsonl`
+- `datasets/australian_credit/uci_statlog/v0/australian_credit_clean_meta.json`
+- `datasets/australian_credit/uci_statlog/v0/australian_credit_train.jsonl`
+- `datasets/australian_credit/uci_statlog/v0/australian_credit_valid.jsonl`
+- `datasets/australian_credit/uci_statlog/v0/australian_credit_test.jsonl`
+- `datasets/australian_credit/uci_statlog/v0/australian_credit_split_manifest.json`
+
+Task artifacts:
+- `tasks/australian_credit_mc_v0/README.md`
+- `tasks/australian_credit_mc_v0/australian_credit_train_requests.jsonl`
+- `tasks/australian_credit_mc_v0/australian_credit_valid_requests.jsonl`
+- `tasks/australian_credit_mc_v0/australian_credit_test_requests.jsonl`
+
+Reports:
+- `reports/australian_credit_uci_statlog/raw_audit_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/australian_credit_uci_statlog_v0/checksums.sha256`
+- `manifests/datasets/australian_credit_uci_statlog_v0/dataset_spec.json`
+- `manifests/tasks/australian_credit_mc_v0/task_spec.json`
+- `manifests/publish/australian_credit_uci_statlog_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FinArg ECC
@@ -793,6 +818,15 @@ Rights note:
 - Canonical default evaluation is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]` for `1 = Good` and `2 = Bad`
 - The optional compatibility view reports macro F1 and MCC, but it is not the canonical source-task scorer
 - This historical benchmark includes sensitive demographic-style variables such as personal status and sex, age, and foreign-worker status, and should not be interpreted as a deployment template
+
+### Australian Credit UCI Statlog
+
+- Canonical source is the UCI Statlog (Australian Credit Approval) dataset, not the FLARE wrapper
+- Raw UCI files `australian.dat` and `australian.doc` are preserved unchanged
+- Raw downloaded file uses binary labels `0/1`, normalized canonically as `Reject=0`, `Approve=1`
+- Exact FLARE row alignment was attempted but not verified
+- Canonical split is therefore a fixed-seed count-matched reconstruction with counts `482 / 69 / 139`
+- UCI documentation around missing values is ambiguous; that ambiguity is preserved in metadata
 
 ## Licensing
 

@@ -368,6 +368,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/statlog_german_credit_uci_v0_publish_record.json`
 - **Labeling note:** canonical source is the UCI Statlog (German Credit Data) archive, DOI `10.24432/C5NC77`, with `german.data` preserved as the canonical symbolic source surface and `german.data-numeric` retained as an auxiliary raw artifact only; ST312 reuses the public `TheFinAI/german-credit-benchmark` split only after exact row-level replication against all 1,000 UCI rows, which succeeds at `700 / 100 / 200`; canonical processed rows preserve original `Attribute1..Attribute20` plus `Class` while adding decoded feature renderings for prompting; the default evaluator is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]`; the source is CC BY 4.0, but the benchmark contains sensitive demographic-style variables and should be treated as a historical benchmark rather than a deployment template.
 
+### 28) UCI Statlog (Australian Credit Approval) v0
+- **Dataset ID:** `australian_credit_uci_statlog_v0`
+- **Task ID:** `TA_MC_AUSTRALIAN_CREDIT_UCI_v0`
+- **Task type:** binary credit approval classification (derived FLARE-style promptified benchmark)
+- **HF dataset path:** `datasets/australian_credit/uci_statlog/v0/`
+- **HF task path:** `tasks/australian_credit_mc_v0/`
+- **Publish record:** `manifests/publish/australian_credit_uci_statlog_v0_publish_record.json`
+- **Labeling note:** canonical source is UCI Statlog (Australian Credit Approval), DOI `10.24432/C59012`, with raw UCI files preserved; exact FLARE row alignment was attempted but not verified, so the canonical split is a fixed-seed count-matched reconstruction with counts `482 / 69 / 139`.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
