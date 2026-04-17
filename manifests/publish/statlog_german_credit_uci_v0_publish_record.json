@@ -2,7 +2,7 @@
   "dataset_id": "statlog_german_credit_uci_v0",
   "task_id": "RM_CREDIT_GERMAN_UCI_v0",
   "github_repo": "mmmikolajczak/st312-data",
-  "github_source_commit": "24776e611c18ed991c2e3b2a76b88c84881b669f",
+  "github_source_commit": "00a08c54574da307479fd133f609390a7a289aa7",
   "hf_repo": "mmmikolajczak/st312-data",
   "hf_private_repo": false,
   "public_release_cleared": true,
