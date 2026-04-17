@@ -454,23 +454,14 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - The official release reproduces the exact paper counts only when preserving split boundaries, trading-day alignment, and thresholding without an extra hard tweet-presence filter; ST312 documents that source inconsistency explicitly in the reconstruction audit
 - Original source repository is MIT-licensed. The released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance; downstream users should review applicable platform/source terms before reuse.
 
-### 10) FinArg ECC AUC v0
-- **Dataset ID:** `finarg_auc_ecc_official_v0`
-- **Task ID:** `TA_AUC_FINARG_ECC_v0`
-- **Task type:** argument unit classification (`premise` vs `claim`)
-- **HF dataset path:** `datasets/finarg_auc/ecc/official/v0/`
-- **HF task path:** `tasks/finarg_auc_ecc_v0/`
-- **Publish record:** `manifests/publish/finarg_auc_ecc_official_v0_publish_record.json`
-- **Labeling note:** official ECC train/dev/test split preserved; label mapping inferred from official totals as `0 -> premise`, `1 -> claim`; one exact sentence overlap across train/dev is preserved and documented as a release issue.
+### FinArg ECC
 
-### 11) FinArg ECC ARC v0
-- **Dataset ID:** `finarg_arc_ecc_official_v0`
-- **Task ID:** `TA_ARC_FINARG_ECC_v0`
-- **Task type:** argument relation classification (`other` / `support` / `attack`)
-- **HF dataset path:** `datasets/finarg_arc/ecc/official/v0/`
-- **HF task path:** `tasks/finarg_arc_ecc_v0/`
-- **Publish record:** `manifests/publish/finarg_arc_ecc_official_v0_publish_record.json`
-- **Labeling note:** official ECC train/dev/test split preserved; label mapping inferred from official totals as `0 -> other`, `1 -> support`, `2 -> attack`; ARC is heavily imbalanced, especially for `attack`.
+- Official ECC `train / dev / test` splits are preserved exactly as released for both AUC and ARC
+- AUC label mapping is inferred from official totals as `0 -> premise`, `1 -> claim`
+- ARC label mapping is inferred from official totals as `0 -> other`, `1 -> support`, `2 -> attack`
+- AUC contains one exact sentence overlap across `train` and `dev`; this is preserved and documented as a release issue
+- ARC shows no cross-split exact pair overlap in the local ECC release
+- ARC is strongly class-imbalanced, especially for the `attack` class, so macro-aware evaluation is emphasized
 
 ## Validation
 
