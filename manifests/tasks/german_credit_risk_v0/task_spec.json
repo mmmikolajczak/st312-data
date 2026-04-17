@@ -97,6 +97,25 @@
   "optional_eval_variants": [
     "finben_optional_f1_mcc"
   ],
+  "evaluation_metrics": {
+    "uci_cost_sensitive_default": [
+      "mean_cost",
+      "total_cost",
+      "normalized_cost_score",
+      "accuracy",
+      "format_valid_rate",
+      "completion_coverage",
+      "nonempty_label_rate"
+    ],
+    "finben_optional_f1_mcc": [
+      "macro_f1",
+      "mcc",
+      "accuracy",
+      "format_valid_rate",
+      "completion_coverage",
+      "nonempty_label_rate"
+    ]
+  },
   "evaluation_config": {
     "label_mapping": {
       "good": 1,
