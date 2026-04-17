@@ -743,6 +743,37 @@ Manifest / bookkeeping artifacts:
 - `manifests/datasets/finarg_arc_ecc_official_v0/dataset_spec.json`
 - `manifests/tasks/finarg_arc_ecc_v0/task_spec.json`
 
+### 27) UCI Statlog German Credit v0
+
+Dataset artifacts:
+- `datasets/german_credit/uci_statlog/v0/train.jsonl`
+- `datasets/german_credit/uci_statlog/v0/valid.jsonl`
+- `datasets/german_credit/uci_statlog/v0/test.jsonl`
+- `datasets/german_credit/uci_statlog/v0/ingest_summary.json`
+- `datasets/german_credit/uci_statlog/v0/download_meta.json`
+
+Task requests:
+- `tasks/german_credit_risk_v0/requests/train_requests.jsonl`
+- `tasks/german_credit_risk_v0/requests/valid_requests.jsonl`
+- `tasks/german_credit_risk_v0/requests/test_requests.jsonl`
+
+Task README snapshot:
+- `tasks/german_credit_risk_v0/README.md`
+
+Auxiliary provenance reports:
+- `reports/statlog_german_credit_uci/raw_schema_summary.json`
+- `reports/statlog_german_credit_uci/split_replication_audit.json`
+- `reports/statlog_german_credit_uci/wrapper_alignment_audit.json`
+
+Publish bookkeeping:
+- `manifests/datasets/statlog_german_credit_uci_v0/dataset_spec.json`
+- `manifests/datasets/statlog_german_credit_uci_v0/checksums.sha256`
+- `manifests/tasks/german_credit_risk_v0/task_spec.json`
+- `manifests/publish/statlog_german_credit_uci_v0_publish_record.json`
+
+Rights note:
+- UCI publishes this historical benchmark under CC BY 4.0. The dataset includes sensitive demographic-style variables and should not be interpreted as a deployment recommendation.
+
 ## Labeling / split notes
 
 ### FinArg ECC
@@ -752,6 +783,16 @@ Manifest / bookkeeping artifacts:
 - One exact AUC sentence overlap exists across train/dev and is preserved as a documented release issue
 - ARC shows no cross-split exact-pair overlap in the local ECC release
 - ARC is strongly class-imbalanced, especially for the `attack` class, so macro-aware evaluation is emphasized
+
+### UCI Statlog German Credit
+
+- Canonical source is the UCI Statlog (German Credit Data) archive, DOI `10.24432/C5NC77`
+- Canonical preserved source surface is the original symbolic `german.data` file; `german.data-numeric` is retained raw-only as an auxiliary artifact
+- ST312 preserves original `Attribute1..Attribute20` and `Class`, plus original row order via `uci_row_index`
+- The public `TheFinAI/german-credit-benchmark` wrapper is used only to replicate the `700 / 100 / 200` split after exact row-level matching against all 1,000 UCI rows
+- Canonical default evaluation is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]` for `1 = Good` and `2 = Bad`
+- The optional compatibility view reports macro F1 and MCC, but it is not the canonical source-task scorer
+- This historical benchmark includes sensitive demographic-style variables such as personal status and sex, age, and foreign-worker status, and should not be interpreted as a deployment template
 
 ## Licensing
 

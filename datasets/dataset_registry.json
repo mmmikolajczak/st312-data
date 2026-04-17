@@ -303,6 +303,17 @@
       "upstream_license": "GPL-3.0_inferred_from_public_finarg_repo",
       "task_family": "argument_relation_classification",
       "status": "published"
+    },
+    {
+      "dataset_id": "statlog_german_credit_uci_v0",
+      "dataset_name": "UCI Statlog German Credit Data",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/statlog_german_credit_uci_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "UCI Statlog (German Credit Data) archive",
+      "upstream_license": "cc-by-4.0",
+      "task_family": "credit_scoring_risk_management_binary_cost_sensitive",
+      "status": "published"
     }
   ]
 }

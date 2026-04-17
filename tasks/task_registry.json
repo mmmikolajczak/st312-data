@@ -259,6 +259,15 @@
       "task_readme_path": "tasks/finarg_arc_ecc_v0/README.md",
       "dataset_id": "finarg_arc_ecc_official_v0",
       "status": "published"
+    },
+    {
+      "task_id": "RM_CREDIT_GERMAN_UCI_v0",
+      "task_name": "UCI Statlog German Credit risk classification",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/german_credit_risk_v0/task_spec.json",
+      "task_readme_path": "tasks/german_credit_risk_v0/README.md",
+      "dataset_id": "statlog_german_credit_uci_v0",
+      "status": "published"
     }
   ]
 }

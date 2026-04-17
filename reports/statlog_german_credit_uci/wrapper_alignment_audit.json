@@ -1,0 +1,76 @@
+{
+  "wrapper_dataset": "TheFinAI/german-credit-benchmark",
+  "wrapper_split_counts_observed": {
+    "train": 700,
+    "valid": 100,
+    "test": 200
+  },
+  "wrapper_feature_alias_order": [
+    "statusOfExistingCheckingAccount",
+    "durationInMonth",
+    "creditHistory",
+    "purpose",
+    "creditAmount",
+    "savingsAccountOrBonds",
+    "presentEmploymentSince",
+    "installmentRateInPercentageOfDisposableIncome",
+    "personalStatusAndSex",
+    "otherDebtorsOrGuarantors",
+    "presentResidenceSince",
+    "property",
+    "ageInYears",
+    "otherInstallmentPlans",
+    "housing",
+    "numberOfExistingCreditsAtThisBank",
+    "job",
+    "numberOfPeopleBeingLiableToProvideMaintenanceFor",
+    "telephone",
+    "foreignWorker"
+  ],
+  "wrapper_example_samples": {
+    "train": {
+      "id": "ex_000001",
+      "query": "Predict whether the loan applicant is a credit risk using the features below. Directly respond with 'bad' if the applicant is a bad credit risk or 'good' if they are a good credit risk.\nText: ' ageInYears: 58.00, creditAmount: 6143.00, creditHistory: criticalAccountOrOtherCreditsExisting, durationInMonth: 48.00, foreignWorker: yes, housing: forFree, installmentRateInPercentageOfDisposableIncome: 4.00, job: unskilledOrResident, numberOfExistingCreditsAtThisBank: 2.00, numberOfPeopleBeingLiableToProvideMaintenanceFor: 1.00, otherDebtorsOrGuarantors: none, otherInstallmentPlans: stores, personalStatusAndSex: femaleDivorcedOrSeparatedOrMarried, presentEmploymentSince: biggerThan7Years, presentResidenceSince: 4.00, property: unknownOrNoProperty, purpose: usedCar, savingsAccountOrBonds: smallerThan100DM, statusOfExistingCheckingAccount: smallerThan0DM, telephone: none '.\nAnswer:",
+      "answer": "bad",
+      "choices": [
+        "good",
+        "bad"
+      ],
+      "gold": 1
+    },
+    "valid": {
+      "id": "ex_000001",
+      "query": "Predict whether the loan applicant is a credit risk using the features below. Directly respond with 'bad' if the applicant is a bad credit risk or 'good' if they are a good credit risk.\nText: ' ageInYears: 36.00, creditAmount: 2366.00, creditHistory: criticalAccountOrOtherCreditsExisting, durationInMonth: 12.00, foreignWorker: yes, housing: own, installmentRateInPercentageOfDisposableIncome: 3.00, job: managementOrSelf-employedOrHighlyQualifiedEmployeeOrOfficer, numberOfExistingCreditsAtThisBank: 1.00, numberOfPeopleBeingLiableToProvideMaintenanceFor: 1.00, otherDebtorsOrGuarantors: none, otherInstallmentPlans: none, personalStatusAndSex: maleDivorcedOrSeparated, presentEmploymentSince: biggerThan4SmallerThan7Years, presentResidenceSince: 3.00, property: carOrOther, purpose: newCar, savingsAccountOrBonds: biggerThan500SmallerThan1000DM, statusOfExistingCheckingAccount: biggerThan0DMButSmallerThan200DM, telephone: \"yes '.\nAnswer:",
+      "answer": "good",
+      "choices": [
+        "good",
+        "bad"
+      ],
+      "gold": 0
+    },
+    "test": {
+      "id": "ex_000001",
+      "query": "Predict whether the loan applicant is a credit risk using the features below. Directly respond with 'bad' if the applicant is a bad credit risk or 'good' if they are a good credit risk.\nText: ' ageInYears: 67.00, creditAmount: 1169.00, creditHistory: criticalAccountOrOtherCreditsExisting, durationInMonth: 6.00, foreignWorker: yes, housing: own, installmentRateInPercentageOfDisposableIncome: 4.00, job: skilledEmployeeOrOfficial, numberOfExistingCreditsAtThisBank: 2.00, numberOfPeopleBeingLiableToProvideMaintenanceFor: 1.00, otherDebtorsOrGuarantors: none, otherInstallmentPlans: none, personalStatusAndSex: maleAndSingle, presentEmploymentSince: biggerThan7Years, presentResidenceSince: 4.00, property: realEstate, purpose: radioOrTelevision, savingsAccountOrBonds: unknownOrNoSavingsAccount, statusOfExistingCheckingAccount: smallerThan0DM, telephone: \"yes '.\nAnswer:",
+      "answer": "good",
+      "choices": [
+        "good",
+        "bad"
+      ],
+      "gold": 0
+    }
+  },
+  "wrapper_answer_space": [
+    "good",
+    "bad"
+  ],
+  "wrapper_choices_example": [
+    "good",
+    "bad"
+  ],
+  "wrapper_gold_semantics_note": "Wrapper gold behaves as the index into choices=['good','bad'], while answer is the lower-case label string.",
+  "uci_match_coverage": 1000,
+  "notes": [
+    "Wrapper query text uses decoded alias features such as ageInYears and statusOfExistingCheckingAccount.",
+    "Telephone values in the wrapper occasionally include a leading quote; ST312 normalizes that before matching."
+  ]
+}

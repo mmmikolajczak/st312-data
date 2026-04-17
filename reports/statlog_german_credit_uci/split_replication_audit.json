@@ -1,0 +1,35 @@
+{
+  "status": "success",
+  "canonical_dataset_id": "statlog_german_credit_uci_v0",
+  "wrapper_dataset": "TheFinAI/german-credit-benchmark",
+  "wrapper_split_counts_observed": {
+    "train": 700,
+    "valid": 100,
+    "test": 200
+  },
+  "target_split_counts": {
+    "train": 700,
+    "valid": 100,
+    "test": 200
+  },
+  "matched_rows_total": 1000,
+  "unassigned_uci_rows": 0,
+  "unassigned_uci_row_indices_sample": [],
+  "missing_wrapper_rows": 0,
+  "missing_wrapper_rows_sample": [],
+  "overrun_wrapper_rows": 0,
+  "overrun_wrapper_rows_sample": [],
+  "duplicate_signature_count": 0,
+  "duplicate_signature_sizes": {},
+  "ambiguous_duplicate_matches": 0,
+  "assigned_split_counts": {
+    "train": 700,
+    "valid": 100,
+    "test": 200
+  },
+  "replication_passed": true,
+  "notes": [
+    "The FinBen-style wrapper is used only as a split replication surface, not as the canonical source dataset.",
+    "Split replication is exact only if all 1,000 UCI rows are matched and assigned to train/valid/test at 700/100/200."
+  ]
+}

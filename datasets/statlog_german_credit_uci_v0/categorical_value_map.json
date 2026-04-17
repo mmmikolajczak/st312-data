@@ -1,0 +1,252 @@
+{
+  "Attribute1": {
+    "A11": {
+      "decoded_value": "... < 0 DM",
+      "wrapper_alias_value": "smallerThan0DM"
+    },
+    "A12": {
+      "decoded_value": "0 <= ... < 200 DM",
+      "wrapper_alias_value": "biggerThan0DMButSmallerThan200DM"
+    },
+    "A13": {
+      "decoded_value": ">= 200 DM / salary assignments for at least 1 year",
+      "wrapper_alias_value": "biggerThan200DMORSalaryAssignmentsForAtLeast1Year"
+    },
+    "A14": {
+      "decoded_value": "no checking account",
+      "wrapper_alias_value": "noCheckingAccount"
+    }
+  },
+  "Attribute3": {
+    "A30": {
+      "decoded_value": "no credits taken / all credits paid back duly",
+      "wrapper_alias_value": "noCreditsTakenOrAllCreditsPaidBackDuly"
+    },
+    "A31": {
+      "decoded_value": "all credits at this bank paid back duly",
+      "wrapper_alias_value": "allCreditsAtThisBankPaidBackDuly"
+    },
+    "A32": {
+      "decoded_value": "existing credits paid back duly till now",
+      "wrapper_alias_value": "existingCreditsPaidBackDulyTillNow"
+    },
+    "A33": {
+      "decoded_value": "delay in paying off in the past",
+      "wrapper_alias_value": "delayInPayingOffInThePast"
+    },
+    "A34": {
+      "decoded_value": "critical account / other credits existing (not at this bank)",
+      "wrapper_alias_value": "criticalAccountOrOtherCreditsExisting"
+    }
+  },
+  "Attribute4": {
+    "A40": {
+      "decoded_value": "car (new)",
+      "wrapper_alias_value": "newCar"
+    },
+    "A41": {
+      "decoded_value": "car (used)",
+      "wrapper_alias_value": "usedCar"
+    },
+    "A42": {
+      "decoded_value": "furniture / equipment",
+      "wrapper_alias_value": "furnitureOrEquipment"
+    },
+    "A43": {
+      "decoded_value": "radio / television",
+      "wrapper_alias_value": "radioOrTelevision"
+    },
+    "A44": {
+      "decoded_value": "domestic appliances",
+      "wrapper_alias_value": "domesticAppliances"
+    },
+    "A45": {
+      "decoded_value": "repairs",
+      "wrapper_alias_value": "repairs"
+    },
+    "A46": {
+      "decoded_value": "education",
+      "wrapper_alias_value": "education"
+    },
+    "A47": {
+      "decoded_value": "vacation (does not exist?)",
+      "wrapper_alias_value": "vacation"
+    },
+    "A48": {
+      "decoded_value": "retraining",
+      "wrapper_alias_value": "retraining"
+    },
+    "A49": {
+      "decoded_value": "business",
+      "wrapper_alias_value": "business"
+    },
+    "A410": {
+      "decoded_value": "others",
+      "wrapper_alias_value": "others"
+    }
+  },
+  "Attribute6": {
+    "A61": {
+      "decoded_value": "... < 100 DM",
+      "wrapper_alias_value": "smallerThan100DM"
+    },
+    "A62": {
+      "decoded_value": "100 <= ... < 500 DM",
+      "wrapper_alias_value": "biggerThan100SmallerThan500DM"
+    },
+    "A63": {
+      "decoded_value": "500 <= ... < 1000 DM",
+      "wrapper_alias_value": "biggerThan500SmallerThan1000DM"
+    },
+    "A64": {
+      "decoded_value": "... >= 1000 DM",
+      "wrapper_alias_value": "biggerThan1000DM"
+    },
+    "A65": {
+      "decoded_value": "unknown / no savings account",
+      "wrapper_alias_value": "unknownOrNoSavingsAccount"
+    }
+  },
+  "Attribute7": {
+    "A71": {
+      "decoded_value": "unemployed",
+      "wrapper_alias_value": "unemployed"
+    },
+    "A72": {
+      "decoded_value": "... < 1 year",
+      "wrapper_alias_value": "smallerThan1Year"
+    },
+    "A73": {
+      "decoded_value": "1 <= ... < 4 years",
+      "wrapper_alias_value": "biggerThan1SmallerThan4Years"
+    },
+    "A74": {
+      "decoded_value": "4 <= ... < 7 years",
+      "wrapper_alias_value": "biggerThan4SmallerThan7Years"
+    },
+    "A75": {
+      "decoded_value": "... >= 7 years",
+      "wrapper_alias_value": "biggerThan7Years"
+    }
+  },
+  "Attribute9": {
+    "A91": {
+      "decoded_value": "male : divorced / separated",
+      "wrapper_alias_value": "maleDivorcedOrSeparated"
+    },
+    "A92": {
+      "decoded_value": "female : divorced / separated / married",
+      "wrapper_alias_value": "femaleDivorcedOrSeparatedOrMarried"
+    },
+    "A93": {
+      "decoded_value": "male : single",
+      "wrapper_alias_value": "maleAndSingle"
+    },
+    "A94": {
+      "decoded_value": "male : married / widowed",
+      "wrapper_alias_value": "maleAndMarriedOrWidowed"
+    },
+    "A95": {
+      "decoded_value": "female : single",
+      "wrapper_alias_value": "femaleSingle"
+    }
+  },
+  "Attribute10": {
+    "A101": {
+      "decoded_value": "none",
+      "wrapper_alias_value": "none"
+    },
+    "A102": {
+      "decoded_value": "co-applicant",
+      "wrapper_alias_value": "co-applicant"
+    },
+    "A103": {
+      "decoded_value": "guarantor",
+      "wrapper_alias_value": "guarantor"
+    }
+  },
+  "Attribute12": {
+    "A121": {
+      "decoded_value": "real estate",
+      "wrapper_alias_value": "realEstate"
+    },
+    "A122": {
+      "decoded_value": "building society savings agreement / life insurance",
+      "wrapper_alias_value": "buildingSocietySavingsAgreementOrLifeInsurance"
+    },
+    "A123": {
+      "decoded_value": "car or other, not in attribute 6",
+      "wrapper_alias_value": "carOrOther"
+    },
+    "A124": {
+      "decoded_value": "unknown / no property",
+      "wrapper_alias_value": "unknownOrNoProperty"
+    }
+  },
+  "Attribute14": {
+    "A141": {
+      "decoded_value": "bank",
+      "wrapper_alias_value": "bank"
+    },
+    "A142": {
+      "decoded_value": "stores",
+      "wrapper_alias_value": "stores"
+    },
+    "A143": {
+      "decoded_value": "none",
+      "wrapper_alias_value": "none"
+    }
+  },
+  "Attribute15": {
+    "A151": {
+      "decoded_value": "rent",
+      "wrapper_alias_value": "rent"
+    },
+    "A152": {
+      "decoded_value": "own",
+      "wrapper_alias_value": "own"
+    },
+    "A153": {
+      "decoded_value": "for free",
+      "wrapper_alias_value": "forFree"
+    }
+  },
+  "Attribute17": {
+    "A171": {
+      "decoded_value": "unemployed / unskilled - non-resident",
+      "wrapper_alias_value": "unemployedOrUnskilledOrNon-resident"
+    },
+    "A172": {
+      "decoded_value": "unskilled - resident",
+      "wrapper_alias_value": "unskilledOrResident"
+    },
+    "A173": {
+      "decoded_value": "skilled employee / official",
+      "wrapper_alias_value": "skilledEmployeeOrOfficial"
+    },
+    "A174": {
+      "decoded_value": "management / self-employed / highly qualified employee / officer",
+      "wrapper_alias_value": "managementOrSelf-employedOrHighlyQualifiedEmployeeOrOfficer"
+    }
+  },
+  "Attribute19": {
+    "A191": {
+      "decoded_value": "none",
+      "wrapper_alias_value": "none"
+    },
+    "A192": {
+      "decoded_value": "yes, registered under the customer's name",
+      "wrapper_alias_value": "yes"
+    }
+  },
+  "Attribute20": {
+    "A201": {
+      "decoded_value": "yes",
+      "wrapper_alias_value": "yes"
+    },
+    "A202": {
+      "decoded_value": "no",
+      "wrapper_alias_value": "no"
+    }
+  }
+}

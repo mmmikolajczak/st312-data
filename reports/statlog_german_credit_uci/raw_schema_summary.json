@@ -1,0 +1,32 @@
+{
+  "dataset_id": "statlog_german_credit_uci_v0",
+  "source_dataset_url": "https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data",
+  "doi": "10.24432/C5NC77",
+  "raw_files": {
+    "german.data": {
+      "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data",
+      "sha256": "b21f3d81db8071257d5ff1deaeba1fd4303b62712e6fcc9715c7a86202cb5871",
+      "size_bytes": 79793
+    },
+    "german.data-numeric": {
+      "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.data-numeric",
+      "sha256": "2752b044394958ab6dd193a0b56ca0f0b3a2d8bc7cb8c008e35a5e84bbec02f8",
+      "size_bytes": 102000
+    },
+    "german.doc": {
+      "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/german/german.doc",
+      "sha256": "69b92cb551111bc37098698288849c96f0fd87ce81a2e54451ff39aa1e53fe49",
+      "size_bytes": 4679
+    }
+  },
+  "symbolic_row_count": 1000,
+  "numeric_row_count": 1000,
+  "symbolic_columns_per_row": 21,
+  "numeric_columns_per_row": 25,
+  "doc_size_bytes": 4679,
+  "notes": [
+    "german.data is the canonical original symbolic dataset surface preserved by ST312.",
+    "german.data-numeric is auxiliary only and is not used as the canonical processed source.",
+    "UCI states the dataset has no missing values and requires use of a cost matrix."
+  ]
+}

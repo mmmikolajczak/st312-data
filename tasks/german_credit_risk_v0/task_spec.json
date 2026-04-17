@@ -1,0 +1,135 @@
+{
+  "task_id": "RM_CREDIT_GERMAN_UCI_v0",
+  "task_name": "UCI Statlog German Credit risk classification",
+  "version": "0.1.0",
+  "taxonomy": {
+    "finben_category": "Risk Management",
+    "finben_task": "Credit Scoring",
+    "output_type": "binary_risk_classification",
+    "scoring_type": "dual_variant_cost_sensitive_default_finben_optional"
+  },
+  "dataset": {
+    "dataset_id": "statlog_german_credit_uci_v0",
+    "config": "uci_symbolic_credit_risk_v0",
+    "train_file": "data/statlog_german_credit_uci/processed/train.jsonl",
+    "valid_file": "data/statlog_german_credit_uci/processed/valid.jsonl",
+    "test_file": "data/statlog_german_credit_uci/processed/test.jsonl",
+    "meta_files": {
+      "ingest_summary": "data/statlog_german_credit_uci/processed/ingest_summary.json",
+      "split_replication_audit": "reports/statlog_german_credit_uci/split_replication_audit.json",
+      "wrapper_alignment_audit": "reports/statlog_german_credit_uci/wrapper_alignment_audit.json"
+    }
+  },
+  "input_schema": {
+    "required_fields": [
+      "uci_row_index",
+      "feature_pairs_decoded",
+      "feature_text_decoded"
+    ],
+    "optional_fields": [
+      "Attribute1",
+      "Attribute2",
+      "Attribute3",
+      "Attribute4",
+      "Attribute5",
+      "Attribute6",
+      "Attribute7",
+      "Attribute8",
+      "Attribute9",
+      "Attribute10",
+      "Attribute11",
+      "Attribute12",
+      "Attribute13",
+      "Attribute14",
+      "Attribute15",
+      "Attribute16",
+      "Attribute17",
+      "Attribute18",
+      "Attribute19",
+      "Attribute20"
+    ]
+  },
+  "output_schema": {
+    "type": "json_object",
+    "required_keys": [
+      "label"
+    ],
+    "no_extra_keys": true,
+    "value_schema": {
+      "label": {
+        "type": "string",
+        "enum": [
+          "good",
+          "bad"
+        ]
+      }
+    }
+  },
+  "prompt_template": {
+    "system": "You are assessing the credit risk of a loan applicant using the provided Statlog German Credit attributes. Return only a JSON object with exactly one key, label, whose value is either good or bad.",
+    "user": "Rendered by scripts/tasks/german_credit_risk_v0/render_prompt.py from the canonical UCI feature_text_decoded field."
+  },
+  "reward_spec": {
+    "status": "training_utility_dense_cost_aware_noncanonical_to_source_but_source_aligned",
+    "components": [
+      {
+        "name": "format_reward",
+        "weight": 0.2,
+        "description": "Reward valid JSON objects."
+      },
+      {
+        "name": "label_valid_reward",
+        "weight": 0.2,
+        "description": "Reward exact lower-case good/bad labels."
+      },
+      {
+        "name": "cost_aware_decision_reward",
+        "weight": 0.6,
+        "description": "Dense reward term derived from the UCI cost matrix: 1 - cost/5."
+      }
+    ],
+    "notes": [
+      "The dense cost-aware reward is source-aligned for training utility, but benchmark-authoritative comparison remains in the cached evaluator variants.",
+      "The UCI default evaluator is cost-sensitive; the optional FinBen-compatible view reports macro F1 and MCC."
+    ]
+  },
+  "default_eval_variant": "uci_cost_sensitive_default",
+  "optional_eval_variants": [
+    "finben_optional_f1_mcc"
+  ],
+  "evaluation_config": {
+    "label_mapping": {
+      "good": 1,
+      "bad": 2
+    },
+    "variants": {
+      "uci_cost_sensitive_default": {
+        "parser_mode": "label_only_lowercase",
+        "cost_matrix": {
+          "actual_good_pred_good": 0,
+          "actual_good_pred_bad": 1,
+          "actual_bad_pred_good": 5,
+          "actual_bad_pred_bad": 0
+        },
+        "metrics": [
+          "mean_cost",
+          "total_cost",
+          "normalized_cost_score",
+          "accuracy"
+        ]
+      },
+      "finben_optional_f1_mcc": {
+        "parser_mode": "label_or_answer_lowercase",
+        "metrics": [
+          "macro_f1",
+          "mcc",
+          "accuracy"
+        ]
+      }
+    }
+  },
+  "publication": {
+    "allowed": true,
+    "reason": "Published in the normal ST312 artifact layout with attribution to the CC BY 4.0 UCI source and a historical-sensitive-feature caution."
+  }
+}

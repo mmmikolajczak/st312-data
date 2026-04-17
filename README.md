@@ -341,7 +341,6 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/stocknet_acl18_paper_v0_publish_record.json`
 - **Labeling note:** canonical source is the official `yumoxu/stocknet-dataset` GitHub repo pinned to commit `330708b5ddc359961078bef469f43f48992fd6e4`; ST312 preserves the ACL18 paper's exact `20,339 / 2,555 / 3,720` temporal split counts, 5-day trading-day alignment semantics, and asymmetric threshold rule `<= -0.5% -> Fall`, `> 0.55% -> Rise`; the later `TheFinAI/flare-sm-acl` wrapper is audited only as a compatibility surface because its observed counts differ from the paper-canonical reconstruction; the official release does not reproduce the paper counts under an additional hard tweet-presence filter, so ST312 treats that line as a documented source inconsistency rather than silently changing the benchmark; original source repository is MIT-licensed, but the released corpus includes tweet-derived content collected under Twitter's official license and price data sourced from Yahoo Finance, so downstream users should review applicable platform/source terms before reuse.
 
-
 ### 25) FinArg ECC AUC v0
 - **Dataset ID:** `finarg_auc_ecc_official_v0`
 - **Task ID:** `TA_AUC_FINARG_ECC_v0`
@@ -359,6 +358,15 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **HF task path:** `tasks/finarg_arc_ecc_v0/`
 - **Publish record:** `manifests/publish/finarg_arc_ecc_official_v0_publish_record.json`
 - **Labeling note:** official ECC `train/dev/test` split preserved; label mapping inferred from official totals as `0 -> other`, `1 -> support`, `2 -> attack`; ARC is heavily imbalanced, especially for `attack`.
+
+### 27) UCI Statlog German Credit v0
+- **Dataset ID:** `statlog_german_credit_uci_v0`
+- **Task ID:** `RM_CREDIT_GERMAN_UCI_v0`
+- **Task type:** cost-sensitive binary credit-risk classification
+- **HF dataset path:** `datasets/german_credit/uci_statlog/v0/`
+- **HF task path:** `tasks/german_credit_risk_v0/`
+- **Publish record:** `manifests/publish/statlog_german_credit_uci_v0_publish_record.json`
+- **Labeling note:** canonical source is the UCI Statlog (German Credit Data) archive, DOI `10.24432/C5NC77`, with `german.data` preserved as the canonical symbolic source surface and `german.data-numeric` retained as an auxiliary raw artifact only; ST312 reuses the public `TheFinAI/german-credit-benchmark` split only after exact row-level replication against all 1,000 UCI rows, which succeeds at `700 / 100 / 200`; canonical processed rows preserve original `Attribute1..Attribute20` plus `Class` while adding decoded feature renderings for prompting; the default evaluator is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]`; the source is CC BY 4.0, but the benchmark contains sensitive demographic-style variables and should be treated as a historical benchmark rather than a deployment template.
 
 <!-- ST312_PUBLISHED_MODULES_END -->
 
@@ -481,6 +489,16 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - AUC contains one exact sentence overlap across `train` and `dev`; this is preserved and documented as a release issue
 - ARC shows no cross-split exact pair overlap in the local ECC release
 - ARC is strongly class-imbalanced, especially for the `attack` class, so macro-aware evaluation is emphasized
+
+### UCI Statlog German Credit
+
+- Canonical source is the UCI Statlog (German Credit Data) archive, DOI `10.24432/C5NC77`
+- Canonical preserved source surface is the original symbolic `german.data` file; `german.data-numeric` is retained raw-only as an auxiliary artifact
+- ST312 preserves original `Attribute1..Attribute20` and `Class`, plus original row order via `uci_row_index`
+- The public `TheFinAI/german-credit-benchmark` wrapper is used only to replicate the `700 / 100 / 200` split after exact row-level matching against all 1,000 UCI rows
+- Canonical default evaluation is cost-sensitive because UCI explicitly requires the asymmetric matrix `[[0,1],[5,0]]` for `1 = Good` and `2 = Bad`
+- The optional compatibility view reports macro F1 and MCC, but it is not the canonical source-task scorer
+- This historical benchmark includes sensitive demographic-style variables such as personal status and sex, age, and foreign-worker status, and should not be interpreted as a deployment template
 
 ## Validation
 

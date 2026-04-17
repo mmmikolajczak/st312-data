@@ -1,0 +1,110 @@
+{
+  "dataset_id": "statlog_german_credit_uci_v0",
+  "dataset_name": "UCI Statlog German Credit Data",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/statlog_german_credit_uci_v0",
+  "provenance": {
+    "canonical_public_artifact": "UCI Statlog (German Credit Data)",
+    "canonical_public_url": "https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data",
+    "canonical_doi": "10.24432/C5NC77",
+    "canonical_citation": "Hofmann, H. (1994). Statlog (German Credit Data) [Dataset]. UCI Machine Learning Repository.",
+    "notes": [
+      "The canonical source is the UCI archive, not the later Hugging Face wrapper.",
+      "The original symbolic file german.data is the canonical preserved source surface; german.data-numeric is auxiliary only.",
+      "The wrapper split is reused only after exact row-level replication against all 1,000 UCI rows.",
+      "UCI explicitly states that the dataset requires use of a cost matrix with asymmetric penalties.",
+      "This historical credit-scoring benchmark contains sensitive demographic-style variables and should not be interpreted as a deployment recommendation."
+    ]
+  },
+  "raw": {
+    "files": {
+      "german_data": "data/statlog_german_credit_uci/raw/german.data",
+      "german_data_numeric": "data/statlog_german_credit_uci/raw/german.data-numeric",
+      "german_doc": "data/statlog_german_credit_uci/raw/german.doc"
+    },
+    "meta_files": {
+      "download_meta": "data/statlog_german_credit_uci/raw/download_meta.json",
+      "raw_schema_summary": "reports/statlog_german_credit_uci/raw_schema_summary.json"
+    }
+  },
+  "processed": {
+    "config": "uci_symbolic_credit_risk_v0",
+    "files": {
+      "train": "data/statlog_german_credit_uci/processed/train.jsonl",
+      "valid": "data/statlog_german_credit_uci/processed/valid.jsonl",
+      "test": "data/statlog_german_credit_uci/processed/test.jsonl",
+      "ingest_summary": "data/statlog_german_credit_uci/processed/ingest_summary.json"
+    },
+    "meta_files": {
+      "split_replication_audit": "reports/statlog_german_credit_uci/split_replication_audit.json",
+      "wrapper_alignment_audit": "reports/statlog_german_credit_uci/wrapper_alignment_audit.json"
+    }
+  },
+  "schema": {
+    "row_type": "uci_credit_risk_classification_symbolic_canonical",
+    "source_feature_columns": [
+      "Attribute1",
+      "Attribute2",
+      "Attribute3",
+      "Attribute4",
+      "Attribute5",
+      "Attribute6",
+      "Attribute7",
+      "Attribute8",
+      "Attribute9",
+      "Attribute10",
+      "Attribute11",
+      "Attribute12",
+      "Attribute13",
+      "Attribute14",
+      "Attribute15",
+      "Attribute16",
+      "Attribute17",
+      "Attribute18",
+      "Attribute19",
+      "Attribute20"
+    ],
+    "source_target_column": "Class",
+    "label_mapping_source": {
+      "1": "good",
+      "2": "bad"
+    },
+    "decoded_feature_field": "feature_pairs_decoded",
+    "llm_render_field": "feature_text_decoded",
+    "feature_name_map": "datasets/statlog_german_credit_uci_v0/feature_name_map.json",
+    "categorical_value_map": "datasets/statlog_german_credit_uci_v0/categorical_value_map.json"
+  },
+  "split_policy": {
+    "type": "finben_wrapper_split_replicated_exact_if_possible",
+    "target_counts": {
+      "train": 700,
+      "valid": 100,
+      "test": 200
+    },
+    "replication_required": true
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "repo_type": "dataset",
+    "dataset_root": "datasets/german_credit/uci_statlog/v0",
+    "upstream_license": "cc-by-4.0",
+    "public_release_cleared": true,
+    "upstream_access_mode": "public_uci_archive_cc_by_4",
+    "publication_mode": "public_artifact_standard_release",
+    "reuse_caution_summary": "This is a historical credit-scoring benchmark containing sensitive demographic-style variables and should not be interpreted as a deployment recommendation.",
+    "upstream_license_note": "UCI publishes Statlog (German Credit Data) under CC BY 4.0. ST312 publishes this module publicly with attribution, while noting that the benchmark contains sensitive demographic-style variables.",
+    "publish_allowed": true,
+    "published_commit": null,
+    "published_url": null,
+    "release_scope": "hf_repo_standard_public_release",
+    "full_publish_completed": false
+  },
+  "status": {
+    "raw_ingested": false,
+    "cleaned": false,
+    "split": false,
+    "requests_built": false,
+    "published_to_hf": false,
+    "local_ready": false
+  }
+}

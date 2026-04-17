@@ -1,0 +1,102 @@
+{
+  "Attribute1": {
+    "decoded_feature_name": "Status of existing checking account",
+    "wrapper_alias": "statusOfExistingCheckingAccount",
+    "type": "categorical"
+  },
+  "Attribute2": {
+    "decoded_feature_name": "Duration in month",
+    "wrapper_alias": "durationInMonth",
+    "type": "integer"
+  },
+  "Attribute3": {
+    "decoded_feature_name": "Credit history",
+    "wrapper_alias": "creditHistory",
+    "type": "categorical"
+  },
+  "Attribute4": {
+    "decoded_feature_name": "Purpose",
+    "wrapper_alias": "purpose",
+    "type": "categorical"
+  },
+  "Attribute5": {
+    "decoded_feature_name": "Credit amount",
+    "wrapper_alias": "creditAmount",
+    "type": "integer"
+  },
+  "Attribute6": {
+    "decoded_feature_name": "Savings account/bonds",
+    "wrapper_alias": "savingsAccountOrBonds",
+    "type": "categorical"
+  },
+  "Attribute7": {
+    "decoded_feature_name": "Present employment since",
+    "wrapper_alias": "presentEmploymentSince",
+    "type": "categorical"
+  },
+  "Attribute8": {
+    "decoded_feature_name": "Installment rate in percentage of disposable income",
+    "wrapper_alias": "installmentRateInPercentageOfDisposableIncome",
+    "type": "integer"
+  },
+  "Attribute9": {
+    "decoded_feature_name": "Personal status and sex",
+    "wrapper_alias": "personalStatusAndSex",
+    "type": "categorical"
+  },
+  "Attribute10": {
+    "decoded_feature_name": "Other debtors / guarantors",
+    "wrapper_alias": "otherDebtorsOrGuarantors",
+    "type": "categorical"
+  },
+  "Attribute11": {
+    "decoded_feature_name": "Present residence since",
+    "wrapper_alias": "presentResidenceSince",
+    "type": "integer"
+  },
+  "Attribute12": {
+    "decoded_feature_name": "Property",
+    "wrapper_alias": "property",
+    "type": "categorical"
+  },
+  "Attribute13": {
+    "decoded_feature_name": "Age in years",
+    "wrapper_alias": "ageInYears",
+    "type": "integer"
+  },
+  "Attribute14": {
+    "decoded_feature_name": "Other installment plans",
+    "wrapper_alias": "otherInstallmentPlans",
+    "type": "categorical"
+  },
+  "Attribute15": {
+    "decoded_feature_name": "Housing",
+    "wrapper_alias": "housing",
+    "type": "categorical"
+  },
+  "Attribute16": {
+    "decoded_feature_name": "Number of existing credits at this bank",
+    "wrapper_alias": "numberOfExistingCreditsAtThisBank",
+    "type": "integer"
+  },
+  "Attribute17": {
+    "decoded_feature_name": "Job",
+    "wrapper_alias": "job",
+    "type": "categorical"
+  },
+  "Attribute18": {
+    "decoded_feature_name": "Number of people being liable to provide maintenance for",
+    "wrapper_alias": "numberOfPeopleBeingLiableToProvideMaintenanceFor",
+    "type": "integer"
+  },
+  "Attribute19": {
+    "decoded_feature_name": "Telephone",
+    "wrapper_alias": "telephone",
+    "type": "categorical"
+  },
+  "Attribute20": {
+    "decoded_feature_name": "Foreign worker",
+    "wrapper_alias": "foreignWorker",
+    "type": "categorical"
+  }
+}
