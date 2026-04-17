@@ -386,6 +386,69 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - **Publish record:** `manifests/publish/flare_sm_cikm_public_v0_publish_record.json`
 - **Labeling note:** canonical accessible source is the public `TheFinAI/flare-sm-cikm` wrapper pinned to revision `af627b4405e69e298ec45505c91dc17395be712b`; the original first-party CIKM18 release is publicly unrecoverable, so this module is explicitly wrapper-based rather than an original-author release; the wrapper `train / valid / test` split is preserved exactly at `3396 / 431 / 1143`; wrapper gold mapping is derived empirically as `0 -> Rise`, `1 -> Fall`; default evaluation stays as close as possible to original-paper CIKM18 by reporting `accuracy` only, while an optional FinBen-compatible view adds `mcc`; publication is public but carries an upstream/source-chain caution because the wrapper sits over market-data and social-text sources.
 
+### 30) CALM LendingClub Public v0
+- **Dataset ID:** `calm_lendingclub_public_v0`
+- **Task ID:** `RM_CREDIT_LENDINGCLUB_CALM_v0`
+- **Task type:** wrapper-based binary credit-risk classification
+- **HF dataset path:** `datasets/calm/lendingclub/public/v0/`
+- **HF task path:** `tasks/calm_lendingclub_risk_v0/`
+- **Publish record:** `manifests/publish/calm_lendingclub_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-LendingClub` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `2691` rows and labels `good / bad`; ST312 preserves that wrapper surface exactly and records a caution that observed fields include likely post-outcome or downstream lending signals such as `lastPaymentAmount`, `grade`, and `interestRate`.
+
+### 31) CALM ccFraud Public v0
+- **Dataset ID:** `calm_ccfraud_public_v0`
+- **Task ID:** `RM_FRAUD_CCFRAUD_CALM_v0`
+- **Task type:** wrapper-based binary fraud-detection classification
+- **HF dataset path:** `datasets/calm/ccfraud/public/v0/`
+- **HF task path:** `tasks/calm_ccfraud_risk_v0/`
+- **Publish record:** `manifests/publish/calm_ccfraud_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-CCFraud` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `2098` rows and labels `good / bad`; ST312 preserves the wrapper exactly and records CALM’s minority-resampling flag as metadata only, not as a public split or reward assumption.
+
+### 32) CALM Taiwan Public v0
+- **Dataset ID:** `calm_taiwan_public_v0`
+- **Task ID:** `RM_DISTRESS_TAIWAN_CALM_v0`
+- **Task type:** wrapper-based binary financial-distress classification
+- **HF dataset path:** `datasets/calm/taiwan/public/v0/`
+- **HF task path:** `tasks/calm_taiwan_risk_v0/`
+- **Publish record:** `manifests/publish/calm_taiwan_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-Taiwan` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `1365` rows and labels `no / yes`; ST312 preserves the wrapper exactly while recording the stronger UCI Taiwanese Bankruptcy Prediction lineage for future source-canonical audit work.
+
+### 33) CALM TravelInsurance Public v0
+- **Dataset ID:** `calm_travelinsurance_public_v0`
+- **Task ID:** `RM_CLAIM_TRAVELINSURANCE_CALM_v0`
+- **Task type:** wrapper-based binary claim-status classification
+- **HF dataset path:** `datasets/calm/travelinsurance/public/v0/`
+- **HF task path:** `tasks/calm_travelinsurance_risk_v0/`
+- **Publish record:** `manifests/publish/calm_travelinsurance_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-TravelInsurance` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `2534` rows and labels `yes / no`; ST312 preserves the wrapper exactly and records CALM’s minority-resampling flag as metadata only.
+
+### 34) CALM CCF Public v0
+- **Dataset ID:** `calm_ccf_public_v0`
+- **Task ID:** `RM_FRAUD_CCF_CALM_v0`
+- **Task type:** wrapper-based binary fraud-detection classification
+- **HF dataset path:** `datasets/calm/ccf/public/v0/`
+- **HF task path:** `tasks/calm_ccf_risk_v0/`
+- **Publish record:** `manifests/publish/calm_ccf_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-CCF` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `2279` rows and labels `no / yes`; this module is intentionally kept close to the table-like wrapper text and does not invent additional semantic decodings beyond the public release.
+
+### 35) CALM Polish Public v0
+- **Dataset ID:** `calm_polish_public_v0`
+- **Task ID:** `RM_DISTRESS_POLISH_CALM_v0`
+- **Task type:** wrapper-based binary financial-distress classification
+- **HF dataset path:** `datasets/calm/polish/public/v0/`
+- **HF task path:** `tasks/calm_polish_risk_v0/`
+- **Publish record:** `manifests/publish/calm_polish_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-Polish` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `1737` rows and labels `no / yes`; ST312 preserves the wrapper exactly while recording the stronger UCI Polish Companies Bankruptcy lineage for future source-canonical audit work.
+
+### 36) CALM PortoSeguro Public v0
+- **Dataset ID:** `calm_portoseguro_public_v0`
+- **Task ID:** `RM_CLAIM_PORTOSEGURO_CALM_v0`
+- **Task type:** wrapper-based binary claim-status classification
+- **HF dataset path:** `datasets/calm/portoseguro/public/v0/`
+- **HF task path:** `tasks/calm_portoseguro_risk_v0/`
+- **Publish record:** `manifests/publish/calm_portoseguro_public_v0_publish_record.json`
+- **Labeling note:** canonical accessible source is `Salesforce/FinEval` subset `CRA-ProtoSeguro` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`; the public wrapper exposes only a `test` split with `2382` rows and labels `yes / no`; ST312 standardizes the module naming to `portoseguro` while preserving the public wrapper text exactly.
+
 <!-- ST312_PUBLISHED_MODULES_END -->
 
 ## Labeling / split notes
@@ -526,6 +589,14 @@ Canonical HF dataset repo: `mmmikolajczak/st312-data`
 - Wrapper integer gold mapping is derived empirically and is consistent across all splits: `0 -> Rise`, `1 -> Fall`
 - Default evaluation preserves the original-paper convention of reporting `accuracy` only; an optional FinBen-compatible view reports `accuracy + mcc`
 - Public wrapper documentation drifts from original-paper CIKM18 on row counts, metric wording, and threshold wording; ST312 documents that drift rather than treating it as canonical truth
+
+### CALM Family
+
+- Canonical accessible benchmark release for the CALM family is `Salesforce/FinEval` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`
+- Public CALM-family onboarding preserves the released `test` split only for each subset; ST312 does not fabricate train or validation splits
+- CALM metadata fields such as `calm_role` (`train_eval` vs `eval_only`) and `calm_training_recipe_minority_resampled` are preserved as benchmark metadata only and do not imply corresponding public split files
+- Closed-label evaluation is shared across the family with `macro_f1`, `mcc`, `accuracy`, `format_valid_rate`, `completion_coverage`, and `nonempty_label_rate`
+- ST312 records best-known raw-source lineage separately from the canonical public benchmark release because the underlying source confidence varies across subsets
 
 ## Validation
 

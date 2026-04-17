@@ -84,19 +84,19 @@
     "publication_mode": "public_artifact_standard_release_with_source_chain_caution",
     "reuse_caution_summary": "The benchmark release is wrapper-based, but the raw-source lineage is strong enough that a future source-canonical alignment audit is appropriate.",
     "upstream_license_note": "Salesforce/FinEval is publicly released under CC BY-NC 4.0. ST312 publishes the benchmark wrapper surface with separate source-chain confidence notes for the underlying raw lineage.",
-    "publish_allowed": false,
-    "published_commit": null,
-    "published_url": null,
+    "publish_allowed": true,
+    "published_commit": "8069990316d8ee63e02f2490edf2b0326b9baafa",
+    "published_url": "https://huggingface.co/datasets/mmmikolajczak/st312-data/commit/8069990316d8ee63e02f2490edf2b0326b9baafa",
     "release_scope": "hf_repo_standard_release_eval_only",
-    "full_publish_completed": false
+    "full_publish_completed": true
   },
   "status": {
-    "raw_ingested": false,
-    "cleaned": false,
-    "split": false,
-    "requests_built": false,
-    "published_to_hf": false,
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": true,
     "eval_only": true,
-    "local_ready": true
+    "local_ready": false
   }
 }

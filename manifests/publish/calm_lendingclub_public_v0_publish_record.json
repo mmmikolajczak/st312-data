@@ -1,0 +1,29 @@
+{
+  "dataset_id": "calm_lendingclub_public_v0",
+  "task_id": "RM_CREDIT_LENDINGCLUB_CALM_v0",
+  "github_repo": "mmmikolajczak/st312-data",
+  "github_source_commit": "2151d3cc4393638d3861213fd0d108cd2c9f269d",
+  "hf_repo": "mmmikolajczak/st312-data",
+  "hf_private_repo": false,
+  "public_release_cleared": true,
+  "hf_commits": {
+    "calm_family_artifact_payload": "8069990316d8ee63e02f2490edf2b0326b9baafa",
+    "calm_family_hf_readme_update": "8485357d5ba4e1a80fca52007f1d90c082f7ca82",
+    "calm_family_metadata_sync": "5392d991eaee0d280e1b744d248843344972f4ba",
+    "calm_family_publish_record_refresh": "9baad1c41c8b087c48d3d15617a790866bf4f362"
+  },
+  "artifacts_published": [
+    "datasets/calm/lendingclub/public/v0/test.jsonl",
+    "datasets/calm/lendingclub/public/v0/label_inventory.json",
+    "datasets/calm/lendingclub/public/v0/ingest_summary.json",
+    "datasets/calm/lendingclub/public/v0/download_meta.json",
+    "reports/calm_lendingclub_public/raw_schema_summary.json",
+    "tasks/calm_lendingclub_risk_v0/requests/test_requests.jsonl",
+    "tasks/calm_lendingclub_risk_v0/README.md",
+    "manifests/datasets/calm_lendingclub_public_v0/dataset_spec.json",
+    "manifests/datasets/calm_lendingclub_public_v0/checksums.sha256",
+    "manifests/tasks/calm_lendingclub_risk_v0/task_spec.json",
+    "manifests/publish/calm_lendingclub_public_v0_publish_record.json"
+  ],
+  "notes": "Published wrapper-based CALM family module from Salesforce/FinEval subset CRA-LendingClub pinned to revision a911ec4dbd635228f216349c2f4eda8354ed15cc. ST312 preserves the public test-only benchmark wrapper exactly and records a source-chain caution because observed wrapper fields include likely post-outcome or downstream lending signals."
+}

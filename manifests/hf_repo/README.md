@@ -830,6 +830,188 @@ Manifest / bookkeeping artifacts:
 - `manifests/tasks/flare_sm_cikm_stock_movement_v0/task_spec.json`
 - `manifests/publish/flare_sm_cikm_public_v0_publish_record.json`
 
+### 30) CALM LendingClub Public v0
+
+- Dataset ID: `calm_lendingclub_public_v0`
+- Task ID: `RM_CREDIT_LENDINGCLUB_CALM_v0`
+- Publish record: `manifests/publish/calm_lendingclub_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-LendingClub` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 preserves that surface exactly. Observed wrapper fields include likely post-outcome or downstream lending signals such as `lastPaymentAmount`, `grade`, and `interestRate`, so this module is documented as a benchmark wrapper rather than a source-canonical underwriting dataset.
+
+Dataset artifacts:
+- `datasets/calm/lendingclub/public/v0/test.jsonl`
+- `datasets/calm/lendingclub/public/v0/label_inventory.json`
+- `datasets/calm/lendingclub/public/v0/ingest_summary.json`
+- `datasets/calm/lendingclub/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_lendingclub_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_lendingclub_risk_v0/README.md`
+
+Reports:
+- `reports/calm_lendingclub_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_lendingclub_public_v0/checksums.sha256`
+- `manifests/datasets/calm_lendingclub_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_lendingclub_risk_v0/task_spec.json`
+- `manifests/publish/calm_lendingclub_public_v0_publish_record.json`
+
+### 31) CALM ccFraud Public v0
+
+- Dataset ID: `calm_ccfraud_public_v0`
+- Task ID: `RM_FRAUD_CCFRAUD_CALM_v0`
+- Publish record: `manifests/publish/calm_ccfraud_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-CCFraud` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 preserves that surface exactly and records CALM’s minority-resampling note as metadata only.
+
+Dataset artifacts:
+- `datasets/calm/ccfraud/public/v0/test.jsonl`
+- `datasets/calm/ccfraud/public/v0/label_inventory.json`
+- `datasets/calm/ccfraud/public/v0/ingest_summary.json`
+- `datasets/calm/ccfraud/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_ccfraud_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_ccfraud_risk_v0/README.md`
+
+Reports:
+- `reports/calm_ccfraud_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_ccfraud_public_v0/checksums.sha256`
+- `manifests/datasets/calm_ccfraud_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_ccfraud_risk_v0/task_spec.json`
+- `manifests/publish/calm_ccfraud_public_v0_publish_record.json`
+
+### 32) CALM Taiwan Public v0
+
+- Dataset ID: `calm_taiwan_public_v0`
+- Task ID: `RM_DISTRESS_TAIWAN_CALM_v0`
+- Publish record: `manifests/publish/calm_taiwan_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-Taiwan` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 preserves that surface exactly while recording the stronger UCI Taiwanese Bankruptcy Prediction lineage for future source-canonical audit work.
+
+Dataset artifacts:
+- `datasets/calm/taiwan/public/v0/test.jsonl`
+- `datasets/calm/taiwan/public/v0/label_inventory.json`
+- `datasets/calm/taiwan/public/v0/ingest_summary.json`
+- `datasets/calm/taiwan/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_taiwan_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_taiwan_risk_v0/README.md`
+
+Reports:
+- `reports/calm_taiwan_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_taiwan_public_v0/checksums.sha256`
+- `manifests/datasets/calm_taiwan_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_taiwan_risk_v0/task_spec.json`
+- `manifests/publish/calm_taiwan_public_v0_publish_record.json`
+
+### 33) CALM TravelInsurance Public v0
+
+- Dataset ID: `calm_travelinsurance_public_v0`
+- Task ID: `RM_CLAIM_TRAVELINSURANCE_CALM_v0`
+- Publish record: `manifests/publish/calm_travelinsurance_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-TravelInsurance` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 preserves that surface exactly and records CALM’s minority-resampling note as metadata only.
+
+Dataset artifacts:
+- `datasets/calm/travelinsurance/public/v0/test.jsonl`
+- `datasets/calm/travelinsurance/public/v0/label_inventory.json`
+- `datasets/calm/travelinsurance/public/v0/ingest_summary.json`
+- `datasets/calm/travelinsurance/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_travelinsurance_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_travelinsurance_risk_v0/README.md`
+
+Reports:
+- `reports/calm_travelinsurance_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_travelinsurance_public_v0/checksums.sha256`
+- `manifests/datasets/calm_travelinsurance_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_travelinsurance_risk_v0/task_spec.json`
+- `manifests/publish/calm_travelinsurance_public_v0_publish_record.json`
+
+### 34) CALM CCF Public v0
+
+- Dataset ID: `calm_ccf_public_v0`
+- Task ID: `RM_FRAUD_CCF_CALM_v0`
+- Publish record: `manifests/publish/calm_ccf_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-CCF` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 preserves that surface exactly and keeps the table-like wrapper feature formatting rather than inventing extra semantic decodings.
+
+Dataset artifacts:
+- `datasets/calm/ccf/public/v0/test.jsonl`
+- `datasets/calm/ccf/public/v0/label_inventory.json`
+- `datasets/calm/ccf/public/v0/ingest_summary.json`
+- `datasets/calm/ccf/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_ccf_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_ccf_risk_v0/README.md`
+
+Reports:
+- `reports/calm_ccf_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_ccf_public_v0/checksums.sha256`
+- `manifests/datasets/calm_ccf_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_ccf_risk_v0/task_spec.json`
+- `manifests/publish/calm_ccf_public_v0_publish_record.json`
+
+### 35) CALM Polish Public v0
+
+- Dataset ID: `calm_polish_public_v0`
+- Task ID: `RM_DISTRESS_POLISH_CALM_v0`
+- Publish record: `manifests/publish/calm_polish_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-Polish` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 preserves that surface exactly while recording the stronger UCI Polish Companies Bankruptcy lineage for future source-canonical audit work.
+
+Dataset artifacts:
+- `datasets/calm/polish/public/v0/test.jsonl`
+- `datasets/calm/polish/public/v0/label_inventory.json`
+- `datasets/calm/polish/public/v0/ingest_summary.json`
+- `datasets/calm/polish/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_polish_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_polish_risk_v0/README.md`
+
+Reports:
+- `reports/calm_polish_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_polish_public_v0/checksums.sha256`
+- `manifests/datasets/calm_polish_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_polish_risk_v0/task_spec.json`
+- `manifests/publish/calm_polish_public_v0_publish_record.json`
+
+### 36) CALM PortoSeguro Public v0
+
+- Dataset ID: `calm_portoseguro_public_v0`
+- Task ID: `RM_CLAIM_PORTOSEGURO_CALM_v0`
+- Publish record: `manifests/publish/calm_portoseguro_public_v0_publish_record.json`
+- Notes: Published wrapper-based CALM family module from `Salesforce/FinEval` subset `CRA-ProtoSeguro` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`. The public benchmark exposes only a `test` split, so ST312 standardizes the module naming to `portoseguro` while preserving the public wrapper text exactly.
+
+Dataset artifacts:
+- `datasets/calm/portoseguro/public/v0/test.jsonl`
+- `datasets/calm/portoseguro/public/v0/label_inventory.json`
+- `datasets/calm/portoseguro/public/v0/ingest_summary.json`
+- `datasets/calm/portoseguro/public/v0/download_meta.json`
+
+Task artifacts:
+- `tasks/calm_portoseguro_risk_v0/requests/test_requests.jsonl`
+- `tasks/calm_portoseguro_risk_v0/README.md`
+
+Reports:
+- `reports/calm_portoseguro_public/raw_schema_summary.json`
+
+Manifest / bookkeeping artifacts:
+- `manifests/datasets/calm_portoseguro_public_v0/checksums.sha256`
+- `manifests/datasets/calm_portoseguro_public_v0/dataset_spec.json`
+- `manifests/tasks/calm_portoseguro_risk_v0/task_spec.json`
+- `manifests/publish/calm_portoseguro_public_v0_publish_record.json`
+
 ## Labeling / split notes
 
 ### FinArg ECC
@@ -858,6 +1040,14 @@ Manifest / bookkeeping artifacts:
 - Wrapper gold mapping is derived empirically and is consistent across all splits: `0 -> Rise`, `1 -> Fall`
 - Default evaluation preserves the original-paper convention of reporting `accuracy` only; an optional FinBen-compatible view reports `accuracy + mcc`
 - Wrapper documentation drifts from original-paper CIKM18 on row counts, metric wording, and threshold wording; ST312 documents that drift rather than treating it as canonical truth
+
+### CALM Family
+
+- Canonical accessible benchmark release for the CALM family is `Salesforce/FinEval` pinned to revision `a911ec4dbd635228f216349c2f4eda8354ed15cc`
+- Public CALM-family onboarding preserves the released `test` split only for each subset; ST312 does not fabricate train or validation splits
+- CALM metadata fields such as `calm_role` (`train_eval` vs `eval_only`) and `calm_training_recipe_minority_resampled` are preserved as benchmark metadata only and do not imply corresponding public split files
+- Closed-label evaluation is shared across the family with `macro_f1`, `mcc`, `accuracy`, `format_valid_rate`, `completion_coverage`, and `nonempty_label_rate`
+- ST312 records best-known raw-source lineage separately from the canonical public benchmark release because the underlying source confidence varies across subsets
 
 ### Australian Credit UCI Statlog
 
@@ -894,6 +1084,13 @@ Manifest / bookkeeping artifacts:
 - `flare_edtsum_public_test_v0` — license_sensitive_research_access_gated_upstream
 - `bigdata22_official_v0` — license_not_explicit_tweets_and_market_data_publication_with_caution
 - `stocknet_acl18_paper_v0` — mit_with_twitter_yahoo_source_terms_caution
+- `calm_lendingclub_public_v0` — cc-by-nc-4.0
+- `calm_ccfraud_public_v0` — cc-by-nc-4.0
+- `calm_taiwan_public_v0` — cc-by-nc-4.0
+- `calm_travelinsurance_public_v0` — cc-by-nc-4.0
+- `calm_ccf_public_v0` — cc-by-nc-4.0
+- `calm_polish_public_v0` — cc-by-nc-4.0
+- `calm_portoseguro_public_v0` — cc-by-nc-4.0
 - `flare_sm_cikm_public_v0` — public_wrapper_with_market_data_social_text_source_chain_caution
 - `finarg_auc_ecc_official_v0` — GPL-3.0 (inferred from public FinArg repo; local release lacks embedded license)
 - `finarg_arc_ecc_official_v0` — GPL-3.0 (inferred from public FinArg repo; local release lacks embedded license)

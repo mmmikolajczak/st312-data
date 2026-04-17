@@ -117,7 +117,7 @@
     ]
   },
   "publication": {
-    "allowed": false,
-    "reason": "Placeholder module only; publication deferred until wrapper ingest and validation are completed."
+    "allowed": true,
+    "reason": "Published public benchmark-wrapper module over Salesforce/FinEval with source-chain confidence metadata."
   }
 }
