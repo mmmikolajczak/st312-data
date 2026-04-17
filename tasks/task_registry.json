@@ -268,6 +268,15 @@
       "task_readme_path": "tasks/german_credit_risk_v0/README.md",
       "dataset_id": "statlog_german_credit_uci_v0",
       "status": "published"
+    },
+    {
+      "task_id": "TA_MC_AUSTRALIAN_CREDIT_UCI_v0",
+      "task_name": "Australian Credit Approval (FLARE-style promptified multiple choice)",
+      "version": "0.1.0",
+      "task_spec_path": "tasks/australian_credit_mc_v0/task_spec.json",
+      "task_readme_path": "tasks/australian_credit_mc_v0/README.md",
+      "dataset_id": "australian_credit_uci_statlog_v0",
+      "status": "local_ready"
     }
   ]
 }

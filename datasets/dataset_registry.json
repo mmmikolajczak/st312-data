@@ -314,6 +314,17 @@
       "upstream_license": "cc-by-4.0",
       "task_family": "credit_scoring_risk_management_binary_cost_sensitive",
       "status": "published"
+    },
+    {
+      "dataset_id": "australian_credit_uci_statlog_v0",
+      "dataset_name": "UCI Statlog (Australian Credit Approval)",
+      "version": "0.1.0",
+      "dataset_spec_path": "datasets/australian_credit_uci_statlog_v0/dataset_spec.json",
+      "canonical_hf_repo": "mmmikolajczak/st312-data",
+      "upstream_source": "UCI Statlog (Australian Credit Approval)",
+      "upstream_license": "CC BY 4.0",
+      "task_family": "binary_classification",
+      "status": "local_ready"
     }
   ]
 }

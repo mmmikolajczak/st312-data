@@ -1,0 +1,79 @@
+{
+  "dataset_id": "australian_credit_uci_statlog_v0",
+  "dataset_name": "UCI Statlog (Australian Credit Approval)",
+  "version": "0.1.0",
+  "dataset_folder": "datasets/australian_credit_uci_statlog_v0",
+  "provenance": {
+    "canonical_source_name": "UCI Statlog (Australian Credit Approval)",
+    "canonical_source_urls": [
+      "https://archive.ics.uci.edu/ml/datasets/statlog%2B%28australian%2Bcredit%2Bapproval%29",
+      "https://archive-beta.ics.uci.edu/dataset/143/statlog%2Baustralian%2Bcredit%2Bapproval"
+    ],
+    "canonical_download_urls": {
+      "australian.dat": "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/australian/australian.dat",
+      "australian.doc": "https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/australian/australian.doc"
+    },
+    "doi": "10.24432/C59012",
+    "source_license": "CC BY 4.0",
+    "derived_wrapper_reference": {
+      "name": "TheFinAI/flare-australian",
+      "role": "derived_promptified_reference_only",
+      "target_split_counts": {
+        "train": 482,
+        "valid": 69,
+        "test": 139
+      }
+    }
+  },
+  "raw": {
+    "expected_files": [
+      "data/australian_credit_uci_statlog/raw/australian.dat",
+      "data/australian_credit_uci_statlog/raw/australian.doc"
+    ]
+  },
+  "processed": {
+    "config": "uci_canonical_plus_flare_style_promptified_v0",
+    "files": {
+      "all_clean": "data/australian_credit_uci_statlog/processed/australian_credit_all_clean.jsonl",
+      "clean_meta": "data/australian_credit_uci_statlog/processed/australian_credit_clean_meta.json",
+      "train": "data/australian_credit_uci_statlog/processed/australian_credit_train.jsonl",
+      "valid": "data/australian_credit_uci_statlog/processed/australian_credit_valid.jsonl",
+      "test": "data/australian_credit_uci_statlog/processed/australian_credit_test.jsonl",
+      "split_manifest": "data/australian_credit_uci_statlog/processed/australian_credit_split_manifest.json"
+    }
+  },
+  "label_scheme": {
+    "type": "binary_classification",
+    "canonical_labels": [
+      {"label_id": 0, "label": "Reject"},
+      {"label_id": 1, "label": "Approve"}
+    ],
+    "status": "audited_from_raw_file",
+    "notes": [
+      "Original target coding in the downloaded raw file is 0/1.",
+      "Normalized label_id uses Reject=0, Approve=1.",
+      "Raw source attributes are intentionally anonymized and semantically opaque.",
+      "UCI missing-value documentation ambiguity is preserved in metadata."
+    ]
+  },
+  "split_policy": {
+    "type": "finben_count_matched_reconstruction",
+    "target_counts": {
+      "train": 482,
+      "valid": 69,
+      "test": 139
+    },
+    "fallback_seed": 42
+  },
+  "hf_publish": {
+    "repo_id": "mmmikolajczak/st312-data",
+    "upstream_license_name": "CC BY 4.0"
+  },
+  "status": {
+    "raw_ingested": true,
+    "cleaned": true,
+    "split": true,
+    "requests_built": true,
+    "published_to_hf": false
+  }
+}

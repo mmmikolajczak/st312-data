@@ -1,0 +1,56 @@
+{
+  "task_id": "TA_MC_AUSTRALIAN_CREDIT_UCI_v0",
+  "task_name": "Australian Credit Approval (FLARE-style promptified multiple choice)",
+  "version": "0.1.0",
+  "task_type": "single_label_classification",
+  "dataset": {
+    "dataset_id": "australian_credit_uci_statlog_v0",
+    "train_file": "data/australian_credit_uci_statlog/processed/australian_credit_train.jsonl",
+    "valid_file": "data/australian_credit_uci_statlog/processed/australian_credit_valid.jsonl",
+    "test_file": "data/australian_credit_uci_statlog/processed/australian_credit_test.jsonl"
+  },
+  "label_space": [
+    "Reject",
+    "Approve"
+  ],
+  "output_schema": {
+    "type": "json_object",
+    "strict_single_key": "label",
+    "allowed_labels": [
+      "Reject",
+      "Approve"
+    ]
+  },
+  "prompt_template": {
+    "system": "You are a credit approval classification system. Decide whether the application should be approved or rejected based only on the anonymized applicant attributes. Return ONLY a JSON object with exactly one key: \"label\". The value must be exactly one of \"Reject\" or \"Approve\". Do not include any extra text."
+  },
+  "metrics": [
+    "accuracy",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "micro_precision",
+    "micro_recall",
+    "micro_f1",
+    "weighted_precision",
+    "weighted_recall",
+    "weighted_f1",
+    "per_class_f1"
+  ],
+  "reward": {
+    "script": "scripts/tasks/australian_credit_mc_v0/reward_australian_credit_mc.py",
+    "format_reward": {
+      "type": "strict_json_schema",
+      "weight": 0.1
+    },
+    "correctness_reward": {
+      "name": "exact_label_match",
+      "weight": 0.9
+    },
+    "total_reward_range": [
+      0.0,
+      1.0
+    ]
+  },
+  "status": "local_ready"
+}
